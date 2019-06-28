@@ -26,15 +26,18 @@ CONFIG += c++11
 
 SOURCES += \
         dictionary.cpp \
+        frmserver.cpp \
         main.cpp \
         frmmain.cpp
 
 HEADERS += \
         dictionary.h \
-        frmmain.h
+        frmmain.h \
+        frmserver.h
 
 FORMS += \
-        frmmain.ui
+        frmmain.ui \
+        frmserver.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Multimedia Sharing Tool</string>
+   <string>MST - Multimedia Sharing Tool</string>
   </property>
   <widget class="QLabel" name="lblStart">
    <property name="geometry">
@@ -55,34 +55,8 @@
   <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>240</y>
-     <width>152</width>
-     <height>27</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_2">
-    <item>
-     <widget class="QLabel" name="lblTheme">
-      <property name="text">
-       <string>lblTheme</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="btnTheme">
-      <property name="text">
-       <string>btnTheme</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="">
-   <property name="geometry">
-    <rect>
      <x>230</x>
-     <y>240</y>
+     <y>230</y>
      <width>138</width>
      <height>27</height>
     </rect>

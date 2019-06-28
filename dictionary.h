@@ -9,25 +9,45 @@ enum lang {
     english
 };
 
-struct choices{
-    std::string voices[2];
-};
 class Dictionary
 {
 private:
     lang current_language;
 public:
     Dictionary();
-    void setLanguage(lang l);
+    lang getLanguage();
+    void setLanguage(lang current_language);
+    std::string choices(std::string s1, std::string s2);
 
     //FrmMain
     std::string getTextOflblStart();
     std::string getTextOfbtnServer();
     std::string getTextOfbtnClient();
-    std::string getTextOflblTheme();
     std::string getTextOflblLang();
-    choices getTextOfbtnTheme();
     std::string getTextOfbtnLang();
+
+    //FrmServer
+    std::string getTextOflblInfoServer();
+    std::string getTextOflblIp();
+    std::string getTextOflblPort();
+    std::string getTextOflblPassword();
+    std::string getTextOflblSource();
+    std::string getTextOflblConfig();
+    std::string getTextOflblLeaveConfig();
+    std::string getTextOflblResolution();
+    std::string getTextOflblFps();
+    std::string getTextOflblBuffer();
+    std::string getTextOflblVideo();
+    std::string getTextOflblColorScale();
+    std::string getTextOflblEncoding();
+    std::string getTextOflblAudio();
+    std::string getTextOflblControls();
+    std::string getTextOflblBandwidth();
+    std::string getTextOflblBandwidthvalue();
+    std::string getTextOfbtnBack();
+    std::string getTextOfbtnLoadConfig();
+    std::string getTextOfbtnSaveConfig();
+    std::string getTextOfbtnStartServer();
 };
 
 #endif // DICTIONARY_H

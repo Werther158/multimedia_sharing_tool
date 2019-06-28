@@ -5,20 +5,29 @@ Dictionary::Dictionary()
 {
 }
 
-void Dictionary::setLanguage(lang l)
+void Dictionary::setLanguage(lang current_language)
 {
-    current_language = l;
+    this->current_language = current_language;
 }
 
+lang Dictionary::getLanguage()
+{
+    return current_language;
+}
+
+std::string Dictionary::choices(std::string s1, std::string s2)
+{
+    if (current_language == italian)
+            return s1;
+    if (current_language == english)
+        return s2;
+    return "empty";
+}
 
 // FrmMain
 std::string Dictionary::getTextOflblStart()
 {
-    if (current_language == italian)
-            return "Avviare:";
-    if (current_language == english)
-        return "Start:";
-    return "empty";
+    return choices("Avviare:", "Start:");
 }
 
 std::string Dictionary::getTextOfbtnServer()
@@ -31,47 +40,118 @@ std::string Dictionary::getTextOfbtnClient()
     return "Client";
 }
 
-std::string Dictionary::getTextOflblTheme()
-{
-    if (current_language == italian)
-            return "Tema:";
-    if (current_language == english)
-        return "Theme:";
-    return "empty";
-}
-
 std::string Dictionary::getTextOflblLang()
 {
-    if (current_language == italian)
-            return "Lingua:";
-    if (current_language == english)
-        return "Language:";
-    return "empty";
-}
-
-choices Dictionary::getTextOfbtnTheme()
-{
-    choices c;
-    c.voices[0] = c.voices[1] = "empty";
-
-    if (current_language == italian)
-    {
-        c.voices[0] = "Chiaro";
-        c.voices[1] = "Scuro";
-    }
-    if (current_language == english)
-    {
-        c.voices[0] = "Light";
-        c.voices[1] = "Dark";
-    }
-    return c;
+    return choices("Lingua", "Language");
 }
 
 std::string Dictionary::getTextOfbtnLang()
 {
-    if (current_language == italian)
-            return "ENG";
-    if (current_language == english)
-        return "ITA";
-    return "empty";
+    return choices("ENG", "ITA");
+}
+
+// FrmServer
+std::string Dictionary::getTextOflblInfoServer()
+{
+    return choices("Info server", "Info server");
+}
+
+std::string Dictionary::getTextOflblIp()
+{
+    return choices("IP:", "IP:");
+}
+
+std::string Dictionary::getTextOflblPort()
+{
+    return choices("Porta:", "Port:");
+}
+
+std::string Dictionary::getTextOflblPassword()
+{
+    return choices("Password:", "Password:");
+}
+
+std::string Dictionary::getTextOflblSource()
+{
+    return choices("Sorgente:", "Source:");
+}
+
+std::string Dictionary::getTextOflblConfig()
+{
+    return choices("Configurazione", "Configuration:");
+}
+
+std::string Dictionary::getTextOflblLeaveConfig()
+{
+    return choices("Lascia la configurazione al client:", "Leave the configuration to client:");
+}
+
+std::string Dictionary::getTextOflblResolution()
+{
+    return choices("Risoluzione:", "Resolution:");
+}
+
+std::string Dictionary::getTextOflblFps()
+{
+    return choices("FPS:", "FPS:");
+}
+
+std::string Dictionary::getTextOflblBuffer()
+{
+    return choices("Buffer:", "Buffer:");
+}
+
+std::string Dictionary::getTextOflblVideo()
+{
+    return choices("Video:", "Video:");
+}
+
+std::string Dictionary::getTextOflblColorScale()
+{
+    return choices("Scala colori:", "Color scale:");
+}
+
+std::string Dictionary::getTextOflblEncoding()
+{
+    return choices("Codifica:", "Encoding:");
+}
+
+std::string Dictionary::getTextOflblAudio()
+{
+    return choices("Audio:", "Audio:");
+}
+
+std::string Dictionary::getTextOflblControls()
+{
+    return choices("Controlli:", "Controls:");
+}
+
+std::string Dictionary::getTextOflblBandwidth()
+{
+    return choices("Banda utilizzata stimata:", "Estimated bandwidth use:");
+}
+
+std::string Dictionary::getTextOflblBandwidthvalue()
+{
+    return choices("N", "N");
+}
+
+std::string Dictionary::getTextOfbtnBack()
+{
+    return choices("Indietro", "Back");
+}
+
+std::string Dictionary::getTextOfbtnLoadConfig()
+{
+    return choices("Carica configurazione", "Load configuration");
+}
+
+std::string Dictionary::getTextOfbtnSaveConfig()
+{
+    return choices("Salva configurazione", "Save configuration");
+}
+
+std::string Dictionary::getTextOfbtnStartServer()
+{
+    return choices("Avvia server", "Start server");
 }

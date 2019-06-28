@@ -15,16 +15,17 @@ class FrmMain : public QWidget
 public:
     explicit FrmMain(QWidget *parent = nullptr);
     ~FrmMain();
-    void setDict(Dictionary d);
+    void setDict(Dictionary* d);
+    void setSelector(int* selector);
+
+private slots:
+    void on_btnLang_clicked();
+    void on_btnServer_clicked();
 
 private:
-    enum theme {
-        light,
-        dark
-    };
     Ui::FrmMain *ui;
-    Dictionary dict;
-    theme current_theme;
+    Dictionary* dict;
+    int* selector;
 };
 
 #endif // FRMMAIN_H
