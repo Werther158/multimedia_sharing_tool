@@ -49,3 +49,9 @@ void FrmMain::on_btnServer_clicked()
     *selector = 1;
     this->close();
 }
+
+void FrmMain::on_btnClient_clicked()
+{
+    *selector = 2;
+    this->close();
+}

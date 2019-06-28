@@ -22,6 +22,8 @@ private slots:
     void on_btnLang_clicked();
     void on_btnServer_clicked();
 
+    void on_btnClient_clicked();
+
 private:
     Ui::FrmMain *ui;
     Dictionary* dict;

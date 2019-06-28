@@ -155,3 +155,9 @@ std::string Dictionary::getTextOfbtnStartServer()
 {
     return choices("Avvia server", "Start server");
 }
+
+// FrmClient
+std::string Dictionary::getTextOfbtnConnect()
+{
+    return choices("Connetti", "Connect");
+}

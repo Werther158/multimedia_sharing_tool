@@ -26,16 +26,19 @@ CONFIG += c++11
 
 SOURCES += \
         dictionary.cpp \
+        frmclient.cpp \
         frmserver.cpp \
         main.cpp \
         frmmain.cpp
 
 HEADERS += \
         dictionary.h \
+        frmclient.h \
         frmmain.h \
         frmserver.h
 
 FORMS += \
+        frmclient.ui \
         frmmain.ui \
         frmserver.ui
 

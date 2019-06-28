@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>FrmServer</class>
- <widget class="QWidget" name="FrmServer">
+ <class>FrmClient</class>
+ <widget class="QWidget" name="FrmClient">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MST - Server</string>
+   <string>MST - Client</string>
   </property>
   <widget class="QLabel" name="lblInfoServer">
    <property name="geometry">
@@ -156,65 +156,6 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>180</y>
-     <width>415</width>
-     <height>19</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_6">
-    <item>
-     <widget class="QLabel" name="lblConfig">
-      <property name="text">
-       <string>lblConfig</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <spacer name="horizontalSpacer_4">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>198</width>
-        <height>17</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item>
-     <widget class="QLabel" name="lblLeaveConfig">
-      <property name="text">
-       <string>lblLeaveConfig</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <spacer name="horizontalSpacer_5">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>13</width>
-        <height>17</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item>
-     <widget class="QCheckBox" name="chkLeaveConfig">
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="layoutWidget2">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
      <y>210</y>
      <width>491</width>
      <height>130</height>
@@ -356,7 +297,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="layoutWidget3">
+  <widget class="QWidget" name="layoutWidget2">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -431,13 +372,26 @@
      </spacer>
     </item>
     <item>
-     <widget class="QPushButton" name="btnStartServer">
+     <widget class="QPushButton" name="btnConnect">
       <property name="text">
-       <string>btnStartServer</string>
+       <string>btnConnect</string>
       </property>
      </widget>
     </item>
    </layout>
+  </widget>
+  <widget class="QLabel" name="lblConfig">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>180</y>
+     <width>413</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>lblConfig</string>
+   </property>
   </widget>
   <widget class="QWidget" name="">
    <property name="geometry">
@@ -445,12 +399,12 @@
      <x>20</x>
      <y>50</y>
      <width>284</width>
-     <height>76</height>
+     <height>91</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout">
+     <layout class="QVBoxLayout" name="verticalLayout_6">
       <item>
        <widget class="QLabel" name="lblIp">
         <property name="text">
@@ -475,20 +429,7 @@
      </layout>
     </item>
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout_4">
-      <item>
-       <spacer name="horizontalSpacer_2">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
+     <layout class="QVBoxLayout" name="verticalLayout_5">
       <item>
        <spacer name="horizontalSpacer">
         <property name="orientation">
@@ -503,7 +444,20 @@
        </spacer>
       </item>
       <item>
-       <spacer name="horizontalSpacer_10">
+       <spacer name="horizontalSpacer_4">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_2">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
@@ -518,20 +472,12 @@
      </layout>
     </item>
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout_5">
+     <layout class="QVBoxLayout" name="verticalLayout_4">
       <item>
-       <widget class="QLabel" name="lblIp2">
-        <property name="text">
-         <string>lblIp2</string>
-        </property>
-       </widget>
+       <widget class="QLineEdit" name="txtIp"/>
       </item>
       <item>
-       <widget class="QLabel" name="lblPort2">
-        <property name="text">
-         <string>lblPort2</string>
-        </property>
-       </widget>
+       <widget class="QLineEdit" name="txtPort"/>
       </item>
       <item>
        <widget class="QLineEdit" name="txtPassword"/>

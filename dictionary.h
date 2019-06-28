@@ -19,14 +19,14 @@ public:
     void setLanguage(lang current_language);
     std::string choices(std::string s1, std::string s2);
 
-    //FrmMain
+    // FrmMain
     std::string getTextOflblStart();
     std::string getTextOfbtnServer();
     std::string getTextOfbtnClient();
     std::string getTextOflblLang();
     std::string getTextOfbtnLang();
 
-    //FrmServer
+    // FrmServer
     std::string getTextOflblInfoServer();
     std::string getTextOflblIp();
     std::string getTextOflblPort();
@@ -48,6 +48,9 @@ public:
     std::string getTextOfbtnLoadConfig();
     std::string getTextOfbtnSaveConfig();
     std::string getTextOfbtnStartServer();
+
+    // FrmClient
+    std::string getTextOfbtnConnect();
 };
 
 #endif // DICTIONARY_H
