@@ -17,7 +17,7 @@ CXX           = g++
 DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -g -std=gnu++11 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I../../multimedia_sharing_tool -I. -I../../../Qt/5.13.0/gcc_64/include -I../../../Qt/5.13.0/gcc_64/include/QtWidgets -I../../../Qt/5.13.0/gcc_64/include/QtGui -I../../../Qt/5.13.0/gcc_64/include/QtCore -I. -isystem /usr/include/libdrm -I. -I../../../Qt/5.13.0/gcc_64/mkspecs/linux-g++
+INCPATH       = -I../../multimedia_sharing_tool -I. -isystem /usr/include/curl -I../../../Qt/5.13.0/gcc_64/include -I../../../Qt/5.13.0/gcc_64/include/QtWidgets -I../../../Qt/5.13.0/gcc_64/include/QtGui -I../../../Qt/5.13.0/gcc_64/include/QtCore -I. -isystem /usr/include/libdrm -I. -I../../../Qt/5.13.0/gcc_64/mkspecs/linux-g++
 QMAKE         = /home/werther/Qt/5.13.0/gcc_64/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -40,7 +40,7 @@ DISTNAME      = multimedia_sharing_tool1.0.0
 DISTDIR = /home/werther/Desktop/multimedia_sharing_tool/build-multimedia_sharing_tool-Desktop_Qt_5_13_0_GCC_64bit-Debug/.tmp/multimedia_sharing_tool1.0.0
 LINK          = g++
 LFLAGS        = -no-pie -Wl,-rpath,/home/werther/Qt/5.13.0/gcc_64/lib
-LIBS          = $(SUBLIBS) /home/werther/Qt/5.13.0/gcc_64/lib/libQt5Widgets.so /home/werther/Qt/5.13.0/gcc_64/lib/libQt5Gui.so /home/werther/Qt/5.13.0/gcc_64/lib/libQt5Core.so -lGL -lpthread   
+LIBS          = $(SUBLIBS) -L/usr/local/lib -lcurl /home/werther/Qt/5.13.0/gcc_64/lib/libQt5Widgets.so /home/werther/Qt/5.13.0/gcc_64/lib/libQt5Gui.so /home/werther/Qt/5.13.0/gcc_64/lib/libQt5Core.so -lGL -lpthread   
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -56,7 +56,8 @@ SOURCES       = ../dictionary.cpp \
 		../frmclient.cpp \
 		../frmserver.cpp \
 		../main.cpp \
-		../frmmain.cpp moc_frmclient.cpp \
+		../frmmain.cpp \
+		../utilities.cpp moc_frmclient.cpp \
 		moc_frmmain.cpp \
 		moc_frmserver.cpp
 OBJECTS       = dictionary.o \
@@ -64,6 +65,7 @@ OBJECTS       = dictionary.o \
 		frmserver.o \
 		main.o \
 		frmmain.o \
+		utilities.o \
 		moc_frmclient.o \
 		moc_frmmain.o \
 		moc_frmserver.o
@@ -266,11 +268,13 @@ DIST          = ../../../../Qt/5.13.0/gcc_64/mkspecs/features/spec_pre.prf \
 		../../multimedia_sharing_tool.pro ../dictionary.h \
 		../frmclient.h \
 		../frmmain.h \
-		../frmserver.h ../dictionary.cpp \
+		../frmserver.h \
+		../utilities.h ../dictionary.cpp \
 		../frmclient.cpp \
 		../frmserver.cpp \
 		../main.cpp \
-		../frmmain.cpp
+		../frmmain.cpp \
+		../utilities.cpp
 QMAKE_TARGET  = multimedia_sharing_tool
 DESTDIR       = 
 TARGET        = multimedia_sharing_tool
@@ -692,8 +696,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../Qt/5.13.0/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../dictionary.h ../frmclient.h ../frmmain.h ../frmserver.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../dictionary.cpp ../frmclient.cpp ../frmserver.cpp ../main.cpp ../frmmain.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../dictionary.h ../frmclient.h ../frmmain.h ../frmserver.h ../utilities.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../dictionary.cpp ../frmclient.cpp ../frmserver.cpp ../main.cpp ../frmmain.cpp ../utilities.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../frmclient.ui ../frmmain.ui ../frmserver.ui $(DISTDIR)/
 
 
@@ -836,7 +840,7 @@ moc_frmclient.cpp: ../frmclient.h \
 		../dictionary.h \
 		moc_predefs.h \
 		../../../Qt/5.13.0/gcc_64/bin/moc
-	/home/werther/Qt/5.13.0/gcc_64/bin/moc $(DEFINES) --include /home/werther/Desktop/multimedia_sharing_tool/build-multimedia_sharing_tool-Desktop_Qt_5_13_0_GCC_64bit-Debug/moc_predefs.h -I/home/werther/Qt/5.13.0/gcc_64/mkspecs/linux-g++ -I/home/werther/Desktop/multimedia_sharing_tool -I/home/werther/Qt/5.13.0/gcc_64/include -I/home/werther/Qt/5.13.0/gcc_64/include/QtWidgets -I/home/werther/Qt/5.13.0/gcc_64/include/QtGui -I/home/werther/Qt/5.13.0/gcc_64/include/QtCore -I. -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../frmclient.h -o moc_frmclient.cpp
+	/home/werther/Qt/5.13.0/gcc_64/bin/moc $(DEFINES) --include /home/werther/Desktop/multimedia_sharing_tool/build-multimedia_sharing_tool-Desktop_Qt_5_13_0_GCC_64bit-Debug/moc_predefs.h -I/home/werther/Qt/5.13.0/gcc_64/mkspecs/linux-g++ -I/home/werther/Desktop/multimedia_sharing_tool -I/usr/include/curl -I/home/werther/Qt/5.13.0/gcc_64/include -I/home/werther/Qt/5.13.0/gcc_64/include/QtWidgets -I/home/werther/Qt/5.13.0/gcc_64/include/QtGui -I/home/werther/Qt/5.13.0/gcc_64/include/QtCore -I. -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../frmclient.h -o moc_frmclient.cpp
 
 moc_frmmain.cpp: ../frmmain.h \
 		../../../Qt/5.13.0/gcc_64/include/QtWidgets/QWidget \
@@ -945,7 +949,7 @@ moc_frmmain.cpp: ../frmmain.h \
 		../dictionary.h \
 		moc_predefs.h \
 		../../../Qt/5.13.0/gcc_64/bin/moc
-	/home/werther/Qt/5.13.0/gcc_64/bin/moc $(DEFINES) --include /home/werther/Desktop/multimedia_sharing_tool/build-multimedia_sharing_tool-Desktop_Qt_5_13_0_GCC_64bit-Debug/moc_predefs.h -I/home/werther/Qt/5.13.0/gcc_64/mkspecs/linux-g++ -I/home/werther/Desktop/multimedia_sharing_tool -I/home/werther/Qt/5.13.0/gcc_64/include -I/home/werther/Qt/5.13.0/gcc_64/include/QtWidgets -I/home/werther/Qt/5.13.0/gcc_64/include/QtGui -I/home/werther/Qt/5.13.0/gcc_64/include/QtCore -I. -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../frmmain.h -o moc_frmmain.cpp
+	/home/werther/Qt/5.13.0/gcc_64/bin/moc $(DEFINES) --include /home/werther/Desktop/multimedia_sharing_tool/build-multimedia_sharing_tool-Desktop_Qt_5_13_0_GCC_64bit-Debug/moc_predefs.h -I/home/werther/Qt/5.13.0/gcc_64/mkspecs/linux-g++ -I/home/werther/Desktop/multimedia_sharing_tool -I/usr/include/curl -I/home/werther/Qt/5.13.0/gcc_64/include -I/home/werther/Qt/5.13.0/gcc_64/include/QtWidgets -I/home/werther/Qt/5.13.0/gcc_64/include/QtGui -I/home/werther/Qt/5.13.0/gcc_64/include/QtCore -I. -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../frmmain.h -o moc_frmmain.cpp
 
 moc_frmserver.cpp: ../frmserver.h \
 		../../../Qt/5.13.0/gcc_64/include/QtWidgets/QWidget \
@@ -1054,7 +1058,7 @@ moc_frmserver.cpp: ../frmserver.h \
 		../dictionary.h \
 		moc_predefs.h \
 		../../../Qt/5.13.0/gcc_64/bin/moc
-	/home/werther/Qt/5.13.0/gcc_64/bin/moc $(DEFINES) --include /home/werther/Desktop/multimedia_sharing_tool/build-multimedia_sharing_tool-Desktop_Qt_5_13_0_GCC_64bit-Debug/moc_predefs.h -I/home/werther/Qt/5.13.0/gcc_64/mkspecs/linux-g++ -I/home/werther/Desktop/multimedia_sharing_tool -I/home/werther/Qt/5.13.0/gcc_64/include -I/home/werther/Qt/5.13.0/gcc_64/include/QtWidgets -I/home/werther/Qt/5.13.0/gcc_64/include/QtGui -I/home/werther/Qt/5.13.0/gcc_64/include/QtCore -I. -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../frmserver.h -o moc_frmserver.cpp
+	/home/werther/Qt/5.13.0/gcc_64/bin/moc $(DEFINES) --include /home/werther/Desktop/multimedia_sharing_tool/build-multimedia_sharing_tool-Desktop_Qt_5_13_0_GCC_64bit-Debug/moc_predefs.h -I/home/werther/Qt/5.13.0/gcc_64/mkspecs/linux-g++ -I/home/werther/Desktop/multimedia_sharing_tool -I/usr/include/curl -I/home/werther/Qt/5.13.0/gcc_64/include -I/home/werther/Qt/5.13.0/gcc_64/include/QtWidgets -I/home/werther/Qt/5.13.0/gcc_64/include/QtGui -I/home/werther/Qt/5.13.0/gcc_64/include/QtCore -I. -I/usr/include/c++/8 -I/usr/include/x86_64-linux-gnu/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/x86_64-linux-gnu/8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../frmserver.h -o moc_frmserver.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -1505,7 +1509,8 @@ main.o: ../main.cpp ../frmmain.h \
 		../../../Qt/5.13.0/gcc_64/include/QtCore/qeventloop.h \
 		../../../Qt/5.13.0/gcc_64/include/QtWidgets/qdesktopwidget.h \
 		../../../Qt/5.13.0/gcc_64/include/QtGui/qguiapplication.h \
-		../../../Qt/5.13.0/gcc_64/include/QtGui/qinputmethod.h
+		../../../Qt/5.13.0/gcc_64/include/QtGui/qinputmethod.h \
+		../utilities.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../main.cpp
 
 frmmain.o: ../frmmain.cpp ../frmmain.h \
@@ -1637,6 +1642,9 @@ frmmain.o: ../frmmain.cpp ../frmmain.h \
 		../../../Qt/5.13.0/gcc_64/include/QtCore/QString \
 		../../../Qt/5.13.0/gcc_64/include/QtGui/QCloseEvent
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o frmmain.o ../frmmain.cpp
+
+utilities.o: ../utilities.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o utilities.o ../utilities.cpp
 
 moc_frmclient.o: moc_frmclient.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_frmclient.o moc_frmclient.cpp

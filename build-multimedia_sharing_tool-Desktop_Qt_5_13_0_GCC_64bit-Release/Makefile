@@ -56,7 +56,8 @@ SOURCES       = ../dictionary.cpp \
 		../frmclient.cpp \
 		../frmserver.cpp \
 		../main.cpp \
-		../frmmain.cpp moc_frmclient.cpp \
+		../frmmain.cpp \
+		../utilities.cpp moc_frmclient.cpp \
 		moc_frmmain.cpp \
 		moc_frmserver.cpp
 OBJECTS       = dictionary.o \
@@ -64,6 +65,7 @@ OBJECTS       = dictionary.o \
 		frmserver.o \
 		main.o \
 		frmmain.o \
+		utilities.o \
 		moc_frmclient.o \
 		moc_frmmain.o \
 		moc_frmserver.o
@@ -266,11 +268,13 @@ DIST          = ../../../../Qt/5.13.0/gcc_64/mkspecs/features/spec_pre.prf \
 		../../multimedia_sharing_tool.pro ../dictionary.h \
 		../frmclient.h \
 		../frmmain.h \
-		../frmserver.h ../dictionary.cpp \
+		../frmserver.h \
+		../utilities.h ../dictionary.cpp \
 		../frmclient.cpp \
 		../frmserver.cpp \
 		../main.cpp \
-		../frmmain.cpp
+		../frmmain.cpp \
+		../utilities.cpp
 QMAKE_TARGET  = multimedia_sharing_tool
 DESTDIR       = 
 TARGET        = multimedia_sharing_tool
@@ -692,8 +696,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../Qt/5.13.0/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../dictionary.h ../frmclient.h ../frmmain.h ../frmserver.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../dictionary.cpp ../frmclient.cpp ../frmserver.cpp ../main.cpp ../frmmain.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../dictionary.h ../frmclient.h ../frmmain.h ../frmserver.h ../utilities.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../dictionary.cpp ../frmclient.cpp ../frmserver.cpp ../main.cpp ../frmmain.cpp ../utilities.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../frmclient.ui ../frmmain.ui ../frmserver.ui $(DISTDIR)/
 
 
@@ -1641,6 +1645,9 @@ frmmain.o: ../frmmain.cpp ../frmmain.h \
 		../../../Qt/5.13.0/gcc_64/include/QtCore/QString \
 		../../../Qt/5.13.0/gcc_64/include/QtGui/QCloseEvent
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o frmmain.o ../frmmain.cpp
+
+utilities.o: ../utilities.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o utilities.o ../utilities.cpp
 
 moc_frmclient.o: moc_frmclient.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_frmclient.o moc_frmclient.cpp

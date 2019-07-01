@@ -29,13 +29,15 @@ SOURCES += \
         frmclient.cpp \
         frmserver.cpp \
         main.cpp \
-        frmmain.cpp
+        frmmain.cpp \
+        utilities.cpp
 
 HEADERS += \
         dictionary.h \
         frmclient.h \
         frmmain.h \
-        frmserver.h
+        frmserver.h \
+        utilities.h
 
 FORMS += \
         frmclient.ui \
@@ -50,3 +52,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 # Used to make the build version of this qt application an executable that can be launched
 # without the use of a command prompt.
 QMAKE_LFLAGS += -no-pie
+
+INCLUDEPATH += /usr/include/curl
+LIBS += -L/usr/local/lib -lcurl

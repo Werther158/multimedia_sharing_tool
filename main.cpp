@@ -3,6 +3,7 @@
 #include "frmclient.h"
 #include <QApplication>
 #include "dictionary.h"
+#include <utilities.h>
 
 #include "iostream"
 
@@ -13,6 +14,8 @@ int main(int argc, char *argv[])
 
     dict.setLanguage(italian);
     selector = 0;
+
+    curl_test();
 
     while(selector != -1)
     {
