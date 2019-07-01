@@ -46,3 +46,7 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+# Used to make the build version of this qt application an executable that can be launched
+# without the use of a command prompt.
+QMAKE_LFLAGS += -no-pie

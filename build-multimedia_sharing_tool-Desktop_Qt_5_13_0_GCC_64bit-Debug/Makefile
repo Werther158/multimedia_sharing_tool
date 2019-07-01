@@ -39,7 +39,7 @@ COMPRESS      = gzip -9f
 DISTNAME      = multimedia_sharing_tool1.0.0
 DISTDIR = /home/werther/Desktop/multimedia_sharing_tool/build-multimedia_sharing_tool-Desktop_Qt_5_13_0_GCC_64bit-Debug/.tmp/multimedia_sharing_tool1.0.0
 LINK          = g++
-LFLAGS        = -Wl,-rpath,/home/werther/Qt/5.13.0/gcc_64/lib
+LFLAGS        = -no-pie -Wl,-rpath,/home/werther/Qt/5.13.0/gcc_64/lib
 LIBS          = $(SUBLIBS) /home/werther/Qt/5.13.0/gcc_64/lib/libQt5Widgets.so /home/werther/Qt/5.13.0/gcc_64/lib/libQt5Gui.so /home/werther/Qt/5.13.0/gcc_64/lib/libQt5Core.so -lGL -lpthread   
 AR            = ar cqs
 RANLIB        = 
@@ -1193,7 +1193,50 @@ frmclient.o: ../frmclient.cpp ../frmclient.h \
 		../../../Qt/5.13.0/gcc_64/include/QtGui/qvector2d.h \
 		../../../Qt/5.13.0/gcc_64/include/QtGui/qtouchdevice.h \
 		../dictionary.h \
-		ui_frmclient.h
+		../ui_frmclient.h \
+		../../../Qt/5.13.0/gcc_64/include/QtCore/QVariant \
+		../../../Qt/5.13.0/gcc_64/include/QtWidgets/QApplication \
+		../../../Qt/5.13.0/gcc_64/include/QtWidgets/qapplication.h \
+		../../../Qt/5.13.0/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../Qt/5.13.0/gcc_64/include/QtCore/qeventloop.h \
+		../../../Qt/5.13.0/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../../Qt/5.13.0/gcc_64/include/QtGui/qguiapplication.h \
+		../../../Qt/5.13.0/gcc_64/include/QtGui/qinputmethod.h \
+		../../../Qt/5.13.0/gcc_64/include/QtWidgets/QComboBox \
+		../../../Qt/5.13.0/gcc_64/include/QtWidgets/qcombobox.h \
+		../../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../../Qt/5.13.0/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../../Qt/5.13.0/gcc_64/include/QtGui/qvalidator.h \
+		../../../Qt/5.13.0/gcc_64/include/QtCore/qregularexpression.h \
+		../../../Qt/5.13.0/gcc_64/include/QtGui/qicon.h \
+		../../../Qt/5.13.0/gcc_64/include/QtWidgets/qslider.h \
+		../../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../../Qt/5.13.0/gcc_64/include/QtWidgets/qstyle.h \
+		../../../Qt/5.13.0/gcc_64/include/QtWidgets/qtabbar.h \
+		../../../Qt/5.13.0/gcc_64/include/QtWidgets/qtabwidget.h \
+		../../../Qt/5.13.0/gcc_64/include/QtWidgets/qrubberband.h \
+		../../../Qt/5.13.0/gcc_64/include/QtWidgets/qframe.h \
+		../../../Qt/5.13.0/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../../Qt/5.13.0/gcc_64/include/QtWidgets/QFrame \
+		../../../Qt/5.13.0/gcc_64/include/QtWidgets/QHBoxLayout \
+		../../../Qt/5.13.0/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../../Qt/5.13.0/gcc_64/include/QtWidgets/qlayout.h \
+		../../../Qt/5.13.0/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../../Qt/5.13.0/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../../Qt/5.13.0/gcc_64/include/QtWidgets/QLabel \
+		../../../Qt/5.13.0/gcc_64/include/QtWidgets/qlabel.h \
+		../../../Qt/5.13.0/gcc_64/include/QtWidgets/QLineEdit \
+		../../../Qt/5.13.0/gcc_64/include/QtWidgets/qlineedit.h \
+		../../../Qt/5.13.0/gcc_64/include/QtGui/qtextcursor.h \
+		../../../Qt/5.13.0/gcc_64/include/QtGui/qtextformat.h \
+		../../../Qt/5.13.0/gcc_64/include/QtGui/qpen.h \
+		../../../Qt/5.13.0/gcc_64/include/QtGui/qtextoption.h \
+		../../../Qt/5.13.0/gcc_64/include/QtWidgets/QPushButton \
+		../../../Qt/5.13.0/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../../Qt/5.13.0/gcc_64/include/QtWidgets/QSpacerItem \
+		../../../Qt/5.13.0/gcc_64/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o frmclient.o ../frmclient.cpp
 
 frmserver.o: ../frmserver.cpp ../frmserver.h \
@@ -1301,7 +1344,7 @@ frmserver.o: ../frmserver.cpp ../frmserver.h \
 		../../../Qt/5.13.0/gcc_64/include/QtGui/qvector2d.h \
 		../../../Qt/5.13.0/gcc_64/include/QtGui/qtouchdevice.h \
 		../dictionary.h \
-		ui_frmserver.h \
+		../ui_frmserver.h \
 		../../../Qt/5.13.0/gcc_64/include/QtCore/QVariant \
 		../../../Qt/5.13.0/gcc_64/include/QtWidgets/QApplication \
 		../../../Qt/5.13.0/gcc_64/include/QtWidgets/qapplication.h \
@@ -1455,6 +1498,7 @@ main.o: ../main.cpp ../frmmain.h \
 		../../../Qt/5.13.0/gcc_64/include/QtGui/qtouchdevice.h \
 		../dictionary.h \
 		../frmserver.h \
+		../frmclient.h \
 		../../../Qt/5.13.0/gcc_64/include/QtWidgets/QApplication \
 		../../../Qt/5.13.0/gcc_64/include/QtWidgets/qapplication.h \
 		../../../Qt/5.13.0/gcc_64/include/QtCore/qcoreapplication.h \
@@ -1569,7 +1613,7 @@ frmmain.o: ../frmmain.cpp ../frmmain.h \
 		../../../Qt/5.13.0/gcc_64/include/QtGui/qvector2d.h \
 		../../../Qt/5.13.0/gcc_64/include/QtGui/qtouchdevice.h \
 		../dictionary.h \
-		ui_frmmain.h \
+		../ui_frmmain.h \
 		../../../Qt/5.13.0/gcc_64/include/QtCore/QVariant \
 		../../../Qt/5.13.0/gcc_64/include/QtWidgets/QApplication \
 		../../../Qt/5.13.0/gcc_64/include/QtWidgets/qapplication.h \
