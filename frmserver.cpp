@@ -6,6 +6,9 @@ FrmServer::FrmServer(QWidget *parent) :
     ui(new Ui::FrmServer)
 {
     ui->setupUi(this);
+    std::string public_ip = Connectivity::getPublicIp();
+    ui->lblIp2->setText(QString::fromStdString(public_ip));
+    ui->txtPort->setText("35000");
     setFixedSize(size());
 }
 

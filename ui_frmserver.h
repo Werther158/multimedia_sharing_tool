@@ -86,7 +86,7 @@ public:
     QPushButton *btnSaveConfig;
     QSpacerItem *horizontalSpacer_9;
     QPushButton *btnStartServer;
-    QWidget *widget;
+    QWidget *layoutWidget4;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout;
     QLabel *lblIp;
@@ -98,7 +98,7 @@ public:
     QSpacerItem *horizontalSpacer_10;
     QVBoxLayout *verticalLayout_5;
     QLabel *lblIp2;
-    QLabel *lblPort2;
+    QLineEdit *txtPort;
     QLineEdit *txtPassword;
 
     void setupUi(QWidget *FrmServer)
@@ -370,25 +370,25 @@ public:
 
         horizontalLayout_16->addWidget(btnStartServer);
 
-        widget = new QWidget(FrmServer);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(20, 50, 284, 76));
-        horizontalLayout = new QHBoxLayout(widget);
+        layoutWidget4 = new QWidget(FrmServer);
+        layoutWidget4->setObjectName(QString::fromUtf8("layoutWidget4"));
+        layoutWidget4->setGeometry(QRect(20, 50, 284, 83));
+        horizontalLayout = new QHBoxLayout(layoutWidget4);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        lblIp = new QLabel(widget);
+        lblIp = new QLabel(layoutWidget4);
         lblIp->setObjectName(QString::fromUtf8("lblIp"));
 
         verticalLayout->addWidget(lblIp);
 
-        lblPort = new QLabel(widget);
+        lblPort = new QLabel(layoutWidget4);
         lblPort->setObjectName(QString::fromUtf8("lblPort"));
 
         verticalLayout->addWidget(lblPort);
 
-        lblPassword = new QLabel(widget);
+        lblPassword = new QLabel(layoutWidget4);
         lblPassword->setObjectName(QString::fromUtf8("lblPassword"));
 
         verticalLayout->addWidget(lblPassword);
@@ -415,17 +415,17 @@ public:
 
         verticalLayout_5 = new QVBoxLayout();
         verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
-        lblIp2 = new QLabel(widget);
+        lblIp2 = new QLabel(layoutWidget4);
         lblIp2->setObjectName(QString::fromUtf8("lblIp2"));
 
         verticalLayout_5->addWidget(lblIp2);
 
-        lblPort2 = new QLabel(widget);
-        lblPort2->setObjectName(QString::fromUtf8("lblPort2"));
+        txtPort = new QLineEdit(layoutWidget4);
+        txtPort->setObjectName(QString::fromUtf8("txtPort"));
 
-        verticalLayout_5->addWidget(lblPort2);
+        verticalLayout_5->addWidget(txtPort);
 
-        txtPassword = new QLineEdit(widget);
+        txtPassword = new QLineEdit(layoutWidget4);
         txtPassword->setObjectName(QString::fromUtf8("txtPassword"));
 
         verticalLayout_5->addWidget(txtPassword);
@@ -466,7 +466,6 @@ public:
         lblPort->setText(QCoreApplication::translate("FrmServer", "lblPort", nullptr));
         lblPassword->setText(QCoreApplication::translate("FrmServer", "lblPassword", nullptr));
         lblIp2->setText(QCoreApplication::translate("FrmServer", "lblIp2", nullptr));
-        lblPort2->setText(QCoreApplication::translate("FrmServer", "lblPort2", nullptr));
     } // retranslateUi
 
 };

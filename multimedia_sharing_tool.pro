@@ -25,19 +25,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        connectivity.cpp \
         dictionary.cpp \
         frmclient.cpp \
         frmserver.cpp \
         main.cpp \
-        frmmain.cpp \
-        utilities.cpp
+        frmmain.cpp
 
 HEADERS += \
+        connectivity.h \
         dictionary.h \
         frmclient.h \
         frmmain.h \
-        frmserver.h \
-        utilities.h
+        frmserver.h
 
 FORMS += \
         frmclient.ui \

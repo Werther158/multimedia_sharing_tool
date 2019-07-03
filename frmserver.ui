@@ -439,13 +439,13 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>20</x>
      <y>50</y>
      <width>284</width>
-     <height>76</height>
+     <height>83</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
@@ -527,11 +527,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="lblPort2">
-        <property name="text">
-         <string>lblPort2</string>
-        </property>
-       </widget>
+       <widget class="QLineEdit" name="txtPort"/>
       </item>
       <item>
        <widget class="QLineEdit" name="txtPassword"/>

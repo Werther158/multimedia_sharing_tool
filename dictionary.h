@@ -48,6 +48,7 @@ public:
     std::string getTextOfbtnLoadConfig();
     std::string getTextOfbtnSaveConfig();
     std::string getTextOfbtnStartServer();
+    std::string getTextOfbtnExit();
 
     // FrmClient
     std::string getTextOfbtnConnect();

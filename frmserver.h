@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "dictionary.h"
+#include <connectivity.h>
 
 namespace Ui {
 class FrmServer;

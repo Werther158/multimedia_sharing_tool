@@ -24,6 +24,8 @@ private slots:
 
     void on_btnClient_clicked();
 
+    void on_btnExit_clicked();
+
 private:
     Ui::FrmMain *ui;
     Dictionary* dict;

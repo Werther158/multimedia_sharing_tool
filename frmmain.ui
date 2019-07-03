@@ -55,24 +55,48 @@
   <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>230</x>
+     <x>20</x>
      <y>230</y>
-     <width>138</width>
-     <height>27</height>
+     <width>341</width>
+     <height>29</height>
     </rect>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout">
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
     <item>
-     <widget class="QLabel" name="lblLang">
-      <property name="text">
-       <string>lblLang</string>
-      </property>
-     </widget>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="lblLang">
+        <property name="text">
+         <string>lblLang</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnLang">
+        <property name="text">
+         <string>btnLang</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </item>
     <item>
-     <widget class="QPushButton" name="btnLang">
+     <spacer name="horizontalSpacer">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>88</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
+     <widget class="QPushButton" name="btnExit">
       <property name="text">
-       <string>btnLang</string>
+       <string>btnExit</string>
       </property>
      </widget>
     </item>

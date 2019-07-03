@@ -27,6 +27,7 @@ void FrmMain::setDict(Dictionary* d)
     ui->btnClient->setText(QString::fromStdString((*dict).getTextOfbtnClient()));
     ui->lblLang->setText(QString::fromStdString((*dict).getTextOflblLang()));
     ui->btnLang->setText(QString::fromStdString((*dict).getTextOfbtnLang()));
+    ui->btnExit->setText(QString::fromStdString((*dict).getTextOfbtnExit()));
 }
 
 void FrmMain::on_btnLang_clicked()
@@ -53,5 +54,11 @@ void FrmMain::on_btnServer_clicked()
 void FrmMain::on_btnClient_clicked()
 {
     *selector = 2;
+    this->close();
+}
+
+void FrmMain::on_btnExit_clicked()
+{
+    *selector = -1;
     this->close();
 }

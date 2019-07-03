@@ -50,6 +50,11 @@ std::string Dictionary::getTextOfbtnLang()
     return choices("ENG", "ITA");
 }
 
+std::string Dictionary::getTextOfbtnExit()
+{
+    return choices("Esci", "Exit");
+}
+
 // FrmServer
 std::string Dictionary::getTextOflblInfoServer()
 {

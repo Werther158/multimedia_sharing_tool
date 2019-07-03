@@ -14,6 +14,7 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -25,9 +26,12 @@ public:
     QPushButton *btnServer;
     QPushButton *btnClient;
     QWidget *widget;
+    QHBoxLayout *horizontalLayout_2;
     QHBoxLayout *horizontalLayout;
     QLabel *lblLang;
     QPushButton *btnLang;
+    QSpacerItem *horizontalSpacer;
+    QPushButton *btnExit;
 
     void setupUi(QWidget *FrmMain)
     {
@@ -45,12 +49,15 @@ public:
         btnClient->setGeometry(QRect(130, 130, 111, 41));
         widget = new QWidget(FrmMain);
         widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(230, 230, 138, 27));
-        horizontalLayout = new QHBoxLayout(widget);
+        widget->setGeometry(QRect(20, 230, 341, 29));
+        horizontalLayout_2 = new QHBoxLayout(widget);
+        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
+        horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
-        horizontalLayout->setContentsMargins(11, 11, 11, 11);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        horizontalLayout->setContentsMargins(0, 0, 0, 0);
         lblLang = new QLabel(widget);
         lblLang->setObjectName(QString::fromUtf8("lblLang"));
 
@@ -60,6 +67,18 @@ public:
         btnLang->setObjectName(QString::fromUtf8("btnLang"));
 
         horizontalLayout->addWidget(btnLang);
+
+
+        horizontalLayout_2->addLayout(horizontalLayout);
+
+        horizontalSpacer = new QSpacerItem(88, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer);
+
+        btnExit = new QPushButton(widget);
+        btnExit->setObjectName(QString::fromUtf8("btnExit"));
+
+        horizontalLayout_2->addWidget(btnExit);
 
 
         retranslateUi(FrmMain);
@@ -75,6 +94,7 @@ public:
         btnClient->setText(QCoreApplication::translate("FrmMain", "btnClient", nullptr));
         lblLang->setText(QCoreApplication::translate("FrmMain", "lblLang", nullptr));
         btnLang->setText(QCoreApplication::translate("FrmMain", "btnLang", nullptr));
+        btnExit->setText(QCoreApplication::translate("FrmMain", "btnExit", nullptr));
     } // retranslateUi
 
 };

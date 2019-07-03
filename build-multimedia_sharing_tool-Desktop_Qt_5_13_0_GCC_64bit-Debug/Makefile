@@ -52,20 +52,20 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../dictionary.cpp \
+SOURCES       = ../connectivity.cpp \
+		../dictionary.cpp \
 		../frmclient.cpp \
 		../frmserver.cpp \
 		../main.cpp \
-		../frmmain.cpp \
-		../utilities.cpp moc_frmclient.cpp \
+		../frmmain.cpp moc_frmclient.cpp \
 		moc_frmmain.cpp \
 		moc_frmserver.cpp
-OBJECTS       = dictionary.o \
+OBJECTS       = connectivity.o \
+		dictionary.o \
 		frmclient.o \
 		frmserver.o \
 		main.o \
 		frmmain.o \
-		utilities.o \
 		moc_frmclient.o \
 		moc_frmmain.o \
 		moc_frmserver.o
@@ -265,16 +265,16 @@ DIST          = ../../../../Qt/5.13.0/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/5.13.0/gcc_64/mkspecs/features/exceptions.prf \
 		../../../../Qt/5.13.0/gcc_64/mkspecs/features/yacc.prf \
 		../../../../Qt/5.13.0/gcc_64/mkspecs/features/lex.prf \
-		../../multimedia_sharing_tool.pro ../dictionary.h \
+		../../multimedia_sharing_tool.pro ../connectivity.h \
+		../dictionary.h \
 		../frmclient.h \
 		../frmmain.h \
-		../frmserver.h \
-		../utilities.h ../dictionary.cpp \
+		../frmserver.h ../connectivity.cpp \
+		../dictionary.cpp \
 		../frmclient.cpp \
 		../frmserver.cpp \
 		../main.cpp \
-		../frmmain.cpp \
-		../utilities.cpp
+		../frmmain.cpp
 QMAKE_TARGET  = multimedia_sharing_tool
 DESTDIR       = 
 TARGET        = multimedia_sharing_tool
@@ -696,8 +696,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../Qt/5.13.0/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../dictionary.h ../frmclient.h ../frmmain.h ../frmserver.h ../utilities.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../dictionary.cpp ../frmclient.cpp ../frmserver.cpp ../main.cpp ../frmmain.cpp ../utilities.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../connectivity.h ../dictionary.h ../frmclient.h ../frmmain.h ../frmserver.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../connectivity.cpp ../dictionary.cpp ../frmclient.cpp ../frmserver.cpp ../main.cpp ../frmmain.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../frmclient.ui ../frmmain.ui ../frmserver.ui $(DISTDIR)/
 
 
@@ -1088,6 +1088,9 @@ compiler_lex_clean:
 compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
+
+connectivity.o: ../connectivity.cpp ../connectivity.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o connectivity.o ../connectivity.cpp
 
 dictionary.o: ../dictionary.cpp ../dictionary.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dictionary.o ../dictionary.cpp
@@ -1509,8 +1512,7 @@ main.o: ../main.cpp ../frmmain.h \
 		../../../Qt/5.13.0/gcc_64/include/QtCore/qeventloop.h \
 		../../../Qt/5.13.0/gcc_64/include/QtWidgets/qdesktopwidget.h \
 		../../../Qt/5.13.0/gcc_64/include/QtGui/qguiapplication.h \
-		../../../Qt/5.13.0/gcc_64/include/QtGui/qinputmethod.h \
-		../utilities.h
+		../../../Qt/5.13.0/gcc_64/include/QtGui/qinputmethod.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../main.cpp
 
 frmmain.o: ../frmmain.cpp ../frmmain.h \
@@ -1642,9 +1644,6 @@ frmmain.o: ../frmmain.cpp ../frmmain.h \
 		../../../Qt/5.13.0/gcc_64/include/QtCore/QString \
 		../../../Qt/5.13.0/gcc_64/include/QtGui/QCloseEvent
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o frmmain.o ../frmmain.cpp
-
-utilities.o: ../utilities.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o utilities.o ../utilities.cpp
 
 moc_frmclient.o: moc_frmclient.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_frmclient.o moc_frmclient.cpp
