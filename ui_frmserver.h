@@ -372,7 +372,7 @@ public:
 
         layoutWidget4 = new QWidget(FrmServer);
         layoutWidget4->setObjectName(QString::fromUtf8("layoutWidget4"));
-        layoutWidget4->setGeometry(QRect(20, 50, 284, 83));
+        layoutWidget4->setGeometry(QRect(20, 50, 241, 83));
         horizontalLayout = new QHBoxLayout(layoutWidget4);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
@@ -462,6 +462,9 @@ public:
         btnLoadConfig->setText(QCoreApplication::translate("FrmServer", "btnLoadConfig", nullptr));
         btnSaveConfig->setText(QCoreApplication::translate("FrmServer", "btnSaveConfig", nullptr));
         btnStartServer->setText(QCoreApplication::translate("FrmServer", "btnStartServer", nullptr));
+#if QT_CONFIG(tooltip)
+        lblIp->setToolTip(QCoreApplication::translate("FrmServer", "<html><head/><body><p><br/></p></body></html>", nullptr));
+#endif // QT_CONFIG(tooltip)
         lblIp->setText(QCoreApplication::translate("FrmServer", "lblIp", nullptr));
         lblPort->setText(QCoreApplication::translate("FrmServer", "lblPort", nullptr));
         lblPassword->setText(QCoreApplication::translate("FrmServer", "lblPassword", nullptr));

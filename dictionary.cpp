@@ -58,27 +58,33 @@ std::string Dictionary::getTextOfbtnExit()
 // FrmServer
 std::string Dictionary::getTextOflblInfoServer()
 {
-    return choices("Info server", "Info server");
+    return "Info server";
 }
 
-std::string Dictionary::getTextOflblIp()
+void Dictionary::setTextOflblIpS(QLabel *lbl)
 {
-    return choices("IP:", "IP:");
+    lbl->setToolTip(QString::fromStdString(choices("IP pubblico, se il dispositivo è connesso a internet. In alternativa viene mostrato l'indirizzo 127.0.0.1.",
+                                                   "Public IP, if device is connected to internet. Alternatively, 127.0.0.1 address is displayed.")));
+    lbl->setText("IP:");
 }
 
-std::string Dictionary::getTextOflblPort()
+void Dictionary::setTextOflblPort(QLabel *lbl)
 {
-    return choices("Porta:", "Port:");
+    lbl->setToolTip(QString::fromStdString(choices("Porta del server.", "Server port.")));
+    lbl->setText(QString::fromStdString(choices("Porta:", "Port:")));
 }
 
-std::string Dictionary::getTextOflblPassword()
+void Dictionary::setTextOflblPasswordS(QLabel *lbl)
 {
-    return choices("Password:", "Password:");
+    lbl->setToolTip(QString::fromStdString(choices("E' possibile impostare una password per la connessione del client.\nLasciare vuoto questo campo per non utilizzare nessuna password.",
+                                                   "It is possible to set a password for client connection.\nLeave it blank in order to use no password.")));
+    lbl->setText("Password:");
 }
 
-std::string Dictionary::getTextOflblSource()
+void Dictionary::setTextOflblSource(QLabel *lbl)
 {
-    return choices("Sorgente:", "Source:");
+    lbl->setToolTip(QString::fromStdString(choices("Sorgente video da inviare al client.", "Video source to use.")));
+    lbl->setText(QString::fromStdString(choices("Sorgente:", "Source:")));
 }
 
 std::string Dictionary::getTextOflblConfig()
@@ -91,44 +97,55 @@ std::string Dictionary::getTextOflblLeaveConfig()
     return choices("Lascia la configurazione al client:", "Leave the configuration to client:");
 }
 
-std::string Dictionary::getTextOflblResolution()
+void Dictionary::setTextOflblResolution(QLabel *lbl)
 {
-    return choices("Risoluzione:", "Resolution:");
+    lbl->setToolTip(QString::fromStdString(choices("Risoluzione di output.", "Output resolution.")));
+    lbl->setText(QString::fromStdString(choices("Risoluzione:", "Resolution:")));
 }
 
-std::string Dictionary::getTextOflblFps()
+void Dictionary::setTextOflblFps(QLabel *lbl)
 {
-    return choices("FPS:", "FPS:");
+    lbl->setToolTip(QString::fromStdString(choices("FPS massimi desiderati in output.", "Maximum output FPS desired.")));
+    lbl->setText("FPS:");
 }
 
-std::string Dictionary::getTextOflblBuffer()
+void Dictionary::setTextOflblBuffer(QLabel *lbl)
 {
-    return choices("Buffer:", "Buffer:");
+    lbl->setToolTip(QString::fromStdString(choices("Buffer disponibile in output.\nUn valore maggiore consente di avere una "
+                                                   "fluidità maggiore, ma aumenterà la latenza.", "Available output buffer.\nA greater value "
+                                                   "makes the output streaming smoother, but it increases latency.")));
+    lbl->setText("Buffer:");
 }
 
-std::string Dictionary::getTextOflblVideo()
+void Dictionary::setTextOflblVideo(QLabel *lbl)
 {
-    return choices("Video:", "Video:");
+    lbl->setToolTip(QString::fromStdString(choices("Compressione video.", "Video compression.")));
+    lbl->setText("Video:");
 }
 
-std::string Dictionary::getTextOflblColorScale()
+void Dictionary::setTextOflblColorScale(QLabel *lbl)
 {
-    return choices("Scala colori:", "Color scale:");
+    lbl->setToolTip(QString::fromStdString(choices("Scala colori dei pixel delle immagini in output.",
+                                                   "Color scale of output image's pixels.")));
+    lbl->setText(QString::fromStdString(choices("Scala colori:", "Color scale:")));
 }
 
-std::string Dictionary::getTextOflblEncoding()
+void Dictionary::setTextOflblEncoding(QLabel *lbl)
 {
-    return choices("Codifica:", "Encoding:");
+    lbl->setToolTip(QString::fromStdString(choices("Tipologie di codifica video.", "Encoding types.")));
+    lbl->setText(QString::fromStdString(choices("Codifica:", "Encoding:")));
 }
 
-std::string Dictionary::getTextOflblAudio()
+void Dictionary::setTextOflblAudio(QLabel *lbl)
 {
-    return choices("Audio:", "Audio:");
+    lbl->setToolTip(QString::fromStdString(choices("Compressione audio.", "Audio compression.")));
+    lbl->setText("Audio:");
 }
 
-std::string Dictionary::getTextOflblControls()
+void Dictionary::setTextOflblControls(QLabel *lbl)
 {
-    return choices("Controlli:", "Controls:");
+    lbl->setToolTip(QString::fromStdString(choices("Controlli sul server disponibili al client.\nT -> Tastiera\nM -> Mouse\nC -> Controller", "Server's controls available to the client.\nK -> Keayboard\nM -> Mouse\nC -> Controller")));
+    lbl->setText(QString::fromStdString(choices("Controlli:", "Controls:")));
 }
 
 std::string Dictionary::getTextOflblBandwidth()
@@ -138,7 +155,7 @@ std::string Dictionary::getTextOflblBandwidth()
 
 std::string Dictionary::getTextOflblBandwidthvalue()
 {
-    return choices("N", "N");
+    return "N";
 }
 
 std::string Dictionary::getTextOfbtnBack()
@@ -161,8 +178,87 @@ std::string Dictionary::getTextOfbtnStartServer()
     return choices("Avvia server", "Start server");
 }
 
+void Dictionary::fillcmbSource(QComboBox *cmb)
+{
+    cmb->addItem(QString::fromStdString(choices("File video", "Video file")));
+    cmb->addItem(QString::fromStdString(choices("Camera", "Camera")));
+    cmb->addItem(QString::fromStdString(choices("Schermo", "Screen")));
+}
+
+void Dictionary::fillcmbResolution(QComboBox *cmb)
+{
+    cmb->addItem("3840 x 2160");
+    cmb->addItem("2560 x 1440");
+    cmb->addItem("1920 x 1080");
+    cmb->addItem("1600 x 900");
+    cmb->addItem("1280 x 720");
+    cmb->addItem("854 x 480");
+    cmb->addItem("640 x 360");
+    cmb->addItem("426 x 240");
+    cmb->addItem("256 x 144");
+    cmb->setCurrentIndex(2);
+}
+
+void Dictionary::fillcmbColorScale(QComboBox *cmb)
+{
+    cmb->addItem("24 bpp");
+    cmb->addItem("16 bpp");
+    cmb->addItem("15 bpp");
+    cmb->addItem("8 bpp");
+    cmb->addItem("4 bpp");
+    cmb->addItem("2 bpp");
+    cmb->addItem("1 bpp");
+    cmb->setCurrentIndex(1);
+}
+
+void Dictionary::fillcmbFps(QComboBox *cmb)
+{
+    cmb->addItem("60");
+    cmb->addItem("59");
+    cmb->addItem("55");
+    cmb->addItem("45");
+    cmb->addItem("40");
+    cmb->addItem("35");
+    cmb->addItem("30");
+    cmb->addItem("25");
+    cmb->addItem("20");
+    cmb->addItem("15");
+}
+
+void Dictionary::fillcmbBuffer(QComboBox *cmb)
+{
+    cmb->addItem(QString::fromStdString(choices("128 frame", "128 frames")));
+    cmb->addItem(QString::fromStdString(choices("64 frame", "64 frames")));
+    cmb->addItem(QString::fromStdString(choices("32 frame", "32 frames")));
+    cmb->addItem(QString::fromStdString(choices("16 frame", "16 frames")));
+    cmb->addItem(QString::fromStdString(choices("8 frame", "8 frames")));
+    cmb->addItem(QString::fromStdString(choices("Disabilitato", "Disabled")));
+}
+
+void Dictionary::fillcmbControls(QComboBox *cmb)
+{
+   cmb->addItem(QString::fromStdString(choices("Disabilitati", "Disabled")));
+   cmb->addItem(QString::fromStdString(choices("T + M", "K + M")));
+   cmb->addItem(QString::fromStdString(choices("C", "C")));
+   cmb->addItem(QString::fromStdString(choices("T + M + C", "K + M + C")));
+}
+
 // FrmClient
 std::string Dictionary::getTextOfbtnConnect()
 {
     return choices("Connetti", "Connect");
+}
+
+void Dictionary::setTextOflblIpC(QLabel *lbl)
+{
+    lbl->setToolTip(QString::fromStdString(choices("Indirizzo IP del server, pubblico o privato (se nella stessa rete locale).",
+                                                   "Server's IP address, public or private (if in the same local network).")));
+    lbl->setText("IP:");
+}
+
+void Dictionary::setTextOflblPasswordC(QLabel *lbl)
+{
+    lbl->setToolTip(QString::fromStdString(choices("Password per connettersi al server.\nSe lato server non è impostata alcuna password, lasciare il campo vuoto.",
+                                                   "Server connection password.\nIf server side no password is specified, leave the field blank.")));
+    lbl->setText("Password:");
 }

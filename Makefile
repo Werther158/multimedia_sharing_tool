@@ -1056,6 +1056,7 @@ moc_frmserver.cpp: frmserver.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/qvector2d.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/qtouchdevice.h \
 		dictionary.h \
+		connectivity.h \
 		moc_predefs.h \
 		../../Qt/5.13.0/gcc_64/bin/moc
 	/home/werther/Qt/5.13.0/gcc_64/bin/moc $(DEFINES) --include /home/werther/Desktop/multimedia_sharing_tool/moc_predefs.h -I/home/werther/Qt/5.13.0/gcc_64/mkspecs/linux-g++ -I/home/werther/Desktop/multimedia_sharing_tool -I/usr/include/curl -I/home/werther/Qt/5.13.0/gcc_64/include -I/home/werther/Qt/5.13.0/gcc_64/include/QtWidgets -I/home/werther/Qt/5.13.0/gcc_64/include/QtGui -I/home/werther/Qt/5.13.0/gcc_64/include/QtCore -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++ -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/i686-w64-mingw32.static -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/backward -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include-fixed -I/home/werther/Downloads/mxe/usr/i686-w64-mingw32.static/include frmserver.h -o moc_frmserver.cpp
@@ -1351,6 +1352,7 @@ frmserver.o: frmserver.cpp frmserver.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/qvector2d.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/qtouchdevice.h \
 		dictionary.h \
+		connectivity.h \
 		ui_frmserver.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/QVariant \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/QApplication \
@@ -1505,6 +1507,7 @@ main.o: main.cpp frmmain.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/qtouchdevice.h \
 		dictionary.h \
 		frmserver.h \
+		connectivity.h \
 		frmclient.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/QApplication \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qapplication.h \
@@ -1641,6 +1644,7 @@ frmmain.o: frmmain.cpp frmmain.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qpushbutton.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractbutton.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/qicon.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/QSpacerItem \
 		../../Qt/5.13.0/gcc_64/include/QtCore/QString \
 		../../Qt/5.13.0/gcc_64/include/QtGui/QCloseEvent
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o frmmain.o frmmain.cpp

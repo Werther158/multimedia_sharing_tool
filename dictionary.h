@@ -3,6 +3,8 @@
 
 #include "stdlib.h"
 #include "string"
+#include <QComboBox>
+#include <QLabel>
 
 enum lang {
     italian,
@@ -28,20 +30,20 @@ public:
 
     // FrmServer
     std::string getTextOflblInfoServer();
-    std::string getTextOflblIp();
-    std::string getTextOflblPort();
-    std::string getTextOflblPassword();
-    std::string getTextOflblSource();
+    void setTextOflblIpS(QLabel *lbl);
+    void setTextOflblPort(QLabel *lbl);
+    void setTextOflblPasswordS(QLabel *lbl);
+    void setTextOflblSource(QLabel *lbl);
     std::string getTextOflblConfig();
     std::string getTextOflblLeaveConfig();
-    std::string getTextOflblResolution();
-    std::string getTextOflblFps();
-    std::string getTextOflblBuffer();
-    std::string getTextOflblVideo();
-    std::string getTextOflblColorScale();
-    std::string getTextOflblEncoding();
-    std::string getTextOflblAudio();
-    std::string getTextOflblControls();
+    void setTextOflblResolution(QLabel *lbl);
+    void setTextOflblFps(QLabel *lbl);
+    void setTextOflblBuffer(QLabel *lbl);
+    void setTextOflblVideo(QLabel *lbl);
+    void setTextOflblColorScale(QLabel *lbl);
+    void setTextOflblEncoding(QLabel *lbl);
+    void setTextOflblAudio(QLabel *lbl);
+    void setTextOflblControls(QLabel *lbl);
     std::string getTextOflblBandwidth();
     std::string getTextOflblBandwidthvalue();
     std::string getTextOfbtnBack();
@@ -49,9 +51,18 @@ public:
     std::string getTextOfbtnSaveConfig();
     std::string getTextOfbtnStartServer();
     std::string getTextOfbtnExit();
+    void fillcmbSource(QComboBox *cmb);
+    void fillcmbResolution(QComboBox *cmb);
+    void fillcmbColorScale(QComboBox *cmb);
+    void fillcmbFps(QComboBox *cmb);
+    void fillcmbBuffer(QComboBox *cmb);
+    void fillcmbControls(QComboBox *cmb);
 
     // FrmClient
     std::string getTextOfbtnConnect();
+    void setTextOflblIpC(QLabel *lbl);
+    void setTextOflblPortC(QLabel *lbl);
+    void setTextOflblPasswordC(QLabel *lbl);
 };
 
 #endif // DICTIONARY_H

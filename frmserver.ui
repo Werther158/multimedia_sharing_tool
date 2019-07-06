@@ -444,7 +444,7 @@
     <rect>
      <x>20</x>
      <y>50</y>
-     <width>284</width>
+     <width>241</width>
      <height>83</height>
     </rect>
    </property>
@@ -453,6 +453,9 @@
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
        <widget class="QLabel" name="lblIp">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="text">
          <string>lblIp</string>
         </property>

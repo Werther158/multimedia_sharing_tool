@@ -34,11 +34,6 @@ public:
     QLabel *lblBandwidthvalue;
     QLabel *label_3;
     QFrame *line_4;
-    QWidget *layoutWidget;
-    QHBoxLayout *horizontalLayout_3;
-    QLabel *lblSource;
-    QSpacerItem *horizontalSpacer_3;
-    QComboBox *cmbSource;
     QWidget *layoutWidget1;
     QHBoxLayout *horizontalLayout_14;
     QVBoxLayout *verticalLayout_2;
@@ -79,7 +74,7 @@ public:
     QSpacerItem *horizontalSpacer_9;
     QPushButton *btnConnect;
     QLabel *lblConfig;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout_6;
     QLabel *lblIp;
@@ -131,26 +126,6 @@ public:
         line_4->setGeometry(QRect(0, 390, 561, 16));
         line_4->setFrameShape(QFrame::HLine);
         line_4->setFrameShadow(QFrame::Sunken);
-        layoutWidget = new QWidget(FrmClient);
-        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(310, 50, 204, 27));
-        horizontalLayout_3 = new QHBoxLayout(layoutWidget);
-        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
-        lblSource = new QLabel(layoutWidget);
-        lblSource->setObjectName(QString::fromUtf8("lblSource"));
-
-        horizontalLayout_3->addWidget(lblSource);
-
-        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_3->addItem(horizontalSpacer_3);
-
-        cmbSource = new QComboBox(layoutWidget);
-        cmbSource->setObjectName(QString::fromUtf8("cmbSource"));
-
-        horizontalLayout_3->addWidget(cmbSource);
-
         layoutWidget1 = new QWidget(FrmClient);
         layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
         layoutWidget1->setGeometry(QRect(20, 210, 491, 130));
@@ -337,25 +312,25 @@ public:
         lblConfig = new QLabel(FrmClient);
         lblConfig->setObjectName(QString::fromUtf8("lblConfig"));
         lblConfig->setGeometry(QRect(20, 180, 413, 17));
-        widget = new QWidget(FrmClient);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(20, 50, 284, 91));
-        horizontalLayout = new QHBoxLayout(widget);
+        layoutWidget = new QWidget(FrmClient);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(20, 50, 284, 91));
+        horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
         verticalLayout_6 = new QVBoxLayout();
         verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
-        lblIp = new QLabel(widget);
+        lblIp = new QLabel(layoutWidget);
         lblIp->setObjectName(QString::fromUtf8("lblIp"));
 
         verticalLayout_6->addWidget(lblIp);
 
-        lblPort = new QLabel(widget);
+        lblPort = new QLabel(layoutWidget);
         lblPort->setObjectName(QString::fromUtf8("lblPort"));
 
         verticalLayout_6->addWidget(lblPort);
 
-        lblPassword = new QLabel(widget);
+        lblPassword = new QLabel(layoutWidget);
         lblPassword->setObjectName(QString::fromUtf8("lblPassword"));
 
         verticalLayout_6->addWidget(lblPassword);
@@ -382,17 +357,17 @@ public:
 
         verticalLayout_4 = new QVBoxLayout();
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
-        txtIp = new QLineEdit(widget);
+        txtIp = new QLineEdit(layoutWidget);
         txtIp->setObjectName(QString::fromUtf8("txtIp"));
 
         verticalLayout_4->addWidget(txtIp);
 
-        txtPort = new QLineEdit(widget);
+        txtPort = new QLineEdit(layoutWidget);
         txtPort->setObjectName(QString::fromUtf8("txtPort"));
 
         verticalLayout_4->addWidget(txtPort);
 
-        txtPassword = new QLineEdit(widget);
+        txtPassword = new QLineEdit(layoutWidget);
         txtPassword->setObjectName(QString::fromUtf8("txtPassword"));
 
         verticalLayout_4->addWidget(txtPassword);
@@ -413,7 +388,6 @@ public:
         lblBandwidth->setText(QCoreApplication::translate("FrmClient", "lblBandwidth", nullptr));
         lblBandwidthvalue->setText(QCoreApplication::translate("FrmClient", "lblBandwidthvalue", nullptr));
         label_3->setText(QCoreApplication::translate("FrmClient", "mbit/s", nullptr));
-        lblSource->setText(QCoreApplication::translate("FrmClient", "lblSource", nullptr));
         lblResolution->setText(QCoreApplication::translate("FrmClient", "lblResolution", nullptr));
         lblFps->setText(QCoreApplication::translate("FrmClient", "lblFps", nullptr));
         lblBuffer->setText(QCoreApplication::translate("FrmClient", "lblBuffer", nullptr));

@@ -20,6 +20,7 @@ Connectivity::~Connectivity() {
 
 string Connectivity::getPublicIp() {
     void* curl;
+    string output;
     curl = curl_easy_init();
     curl_easy_setopt(curl, CURLOPT_URL, "https://api.ipify.org/");
     curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
@@ -32,9 +33,16 @@ string Connectivity::getPublicIp() {
     CURLcode res = curl_easy_perform(curl);
     /* Check for errors */
     if (res != CURLE_OK) {
-        fprintf(stderr, "curl_easy_perform() failed: %s\n",
+        fprintf(stderr, "curl_easy_perform() failed: %s. Check your internet connection.\n",
                 curl_easy_strerror(res));
+        output = "127.0.0.1";
+    }
+    else {
+        output = out.str();
     }
     curl_easy_cleanup(curl);
-    return out.str();
+
+
+
+    return output;
 }
