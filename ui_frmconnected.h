@@ -1,58 +1,59 @@
 /********************************************************************************
-** Form generated from reading UI file 'frmrunning.ui'
+** Form generated from reading UI file 'frmconnected.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.13.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_FRMRUNNING_H
-#define UI_FRMRUNNING_H
+#ifndef UI_FRMCONNECTED_H
+#define UI_FRMCONNECTED_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
-#include <QtWidgets/QListView>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QScrollBar>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
 
-class Ui_FrmRunning
+class Ui_FrmConnected
 {
 public:
-    QPushButton *pushButton_2;
-    QPushButton *btnViewConfig;
+    QCheckBox *checkBox;
+    QPushButton *btnDisconnect;
     QWidget *widget;
     QHBoxLayout *horizontalLayout;
     QLabel *label;
+    QScrollBar *horizontalScrollBar;
     QLabel *label_2;
     QWidget *widget1;
     QVBoxLayout *verticalLayout;
-    QListView *listConfigurations;
     QTextEdit *txtBox;
     QHBoxLayout *horizontalLayout_2;
     QLineEdit *txtLine;
     QPushButton *btnSend;
 
-    void setupUi(QWidget *FrmRunning)
+    void setupUi(QWidget *FrmConnected)
     {
-        if (FrmRunning->objectName().isEmpty())
-            FrmRunning->setObjectName(QString::fromUtf8("FrmRunning"));
-        FrmRunning->resize(400, 300);
-        pushButton_2 = new QPushButton(FrmRunning);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        pushButton_2->setGeometry(QRect(280, 260, 89, 25));
-        btnViewConfig = new QPushButton(FrmRunning);
-        btnViewConfig->setObjectName(QString::fromUtf8("btnViewConfig"));
-        btnViewConfig->setGeometry(QRect(40, 260, 31, 25));
-        widget = new QWidget(FrmRunning);
+        if (FrmConnected->objectName().isEmpty())
+            FrmConnected->setObjectName(QString::fromUtf8("FrmConnected"));
+        FrmConnected->resize(400, 300);
+        checkBox = new QCheckBox(FrmConnected);
+        checkBox->setObjectName(QString::fromUtf8("checkBox"));
+        checkBox->setGeometry(QRect(30, 60, 92, 23));
+        btnDisconnect = new QPushButton(FrmConnected);
+        btnDisconnect->setObjectName(QString::fromUtf8("btnDisconnect"));
+        btnDisconnect->setGeometry(QRect(290, 260, 89, 25));
+        widget = new QWidget(FrmConnected);
         widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(250, 10, 124, 19));
+        widget->setGeometry(QRect(30, 30, 331, 19));
         horizontalLayout = new QHBoxLayout(widget);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
@@ -61,22 +62,26 @@ public:
 
         horizontalLayout->addWidget(label);
 
+        horizontalScrollBar = new QScrollBar(widget);
+        horizontalScrollBar->setObjectName(QString::fromUtf8("horizontalScrollBar"));
+        horizontalScrollBar->setMinimumSize(QSize(141, 16));
+        horizontalScrollBar->setMaximum(100);
+        horizontalScrollBar->setSliderPosition(100);
+        horizontalScrollBar->setOrientation(Qt::Horizontal);
+
+        horizontalLayout->addWidget(horizontalScrollBar);
+
         label_2 = new QLabel(widget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
 
         horizontalLayout->addWidget(label_2);
 
-        widget1 = new QWidget(FrmRunning);
+        widget1 = new QWidget(FrmConnected);
         widget1->setObjectName(QString::fromUtf8("widget1"));
-        widget1->setGeometry(QRect(40, 40, 311, 211));
+        widget1->setGeometry(QRect(30, 90, 331, 151));
         verticalLayout = new QVBoxLayout(widget1);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        listConfigurations = new QListView(widget1);
-        listConfigurations->setObjectName(QString::fromUtf8("listConfigurations"));
-
-        verticalLayout->addWidget(listConfigurations);
-
         txtBox = new QTextEdit(widget1);
         txtBox->setObjectName(QString::fromUtf8("txtBox"));
 
@@ -99,27 +104,27 @@ public:
         verticalLayout->addLayout(horizontalLayout_2);
 
 
-        retranslateUi(FrmRunning);
+        retranslateUi(FrmConnected);
 
-        QMetaObject::connectSlotsByName(FrmRunning);
+        QMetaObject::connectSlotsByName(FrmConnected);
     } // setupUi
 
-    void retranslateUi(QWidget *FrmRunning)
+    void retranslateUi(QWidget *FrmConnected)
     {
-        FrmRunning->setWindowTitle(QCoreApplication::translate("FrmRunning", "MST - Server running", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("FrmRunning", "btnStop", nullptr));
-        btnViewConfig->setText(QCoreApplication::translate("FrmRunning", "btnViewConfig", nullptr));
-        label->setText(QCoreApplication::translate("FrmRunning", "lblState", nullptr));
-        label_2->setText(QCoreApplication::translate("FrmRunning", "lblState2", nullptr));
-        btnSend->setText(QCoreApplication::translate("FrmRunning", ">", nullptr));
+        FrmConnected->setWindowTitle(QCoreApplication::translate("FrmConnected", "MST - Connected to server", nullptr));
+        checkBox->setText(QCoreApplication::translate("FrmConnected", "Fullscreen", nullptr));
+        btnDisconnect->setText(QCoreApplication::translate("FrmConnected", "btnDisconnect", nullptr));
+        label->setText(QCoreApplication::translate("FrmConnected", "lblResize", nullptr));
+        label_2->setText(QCoreApplication::translate("FrmConnected", "lblResize2", nullptr));
+        btnSend->setText(QCoreApplication::translate("FrmConnected", ">", nullptr));
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class FrmRunning: public Ui_FrmRunning {};
+    class FrmConnected: public Ui_FrmConnected {};
 } // namespace Ui
 
 QT_END_NAMESPACE
 
-#endif // UI_FRMRUNNING_H
+#endif // UI_FRMCONNECTED_H

@@ -73,6 +73,7 @@ void FrmClient::setConfigurations()
     Configurations::buffer = ui->cmbBuffer->currentIndex();
     Configurations::color_scale = ui->cmbColorScale->currentIndex();
     Configurations::controls = static_cast<uint8_t>(ui->cmbControls->currentIndex());
+    Configurations::file_name = "";
 }
 
 void FrmClient::on_btnConnect_clicked()

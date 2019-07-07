@@ -276,3 +276,10 @@ void Dictionary::setTextOflblPasswordC(QLabel *lbl)
                                                    "Server connection password.\nIf server side no password is specified, leave the field blank.")));
     lbl->setText("Password:");
 }
+
+
+// Open a file
+std::string Dictionary::getTextOpenafile()
+{
+    return choices("Apri un file", "Open a file");
+}

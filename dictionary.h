@@ -65,6 +65,9 @@ public:
     void setTextOflblIpServerC(QLabel *lbl);
     void setTextOflblPortC(QLabel *lbl);
     void setTextOflblPasswordC(QLabel *lbl);
+
+    // Open a file
+    std::string getTextOpenafile();
 };
 
 #endif // DICTIONARY_H

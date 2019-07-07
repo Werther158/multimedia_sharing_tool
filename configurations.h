@@ -9,15 +9,17 @@
 
 class Configurations
 {
-private:
+public:
+    Configurations();
+
     static std::string source_choices[];
     static std::string resolution_choices[];
     static int buffer_choices[];
     static int color_scale_choices[];
     static std::string controls_choices[];
 
-public:
-    Configurations();
+    static std::string file_name;
+
     static uint8_t system;
     static uint8_t source;
     static std::string server_ip;

@@ -2,13 +2,15 @@
 
 using namespace std;
 
-std::string source_choices[] = {"Video file", "Camera", "Screen"};
-std::string resolution_choices[] = {"3840 x 2160", "2560 x 1440", "1920 x 1080",
+std::string Configurations::source_choices[] = {"Video file", "Camera", "Screen"};
+std::string Configurations::resolution_choices[] = {"3840 x 2160", "2560 x 1440", "1920 x 1080",
                                    "1600 x 900", "1280 x 720", "854 x 480", "640 x 360",
                                    "426 x 240", "256 x 144"};
 int Configurations::buffer_choices[] = {128, 64, 32, 16, 8, 0};
-int color_scale_choices[] = {24, 16, 15, 8, 4, 2, 1};
-std::string controls_choices[] = {"T + M", "C", "T + M + C"};
+int Configurations::color_scale_choices[] = {24, 16, 15, 8, 4, 2, 1};
+std::string Configurations::controls_choices[] = {"T + M", "C", "T + M + C"};
+
+std::string Configurations::file_name;
 
 uint8_t Configurations::system;
 uint8_t Configurations::source;

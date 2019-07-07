@@ -5,6 +5,9 @@
 #include "dictionary.h"
 #include <connectivity.h>
 #include <configurations.h>
+#include <QFileDialog>
+#include <QMessageBox>
+#include <QDir>
 
 namespace Ui {
 class FrmServer;

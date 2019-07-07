@@ -76,10 +76,16 @@ void FrmServer::setConfigurations()
     Configurations::buffer = ui->cmbBuffer->currentIndex();
     Configurations::color_scale = ui->cmbColorScale->currentIndex();
     Configurations::controls = static_cast<uint8_t>(ui->cmbControls->currentIndex());
+    Configurations::file_name = "";
 }
 
 void FrmServer::on_btnStartServer_clicked()
 {
     setConfigurations();
+    if(Configurations::source_choices[Configurations::source] == "Video file")
+    {
+        Configurations::file_name = QFileDialog::getOpenFileName(this, QString::fromStdString((*dict).getTextOpenafile()),
+                                                         QDir::homePath(), "*.mkv").toStdString();
+    }
 
 }

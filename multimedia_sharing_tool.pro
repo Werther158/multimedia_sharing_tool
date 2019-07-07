@@ -29,6 +29,7 @@ SOURCES += \
         connectivity.cpp \
         dictionary.cpp \
         frmclient.cpp \
+        frmconnected.cpp \
         frmrunning.cpp \
         frmserver.cpp \
         main.cpp \
@@ -39,12 +40,14 @@ HEADERS += \
         connectivity.h \
         dictionary.h \
         frmclient.h \
+        frmconnected.h \
         frmmain.h \
         frmrunning.h \
         frmserver.h
 
 FORMS += \
         frmclient.ui \
+        frmconnected.ui \
         frmmain.ui \
         frmrunning.ui \
         frmserver.ui
