@@ -7,7 +7,7 @@ FrmServer::FrmServer(QWidget *parent) :
 {
     ui->setupUi(this);
     std::string public_ip = Connectivity::getPublicIp();
-    ui->lblIp2->setText(QString::fromStdString(public_ip));
+    ui->lblIpServer2->setText(QString::fromStdString(public_ip));
     ui->txtPort->setText("35000");
     setFixedSize(size());
 }
@@ -23,7 +23,8 @@ void FrmServer::setDict(Dictionary* d)
 {
     dict = d;
     ui->lblInfoServer->setText(QString::fromStdString((*dict).getTextOflblInfoServer()));
-    (*dict).setTextOflblIpS(ui->lblIp);
+    (*dict).setTextOflblIpServerS(ui->lblIpServer);
+    (*dict).setTextOflblIpClientS(ui->lblIpClient);
     (*dict).setTextOflblPort(ui->lblPort);
     (*dict).setTextOflblPasswordS(ui->lblPassword);
     (*dict).setTextOflblSource(ui->lblSource);
@@ -59,4 +60,26 @@ void FrmServer::on_btnBack_clicked()
 {
     *selector = 0;
     this->close();
+}
+
+void FrmServer::setConfigurations()
+{
+    Configurations::system = SERVER;
+    Configurations::source = static_cast<uint8_t>(ui->cmbSource->currentIndex());
+    Configurations::server_ip = ui->lblIpServer2->text().toStdString();
+    Configurations::client_ip = ui->lblIpClient->text().toStdString();
+    Configurations::port = static_cast<uint16_t>(stoi(ui->txtPort->text().toStdString()));
+    Configurations::password = ui->txtPassword->text().toStdString();
+    Configurations::leave_client_config = ui->chkLeaveConfig->isChecked();
+    Configurations::resolution = static_cast<uint8_t>(ui->cmbResolution->currentIndex());
+    Configurations::fps = stoi(ui->cmbFps->currentText().toStdString());
+    Configurations::buffer = ui->cmbBuffer->currentIndex();
+    Configurations::color_scale = ui->cmbColorScale->currentIndex();
+    Configurations::controls = static_cast<uint8_t>(ui->cmbControls->currentIndex());
+}
+
+void FrmServer::on_btnStartServer_clicked()
+{
+    setConfigurations();
+
 }

@@ -30,7 +30,8 @@ public:
 
     // FrmServer
     std::string getTextOflblInfoServer();
-    void setTextOflblIpS(QLabel *lbl);
+    void setTextOflblIpServerS(QLabel *lbl);
+    void setTextOflblIpClientS(QLabel *lbl);
     void setTextOflblPort(QLabel *lbl);
     void setTextOflblPasswordS(QLabel *lbl);
     void setTextOflblSource(QLabel *lbl);
@@ -60,7 +61,8 @@ public:
 
     // FrmClient
     std::string getTextOfbtnConnect();
-    void setTextOflblIpC(QLabel *lbl);
+    void setTextOflblIpClientC(QLabel *lbl);
+    void setTextOflblIpServerC(QLabel *lbl);
     void setTextOflblPortC(QLabel *lbl);
     void setTextOflblPasswordC(QLabel *lbl);
 };

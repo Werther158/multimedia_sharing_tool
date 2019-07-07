@@ -58,14 +58,21 @@ std::string Dictionary::getTextOfbtnExit()
 // FrmServer
 std::string Dictionary::getTextOflblInfoServer()
 {
-    return "Info server";
+    return choices("Configurazione connessione", "Connection settings");
 }
 
-void Dictionary::setTextOflblIpS(QLabel *lbl)
+void Dictionary::setTextOflblIpServerS(QLabel *lbl)
 {
-    lbl->setToolTip(QString::fromStdString(choices("IP pubblico, se il dispositivo è connesso a internet. In alternativa viene mostrato l'indirizzo 127.0.0.1.",
-                                                   "Public IP, if device is connected to internet. Alternatively, 127.0.0.1 address is displayed.")));
-    lbl->setText("IP:");
+    lbl->setToolTip(QString::fromStdString(choices("Il tuo indirizzo IP pubblico, da comunicare al client.\nSe il sistema non è connesso ad internet sarà mostrato l'indirizzo 127.0.0.1.",
+                                                   "Your public IP address, tell it to the client.\nIf your system isn't connected to internet, 127.0.0.1 will be shown.")));
+    lbl->setText("Tuo IP:");
+}
+
+void Dictionary::setTextOflblIpClientS(QLabel *lbl)
+{
+    lbl->setToolTip(QString::fromStdString(choices("Inserire l'indirizzo IP del client, pubblico o privato.",
+                                                   "Insert client's IP address, either public or private.")));
+    lbl->setText("Client IP:");
 }
 
 void Dictionary::setTextOflblPort(QLabel *lbl)
@@ -89,7 +96,7 @@ void Dictionary::setTextOflblSource(QLabel *lbl)
 
 std::string Dictionary::getTextOflblConfig()
 {
-    return choices("Configurazione", "Configuration:");
+    return choices("Configurazione streaming", "Streaming configuration");
 }
 
 std::string Dictionary::getTextOflblLeaveConfig()
@@ -249,11 +256,18 @@ std::string Dictionary::getTextOfbtnConnect()
     return choices("Connetti", "Connect");
 }
 
-void Dictionary::setTextOflblIpC(QLabel *lbl)
+void Dictionary::setTextOflblIpClientC(QLabel *lbl)
 {
-    lbl->setToolTip(QString::fromStdString(choices("Indirizzo IP del server, pubblico o privato (se nella stessa rete locale).",
-                                                   "Server's IP address, public or private (if in the same local network).")));
-    lbl->setText("IP:");
+    lbl->setToolTip(QString::fromStdString(choices("Il tuo indirizzo IP pubblico, da comunicare al server.\nSe il sistema non è connesso ad internet sarà mostrato l'indirizzo 127.0.0.1.",
+                                                   "Your public IP address, tell it to the server.\nIf your system isn't connected to internet, 127.0.0.1 will be shown.")));
+    lbl->setText("Tuo IP:");
+}
+
+void Dictionary::setTextOflblIpServerC(QLabel *lbl)
+{
+    lbl->setToolTip(QString::fromStdString(choices("Inserire l'indirizzo IP del server, pubblico o privato.",
+                                                   "Insert server's IP address, either public or private.")));
+    lbl->setText("Server IP:");
 }
 
 void Dictionary::setTextOflblPasswordC(QLabel *lbl)

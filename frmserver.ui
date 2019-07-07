@@ -18,7 +18,7 @@
     <rect>
      <x>20</x>
      <y>10</y>
-     <width>101</width>
+     <width>361</width>
      <height>17</height>
     </rect>
    </property>
@@ -117,47 +117,12 @@
     <enum>Qt::Horizontal</enum>
    </property>
   </widget>
-  <widget class="QWidget" name="layoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>310</x>
-     <y>50</y>
-     <width>204</width>
-     <height>27</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_3">
-    <item>
-     <widget class="QLabel" name="lblSource">
-      <property name="text">
-       <string>lblSource</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <spacer name="horizontalSpacer_3">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item>
-     <widget class="QComboBox" name="cmbSource"/>
-    </item>
-   </layout>
-  </widget>
   <widget class="QWidget" name="layoutWidget1">
    <property name="geometry">
     <rect>
      <x>20</x>
      <y>180</y>
-     <width>415</width>
+     <width>491</width>
      <height>19</height>
     </rect>
    </property>
@@ -445,19 +410,16 @@
      <x>20</x>
      <y>50</y>
      <width>241</width>
-     <height>83</height>
+     <height>91</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <widget class="QLabel" name="lblIp">
-        <property name="toolTip">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
+       <widget class="QLabel" name="lblIpClient">
         <property name="text">
-         <string>lblIp</string>
+         <string>lblIpClient</string>
         </property>
        </widget>
       </item>
@@ -480,7 +442,7 @@
     <item>
      <layout class="QVBoxLayout" name="verticalLayout_4">
       <item>
-       <spacer name="horizontalSpacer_2">
+       <spacer name="horizontalSpacer_11">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
@@ -523,17 +485,86 @@
     <item>
      <layout class="QVBoxLayout" name="verticalLayout_5">
       <item>
-       <widget class="QLabel" name="lblIp2">
-        <property name="text">
-         <string>lblIp2</string>
-        </property>
-       </widget>
+       <widget class="QLineEdit" name="lineEdit"/>
       </item>
       <item>
        <widget class="QLineEdit" name="txtPort"/>
       </item>
       <item>
        <widget class="QLineEdit" name="txtPassword"/>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>50</y>
+     <width>231</width>
+     <height>57</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_6">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QLabel" name="lblIpServer">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string>lblIpServer</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QLabel" name="lblIpServer2">
+        <property name="text">
+         <string>lblIpServer2</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QLabel" name="lblSource">
+        <property name="text">
+         <string>lblSource</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>78</width>
+          <height>18</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QComboBox" name="cmbSource"/>
       </item>
      </layout>
     </item>

@@ -18,7 +18,7 @@
     <rect>
      <x>20</x>
      <y>10</y>
-     <width>101</width>
+     <width>341</width>
      <height>17</height>
     </rect>
    </property>
@@ -371,9 +371,9 @@
     <item>
      <layout class="QVBoxLayout" name="verticalLayout_6">
       <item>
-       <widget class="QLabel" name="lblIp">
+       <widget class="QLabel" name="lblIpServer">
         <property name="text">
-         <string>lblIp</string>
+         <string>lblIpServer</string>
         </property>
        </widget>
       </item>
@@ -439,7 +439,7 @@
     <item>
      <layout class="QVBoxLayout" name="verticalLayout_4">
       <item>
-       <widget class="QLineEdit" name="txtIp"/>
+       <widget class="QLineEdit" name="txtIpServer"/>
       </item>
       <item>
        <widget class="QLineEdit" name="txtPort"/>
@@ -448,6 +448,45 @@
        <widget class="QLineEdit" name="txtPassword"/>
       </item>
      </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>50</y>
+     <width>191</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_3">
+    <item>
+     <widget class="QLabel" name="lblIpClient">
+      <property name="text">
+       <string>lblIpClient</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <spacer name="horizontalSpacer_3">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
+     <widget class="QLabel" name="lblIpClient2">
+      <property name="text">
+       <string>lblIpClient2</string>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>

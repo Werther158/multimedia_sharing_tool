@@ -77,7 +77,7 @@ public:
     QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout_6;
-    QLabel *lblIp;
+    QLabel *lblIpServer;
     QLabel *lblPort;
     QLabel *lblPassword;
     QVBoxLayout *verticalLayout_5;
@@ -85,9 +85,14 @@ public:
     QSpacerItem *horizontalSpacer_4;
     QSpacerItem *horizontalSpacer_2;
     QVBoxLayout *verticalLayout_4;
-    QLineEdit *txtIp;
+    QLineEdit *txtIpServer;
     QLineEdit *txtPort;
     QLineEdit *txtPassword;
+    QWidget *widget;
+    QHBoxLayout *horizontalLayout_3;
+    QLabel *lblIpClient;
+    QSpacerItem *horizontalSpacer_3;
+    QLabel *lblIpClient2;
 
     void setupUi(QWidget *FrmClient)
     {
@@ -96,7 +101,7 @@ public:
         FrmClient->resize(550, 450);
         lblInfoServer = new QLabel(FrmClient);
         lblInfoServer->setObjectName(QString::fromUtf8("lblInfoServer"));
-        lblInfoServer->setGeometry(QRect(20, 10, 101, 17));
+        lblInfoServer->setGeometry(QRect(20, 10, 341, 17));
         line = new QFrame(FrmClient);
         line->setObjectName(QString::fromUtf8("line"));
         line->setGeometry(QRect(0, 30, 381, 16));
@@ -320,10 +325,10 @@ public:
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
         verticalLayout_6 = new QVBoxLayout();
         verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
-        lblIp = new QLabel(layoutWidget);
-        lblIp->setObjectName(QString::fromUtf8("lblIp"));
+        lblIpServer = new QLabel(layoutWidget);
+        lblIpServer->setObjectName(QString::fromUtf8("lblIpServer"));
 
-        verticalLayout_6->addWidget(lblIp);
+        verticalLayout_6->addWidget(lblIpServer);
 
         lblPort = new QLabel(layoutWidget);
         lblPort->setObjectName(QString::fromUtf8("lblPort"));
@@ -357,10 +362,10 @@ public:
 
         verticalLayout_4 = new QVBoxLayout();
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
-        txtIp = new QLineEdit(layoutWidget);
-        txtIp->setObjectName(QString::fromUtf8("txtIp"));
+        txtIpServer = new QLineEdit(layoutWidget);
+        txtIpServer->setObjectName(QString::fromUtf8("txtIpServer"));
 
-        verticalLayout_4->addWidget(txtIp);
+        verticalLayout_4->addWidget(txtIpServer);
 
         txtPort = new QLineEdit(layoutWidget);
         txtPort->setObjectName(QString::fromUtf8("txtPort"));
@@ -374,6 +379,26 @@ public:
 
 
         horizontalLayout->addLayout(verticalLayout_4);
+
+        widget = new QWidget(FrmClient);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setGeometry(QRect(320, 50, 191, 22));
+        horizontalLayout_3 = new QHBoxLayout(widget);
+        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
+        horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
+        lblIpClient = new QLabel(widget);
+        lblIpClient->setObjectName(QString::fromUtf8("lblIpClient"));
+
+        horizontalLayout_3->addWidget(lblIpClient);
+
+        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_3->addItem(horizontalSpacer_3);
+
+        lblIpClient2 = new QLabel(widget);
+        lblIpClient2->setObjectName(QString::fromUtf8("lblIpClient2"));
+
+        horizontalLayout_3->addWidget(lblIpClient2);
 
 
         retranslateUi(FrmClient);
@@ -401,9 +426,11 @@ public:
         btnSaveConfig->setText(QCoreApplication::translate("FrmClient", "btnSaveConfig", nullptr));
         btnConnect->setText(QCoreApplication::translate("FrmClient", "btnConnect", nullptr));
         lblConfig->setText(QCoreApplication::translate("FrmClient", "lblConfig", nullptr));
-        lblIp->setText(QCoreApplication::translate("FrmClient", "lblIp", nullptr));
+        lblIpServer->setText(QCoreApplication::translate("FrmClient", "lblIpServer", nullptr));
         lblPort->setText(QCoreApplication::translate("FrmClient", "lblPort", nullptr));
         lblPassword->setText(QCoreApplication::translate("FrmClient", "lblPassword", nullptr));
+        lblIpClient->setText(QCoreApplication::translate("FrmClient", "lblIpClient", nullptr));
+        lblIpClient2->setText(QCoreApplication::translate("FrmClient", "lblIpClient2", nullptr));
     } // retranslateUi
 
 };

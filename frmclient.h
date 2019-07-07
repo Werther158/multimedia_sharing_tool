@@ -3,6 +3,8 @@
 
 #include <QWidget>
 #include "dictionary.h"
+#include <connectivity.h>
+#include <configurations.h>
 
 namespace Ui {
 class FrmClient;
@@ -17,9 +19,10 @@ public:
     ~FrmClient();
     void setDict(Dictionary* d);
     void setSelector(int* selector);
-
+    void setConfigurations();
 private slots:
     void on_btnBack_clicked();
+    void on_btnConnect_clicked();
 
 private:
     Ui::FrmClient *ui;
