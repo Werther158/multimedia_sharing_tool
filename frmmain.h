@@ -15,7 +15,7 @@ class FrmMain : public QWidget
 public:
     explicit FrmMain(QWidget *parent = nullptr);
     ~FrmMain();
-    void setDict(Dictionary* d);
+    void setDict(Dictionary* dict);
     void setSelector(int* selector);
 
 private slots:

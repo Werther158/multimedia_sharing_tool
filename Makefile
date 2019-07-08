@@ -79,7 +79,11 @@ OBJECTS       = configurations.o \
 		moc_frmmain.o \
 		moc_frmrunning.o \
 		moc_frmserver.o
-DIST          = ../../Qt/5.13.0/gcc_64/mkspecs/features/spec_pre.prf \
+DIST          = media/eye.png \
+		media/eyegray.png \
+		media/green_state.ico \
+		media/yellow_state.ico \
+		../../Qt/5.13.0/gcc_64/mkspecs/features/spec_pre.prf \
 		../../Qt/5.13.0/gcc_64/mkspecs/common/unix.conf \
 		../../Qt/5.13.0/gcc_64/mkspecs/common/linux.conf \
 		../../Qt/5.13.0/gcc_64/mkspecs/common/sanitize.conf \
@@ -872,6 +876,9 @@ moc_frmclient.cpp: frmclient.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/qabstractitemmodel.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/QLabel \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qlabel.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/QPushButton \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractbutton.h \
 		connectivity.h \
 		configurations.h \
 		moc_predefs.h \
@@ -1109,13 +1116,17 @@ moc_frmmain.cpp: frmmain.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/qabstractitemmodel.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/QLabel \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qlabel.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/QPushButton \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractbutton.h \
 		moc_predefs.h \
 		../../Qt/5.13.0/gcc_64/bin/moc
 	/home/werther/Qt/5.13.0/gcc_64/bin/moc $(DEFINES) --include /home/werther/Desktop/multimedia_sharing_tool/moc_predefs.h -I/home/werther/Qt/5.13.0/gcc_64/mkspecs/linux-g++ -I/home/werther/Desktop/multimedia_sharing_tool -I/usr/include/curl -I/home/werther/Qt/5.13.0/gcc_64/include -I/home/werther/Qt/5.13.0/gcc_64/include/QtWidgets -I/home/werther/Qt/5.13.0/gcc_64/include/QtGui -I/home/werther/Qt/5.13.0/gcc_64/include/QtCore -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++ -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/i686-w64-mingw32.static -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/backward -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include-fixed -I/home/werther/Downloads/mxe/usr/i686-w64-mingw32.static/include frmmain.h -o moc_frmmain.cpp
 
 moc_frmrunning.cpp: frmrunning.h \
-		../../Qt/5.13.0/gcc_64/include/QtWidgets/QWidget \
-		../../Qt/5.13.0/gcc_64/include/QtWidgets/qwidget.h \
+		dictionary.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/QComboBox \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qcombobox.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/qtguiglobal.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/qglobal.h \
@@ -1141,6 +1152,7 @@ moc_frmrunning.cpp: frmrunning.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/qversiontagging.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/qtgui-config.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qwidget.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/qwindowdefs.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/qobjectdefs.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/qnamespace.h \
@@ -1217,6 +1229,26 @@ moc_frmrunning.cpp: frmrunning.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/qfiledevice.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/qvector2d.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/qtouchdevice.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../Qt/5.13.0/gcc_64/include/QtGui/qvalidator.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qregularexpression.h \
+		../../Qt/5.13.0/gcc_64/include/QtGui/qicon.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qslider.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qstyle.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qtabbar.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qtabwidget.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qrubberband.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qframe.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/QLabel \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qlabel.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/QPushButton \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/QWidget \
 		moc_predefs.h \
 		../../Qt/5.13.0/gcc_64/bin/moc
 	/home/werther/Qt/5.13.0/gcc_64/bin/moc $(DEFINES) --include /home/werther/Desktop/multimedia_sharing_tool/moc_predefs.h -I/home/werther/Qt/5.13.0/gcc_64/mkspecs/linux-g++ -I/home/werther/Desktop/multimedia_sharing_tool -I/usr/include/curl -I/home/werther/Qt/5.13.0/gcc_64/include -I/home/werther/Qt/5.13.0/gcc_64/include/QtWidgets -I/home/werther/Qt/5.13.0/gcc_64/include/QtGui -I/home/werther/Qt/5.13.0/gcc_64/include/QtCore -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++ -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/i686-w64-mingw32.static -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/backward -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include-fixed -I/home/werther/Downloads/mxe/usr/i686-w64-mingw32.static/include frmrunning.h -o moc_frmrunning.cpp
@@ -1344,6 +1376,9 @@ moc_frmserver.cpp: frmserver.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/qabstractitemmodel.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/QLabel \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qlabel.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/QPushButton \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractbutton.h \
 		connectivity.h \
 		configurations.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/QFileDialog \
@@ -1521,7 +1556,10 @@ dictionary.o: dictionary.cpp dictionary.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qframe.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/qabstractitemmodel.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/QLabel \
-		../../Qt/5.13.0/gcc_64/include/QtWidgets/qlabel.h
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qlabel.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/QPushButton \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractbutton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dictionary.o dictionary.cpp
 
 frmclient.o: frmclient.cpp frmclient.h \
@@ -1647,6 +1685,9 @@ frmclient.o: frmclient.cpp frmclient.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/qabstractitemmodel.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/QLabel \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qlabel.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/QPushButton \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractbutton.h \
 		connectivity.h \
 		configurations.h \
 		ui_frmclient.h \
@@ -1670,9 +1711,6 @@ frmclient.o: frmclient.cpp frmclient.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/qtextformat.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/qpen.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/qtextoption.h \
-		../../Qt/5.13.0/gcc_64/include/QtWidgets/QPushButton \
-		../../Qt/5.13.0/gcc_64/include/QtWidgets/qpushbutton.h \
-		../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractbutton.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/QSpacerItem \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o frmclient.o frmclient.cpp
@@ -1781,12 +1819,49 @@ frmconnected.o: frmconnected.cpp frmconnected.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/qfiledevice.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/qvector2d.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/qtouchdevice.h \
-		ui_frmconnected.h
+		ui_frmconnected.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/QVariant \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/QApplication \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qapplication.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qcoreapplication.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qeventloop.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../Qt/5.13.0/gcc_64/include/QtGui/qguiapplication.h \
+		../../Qt/5.13.0/gcc_64/include/QtGui/qinputmethod.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/QCheckBox \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qcheckbox.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../Qt/5.13.0/gcc_64/include/QtGui/qicon.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/QHBoxLayout \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qlayout.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/QLabel \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qlabel.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qframe.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/QLineEdit \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qlineedit.h \
+		../../Qt/5.13.0/gcc_64/include/QtGui/qtextcursor.h \
+		../../Qt/5.13.0/gcc_64/include/QtGui/qtextformat.h \
+		../../Qt/5.13.0/gcc_64/include/QtGui/qpen.h \
+		../../Qt/5.13.0/gcc_64/include/QtGui/qtextoption.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/QPushButton \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/QScrollBar \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qscrollbar.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/QTextEdit \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qtextedit.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../Qt/5.13.0/gcc_64/include/QtGui/qtextdocument.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o frmconnected.o frmconnected.cpp
 
 frmrunning.o: frmrunning.cpp frmrunning.h \
-		../../Qt/5.13.0/gcc_64/include/QtWidgets/QWidget \
-		../../Qt/5.13.0/gcc_64/include/QtWidgets/qwidget.h \
+		dictionary.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/QComboBox \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qcombobox.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/qtguiglobal.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/qglobal.h \
@@ -1812,6 +1887,7 @@ frmrunning.o: frmrunning.cpp frmrunning.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/qversiontagging.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/qtgui-config.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qwidget.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/qwindowdefs.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/qobjectdefs.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/qnamespace.h \
@@ -1888,6 +1964,26 @@ frmrunning.o: frmrunning.cpp frmrunning.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/qfiledevice.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/qvector2d.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/qtouchdevice.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../Qt/5.13.0/gcc_64/include/QtGui/qvalidator.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qregularexpression.h \
+		../../Qt/5.13.0/gcc_64/include/QtGui/qicon.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qslider.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qstyle.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qtabbar.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qtabwidget.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qrubberband.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qframe.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/QLabel \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qlabel.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/QPushButton \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/QWidget \
 		ui_frmrunning.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/QVariant \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/QApplication \
@@ -1902,9 +1998,6 @@ frmrunning.o: frmrunning.cpp frmrunning.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qlayout.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qlayoutitem.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qgridlayout.h \
-		../../Qt/5.13.0/gcc_64/include/QtWidgets/QLabel \
-		../../Qt/5.13.0/gcc_64/include/QtWidgets/qlabel.h \
-		../../Qt/5.13.0/gcc_64/include/QtWidgets/qframe.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/QLineEdit \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qlineedit.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/qtextcursor.h \
@@ -1915,23 +2008,7 @@ frmrunning.o: frmrunning.cpp frmrunning.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qlistview.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractitemview.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		../../Qt/5.13.0/gcc_64/include/QtCore/qabstractitemmodel.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/qitemselectionmodel.h \
-		../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
-		../../Qt/5.13.0/gcc_64/include/QtWidgets/qstyleoption.h \
-		../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractspinbox.h \
-		../../Qt/5.13.0/gcc_64/include/QtGui/qvalidator.h \
-		../../Qt/5.13.0/gcc_64/include/QtCore/qregularexpression.h \
-		../../Qt/5.13.0/gcc_64/include/QtGui/qicon.h \
-		../../Qt/5.13.0/gcc_64/include/QtWidgets/qslider.h \
-		../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractslider.h \
-		../../Qt/5.13.0/gcc_64/include/QtWidgets/qstyle.h \
-		../../Qt/5.13.0/gcc_64/include/QtWidgets/qtabbar.h \
-		../../Qt/5.13.0/gcc_64/include/QtWidgets/qtabwidget.h \
-		../../Qt/5.13.0/gcc_64/include/QtWidgets/qrubberband.h \
-		../../Qt/5.13.0/gcc_64/include/QtWidgets/QPushButton \
-		../../Qt/5.13.0/gcc_64/include/QtWidgets/qpushbutton.h \
-		../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractbutton.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/QTextEdit \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qtextedit.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/qtextdocument.h \
@@ -2061,6 +2138,9 @@ frmserver.o: frmserver.cpp frmserver.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/qabstractitemmodel.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/QLabel \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qlabel.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/QPushButton \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractbutton.h \
 		connectivity.h \
 		configurations.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/QFileDialog \
@@ -2082,7 +2162,6 @@ frmserver.o: frmserver.cpp frmserver.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/qinputmethod.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/QCheckBox \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qcheckbox.h \
-		../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractbutton.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/QFrame \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/QHBoxLayout \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qboxlayout.h \
@@ -2095,8 +2174,6 @@ frmserver.o: frmserver.cpp frmserver.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/qtextformat.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/qpen.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/qtextoption.h \
-		../../Qt/5.13.0/gcc_64/include/QtWidgets/QPushButton \
-		../../Qt/5.13.0/gcc_64/include/QtWidgets/qpushbutton.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/QSpacerItem \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o frmserver.o frmserver.cpp
@@ -2224,6 +2301,9 @@ main.o: main.cpp frmmain.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/qabstractitemmodel.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/QLabel \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qlabel.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/QPushButton \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractbutton.h \
 		frmserver.h \
 		connectivity.h \
 		configurations.h \
@@ -2236,6 +2316,7 @@ main.o: main.cpp frmmain.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qmessagebox.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/QDir \
 		frmclient.h \
+		frmrunning.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/QApplication \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qapplication.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/qcoreapplication.h \
@@ -2368,6 +2449,9 @@ frmmain.o: frmmain.cpp frmmain.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/qabstractitemmodel.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/QLabel \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qlabel.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/QPushButton \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractbutton.h \
 		ui_frmmain.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/QVariant \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/QApplication \
@@ -2382,9 +2466,6 @@ frmmain.o: frmmain.cpp frmmain.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qlayout.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qlayoutitem.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qgridlayout.h \
-		../../Qt/5.13.0/gcc_64/include/QtWidgets/QPushButton \
-		../../Qt/5.13.0/gcc_64/include/QtWidgets/qpushbutton.h \
-		../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractbutton.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/QSpacerItem \
 		../../Qt/5.13.0/gcc_64/include/QtCore/QString \
 		../../Qt/5.13.0/gcc_64/include/QtGui/QCloseEvent

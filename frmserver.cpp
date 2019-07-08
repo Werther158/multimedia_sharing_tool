@@ -19,9 +19,9 @@ FrmServer::~FrmServer()
     delete ui;
 }
 
-void FrmServer::setDict(Dictionary* d)
+void FrmServer::setDict(Dictionary* dict)
 {
-    dict = d;
+    this->dict = dict;
     ui->lblInfoServer->setText(QString::fromStdString((*dict).getTextOflblInfoServer()));
     (*dict).setTextOflblIpServerS(ui->lblIpServer);
     (*dict).setTextOflblIpClientS(ui->lblIpClient);
@@ -88,4 +88,6 @@ void FrmServer::on_btnStartServer_clicked()
                                                          QDir::homePath(), "*.mkv").toStdString();
     }
 
+    *selector = 3;
+    this->close();
 }

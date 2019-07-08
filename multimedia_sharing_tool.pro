@@ -63,3 +63,9 @@ QMAKE_LFLAGS += -no-pie
 
 INCLUDEPATH += /usr/include/curl
 LIBS += -L/usr/local/lib -lcurl
+
+DISTFILES += \
+    media/eye.png \
+    media/eyegray.png \
+    media/green_state.ico \
+    media/yellow_state.ico

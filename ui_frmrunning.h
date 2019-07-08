@@ -25,13 +25,13 @@ QT_BEGIN_NAMESPACE
 class Ui_FrmRunning
 {
 public:
-    QPushButton *pushButton_2;
-    QPushButton *btnViewConfig;
-    QWidget *widget;
+    QPushButton *btnStop;
+    QPushButton *btnToggleConfig;
+    QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout;
-    QLabel *label;
-    QLabel *label_2;
-    QWidget *widget1;
+    QLabel *lblState;
+    QLabel *lblState2;
+    QWidget *layoutWidget1;
     QVBoxLayout *verticalLayout;
     QListView *listConfigurations;
     QTextEdit *txtBox;
@@ -44,52 +44,52 @@ public:
         if (FrmRunning->objectName().isEmpty())
             FrmRunning->setObjectName(QString::fromUtf8("FrmRunning"));
         FrmRunning->resize(400, 300);
-        pushButton_2 = new QPushButton(FrmRunning);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        pushButton_2->setGeometry(QRect(280, 260, 89, 25));
-        btnViewConfig = new QPushButton(FrmRunning);
-        btnViewConfig->setObjectName(QString::fromUtf8("btnViewConfig"));
-        btnViewConfig->setGeometry(QRect(40, 260, 31, 25));
-        widget = new QWidget(FrmRunning);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(250, 10, 124, 19));
-        horizontalLayout = new QHBoxLayout(widget);
+        btnStop = new QPushButton(FrmRunning);
+        btnStop->setObjectName(QString::fromUtf8("btnStop"));
+        btnStop->setGeometry(QRect(258, 260, 111, 25));
+        btnToggleConfig = new QPushButton(FrmRunning);
+        btnToggleConfig->setObjectName(QString::fromUtf8("btnToggleConfig"));
+        btnToggleConfig->setGeometry(QRect(40, 260, 31, 25));
+        layoutWidget = new QWidget(FrmRunning);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(250, 10, 124, 19));
+        horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        label = new QLabel(widget);
-        label->setObjectName(QString::fromUtf8("label"));
+        lblState = new QLabel(layoutWidget);
+        lblState->setObjectName(QString::fromUtf8("lblState"));
 
-        horizontalLayout->addWidget(label);
+        horizontalLayout->addWidget(lblState);
 
-        label_2 = new QLabel(widget);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
+        lblState2 = new QLabel(layoutWidget);
+        lblState2->setObjectName(QString::fromUtf8("lblState2"));
 
-        horizontalLayout->addWidget(label_2);
+        horizontalLayout->addWidget(lblState2);
 
-        widget1 = new QWidget(FrmRunning);
-        widget1->setObjectName(QString::fromUtf8("widget1"));
-        widget1->setGeometry(QRect(40, 40, 311, 211));
-        verticalLayout = new QVBoxLayout(widget1);
+        layoutWidget1 = new QWidget(FrmRunning);
+        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(40, 40, 311, 211));
+        verticalLayout = new QVBoxLayout(layoutWidget1);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        listConfigurations = new QListView(widget1);
+        listConfigurations = new QListView(layoutWidget1);
         listConfigurations->setObjectName(QString::fromUtf8("listConfigurations"));
 
         verticalLayout->addWidget(listConfigurations);
 
-        txtBox = new QTextEdit(widget1);
+        txtBox = new QTextEdit(layoutWidget1);
         txtBox->setObjectName(QString::fromUtf8("txtBox"));
 
         verticalLayout->addWidget(txtBox);
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        txtLine = new QLineEdit(widget1);
+        txtLine = new QLineEdit(layoutWidget1);
         txtLine->setObjectName(QString::fromUtf8("txtLine"));
 
         horizontalLayout_2->addWidget(txtLine);
 
-        btnSend = new QPushButton(widget1);
+        btnSend = new QPushButton(layoutWidget1);
         btnSend->setObjectName(QString::fromUtf8("btnSend"));
         btnSend->setMaximumSize(QSize(51, 25));
 
@@ -107,10 +107,10 @@ public:
     void retranslateUi(QWidget *FrmRunning)
     {
         FrmRunning->setWindowTitle(QCoreApplication::translate("FrmRunning", "MST - Server running", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("FrmRunning", "btnStop", nullptr));
-        btnViewConfig->setText(QCoreApplication::translate("FrmRunning", "btnViewConfig", nullptr));
-        label->setText(QCoreApplication::translate("FrmRunning", "lblState", nullptr));
-        label_2->setText(QCoreApplication::translate("FrmRunning", "lblState2", nullptr));
+        btnStop->setText(QCoreApplication::translate("FrmRunning", "btnStop", nullptr));
+        btnToggleConfig->setText(QCoreApplication::translate("FrmRunning", "btnToggleConfig", nullptr));
+        lblState->setText(QCoreApplication::translate("FrmRunning", "lblState", nullptr));
+        lblState2->setText(QCoreApplication::translate("FrmRunning", "lblState2", nullptr));
         btnSend->setText(QCoreApplication::translate("FrmRunning", ">", nullptr));
     } // retranslateUi
 

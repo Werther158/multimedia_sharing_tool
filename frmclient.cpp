@@ -19,9 +19,9 @@ FrmClient::~FrmClient()
     delete ui;
 }
 
-void FrmClient::setDict(Dictionary* d)
+void FrmClient::setDict(Dictionary* dict)
 {
-    dict = d;
+    this->dict = dict;
     ui->lblInfoServer->setText(QString::fromStdString((*dict).getTextOflblInfoServer()));
     (*dict).setTextOflblIpClientC(ui->lblIpClient);
     (*dict).setTextOflblIpServerC(ui->lblIpServer);

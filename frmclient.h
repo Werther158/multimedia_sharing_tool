@@ -17,7 +17,7 @@ class FrmClient : public QWidget
 public:
     explicit FrmClient(QWidget *parent = nullptr);
     ~FrmClient();
-    void setDict(Dictionary* d);
+    void setDict(Dictionary* dict);
     void setSelector(int* selector);
     void setConfigurations();
 private slots:

@@ -2,7 +2,7 @@
 #define FRMSERVER_H
 
 #include <QWidget>
-#include "dictionary.h"
+#include <dictionary.h>
 #include <connectivity.h>
 #include <configurations.h>
 #include <QFileDialog>
@@ -20,7 +20,7 @@ class FrmServer : public QWidget
 public:
     explicit FrmServer(QWidget *parent = nullptr);
     ~FrmServer();
-    void setDict(Dictionary* d);
+    void setDict(Dictionary* dict);
     void setSelector(int* selector);
     void setConfigurations();
 private slots:

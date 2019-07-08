@@ -283,3 +283,17 @@ std::string Dictionary::getTextOpenafile()
 {
     return choices("Apri un file", "Open a file");
 }
+
+
+// FrmRunning
+void Dictionary::getTextOflblStateRunning(QLabel *lbl)
+{
+    lbl->setToolTip(QString::fromStdString(choices("Indica lo stato attuale del server.\nGiallo: in attesa di collegamento.\nVerde: client collegato.",
+                                                   "Indicates the actual state of the server.\nYellow: waiting for a connection.\nGreen: client connected.")));
+    lbl->setText(QString::fromStdString(choices("Stato:", "State:")));
+}
+
+std::string Dictionary::getTextOfbtnStopRunning()
+{
+    return choices("Ferma server", "Stop server");
+}

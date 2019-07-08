@@ -13,12 +13,12 @@
   <property name="windowTitle">
    <string>MST - Server running</string>
   </property>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="btnStop">
    <property name="geometry">
     <rect>
-     <x>280</x>
+     <x>258</x>
      <y>260</y>
-     <width>89</width>
+     <width>111</width>
      <height>25</height>
     </rect>
    </property>
@@ -26,7 +26,7 @@
     <string>btnStop</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="btnViewConfig">
+  <widget class="QPushButton" name="btnToggleConfig">
    <property name="geometry">
     <rect>
      <x>40</x>
@@ -36,10 +36,10 @@
     </rect>
    </property>
    <property name="text">
-    <string>btnViewConfig</string>
+    <string>btnToggleConfig</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>250</x>
@@ -50,14 +50,14 @@
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
-     <widget class="QLabel" name="label">
+     <widget class="QLabel" name="lblState">
       <property name="text">
        <string>lblState</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QLabel" name="label_2">
+     <widget class="QLabel" name="lblState2">
       <property name="text">
        <string>lblState2</string>
       </property>
@@ -65,7 +65,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>40</x>

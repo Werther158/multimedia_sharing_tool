@@ -1,6 +1,7 @@
-#include "frmmain.h"
-#include "frmserver.h"
-#include "frmclient.h"
+#include <frmmain.h>
+#include <frmserver.h>
+#include <frmclient.h>
+#include <frmrunning.h>
 #include <QApplication>
 #include "dictionary.h"
 
@@ -38,6 +39,16 @@ int main(int argc, char *argv[])
         {
             QApplication a(argc, argv);
             FrmClient f;
+            f.setDict(&dict);
+            f.setSelector(&selector);
+            f.show();
+            a.exec();
+        }
+
+        if(selector == 3) // FrmRunning
+        {
+            QApplication a(argc, argv);
+            FrmRunning f;
             f.setDict(&dict);
             f.setSelector(&selector);
             f.show();

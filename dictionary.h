@@ -5,6 +5,7 @@
 #include "string"
 #include <QComboBox>
 #include <QLabel>
+#include <QPushButton>
 
 enum lang {
     italian,
@@ -68,6 +69,10 @@ public:
 
     // Open a file
     std::string getTextOpenafile();
+
+    // FrmRunning
+    void getTextOflblStateRunning(QLabel *lbl);
+    std::string getTextOfbtnStopRunning();
 };
 
 #endif // DICTIONARY_H
