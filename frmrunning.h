@@ -4,6 +4,7 @@
 #include <dictionary.h>
 #include <connectivity.h>
 #include <configurations.h>
+#include <tcpserverthread.h>
 #include <QWidget>
 #include <QDir>
 
@@ -23,11 +24,12 @@ public:
 
 private slots:
     void on_btnStop_clicked();
-
+    void writeTextOnTxtBox(QString str);
 private:
     Ui::FrmRunning *ui;
     Dictionary* dict;
     int* selector;
+    TcpServerThread *tcp_server_thread;
 };
 
 #endif // FRMRUNNING_H

@@ -17,6 +17,7 @@
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QScrollBar>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -26,14 +27,16 @@ QT_BEGIN_NAMESPACE
 class Ui_FrmConnected
 {
 public:
-    QCheckBox *checkBox;
+    QCheckBox *chkFullScreen;
     QPushButton *btnDisconnect;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout;
-    QLabel *label;
-    QScrollBar *horizontalScrollBar;
-    QLabel *label_2;
-    QWidget *widget1;
+    QLabel *lblResize;
+    QSpacerItem *horizontalSpacer;
+    QScrollBar *scrollbarResize;
+    QSpacerItem *horizontalSpacer_2;
+    QLabel *lblResize2;
+    QWidget *layoutWidget1;
     QVBoxLayout *verticalLayout;
     QTextEdit *txtBox;
     QHBoxLayout *horizontalLayout_2;
@@ -45,56 +48,64 @@ public:
         if (FrmConnected->objectName().isEmpty())
             FrmConnected->setObjectName(QString::fromUtf8("FrmConnected"));
         FrmConnected->resize(400, 300);
-        checkBox = new QCheckBox(FrmConnected);
-        checkBox->setObjectName(QString::fromUtf8("checkBox"));
-        checkBox->setGeometry(QRect(30, 60, 92, 23));
+        chkFullScreen = new QCheckBox(FrmConnected);
+        chkFullScreen->setObjectName(QString::fromUtf8("chkFullScreen"));
+        chkFullScreen->setGeometry(QRect(30, 60, 201, 23));
         btnDisconnect = new QPushButton(FrmConnected);
         btnDisconnect->setObjectName(QString::fromUtf8("btnDisconnect"));
         btnDisconnect->setGeometry(QRect(290, 260, 89, 25));
-        widget = new QWidget(FrmConnected);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(30, 30, 331, 19));
-        horizontalLayout = new QHBoxLayout(widget);
+        layoutWidget = new QWidget(FrmConnected);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(30, 30, 331, 22));
+        horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        label = new QLabel(widget);
-        label->setObjectName(QString::fromUtf8("label"));
+        lblResize = new QLabel(layoutWidget);
+        lblResize->setObjectName(QString::fromUtf8("lblResize"));
 
-        horizontalLayout->addWidget(label);
+        horizontalLayout->addWidget(lblResize);
 
-        horizontalScrollBar = new QScrollBar(widget);
-        horizontalScrollBar->setObjectName(QString::fromUtf8("horizontalScrollBar"));
-        horizontalScrollBar->setMinimumSize(QSize(141, 16));
-        horizontalScrollBar->setMaximum(100);
-        horizontalScrollBar->setSliderPosition(100);
-        horizontalScrollBar->setOrientation(Qt::Horizontal);
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        horizontalLayout->addWidget(horizontalScrollBar);
+        horizontalLayout->addItem(horizontalSpacer);
 
-        label_2 = new QLabel(widget);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
+        scrollbarResize = new QScrollBar(layoutWidget);
+        scrollbarResize->setObjectName(QString::fromUtf8("scrollbarResize"));
+        scrollbarResize->setMinimumSize(QSize(141, 16));
+        scrollbarResize->setMaximum(100);
+        scrollbarResize->setSliderPosition(100);
+        scrollbarResize->setOrientation(Qt::Horizontal);
 
-        horizontalLayout->addWidget(label_2);
+        horizontalLayout->addWidget(scrollbarResize);
 
-        widget1 = new QWidget(FrmConnected);
-        widget1->setObjectName(QString::fromUtf8("widget1"));
-        widget1->setGeometry(QRect(30, 90, 331, 151));
-        verticalLayout = new QVBoxLayout(widget1);
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_2);
+
+        lblResize2 = new QLabel(layoutWidget);
+        lblResize2->setObjectName(QString::fromUtf8("lblResize2"));
+
+        horizontalLayout->addWidget(lblResize2);
+
+        layoutWidget1 = new QWidget(FrmConnected);
+        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(30, 90, 331, 151));
+        verticalLayout = new QVBoxLayout(layoutWidget1);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        txtBox = new QTextEdit(widget1);
+        txtBox = new QTextEdit(layoutWidget1);
         txtBox->setObjectName(QString::fromUtf8("txtBox"));
 
         verticalLayout->addWidget(txtBox);
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        txtLine = new QLineEdit(widget1);
+        txtLine = new QLineEdit(layoutWidget1);
         txtLine->setObjectName(QString::fromUtf8("txtLine"));
 
         horizontalLayout_2->addWidget(txtLine);
 
-        btnSend = new QPushButton(widget1);
+        btnSend = new QPushButton(layoutWidget1);
         btnSend->setObjectName(QString::fromUtf8("btnSend"));
         btnSend->setMaximumSize(QSize(51, 25));
 
@@ -112,10 +123,10 @@ public:
     void retranslateUi(QWidget *FrmConnected)
     {
         FrmConnected->setWindowTitle(QCoreApplication::translate("FrmConnected", "MST - Connected to server", nullptr));
-        checkBox->setText(QCoreApplication::translate("FrmConnected", "Fullscreen", nullptr));
+        chkFullScreen->setText(QCoreApplication::translate("FrmConnected", "Fullscreen", nullptr));
         btnDisconnect->setText(QCoreApplication::translate("FrmConnected", "btnDisconnect", nullptr));
-        label->setText(QCoreApplication::translate("FrmConnected", "lblResize", nullptr));
-        label_2->setText(QCoreApplication::translate("FrmConnected", "lblResize2", nullptr));
+        lblResize->setText(QCoreApplication::translate("FrmConnected", "lblResize", nullptr));
+        lblResize2->setText(QCoreApplication::translate("FrmConnected", "lblResize2", nullptr));
         btnSend->setText(QCoreApplication::translate("FrmConnected", ">", nullptr));
     } // retranslateUi
 

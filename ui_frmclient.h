@@ -88,7 +88,7 @@ public:
     QLineEdit *txtIpServer;
     QLineEdit *txtPort;
     QLineEdit *txtPassword;
-    QWidget *widget;
+    QWidget *layoutWidget3;
     QHBoxLayout *horizontalLayout_3;
     QLabel *lblIpClient;
     QSpacerItem *horizontalSpacer_3;
@@ -380,13 +380,13 @@ public:
 
         horizontalLayout->addLayout(verticalLayout_4);
 
-        widget = new QWidget(FrmClient);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(320, 50, 191, 22));
-        horizontalLayout_3 = new QHBoxLayout(widget);
+        layoutWidget3 = new QWidget(FrmClient);
+        layoutWidget3->setObjectName(QString::fromUtf8("layoutWidget3"));
+        layoutWidget3->setGeometry(QRect(320, 50, 191, 22));
+        horizontalLayout_3 = new QHBoxLayout(layoutWidget3);
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
         horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
-        lblIpClient = new QLabel(widget);
+        lblIpClient = new QLabel(layoutWidget3);
         lblIpClient->setObjectName(QString::fromUtf8("lblIpClient"));
 
         horizontalLayout_3->addWidget(lblIpClient);
@@ -395,7 +395,7 @@ public:
 
         horizontalLayout_3->addItem(horizontalSpacer_3);
 
-        lblIpClient2 = new QLabel(widget);
+        lblIpClient2 = new QLabel(layoutWidget3);
         lblIpClient2->setObjectName(QString::fromUtf8("lblIpClient2"));
 
         horizontalLayout_3->addWidget(lblIpClient2);
@@ -429,6 +429,7 @@ public:
         lblIpServer->setText(QCoreApplication::translate("FrmClient", "lblIpServer", nullptr));
         lblPort->setText(QCoreApplication::translate("FrmClient", "lblPort", nullptr));
         lblPassword->setText(QCoreApplication::translate("FrmClient", "lblPassword", nullptr));
+        txtIpServer->setText(QString());
         lblIpClient->setText(QCoreApplication::translate("FrmClient", "lblIpClient", nullptr));
         lblIpClient2->setText(QCoreApplication::translate("FrmClient", "lblIpClient2", nullptr));
     } // retranslateUi

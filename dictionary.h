@@ -73,6 +73,11 @@ public:
     // FrmRunning
     void getTextOflblStateRunning(QLabel *lbl);
     std::string getTextOfbtnStopRunning();
+
+    // FrmConnected
+    void getTextOflblResize(QLabel *lbl);
+    std::string getTextOfchkFullscreen();
+    std::string getTextOfbtnDisconnect();
 };
 
 #endif // DICTIONARY_H

@@ -33,7 +33,8 @@ SOURCES += \
         frmrunning.cpp \
         frmserver.cpp \
         main.cpp \
-        frmmain.cpp
+        frmmain.cpp \
+        tcpserverthread.cpp
 
 HEADERS += \
         configurations.h \
@@ -43,7 +44,8 @@ HEADERS += \
         frmconnected.h \
         frmmain.h \
         frmrunning.h \
-        frmserver.h
+        frmserver.h \
+        tcpserverthread.h
 
 FORMS += \
         frmclient.ui \

@@ -16,7 +16,9 @@ FrmRunning::FrmRunning(QWidget *parent) :
     ui->btnToggleConfig->setIcon(eye_button);
     ui->btnToggleConfig->setIconSize(eye.size());
 
-    // Connectivity::tcpServer(Configurations::port); // A new thread should do that
+    tcp_server_thread = new TcpServerThread();
+    QObject::connect(tcp_server_thread, SIGNAL(writeText(QString)), this, SLOT(writeTextOnTxtBox(QString)));
+    tcp_server_thread->start();
 }
 
 FrmRunning::~FrmRunning()
@@ -40,4 +42,9 @@ void FrmRunning::on_btnStop_clicked()
 {
     *selector = 1;
     this->close();
+}
+
+void FrmRunning::writeTextOnTxtBox(QString str)
+{
+    ui->txtBox->append(str);
 }

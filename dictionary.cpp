@@ -297,3 +297,21 @@ std::string Dictionary::getTextOfbtnStopRunning()
 {
     return choices("Ferma server", "Stop server");
 }
+
+// FrmConnected
+void Dictionary::getTextOflblResize(QLabel *lbl)
+{
+    lbl->setToolTip(QString::fromStdString(choices("Permette di ridimensionare la grandezza del video in output.\nN.B. Un valore diverso dal 100% richiede calcoli aggiuntivi che possono risultare in un calo di prestazioni.",
+                                                   "Allow to resize the dimensions of output video.\nN.B. A value different from 100% needs some more computing capabilities and it could lead to lower performance.")));
+    lbl->setText(QString::fromStdString(choices("Ridimensiona:", "Resize:")));
+}
+
+std::string Dictionary::getTextOfchkFullscreen()
+{
+    return choices("Schermo intero", "Fullscreen");
+}
+
+std::string Dictionary::getTextOfbtnDisconnect()
+{
+    return choices("Disconnetti", "Disconnect");
+}

@@ -2,6 +2,7 @@
 #include <frmserver.h>
 #include <frmclient.h>
 #include <frmrunning.h>
+#include <frmconnected.h>
 #include <QApplication>
 #include "dictionary.h"
 
@@ -49,6 +50,16 @@ int main(int argc, char *argv[])
         {
             QApplication a(argc, argv);
             FrmRunning f;
+            f.setDict(&dict);
+            f.setSelector(&selector);
+            f.show();
+            a.exec();
+        }
+
+        if(selector == 4) // FrmConnected
+        {
+            QApplication a(argc, argv);
+            FrmConnected f;
             f.setDict(&dict);
             f.setSelector(&selector);
             f.show();

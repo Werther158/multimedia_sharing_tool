@@ -25,7 +25,6 @@ public:
     void setConfigurations();
 private slots:
     void on_btnBack_clicked();
-
     void on_btnStartServer_clicked();
 
 private:

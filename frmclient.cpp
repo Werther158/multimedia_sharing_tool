@@ -8,6 +8,7 @@ FrmClient::FrmClient(QWidget *parent) :
     ui->setupUi(this);
     std::string public_ip = Connectivity::getPublicIp();
     ui->lblIpClient2->setText(QString::fromStdString(public_ip));
+    ui->txtIpServer->setText("127.0.0.1");
     ui->txtPort->setText("35000");
     setFixedSize(size());
 }
@@ -79,4 +80,10 @@ void FrmClient::setConfigurations()
 void FrmClient::on_btnConnect_clicked()
 {
     setConfigurations();
+    // Control that all data are correct
+    if(Configurations::server_ip != "") // Controllo da cambiare, molto debole.
+    {
+        *selector = 4;
+        this->close();
+    }
 }

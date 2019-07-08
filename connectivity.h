@@ -10,15 +10,19 @@
 #include <netinet/in.h>
 #include <string.h>
 #include <arpa/inet.h>
+#include <QObject>
 
-class Connectivity
+class Connectivity : public QObject
 {
+    Q_OBJECT
 public:
     Connectivity();
     ~Connectivity();
     static std::string getPublicIp();
-    static int tcpServer(uint16_t PORT);
-    static int tcpClient(std::string server_ip, uint16_t PORT);
+    int tcpServer(uint16_t PORT);
+    int tcpClient(std::string server_ip, uint16_t PORT);
+signals:
+    void writeText(QString text);
 };
 
 #endif // CONNECTIVITY_H

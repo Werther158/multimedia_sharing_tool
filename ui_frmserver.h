@@ -92,10 +92,10 @@ public:
     QSpacerItem *horizontalSpacer;
     QSpacerItem *horizontalSpacer_10;
     QVBoxLayout *verticalLayout_5;
-    QLineEdit *lineEdit;
+    QLineEdit *txtIpClient;
     QLineEdit *txtPort;
     QLineEdit *txtPassword;
-    QWidget *widget;
+    QWidget *layoutWidget4;
     QVBoxLayout *verticalLayout_6;
     QHBoxLayout *horizontalLayout_2;
     QLabel *lblIpServer;
@@ -400,10 +400,10 @@ public:
 
         verticalLayout_5 = new QVBoxLayout();
         verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
-        lineEdit = new QLineEdit(layoutWidget);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+        txtIpClient = new QLineEdit(layoutWidget);
+        txtIpClient->setObjectName(QString::fromUtf8("txtIpClient"));
 
-        verticalLayout_5->addWidget(lineEdit);
+        verticalLayout_5->addWidget(txtIpClient);
 
         txtPort = new QLineEdit(layoutWidget);
         txtPort->setObjectName(QString::fromUtf8("txtPort"));
@@ -418,15 +418,15 @@ public:
 
         horizontalLayout->addLayout(verticalLayout_5);
 
-        widget = new QWidget(FrmServer);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(280, 50, 231, 57));
-        verticalLayout_6 = new QVBoxLayout(widget);
+        layoutWidget4 = new QWidget(FrmServer);
+        layoutWidget4->setObjectName(QString::fromUtf8("layoutWidget4"));
+        layoutWidget4->setGeometry(QRect(280, 50, 231, 57));
+        verticalLayout_6 = new QVBoxLayout(layoutWidget4);
         verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
         verticalLayout_6->setContentsMargins(0, 0, 0, 0);
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        lblIpServer = new QLabel(widget);
+        lblIpServer = new QLabel(layoutWidget4);
         lblIpServer->setObjectName(QString::fromUtf8("lblIpServer"));
 
         horizontalLayout_2->addWidget(lblIpServer);
@@ -435,7 +435,7 @@ public:
 
         horizontalLayout_2->addItem(horizontalSpacer_2);
 
-        lblIpServer2 = new QLabel(widget);
+        lblIpServer2 = new QLabel(layoutWidget4);
         lblIpServer2->setObjectName(QString::fromUtf8("lblIpServer2"));
 
         horizontalLayout_2->addWidget(lblIpServer2);
@@ -445,7 +445,7 @@ public:
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        lblSource = new QLabel(widget);
+        lblSource = new QLabel(layoutWidget4);
         lblSource->setObjectName(QString::fromUtf8("lblSource"));
 
         horizontalLayout_3->addWidget(lblSource);
@@ -454,7 +454,7 @@ public:
 
         horizontalLayout_3->addItem(horizontalSpacer_3);
 
-        cmbSource = new QComboBox(widget);
+        cmbSource = new QComboBox(layoutWidget4);
         cmbSource->setObjectName(QString::fromUtf8("cmbSource"));
 
         horizontalLayout_3->addWidget(cmbSource);
@@ -493,6 +493,7 @@ public:
         lblIpClient->setText(QCoreApplication::translate("FrmServer", "lblIpClient", nullptr));
         lblPort->setText(QCoreApplication::translate("FrmServer", "lblPort", nullptr));
         lblPassword->setText(QCoreApplication::translate("FrmServer", "lblPassword", nullptr));
+        txtIpClient->setText(QString());
 #if QT_CONFIG(tooltip)
         lblIpServer->setToolTip(QCoreApplication::translate("FrmServer", "<html><head/><body><p><br/></p></body></html>", nullptr));
 #endif // QT_CONFIG(tooltip)
