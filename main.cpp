@@ -3,6 +3,8 @@
 #include <frmclient.h>
 #include <frmrunning.h>
 #include <frmconnected.h>
+#include <tcpclientthread.h>
+#include <tcpserverthread.h>
 #include <QApplication>
 #include "dictionary.h"
 

@@ -5,6 +5,7 @@
 #include "dictionary.h"
 #include <connectivity.h>
 #include <configurations.h>
+#include <tcpclientthread.h>
 
 namespace Ui {
 class FrmClient;
@@ -23,7 +24,6 @@ public:
 private slots:
     void on_btnBack_clicked();
     void on_btnConnect_clicked();
-
 private:
     Ui::FrmClient *ui;
     Dictionary* dict;

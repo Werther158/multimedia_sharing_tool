@@ -21,15 +21,20 @@ public:
     ~FrmRunning();
     void setDict(Dictionary* dict);
     void setSelector(int* selector);
-
 private slots:
     void on_btnStop_clicked();
     void writeTextOnTxtBox(QString str);
+    void on_btnSend_clicked();
+    void clientConnected();
+    void otherGuyDisconnected();
 private:
     Ui::FrmRunning *ui;
     Dictionary* dict;
     int* selector;
     TcpServerThread *tcp_server_thread;
+    Connectivity c;
+
+    void startServer();
 };
 
 #endif // FRMRUNNING_H

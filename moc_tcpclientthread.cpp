@@ -1,5 +1,5 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'tcpserverthread.h'
+** Meta object code from reading C++ file 'tcpclientthread.h'
 **
 ** Created by: The Qt Meta Object Compiler version 67 (Qt 5.13.0)
 **
@@ -7,11 +7,11 @@
 *****************************************************************************/
 
 #include <memory>
-#include "tcpserverthread.h"
+#include "tcpclientthread.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'tcpserverthread.h' doesn't include <QObject>."
+#error "The header file 'tcpclientthread.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
 #error "This file was generated using the moc from 5.13.0. It"
 #error "cannot be used with the include files from this version of Qt."
@@ -21,30 +21,30 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_TcpServerThread_t {
+struct qt_meta_stringdata_TcpClientThread_t {
     QByteArrayData data[5];
     char stringdata0[64];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_TcpServerThread_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_TcpClientThread_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_TcpServerThread_t qt_meta_stringdata_TcpServerThread = {
+static const qt_meta_stringdata_TcpClientThread_t qt_meta_stringdata_TcpClientThread = {
     {
-QT_MOC_LITERAL(0, 0, 15), // "TcpServerThread"
+QT_MOC_LITERAL(0, 0, 15), // "TcpClientThread"
 QT_MOC_LITERAL(1, 16, 9), // "writeText"
 QT_MOC_LITERAL(2, 26, 0), // ""
 QT_MOC_LITERAL(3, 27, 15), // "clientConnected"
 QT_MOC_LITERAL(4, 43, 20) // "otherGuyDisconnected"
 
     },
-    "TcpServerThread\0writeText\0\0clientConnected\0"
+    "TcpClientThread\0writeText\0\0clientConnected\0"
     "otherGuyDisconnected"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_TcpServerThread[] = {
+static const uint qt_meta_data_TcpClientThread[] = {
 
  // content:
        8,       // revision
@@ -70,10 +70,10 @@ static const uint qt_meta_data_TcpServerThread[] = {
        0        // eod
 };
 
-void TcpServerThread::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void TcpClientThread::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        auto *_t = static_cast<TcpServerThread *>(_o);
+        auto *_t = static_cast<TcpClientThread *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->writeText((*reinterpret_cast< QString(*)>(_a[1]))); break;
@@ -84,22 +84,22 @@ void TcpServerThread::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
-            using _t = void (TcpServerThread::*)(QString );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&TcpServerThread::writeText)) {
+            using _t = void (TcpClientThread::*)(QString );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&TcpClientThread::writeText)) {
                 *result = 0;
                 return;
             }
         }
         {
-            using _t = void (TcpServerThread::*)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&TcpServerThread::clientConnected)) {
+            using _t = void (TcpClientThread::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&TcpClientThread::clientConnected)) {
                 *result = 1;
                 return;
             }
         }
         {
-            using _t = void (TcpServerThread::*)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&TcpServerThread::otherGuyDisconnected)) {
+            using _t = void (TcpClientThread::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&TcpClientThread::otherGuyDisconnected)) {
                 *result = 2;
                 return;
             }
@@ -107,30 +107,30 @@ void TcpServerThread::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
     }
 }
 
-QT_INIT_METAOBJECT const QMetaObject TcpServerThread::staticMetaObject = { {
+QT_INIT_METAOBJECT const QMetaObject TcpClientThread::staticMetaObject = { {
     &QThread::staticMetaObject,
-    qt_meta_stringdata_TcpServerThread.data,
-    qt_meta_data_TcpServerThread,
+    qt_meta_stringdata_TcpClientThread.data,
+    qt_meta_data_TcpClientThread,
     qt_static_metacall,
     nullptr,
     nullptr
 } };
 
 
-const QMetaObject *TcpServerThread::metaObject() const
+const QMetaObject *TcpClientThread::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *TcpServerThread::qt_metacast(const char *_clname)
+void *TcpClientThread::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_TcpServerThread.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_TcpClientThread.stringdata0))
         return static_cast<void*>(this);
     return QThread::qt_metacast(_clname);
 }
 
-int TcpServerThread::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int TcpClientThread::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QThread::qt_metacall(_c, _id, _a);
     if (_id < 0)
@@ -148,20 +148,20 @@ int TcpServerThread::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void TcpServerThread::writeText(QString _t1)
+void TcpClientThread::writeText(QString _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 
 // SIGNAL 1
-void TcpServerThread::clientConnected()
+void TcpClientThread::clientConnected()
 {
     QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
 }
 
 // SIGNAL 2
-void TcpServerThread::otherGuyDisconnected()
+void TcpClientThread::otherGuyDisconnected()
 {
     QMetaObject::activate(this, &staticMetaObject, 2, nullptr);
 }

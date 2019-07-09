@@ -15,6 +15,7 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
+#include <QtWidgets/QListView>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QScrollBar>
 #include <QtWidgets/QSpacerItem>
@@ -38,22 +39,24 @@ public:
     QLabel *lblResize2;
     QWidget *layoutWidget1;
     QVBoxLayout *verticalLayout;
+    QListView *listConfigurations;
     QTextEdit *txtBox;
     QHBoxLayout *horizontalLayout_2;
     QLineEdit *txtLine;
     QPushButton *btnSend;
+    QPushButton *btnToggleConfig;
 
     void setupUi(QWidget *FrmConnected)
     {
         if (FrmConnected->objectName().isEmpty())
             FrmConnected->setObjectName(QString::fromUtf8("FrmConnected"));
-        FrmConnected->resize(400, 300);
+        FrmConnected->resize(431, 329);
         chkFullScreen = new QCheckBox(FrmConnected);
         chkFullScreen->setObjectName(QString::fromUtf8("chkFullScreen"));
         chkFullScreen->setGeometry(QRect(30, 60, 201, 23));
         btnDisconnect = new QPushButton(FrmConnected);
         btnDisconnect->setObjectName(QString::fromUtf8("btnDisconnect"));
-        btnDisconnect->setGeometry(QRect(290, 260, 89, 25));
+        btnDisconnect->setGeometry(QRect(330, 290, 89, 25));
         layoutWidget = new QWidget(FrmConnected);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
         layoutWidget->setGeometry(QRect(30, 30, 331, 22));
@@ -89,12 +92,18 @@ public:
 
         layoutWidget1 = new QWidget(FrmConnected);
         layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(30, 90, 331, 151));
+        layoutWidget1->setGeometry(QRect(30, 90, 371, 191));
         verticalLayout = new QVBoxLayout(layoutWidget1);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
+        listConfigurations = new QListView(layoutWidget1);
+        listConfigurations->setObjectName(QString::fromUtf8("listConfigurations"));
+
+        verticalLayout->addWidget(listConfigurations);
+
         txtBox = new QTextEdit(layoutWidget1);
         txtBox->setObjectName(QString::fromUtf8("txtBox"));
+        txtBox->setReadOnly(true);
 
         verticalLayout->addWidget(txtBox);
 
@@ -114,6 +123,9 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_2);
 
+        btnToggleConfig = new QPushButton(FrmConnected);
+        btnToggleConfig->setObjectName(QString::fromUtf8("btnToggleConfig"));
+        btnToggleConfig->setGeometry(QRect(30, 290, 31, 25));
 
         retranslateUi(FrmConnected);
 
@@ -122,12 +134,13 @@ public:
 
     void retranslateUi(QWidget *FrmConnected)
     {
-        FrmConnected->setWindowTitle(QCoreApplication::translate("FrmConnected", "MST - Connected to server", nullptr));
+        FrmConnected->setWindowTitle(QCoreApplication::translate("FrmConnected", "MST - Connecting...", nullptr));
         chkFullScreen->setText(QCoreApplication::translate("FrmConnected", "Fullscreen", nullptr));
         btnDisconnect->setText(QCoreApplication::translate("FrmConnected", "btnDisconnect", nullptr));
         lblResize->setText(QCoreApplication::translate("FrmConnected", "lblResize", nullptr));
         lblResize2->setText(QCoreApplication::translate("FrmConnected", "lblResize2", nullptr));
         btnSend->setText(QCoreApplication::translate("FrmConnected", ">", nullptr));
+        btnToggleConfig->setText(QCoreApplication::translate("FrmConnected", "btnToggleConfig", nullptr));
     } // retranslateUi
 
 };

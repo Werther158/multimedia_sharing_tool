@@ -79,7 +79,11 @@
      <widget class="QListView" name="listConfigurations"/>
     </item>
     <item>
-     <widget class="QTextEdit" name="txtBox"/>
+     <widget class="QTextEdit" name="txtBox">
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
     </item>
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_2">

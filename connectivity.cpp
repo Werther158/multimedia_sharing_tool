@@ -42,21 +42,12 @@ string Connectivity::getPublicIp() {
     }
     curl_easy_cleanup(curl);
 
-
-
     return output;
 }
 
 int Connectivity::tcpServer(uint16_t PORT)
 {
-    int server_fd, new_socket, valread;
-    struct sockaddr_in address;
-    int opt = 1;
-    int addrlen = sizeof(address);
-    char buffer[1024] = {0};
     char *hello = "Hello from server";
-
-    emit writeText("Server's setup");
 
     // Creating socket file descriptor
     if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0)
@@ -76,7 +67,7 @@ int Connectivity::tcpServer(uint16_t PORT)
     address.sin_addr.s_addr = INADDR_ANY;
     address.sin_port = htons( PORT );
 
-    emit writeText("Server is ready\n");
+    emit writeText("Server running\n");
 
     // Forcefully attaching socket to the port
     if (bind(server_fd, (struct sockaddr *)&address,
@@ -90,25 +81,26 @@ int Connectivity::tcpServer(uint16_t PORT)
         perror("listen");
         exit(EXIT_FAILURE);
     }
-    if ((new_socket = accept(server_fd, (struct sockaddr *)&address,
+    if ((sock = accept(server_fd, (struct sockaddr *)&address,
                        (socklen_t*)&addrlen))<0)
     {
         perror("accept");
         exit(EXIT_FAILURE);
     }
-    valread = read( new_socket , buffer, 1024);
-    emit writeText(QString(buffer));
-    send(new_socket , hello , strlen(hello) , 0 );
-    emit writeText("Hello message sent\n");
+    valread = read(sock, buffer, BUFFER_SIZE);
+    send(sock, hello, strlen(hello), 0);
+
+    emit clientConnected();
+
+    tcpRead();
+
     return 0;
 }
 
 int Connectivity::tcpClient(string server_ip, uint16_t PORT)
 {
-    int sock = 0, valread;
-    struct sockaddr_in serv_addr;
     char *hello = "Hello from client";
-    char buffer[1024] = {0};
+
     if ((sock = socket(AF_INET, SOCK_STREAM, 0)) < 0)
     {
         printf("\n Socket creation error \n");
@@ -130,10 +122,47 @@ int Connectivity::tcpClient(string server_ip, uint16_t PORT)
         printf("\nConnection Failed \n");
         return -1;
     }
-    send(sock , hello , strlen(hello) , 0 );
-    printf("Hello message sent\n");
-    emit writeText("Hello message sent\n");
-    valread = read( sock , buffer, 1024);
-    emit writeText(QString(buffer));
+
+    send(sock, hello, strlen(hello), 0 );
+    valread = read(sock, buffer, BUFFER_SIZE);
+
+    emit clientConnected();
+
+    tcpRead();
+
     return 0;
+}
+
+void Connectivity::tcpRead()
+{
+    while(1)
+    {
+        memset(buffer, 0, BUFFER_SIZE);
+        valread = read(sock, buffer, BUFFER_SIZE);
+
+        if(buffer[0] == -1) // The other guy clicked disconnect
+        {
+            emit otherGuyDisconnected();
+            break;
+        }
+        if(Configurations::system == SERVER)
+            emit writeText("CLIENT: " + QString(buffer));
+        else
+            emit writeText("SERVER: " + QString(buffer));
+    }
+}
+
+void Connectivity::tcpWriteData(QString text)
+{
+    send(sock, text.toStdString().c_str(), strlen(text.toStdString().c_str()), 0);
+    if(Configurations::system == CLIENT)
+        emit writeText("CLIENT: " + text);
+    else
+        emit writeText("SERVER: " + text);
+}
+
+void Connectivity::tcpWriteCommand(char command)
+{
+    buffer[0] = command;
+    send(sock, buffer, 1, 0);
 }

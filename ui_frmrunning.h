@@ -79,6 +79,7 @@ public:
 
         txtBox = new QTextEdit(layoutWidget1);
         txtBox->setObjectName(QString::fromUtf8("txtBox"));
+        txtBox->setReadOnly(true);
 
         verticalLayout->addWidget(txtBox);
 

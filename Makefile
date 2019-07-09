@@ -61,12 +61,14 @@ SOURCES       = configurations.cpp \
 		frmserver.cpp \
 		main.cpp \
 		frmmain.cpp \
+		tcpclientthread.cpp \
 		tcpserverthread.cpp moc_connectivity.cpp \
 		moc_frmclient.cpp \
 		moc_frmconnected.cpp \
 		moc_frmmain.cpp \
 		moc_frmrunning.cpp \
 		moc_frmserver.cpp \
+		moc_tcpclientthread.cpp \
 		moc_tcpserverthread.cpp
 OBJECTS       = configurations.o \
 		connectivity.o \
@@ -77,6 +79,7 @@ OBJECTS       = configurations.o \
 		frmserver.o \
 		main.o \
 		frmmain.o \
+		tcpclientthread.o \
 		tcpserverthread.o \
 		moc_connectivity.o \
 		moc_frmclient.o \
@@ -84,6 +87,7 @@ OBJECTS       = configurations.o \
 		moc_frmmain.o \
 		moc_frmrunning.o \
 		moc_frmserver.o \
+		moc_tcpclientthread.o \
 		moc_tcpserverthread.o
 DIST          = media/eye.png \
 		media/eyegray.png \
@@ -293,6 +297,7 @@ DIST          = media/eye.png \
 		frmmain.h \
 		frmrunning.h \
 		frmserver.h \
+		tcpclientthread.h \
 		tcpserverthread.h configurations.cpp \
 		connectivity.cpp \
 		dictionary.cpp \
@@ -302,6 +307,7 @@ DIST          = media/eye.png \
 		frmserver.cpp \
 		main.cpp \
 		frmmain.cpp \
+		tcpclientthread.cpp \
 		tcpserverthread.cpp
 QMAKE_TARGET  = multimedia_sharing_tool
 DESTDIR       = 
@@ -724,8 +730,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../Qt/5.13.0/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents configurations.h connectivity.h dictionary.h frmclient.h frmconnected.h frmmain.h frmrunning.h frmserver.h tcpserverthread.h $(DISTDIR)/
-	$(COPY_FILE) --parents configurations.cpp connectivity.cpp dictionary.cpp frmclient.cpp frmconnected.cpp frmrunning.cpp frmserver.cpp main.cpp frmmain.cpp tcpserverthread.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents configurations.h connectivity.h dictionary.h frmclient.h frmconnected.h frmmain.h frmrunning.h frmserver.h tcpclientthread.h tcpserverthread.h $(DISTDIR)/
+	$(COPY_FILE) --parents configurations.cpp connectivity.cpp dictionary.cpp frmclient.cpp frmconnected.cpp frmrunning.cpp frmserver.cpp main.cpp frmmain.cpp tcpclientthread.cpp tcpserverthread.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents frmclient.ui frmconnected.ui frmmain.ui frmrunning.ui frmserver.ui $(DISTDIR)/
 
 
@@ -758,9 +764,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: ../../Qt/5.13.0/gcc_64/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -std=gnu++11 -Wall -W -dM -E -o moc_predefs.h ../../Qt/5.13.0/gcc_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_connectivity.cpp moc_frmclient.cpp moc_frmconnected.cpp moc_frmmain.cpp moc_frmrunning.cpp moc_frmserver.cpp moc_tcpserverthread.cpp
+compiler_moc_header_make_all: moc_connectivity.cpp moc_frmclient.cpp moc_frmconnected.cpp moc_frmmain.cpp moc_frmrunning.cpp moc_frmserver.cpp moc_tcpclientthread.cpp moc_tcpserverthread.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_connectivity.cpp moc_frmclient.cpp moc_frmconnected.cpp moc_frmmain.cpp moc_frmrunning.cpp moc_frmserver.cpp moc_tcpserverthread.cpp
+	-$(DEL_FILE) moc_connectivity.cpp moc_frmclient.cpp moc_frmconnected.cpp moc_frmmain.cpp moc_frmrunning.cpp moc_frmserver.cpp moc_tcpclientthread.cpp moc_tcpserverthread.cpp
 moc_connectivity.cpp: connectivity.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/QObject \
 		../../Qt/5.13.0/gcc_64/include/QtCore/qobject.h \
@@ -947,13 +953,17 @@ moc_frmclient.cpp: frmclient.h \
 		connectivity.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/QObject \
 		configurations.h \
+		tcpclientthread.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/QThread \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qthread.h \
 		moc_predefs.h \
 		../../Qt/5.13.0/gcc_64/bin/moc
 	/home/werther/Qt/5.13.0/gcc_64/bin/moc $(DEFINES) --include /home/werther/Desktop/multimedia_sharing_tool/moc_predefs.h -I/home/werther/Qt/5.13.0/gcc_64/mkspecs/linux-g++ -I/home/werther/Desktop/multimedia_sharing_tool -I/usr/include/curl -I/home/werther/Qt/5.13.0/gcc_64/include -I/home/werther/Qt/5.13.0/gcc_64/include/QtWidgets -I/home/werther/Qt/5.13.0/gcc_64/include/QtGui -I/home/werther/Qt/5.13.0/gcc_64/include/QtCore -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++ -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/i686-w64-mingw32.static -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/backward -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include-fixed -I/home/werther/Downloads/mxe/usr/i686-w64-mingw32.static/include frmclient.h -o moc_frmclient.cpp
 
 moc_frmconnected.cpp: frmconnected.h \
-		../../Qt/5.13.0/gcc_64/include/QtWidgets/QWidget \
-		../../Qt/5.13.0/gcc_64/include/QtWidgets/qwidget.h \
+		dictionary.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/QComboBox \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qcombobox.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/qtguiglobal.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/qglobal.h \
@@ -979,6 +989,7 @@ moc_frmconnected.cpp: frmconnected.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/qversiontagging.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/qtgui-config.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qwidget.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/qwindowdefs.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/qobjectdefs.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/qnamespace.h \
@@ -1055,6 +1066,32 @@ moc_frmconnected.cpp: frmconnected.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/qfiledevice.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/qvector2d.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/qtouchdevice.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../Qt/5.13.0/gcc_64/include/QtGui/qvalidator.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qregularexpression.h \
+		../../Qt/5.13.0/gcc_64/include/QtGui/qicon.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qslider.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qstyle.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qtabbar.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qtabwidget.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qrubberband.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qframe.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/QLabel \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qlabel.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/QPushButton \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractbutton.h \
+		configurations.h \
+		connectivity.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/QObject \
+		tcpclientthread.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/QThread \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qthread.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/QWidget \
 		moc_predefs.h \
 		../../Qt/5.13.0/gcc_64/bin/moc
 	/home/werther/Qt/5.13.0/gcc_64/bin/moc $(DEFINES) --include /home/werther/Desktop/multimedia_sharing_tool/moc_predefs.h -I/home/werther/Qt/5.13.0/gcc_64/mkspecs/linux-g++ -I/home/werther/Desktop/multimedia_sharing_tool -I/usr/include/curl -I/home/werther/Qt/5.13.0/gcc_64/include -I/home/werther/Qt/5.13.0/gcc_64/include/QtWidgets -I/home/werther/Qt/5.13.0/gcc_64/include/QtGui -I/home/werther/Qt/5.13.0/gcc_64/include/QtCore -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++ -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/i686-w64-mingw32.static -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/backward -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include-fixed -I/home/werther/Downloads/mxe/usr/i686-w64-mingw32.static/include frmconnected.h -o moc_frmconnected.cpp
@@ -1469,6 +1506,67 @@ moc_frmserver.cpp: frmserver.h \
 		../../Qt/5.13.0/gcc_64/bin/moc
 	/home/werther/Qt/5.13.0/gcc_64/bin/moc $(DEFINES) --include /home/werther/Desktop/multimedia_sharing_tool/moc_predefs.h -I/home/werther/Qt/5.13.0/gcc_64/mkspecs/linux-g++ -I/home/werther/Desktop/multimedia_sharing_tool -I/usr/include/curl -I/home/werther/Qt/5.13.0/gcc_64/include -I/home/werther/Qt/5.13.0/gcc_64/include/QtWidgets -I/home/werther/Qt/5.13.0/gcc_64/include/QtGui -I/home/werther/Qt/5.13.0/gcc_64/include/QtCore -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++ -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/i686-w64-mingw32.static -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/backward -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include-fixed -I/home/werther/Downloads/mxe/usr/i686-w64-mingw32.static/include frmserver.h -o moc_frmserver.cpp
 
+moc_tcpclientthread.cpp: tcpclientthread.h \
+		connectivity.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/QObject \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qobject.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qobjectdefs.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qnamespace.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qglobal.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qconfig.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qtcore-config.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qsystemdetection.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qprocessordetection.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qtypeinfo.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qsysinfo.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qlogging.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qflags.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qatomic.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qbasicatomic.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qgenericatomic.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qglobalstatic.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qmutex.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qnumeric.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qversiontagging.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qstring.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qchar.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qbytearray.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qrefcount.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qarraydata.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qstringliteral.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qstringview.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qstringbuilder.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qlist.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qalgorithms.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qiterator.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qhashfunctions.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qpair.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qvector.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qpoint.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qbytearraylist.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qstringlist.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qregexp.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qstringmatcher.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qcoreevent.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qscopedpointer.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qmetatype.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qobject_impl.h \
+		configurations.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/QThread \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qthread.h \
+		moc_predefs.h \
+		../../Qt/5.13.0/gcc_64/bin/moc
+	/home/werther/Qt/5.13.0/gcc_64/bin/moc $(DEFINES) --include /home/werther/Desktop/multimedia_sharing_tool/moc_predefs.h -I/home/werther/Qt/5.13.0/gcc_64/mkspecs/linux-g++ -I/home/werther/Desktop/multimedia_sharing_tool -I/usr/include/curl -I/home/werther/Qt/5.13.0/gcc_64/include -I/home/werther/Qt/5.13.0/gcc_64/include/QtWidgets -I/home/werther/Qt/5.13.0/gcc_64/include/QtGui -I/home/werther/Qt/5.13.0/gcc_64/include/QtCore -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++ -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/i686-w64-mingw32.static -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/backward -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include-fixed -I/home/werther/Downloads/mxe/usr/i686-w64-mingw32.static/include tcpclientthread.h -o moc_tcpclientthread.cpp
+
 moc_tcpserverthread.cpp: tcpserverthread.h \
 		connectivity.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/QObject \
@@ -1880,6 +1978,9 @@ frmclient.o: frmclient.cpp frmclient.h \
 		connectivity.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/QObject \
 		configurations.h \
+		tcpclientthread.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/QThread \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qthread.h \
 		ui_frmclient.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/QVariant \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/QApplication \
@@ -1906,8 +2007,9 @@ frmclient.o: frmclient.cpp frmclient.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o frmclient.o frmclient.cpp
 
 frmconnected.o: frmconnected.cpp frmconnected.h \
-		../../Qt/5.13.0/gcc_64/include/QtWidgets/QWidget \
-		../../Qt/5.13.0/gcc_64/include/QtWidgets/qwidget.h \
+		dictionary.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/QComboBox \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qcombobox.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/qtguiglobal.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/qglobal.h \
@@ -1933,6 +2035,7 @@ frmconnected.o: frmconnected.cpp frmconnected.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/qversiontagging.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/qtgui-config.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qwidget.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/qwindowdefs.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/qobjectdefs.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/qnamespace.h \
@@ -2009,6 +2112,32 @@ frmconnected.o: frmconnected.cpp frmconnected.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/qfiledevice.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/qvector2d.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/qtouchdevice.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../Qt/5.13.0/gcc_64/include/QtGui/qvalidator.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qregularexpression.h \
+		../../Qt/5.13.0/gcc_64/include/QtGui/qicon.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qslider.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qstyle.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qtabbar.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qtabwidget.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qrubberband.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qframe.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/QLabel \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qlabel.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/QPushButton \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractbutton.h \
+		configurations.h \
+		connectivity.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/QObject \
+		tcpclientthread.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/QThread \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qthread.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/QWidget \
 		ui_frmconnected.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/QVariant \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/QApplication \
@@ -2020,27 +2149,20 @@ frmconnected.o: frmconnected.cpp frmconnected.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/qinputmethod.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/QCheckBox \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qcheckbox.h \
-		../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractbutton.h \
-		../../Qt/5.13.0/gcc_64/include/QtGui/qicon.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/QHBoxLayout \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qboxlayout.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qlayout.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qlayoutitem.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qgridlayout.h \
-		../../Qt/5.13.0/gcc_64/include/QtWidgets/QLabel \
-		../../Qt/5.13.0/gcc_64/include/QtWidgets/qlabel.h \
-		../../Qt/5.13.0/gcc_64/include/QtWidgets/qframe.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/QLineEdit \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qlineedit.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/qtextcursor.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/qtextformat.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/qpen.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/qtextoption.h \
-		../../Qt/5.13.0/gcc_64/include/QtWidgets/QPushButton \
-		../../Qt/5.13.0/gcc_64/include/QtWidgets/qpushbutton.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/QScrollBar \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qscrollbar.h \
-		../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/QSpacerItem \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/QTextEdit \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qtextedit.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractscrollarea.h \
@@ -2517,10 +2639,12 @@ main.o: main.cpp frmmain.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qmessagebox.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/QDir \
 		frmclient.h \
-		frmrunning.h \
-		tcpserverthread.h \
+		tcpclientthread.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/QThread \
 		../../Qt/5.13.0/gcc_64/include/QtCore/qthread.h \
+		frmrunning.h \
+		tcpserverthread.h \
+		frmconnected.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/QApplication \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qapplication.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/qcoreapplication.h \
@@ -2675,6 +2799,65 @@ frmmain.o: frmmain.cpp frmmain.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/QCloseEvent
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o frmmain.o frmmain.cpp
 
+tcpclientthread.o: tcpclientthread.cpp tcpclientthread.h \
+		connectivity.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/QObject \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qobject.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qobjectdefs.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qnamespace.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qglobal.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qconfig.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qtcore-config.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qsystemdetection.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qprocessordetection.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qtypeinfo.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qsysinfo.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qlogging.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qflags.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qatomic.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qbasicatomic.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qgenericatomic.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qglobalstatic.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qmutex.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qnumeric.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qversiontagging.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qstring.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qchar.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qbytearray.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qrefcount.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qarraydata.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qstringliteral.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qstringview.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qstringbuilder.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qlist.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qalgorithms.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qiterator.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qhashfunctions.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qpair.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qvector.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qpoint.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qbytearraylist.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qstringlist.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qregexp.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qstringmatcher.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qcoreevent.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qscopedpointer.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qmetatype.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qobject_impl.h \
+		configurations.h \
+		../../Qt/5.13.0/gcc_64/include/QtCore/QThread \
+		../../Qt/5.13.0/gcc_64/include/QtCore/qthread.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o tcpclientthread.o tcpclientthread.cpp
+
 tcpserverthread.o: tcpserverthread.cpp tcpserverthread.h \
 		connectivity.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/QObject \
@@ -2751,6 +2934,9 @@ moc_frmrunning.o: moc_frmrunning.cpp
 
 moc_frmserver.o: moc_frmserver.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_frmserver.o moc_frmserver.cpp
+
+moc_tcpclientthread.o: moc_tcpclientthread.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_tcpclientthread.o moc_tcpclientthread.cpp
 
 moc_tcpserverthread.o: moc_tcpserverthread.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_tcpserverthread.o moc_tcpserverthread.cpp

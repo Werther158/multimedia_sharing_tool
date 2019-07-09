@@ -54,6 +54,7 @@ void FrmClient::setSelector(int *selector)
 {
     this->selector = selector;
 }
+
 void FrmClient::on_btnBack_clicked()
 {
     *selector = 0;
@@ -80,10 +81,12 @@ void FrmClient::setConfigurations()
 void FrmClient::on_btnConnect_clicked()
 {
     setConfigurations();
+
     // Control that all data are correct
     if(Configurations::server_ip != "") // Controllo da cambiare, molto debole.
     {
         *selector = 4;
         this->close();
     }
+
 }

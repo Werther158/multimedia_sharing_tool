@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>431</width>
+    <height>329</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MST - Connected to server</string>
+   <string>MST - Connecting...</string>
   </property>
   <widget class="QCheckBox" name="chkFullScreen">
    <property name="geometry">
@@ -29,8 +29,8 @@
   <widget class="QPushButton" name="btnDisconnect">
    <property name="geometry">
     <rect>
-     <x>290</x>
-     <y>260</y>
+     <x>330</x>
+     <y>290</y>
      <width>89</width>
      <height>25</height>
     </rect>
@@ -115,13 +115,20 @@
     <rect>
      <x>30</x>
      <y>90</y>
-     <width>331</width>
-     <height>151</height>
+     <width>371</width>
+     <height>191</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QTextEdit" name="txtBox"/>
+     <widget class="QListView" name="listConfigurations"/>
+    </item>
+    <item>
+     <widget class="QTextEdit" name="txtBox">
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
     </item>
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -144,6 +151,19 @@
      </layout>
     </item>
    </layout>
+  </widget>
+  <widget class="QPushButton" name="btnToggleConfig">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>290</y>
+     <width>31</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>btnToggleConfig</string>
+   </property>
   </widget>
  </widget>
  <resources/>

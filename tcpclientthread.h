@@ -1,18 +1,18 @@
-#ifndef TCPSERVERTHREAD_H
-#define TCPSERVERTHREAD_H
+#ifndef TCPCLIENTTHREAD_H
+#define TCPCLIENTTHREAD_H
 
 #include <connectivity.h>
 #include <configurations.h>
 #include <QThread>
 
-class TcpServerThread : public QThread
+class TcpClientThread : public QThread
 {
     Q_OBJECT
 private:
     Connectivity *c;
 public:
-    TcpServerThread();
-    ~TcpServerThread();
+    TcpClientThread();
+    ~TcpClientThread();
     void setConnectivity(Connectivity *c);
     void run();
 signals:
@@ -21,4 +21,4 @@ signals:
     void otherGuyDisconnected();
 };
 
-#endif // TCPSERVERTHREAD_H
+#endif // TCPCLIENTTHREAD_H

@@ -1,24 +1,24 @@
-#include "tcpserverthread.h"
+#include "tcpclientthread.h"
 
-TcpServerThread::TcpServerThread()
+TcpClientThread::TcpClientThread()
 {
 }
 
-TcpServerThread::~TcpServerThread()
+TcpClientThread::~TcpClientThread()
 {
     quit();
     wait();
 }
 
-void TcpServerThread::setConnectivity(Connectivity *c)
+void TcpClientThread::setConnectivity(Connectivity *c)
 {
     this->c = c;
 }
 
-void TcpServerThread::run()
+void TcpClientThread::run()
 {
     connect(c, SIGNAL(writeText(QString)), this, SIGNAL(writeText(QString)));
     connect(c, SIGNAL(clientConnected()), this, SIGNAL(clientConnected()));
     connect(c, SIGNAL(otherGuyDisconnected()), this, SIGNAL(otherGuyDisconnected()));
-    (*c).tcpServer(Configurations::port);
+    (*c).tcpClient(Configurations::server_ip, Configurations::port);
 }
