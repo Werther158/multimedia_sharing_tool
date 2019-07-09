@@ -19,6 +19,7 @@ signals:
     void writeText(QString);
     void clientConnected();
     void otherGuyDisconnected();
+    void startServerStream();
 };
 
 #endif // TCPSERVERTHREAD_H

@@ -78,6 +78,7 @@ public:
     void getTextOflblResize(QLabel *lbl);
     std::string getTextOfchkFullscreen();
     std::string getTextOfbtnDisconnect();
+    void getTextOfbtnStartStreaming(QPushButton *btn);
 };
 
 #endif // DICTIONARY_H

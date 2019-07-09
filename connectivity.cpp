@@ -67,8 +67,6 @@ int Connectivity::tcpServer(uint16_t PORT)
     address.sin_addr.s_addr = INADDR_ANY;
     address.sin_port = htons( PORT );
 
-    emit writeText("Server running\n");
-
     // Forcefully attaching socket to the port
     if (bind(server_fd, (struct sockaddr *)&address,
                                  sizeof(address))<0)
@@ -81,15 +79,18 @@ int Connectivity::tcpServer(uint16_t PORT)
         perror("listen");
         exit(EXIT_FAILURE);
     }
+    emit writeText("Server running");
     if ((sock = accept(server_fd, (struct sockaddr *)&address,
                        (socklen_t*)&addrlen))<0)
     {
         perror("accept");
         exit(EXIT_FAILURE);
     }
+
     valread = read(sock, buffer, BUFFER_SIZE);
     send(sock, hello, strlen(hello), 0);
 
+    emit writeText("Client connected\n");
     emit clientConnected();
 
     tcpRead();
@@ -126,6 +127,7 @@ int Connectivity::tcpClient(string server_ip, uint16_t PORT)
     send(sock, hello, strlen(hello), 0 );
     valread = read(sock, buffer, BUFFER_SIZE);
 
+    emit writeText("Client connected\n");
     emit clientConnected();
 
     tcpRead();
@@ -145,6 +147,12 @@ void Connectivity::tcpRead()
             emit otherGuyDisconnected();
             break;
         }
+        if(buffer[0] == -2)
+        {
+            // (Server side) Start sending video stream to client
+            emit startServerStream();
+        }
+        else
         if(Configurations::system == SERVER)
             emit writeText("CLIENT: " + QString(buffer));
         else

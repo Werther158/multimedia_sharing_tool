@@ -41,6 +41,7 @@ signals:
     void writeText(QString text);
     void clientConnected();
     void otherGuyDisconnected();
+    void startServerStream();
 };
 
 #endif // CONNECTIVITY_H

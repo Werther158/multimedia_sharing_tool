@@ -45,6 +45,7 @@ public:
     QLineEdit *txtLine;
     QPushButton *btnSend;
     QPushButton *btnToggleConfig;
+    QPushButton *btnStartStreaming;
 
     void setupUi(QWidget *FrmConnected)
     {
@@ -126,6 +127,9 @@ public:
         btnToggleConfig = new QPushButton(FrmConnected);
         btnToggleConfig->setObjectName(QString::fromUtf8("btnToggleConfig"));
         btnToggleConfig->setGeometry(QRect(30, 290, 31, 25));
+        btnStartStreaming = new QPushButton(FrmConnected);
+        btnStartStreaming->setObjectName(QString::fromUtf8("btnStartStreaming"));
+        btnStartStreaming->setGeometry(QRect(70, 290, 131, 25));
 
         retranslateUi(FrmConnected);
 
@@ -141,6 +145,7 @@ public:
         lblResize2->setText(QCoreApplication::translate("FrmConnected", "lblResize2", nullptr));
         btnSend->setText(QCoreApplication::translate("FrmConnected", ">", nullptr));
         btnToggleConfig->setText(QCoreApplication::translate("FrmConnected", "btnToggleConfig", nullptr));
+        btnStartStreaming->setText(QCoreApplication::translate("FrmConnected", "btnStartStreaming", nullptr));
     } // retranslateUi
 
 };

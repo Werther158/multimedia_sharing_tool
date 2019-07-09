@@ -27,6 +27,8 @@ private slots:
     void on_btnSend_clicked();
     void clientConnected();
     void otherGuyDisconnected();
+    void on_btnToggleConfig_clicked();
+    void startServerStream();
 private:
     Ui::FrmRunning *ui;
     Dictionary* dict;
@@ -34,7 +36,12 @@ private:
     TcpServerThread *tcp_server_thread;
     Connectivity c;
 
+    bool client_connected = false;
+    bool listconfig_active = true;
+
     void startServer();
+    void enableListConfiguration();
+    void disableListConfiguration();
 };
 
 #endif // FRMRUNNING_H

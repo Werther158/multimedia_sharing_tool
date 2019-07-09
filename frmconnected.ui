@@ -165,6 +165,19 @@
     <string>btnToggleConfig</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="btnStartStreaming">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>290</y>
+     <width>131</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>btnStartStreaming</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

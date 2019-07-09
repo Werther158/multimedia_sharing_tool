@@ -315,3 +315,10 @@ std::string Dictionary::getTextOfbtnDisconnect()
 {
     return choices("Disconnetti", "Disconnect");
 }
+
+void Dictionary::getTextOfbtnStartStreaming(QPushButton *btn)
+{
+    btn->setToolTip(QString::fromStdString(choices("Crea una connessione UDP con il server e inizia ad acquisire lo streaming video.",
+                                                   "Start a UDP connection with the server and begin to capture video streaming.")));
+    btn->setText(QString::fromStdString(choices("Avvia streaming", "Start streaming")));
+}

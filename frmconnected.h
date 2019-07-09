@@ -28,12 +28,22 @@ private slots:
     void writeTextOnTxtBox(QString str);
     void clientConnected();
     void otherGuyDisconnected();
+    void on_btnToggleConfig_clicked();
+
+    void on_btnStartStreaming_clicked();
+
 private:
     Ui::FrmConnected *ui;
     Dictionary *dict;
     int *selector;
     TcpClientThread *tcp_client_thread;
     Connectivity c;
+
+    bool client_connected = false;
+    bool listconfig_active = true;
+
+    void enableListConfiguration();
+    void disableListConfiguration();
 };
 
 #endif // FRMCONNECTED_H
