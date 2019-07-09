@@ -25,6 +25,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        clientstreamthread.cpp \
         configurations.cpp \
         connectivity.cpp \
         dictionary.cpp \
@@ -38,6 +39,7 @@ SOURCES += \
         tcpserverthread.cpp
 
 HEADERS += \
+        clientstreamthread.h \
         configurations.h \
         connectivity.h \
         dictionary.h \

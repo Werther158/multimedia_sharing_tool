@@ -8,7 +8,7 @@ FrmConnected::FrmConnected(QWidget *parent) :
     ui->setupUi(this);
     ui->lblResize2->setText("100%");
     setFixedSize(size());
-    setWindowFlags(Qt::WindowTitleHint);
+    this->setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowTitleHint);
 
     enableListConfiguration();
 
@@ -90,6 +90,7 @@ void FrmConnected::enableListConfiguration()
 
     ui->listConfigurations->setHidden(false);
 }
+
 void FrmConnected::disableListConfiguration()
 {
     QPixmap eyegrey(QDir::currentPath() + "/media/eyegrey.png");
@@ -115,11 +116,18 @@ void FrmConnected::on_btnToggleConfig_clicked()
     }
 }
 
+void FrmConnected::sendStartStreamingCommand()
+{
+    c.tcpWriteCommand(-2);
+}
+
 void FrmConnected::on_btnStartStreaming_clicked()
 {
     if(client_connected)
     {
-        // Send streaming command to server and start listening for a valid stream
-        c.tcpWriteCommand(-2);
+        // Start streaming thread
+        client_stream_thread = new ClientStreamThread();
+        QObject::connect(client_stream_thread, SIGNAL(sendStartStreamingCommand()), this, SLOT(sendStartStreamingCommand()));
+        client_stream_thread->start();
     }
 }

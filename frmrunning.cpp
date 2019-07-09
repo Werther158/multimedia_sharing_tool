@@ -1,12 +1,16 @@
 #include "frmrunning.h"
 #include "ui_frmrunning.h"
 
+#include <iostream>
+
 FrmRunning::FrmRunning(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::FrmRunning)
 {
     ui->setupUi(this);
     setFixedSize(size());
+
+    this->setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowTitleHint);
 
     enableListConfiguration();
     startServer();
@@ -120,6 +124,18 @@ void FrmRunning::on_btnToggleConfig_clicked()
 
 void FrmRunning::startServerStream()
 {
+    std::string command;
+    command = "./ffmpeg -i " + Configurations::file_name + " -c copy " + Configurations::file_name +"_fixed.mkv";
+    std::system(command.c_str());
+    command = "rm " + Configurations::file_name;
+    std::system(command.c_str());
+    command = "mv " + Configurations::file_name +"_fixed.mkv" + " " + Configurations::file_name;
+    std::system(command.c_str());
+    std::string command2 = "./ffmpeg -re -i " + Configurations::file_name + " -c copy -f matroska udp://" +
+            Configurations::client_ip + ":" + std::to_string(Configurations::port);
+    command = "./ffmpeg -re -i " + Configurations::file_name + " -c copy -f matroska udp://127.0.0.1:1234";
     ui->txtBox->append("Start Server streaming");
-
+    ui->txtBox->append(QString::fromStdString(command));
+    ui->txtBox->append(QString::fromStdString(command2));
+    std::system(command.c_str());
 }

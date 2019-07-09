@@ -5,6 +5,7 @@
 #include <configurations.h>
 #include <connectivity.h>
 #include <tcpclientthread.h>
+#include <clientstreamthread.h>
 #include <QWidget>
 #include <QDir>
 
@@ -28,6 +29,7 @@ private slots:
     void writeTextOnTxtBox(QString str);
     void clientConnected();
     void otherGuyDisconnected();
+    void sendStartStreamingCommand();
     void on_btnToggleConfig_clicked();
 
     void on_btnStartStreaming_clicked();
@@ -37,6 +39,7 @@ private:
     Dictionary *dict;
     int *selector;
     TcpClientThread *tcp_client_thread;
+    ClientStreamThread *client_stream_thread;
     Connectivity c;
 
     bool client_connected = false;
