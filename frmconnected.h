@@ -31,8 +31,8 @@ private slots:
     void otherGuyDisconnected();
     void sendStartStreamingCommand();
     void on_btnToggleConfig_clicked();
-
     void on_btnStartStreaming_clicked();
+    void stopReceivingVideoStream();
 
 private:
     Ui::FrmConnected *ui;
@@ -44,9 +44,13 @@ private:
 
     bool client_connected = false;
     bool listconfig_active = true;
+    bool is_stream_active = false;
 
     void enableListConfiguration();
     void disableListConfiguration();
+    void stopThreads();
+    void uiStreamingActive();
+    void uiStreamingInactive();
 };
 
 #endif // FRMCONNECTED_H

@@ -12,13 +12,19 @@ FrmConnected::FrmConnected(QWidget *parent) :
 
     enableListConfiguration();
 
+    QPixmap grey_state(QDir::currentPath() + "/media/grey_state.png");
+    ui->lblState2->setPixmap(grey_state);
+    uiStreamingInactive();
     // Start TcpClientThread
     tcp_client_thread = new TcpClientThread();
     tcp_client_thread->setConnectivity(&c);
     QObject::connect(tcp_client_thread, SIGNAL(writeText(QString)), this, SLOT(writeTextOnTxtBox(QString)));
     QObject::connect(tcp_client_thread, SIGNAL(clientConnected()), this, SLOT(clientConnected()));
     QObject::connect(tcp_client_thread, SIGNAL(otherGuyDisconnected()), this, SLOT(otherGuyDisconnected()));
+    QObject::connect(tcp_client_thread, SIGNAL(stopReceivingVideoStream()), this, SLOT(stopReceivingVideoStream()));
     tcp_client_thread->start();
+
+    ui->btnStartStreaming->setEnabled(false);
 }
 
 FrmConnected::~FrmConnected()
@@ -33,6 +39,9 @@ void FrmConnected::setDict(Dictionary* dict)
     ui->chkFullScreen->setText(QString::fromStdString((*dict).getTextOfchkFullscreen()));
     ui->btnDisconnect->setText(QString::fromStdString((*dict).getTextOfbtnDisconnect()));
     (*dict).getTextOfbtnStartStreaming(ui->btnStartStreaming);
+    (*dict).getTextOflblStateRunning(ui->lblState);
+    (*dict).setTooltipOflblState2(ui->lblState2);
+    (*dict).setTooltipOflblState3(ui->lblState3);
 }
 
 void FrmConnected::setSelector(int* selector)
@@ -44,9 +53,7 @@ void FrmConnected::on_btnDisconnect_clicked()
 {
     client_connected = false;
     c.tcpWriteCommand(-1);
-    disconnect(tcp_client_thread, nullptr, nullptr, nullptr);
-    tcp_client_thread->terminate();
-    tcp_client_thread->wait();
+    stopThreads();
     *selector = 2;
     this->close();
 }
@@ -69,13 +76,15 @@ void FrmConnected::clientConnected()
 {
     client_connected = true;
     this->setWindowTitle("MST - Connected");
+    ui->btnStartStreaming->setEnabled(true);
+    QPixmap green_state(QDir::currentPath() + "/media/green_state.png");
+    ui->lblState2->setPixmap(green_state);
 }
 
 void FrmConnected::otherGuyDisconnected()
 {
     client_connected = false;
-    tcp_client_thread->terminate();
-    tcp_client_thread->wait();
+    stopThreads();
     *selector = 2;
     this->close();
 }
@@ -118,6 +127,7 @@ void FrmConnected::on_btnToggleConfig_clicked()
 
 void FrmConnected::sendStartStreamingCommand()
 {
+    uiStreamingActive();
     c.tcpWriteCommand(-2);
 }
 
@@ -129,5 +139,53 @@ void FrmConnected::on_btnStartStreaming_clicked()
         client_stream_thread = new ClientStreamThread();
         QObject::connect(client_stream_thread, SIGNAL(sendStartStreamingCommand()), this, SLOT(sendStartStreamingCommand()));
         client_stream_thread->start();
+        is_stream_active = true;
+        ui->btnStartStreaming->setEnabled(false);
     }
+}
+
+void FrmConnected::stopThreads()
+{
+    disconnect(tcp_client_thread, nullptr, nullptr, nullptr);
+    tcp_client_thread->terminate();
+    tcp_client_thread->wait();
+    if(is_stream_active)
+    {
+        disconnect(client_stream_thread, nullptr, nullptr, nullptr);
+        client_stream_thread->~ClientStreamThread();
+        is_stream_active = false;
+        uiStreamingInactive();
+    }
+}
+
+void FrmConnected::stopReceivingVideoStream()
+{
+    if(is_stream_active)
+    {
+        disconnect(client_stream_thread, nullptr, nullptr, nullptr);
+        client_stream_thread->~ClientStreamThread();
+        is_stream_active = false;
+        ui->btnStartStreaming->setEnabled(true);
+        uiStreamingInactive();
+    }
+}
+
+void FrmConnected::uiStreamingActive()
+{
+    QPixmap stream_active_pix(QDir::currentPath() + "/media/stream_active.png");
+    ui->lblState3->setPixmap(stream_active_pix);
+    ui->chkFullScreen->setEnabled(true);
+    ui->lblResize->setEnabled(true);
+    ui->scrollbarResize->setEnabled(true);
+    ui->lblResize2->setEnabled(true);
+}
+
+void FrmConnected::uiStreamingInactive()
+{
+    QPixmap stream_inactive_pix(QDir::currentPath() + "/media/stream_inactive.png");
+    ui->lblState3->setPixmap(stream_inactive_pix);
+    ui->chkFullScreen->setEnabled(false);
+    ui->lblResize->setEnabled(false);
+    ui->scrollbarResize->setEnabled(false);
+    ui->lblResize2->setEnabled(false);
 }

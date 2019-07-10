@@ -7,6 +7,7 @@ ClientStreamThread::ClientStreamThread()
 
 ClientStreamThread::~ClientStreamThread()
 {
+    std::system("killall ffplay");
     quit();
     wait();
 }

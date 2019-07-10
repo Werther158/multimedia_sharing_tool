@@ -16,6 +16,7 @@
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QListView>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -30,7 +31,10 @@ public:
     QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout;
     QLabel *lblState;
+    QSpacerItem *horizontalSpacer;
     QLabel *lblState2;
+    QSpacerItem *horizontalSpacer_2;
+    QLabel *lblState3;
     QWidget *layoutWidget1;
     QVBoxLayout *verticalLayout;
     QListView *listConfigurations;
@@ -38,6 +42,7 @@ public:
     QHBoxLayout *horizontalLayout_2;
     QLineEdit *txtLine;
     QPushButton *btnSend;
+    QPushButton *btnStopStream;
 
     void setupUi(QWidget *FrmRunning)
     {
@@ -52,7 +57,7 @@ public:
         btnToggleConfig->setGeometry(QRect(40, 260, 31, 25));
         layoutWidget = new QWidget(FrmRunning);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(250, 10, 124, 19));
+        layoutWidget->setGeometry(QRect(230, 10, 121, 22));
         horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
@@ -61,10 +66,23 @@ public:
 
         horizontalLayout->addWidget(lblState);
 
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer);
+
         lblState2 = new QLabel(layoutWidget);
         lblState2->setObjectName(QString::fromUtf8("lblState2"));
 
         horizontalLayout->addWidget(lblState2);
+
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_2);
+
+        lblState3 = new QLabel(layoutWidget);
+        lblState3->setObjectName(QString::fromUtf8("lblState3"));
+
+        horizontalLayout->addWidget(lblState3);
 
         layoutWidget1 = new QWidget(FrmRunning);
         layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
@@ -99,6 +117,9 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_2);
 
+        btnStopStream = new QPushButton(FrmRunning);
+        btnStopStream->setObjectName(QString::fromUtf8("btnStopStream"));
+        btnStopStream->setGeometry(QRect(80, 260, 121, 25));
 
         retranslateUi(FrmRunning);
 
@@ -112,7 +133,9 @@ public:
         btnToggleConfig->setText(QCoreApplication::translate("FrmRunning", "btnToggleConfig", nullptr));
         lblState->setText(QCoreApplication::translate("FrmRunning", "lblState", nullptr));
         lblState2->setText(QCoreApplication::translate("FrmRunning", "lblState2", nullptr));
+        lblState3->setText(QCoreApplication::translate("FrmRunning", "lblState3", nullptr));
         btnSend->setText(QCoreApplication::translate("FrmRunning", ">", nullptr));
+        btnStopStream->setText(QCoreApplication::translate("FrmRunning", "btnStopStream", nullptr));
     } // retranslateUi
 
 };

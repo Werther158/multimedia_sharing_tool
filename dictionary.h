@@ -73,6 +73,9 @@ public:
     // FrmRunning
     void getTextOflblStateRunning(QLabel *lbl);
     std::string getTextOfbtnStopRunning();
+    std::string getTextOfbtnStopStream();
+    void setTooltipOflblState2(QLabel *lbl);
+    void setTooltipOflblState3(QLabel *lbl);
 
     // FrmConnected
     void getTextOflblResize(QLabel *lbl);

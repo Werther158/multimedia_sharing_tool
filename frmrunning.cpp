@@ -11,8 +11,9 @@ FrmRunning::FrmRunning(QWidget *parent) :
     setFixedSize(size());
 
     this->setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowTitleHint);
-
+    ui->btnStopStream->setEnabled(false);
     enableListConfiguration();
+
     startServer();
 }
 
@@ -23,8 +24,10 @@ FrmRunning::~FrmRunning()
 
 void FrmRunning::startServer()
 {
-    QPixmap yellow_state(QDir::currentPath() + "/media/yellow_state.png");
-    ui->lblState2->setPixmap(yellow_state);
+    QPixmap grey_state(QDir::currentPath() + "/media/grey_state.png");
+    ui->lblState2->setPixmap(grey_state);
+    QPixmap stream_inactive_pix(QDir::currentPath() + "/media/stream_inactive.png");
+    ui->lblState3->setPixmap(stream_inactive_pix);
 
     tcp_server_thread = new TcpServerThread();
     tcp_server_thread->setConnectivity(&c);
@@ -39,7 +42,10 @@ void FrmRunning::setDict(Dictionary* dict)
 {
     this->dict = dict;
     (*dict).getTextOflblStateRunning(ui->lblState);
+    (*dict).setTooltipOflblState2(ui->lblState2);
+    (*dict).setTooltipOflblState3(ui->lblState3);
     ui->btnStop->setText(QString::fromStdString((*dict).getTextOfbtnStopRunning()));
+    ui->btnStopStream->setText(QString::fromStdString((*dict).getTextOfbtnStopStream()));
 }
 
 void FrmRunning::setSelector(int* selector)
@@ -51,6 +57,7 @@ void FrmRunning::on_btnStop_clicked()
 {
     client_connected = false;
     c.tcpWriteCommand(-1);
+    stopThreads();
     *selector = 1;
     this->close();
 }
@@ -79,12 +86,24 @@ void FrmRunning::clientConnected()
 void FrmRunning::otherGuyDisconnected()
 {
     client_connected = false;
+    stopThreads();
+    ui->txtBox->clear();
+    startServer();
+}
+
+void FrmRunning::stopThreads()
+{
     disconnect(tcp_server_thread, nullptr, nullptr, nullptr);
     tcp_server_thread->terminate();
     tcp_server_thread->wait();
 
-    ui->txtBox->clear();
-    startServer();
+    if(is_stream_active)
+    {
+        ui->btnStopStream->setEnabled(false);
+        disconnect(server_stream_thread, nullptr, nullptr, nullptr);
+        server_stream_thread->~ServerStreamThread();
+        is_stream_active = false;
+    }
 }
 
 void FrmRunning::enableListConfiguration()
@@ -124,18 +143,23 @@ void FrmRunning::on_btnToggleConfig_clicked()
 
 void FrmRunning::startServerStream()
 {
-    std::string command;
-    command = "./ffmpeg -i " + Configurations::file_name + " -c copy " + Configurations::file_name +"_fixed.mkv";
-    std::system(command.c_str());
-    command = "rm " + Configurations::file_name;
-    std::system(command.c_str());
-    command = "mv " + Configurations::file_name +"_fixed.mkv" + " " + Configurations::file_name;
-    std::system(command.c_str());
-    std::string command2 = "./ffmpeg -re -i " + Configurations::file_name + " -c copy -f matroska udp://" +
-            Configurations::client_ip + ":" + std::to_string(Configurations::port);
-    command = "./ffmpeg -re -i " + Configurations::file_name + " -c copy -f matroska udp://127.0.0.1:1234";
-    ui->txtBox->append("Start Server streaming");
-    ui->txtBox->append(QString::fromStdString(command));
-    ui->txtBox->append(QString::fromStdString(command2));
-    std::system(command.c_str());
+    // Start serverStreamThread
+    server_stream_thread = new ServerStreamThread();
+    QObject::connect(server_stream_thread, SIGNAL(writeText(QString)), this, SLOT(writeTextOnTxtBox(QString)));
+    server_stream_thread->start();
+    ui->btnStopStream->setEnabled(true);
+    is_stream_active = true;
+    QPixmap stream_active_pix(QDir::currentPath() + "/media/stream_active.png");
+    ui->lblState3->setPixmap(stream_active_pix);
+}
+
+void FrmRunning::on_btnStopStream_clicked()
+{
+    ui->btnStopStream->setEnabled(false);
+    c.tcpWriteCommand(-3);
+    is_stream_active = false;
+    disconnect(server_stream_thread, nullptr, nullptr, nullptr);
+    server_stream_thread->~ServerStreamThread();
+    QPixmap stream_inactive_pix(QDir::currentPath() + "/media/stream_inactive.png");
+    ui->lblState3->setPixmap(stream_inactive_pix);
 }

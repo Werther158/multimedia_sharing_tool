@@ -194,6 +194,7 @@ void Dictionary::fillcmbSource(QComboBox *cmb)
 
 void Dictionary::fillcmbResolution(QComboBox *cmb)
 {
+    cmb->addItem(QString::fromStdString(choices("Sorgente", "Source")));
     cmb->addItem("3840 x 2160");
     cmb->addItem("2560 x 1440");
     cmb->addItem("1920 x 1080");
@@ -203,11 +204,11 @@ void Dictionary::fillcmbResolution(QComboBox *cmb)
     cmb->addItem("640 x 360");
     cmb->addItem("426 x 240");
     cmb->addItem("256 x 144");
-    cmb->setCurrentIndex(2);
 }
 
 void Dictionary::fillcmbColorScale(QComboBox *cmb)
 {
+    cmb->addItem(QString::fromStdString(choices("Sorgente", "Source")));
     cmb->addItem("24 bpp");
     cmb->addItem("16 bpp");
     cmb->addItem("15 bpp");
@@ -215,14 +216,15 @@ void Dictionary::fillcmbColorScale(QComboBox *cmb)
     cmb->addItem("4 bpp");
     cmb->addItem("2 bpp");
     cmb->addItem("1 bpp");
-    cmb->setCurrentIndex(1);
 }
 
 void Dictionary::fillcmbFps(QComboBox *cmb)
 {
+    cmb->addItem(QString::fromStdString(choices("Sorgente", "Source")));
     cmb->addItem("60");
     cmb->addItem("59");
     cmb->addItem("55");
+    cmb->addItem("50");
     cmb->addItem("45");
     cmb->addItem("40");
     cmb->addItem("35");
@@ -234,12 +236,12 @@ void Dictionary::fillcmbFps(QComboBox *cmb)
 
 void Dictionary::fillcmbBuffer(QComboBox *cmb)
 {
+    cmb->addItem(QString::fromStdString(choices("Disabilitato", "Disabled")));
     cmb->addItem(QString::fromStdString(choices("128 frame", "128 frames")));
     cmb->addItem(QString::fromStdString(choices("64 frame", "64 frames")));
     cmb->addItem(QString::fromStdString(choices("32 frame", "32 frames")));
     cmb->addItem(QString::fromStdString(choices("16 frame", "16 frames")));
     cmb->addItem(QString::fromStdString(choices("8 frame", "8 frames")));
-    cmb->addItem(QString::fromStdString(choices("Disabilitato", "Disabled")));
 }
 
 void Dictionary::fillcmbControls(QComboBox *cmb)
@@ -288,14 +290,31 @@ std::string Dictionary::getTextOpenafile()
 // FrmRunning
 void Dictionary::getTextOflblStateRunning(QLabel *lbl)
 {
-    lbl->setToolTip(QString::fromStdString(choices("Indica lo stato attuale del server.\nGiallo: in attesa di collegamento.\nVerde: client collegato.",
-                                                   "Indicates the actual state of the server.\nYellow: waiting for a connection.\nGreen: client connected.")));
+    lbl->setToolTip(QString::fromStdString(choices("Indica lo stato attuale del server.\nPosiziona il cursore sulle icone di stato per avere più informazioni.",
+                                                   "Indicates the actual state of the server.\nPlace the cursor over the status icons for more information.")));
     lbl->setText(QString::fromStdString(choices("Stato:", "State:")));
 }
 
 std::string Dictionary::getTextOfbtnStopRunning()
 {
     return choices("Ferma server", "Stop server");
+}
+
+std::string Dictionary::getTextOfbtnStopStream()
+{
+    return choices("Ferma streaming", "Stop streaming");
+}
+
+void Dictionary::setTooltipOflblState2(QLabel *lbl)
+{
+    lbl->setToolTip(QString::fromStdString(choices("Stato del collegamento Client-Server.\nGrigio: in attesa di collegamento.\nVerde: client collegato.",
+                                                   "Client-Server connection state.\nGrey: waiting for a connection.\nGreen: client connected.")));
+}
+
+void Dictionary::setTooltipOflblState3(QLabel *lbl)
+{
+    lbl->setToolTip(QString::fromStdString(choices("Stato dello streaming video Client-Server.\nGrigio: non attivo.\nVerde: attivo.",
+                                                   "Client-Server video streaming state.\nGrey: not active.\nGreen: active.")));
 }
 
 // FrmConnected

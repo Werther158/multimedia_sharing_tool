@@ -5,6 +5,7 @@
 #include <connectivity.h>
 #include <configurations.h>
 #include <tcpserverthread.h>
+#include <serverstreamthread.h>
 #include <QWidget>
 #include <QDir>
 
@@ -29,17 +30,22 @@ private slots:
     void otherGuyDisconnected();
     void on_btnToggleConfig_clicked();
     void startServerStream();
+    void on_btnStopStream_clicked();
+
 private:
     Ui::FrmRunning *ui;
     Dictionary* dict;
     int* selector;
     TcpServerThread *tcp_server_thread;
+    ServerStreamThread *server_stream_thread;
     Connectivity c;
 
     bool client_connected = false;
     bool listconfig_active = true;
+    bool is_stream_active = false;
 
     void startServer();
+    void stopThreads();
     void enableListConfiguration();
     void disableListConfiguration();
 };

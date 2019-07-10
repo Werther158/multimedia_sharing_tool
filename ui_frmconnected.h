@@ -46,21 +46,28 @@ public:
     QPushButton *btnSend;
     QPushButton *btnToggleConfig;
     QPushButton *btnStartStreaming;
+    QWidget *widget;
+    QHBoxLayout *horizontalLayout_3;
+    QLabel *lblState;
+    QSpacerItem *horizontalSpacer_3;
+    QLabel *lblState2;
+    QSpacerItem *horizontalSpacer_4;
+    QLabel *lblState3;
 
     void setupUi(QWidget *FrmConnected)
     {
         if (FrmConnected->objectName().isEmpty())
             FrmConnected->setObjectName(QString::fromUtf8("FrmConnected"));
-        FrmConnected->resize(431, 329);
+        FrmConnected->resize(431, 327);
         chkFullScreen = new QCheckBox(FrmConnected);
         chkFullScreen->setObjectName(QString::fromUtf8("chkFullScreen"));
-        chkFullScreen->setGeometry(QRect(30, 60, 201, 23));
+        chkFullScreen->setGeometry(QRect(30, 30, 201, 23));
         btnDisconnect = new QPushButton(FrmConnected);
         btnDisconnect->setObjectName(QString::fromUtf8("btnDisconnect"));
         btnDisconnect->setGeometry(QRect(330, 290, 89, 25));
         layoutWidget = new QWidget(FrmConnected);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(30, 30, 331, 22));
+        layoutWidget->setGeometry(QRect(30, 60, 297, 22));
         horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
@@ -130,6 +137,35 @@ public:
         btnStartStreaming = new QPushButton(FrmConnected);
         btnStartStreaming->setObjectName(QString::fromUtf8("btnStartStreaming"));
         btnStartStreaming->setGeometry(QRect(70, 290, 131, 25));
+        widget = new QWidget(FrmConnected);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setGeometry(QRect(273, 20, 121, 22));
+        horizontalLayout_3 = new QHBoxLayout(widget);
+        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
+        horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
+        lblState = new QLabel(widget);
+        lblState->setObjectName(QString::fromUtf8("lblState"));
+
+        horizontalLayout_3->addWidget(lblState);
+
+        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_3->addItem(horizontalSpacer_3);
+
+        lblState2 = new QLabel(widget);
+        lblState2->setObjectName(QString::fromUtf8("lblState2"));
+
+        horizontalLayout_3->addWidget(lblState2);
+
+        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_3->addItem(horizontalSpacer_4);
+
+        lblState3 = new QLabel(widget);
+        lblState3->setObjectName(QString::fromUtf8("lblState3"));
+
+        horizontalLayout_3->addWidget(lblState3);
+
 
         retranslateUi(FrmConnected);
 
@@ -146,6 +182,9 @@ public:
         btnSend->setText(QCoreApplication::translate("FrmConnected", ">", nullptr));
         btnToggleConfig->setText(QCoreApplication::translate("FrmConnected", "btnToggleConfig", nullptr));
         btnStartStreaming->setText(QCoreApplication::translate("FrmConnected", "btnStartStreaming", nullptr));
+        lblState->setText(QCoreApplication::translate("FrmConnected", "lblState", nullptr));
+        lblState2->setText(QCoreApplication::translate("FrmConnected", "lblState2", nullptr));
+        lblState3->setText(QCoreApplication::translate("FrmConnected", "lblState3", nullptr));
     } // retranslateUi
 
 };

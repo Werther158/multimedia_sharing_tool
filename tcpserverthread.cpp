@@ -4,12 +4,6 @@ TcpServerThread::TcpServerThread()
 {
 }
 
-TcpServerThread::~TcpServerThread()
-{
-    quit();
-    wait();
-}
-
 void TcpServerThread::setConnectivity(Connectivity *c)
 {
     this->c = c;

@@ -35,6 +35,7 @@ SOURCES += \
         frmserver.cpp \
         main.cpp \
         frmmain.cpp \
+        serverstreamthread.cpp \
         tcpclientthread.cpp \
         tcpserverthread.cpp
 
@@ -48,6 +49,7 @@ HEADERS += \
         frmmain.h \
         frmrunning.h \
         frmserver.h \
+        serverstreamthread.h \
         tcpclientthread.h \
         tcpserverthread.h
 

@@ -71,9 +71,9 @@ void FrmClient::setConfigurations()
     Configurations::password = ui->txtPassword->text().toStdString();
     Configurations::leave_client_config = false;
     Configurations::resolution = static_cast<uint8_t>(ui->cmbResolution->currentIndex());
-    Configurations::fps = stoi(ui->cmbFps->currentText().toStdString());
-    Configurations::buffer = ui->cmbBuffer->currentIndex();
-    Configurations::color_scale = ui->cmbColorScale->currentIndex();
+    Configurations::fps = static_cast<uint8_t>(ui->cmbFps->currentIndex());
+    Configurations::buffer = static_cast<uint8_t>(ui->cmbBuffer->currentIndex());
+    Configurations::color_scale = static_cast<uint8_t>(ui->cmbColorScale->currentIndex());
     Configurations::controls = static_cast<uint8_t>(ui->cmbControls->currentIndex());
     Configurations::file_name = "";
 }

@@ -14,6 +14,7 @@ public:
 
     static std::string source_choices[];
     static std::string resolution_choices[];
+    static int fps_choices[];
     static int buffer_choices[];
     static int color_scale_choices[];
     static std::string controls_choices[];
@@ -28,9 +29,9 @@ public:
     static std::string password;
     static bool leave_client_config;
     static uint8_t resolution;
-    static int fps;
-    static int buffer;
-    static int color_scale;
+    static uint8_t fps;
+    static uint8_t buffer;
+    static uint8_t color_scale;
     static uint8_t controls;
 };
 

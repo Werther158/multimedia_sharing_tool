@@ -12,7 +12,6 @@ private:
     Connectivity *c;
 public:
     TcpServerThread();
-    ~TcpServerThread();
     void setConnectivity(Connectivity *c);
     void run();
 signals:

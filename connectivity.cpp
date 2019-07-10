@@ -147,10 +147,14 @@ void Connectivity::tcpRead()
             emit otherGuyDisconnected();
             break;
         }
-        if(buffer[0] == -2)
+        if(buffer[0] == -2) // (Server side) Start sending video stream to client
         {
-            // (Server side) Start sending video stream to client
             emit startServerStream();
+        }
+        else
+        if(buffer[0] == -3) // (Client side) Stop receiving video stream
+        {
+            emit stopReceivingVideoStream();
         }
         else
         if(Configurations::system == SERVER)

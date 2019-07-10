@@ -42,6 +42,7 @@ signals:
     void clientConnected();
     void otherGuyDisconnected();
     void startServerStream();
+    void stopReceivingVideoStream();
 };
 
 #endif // CONNECTIVITY_H

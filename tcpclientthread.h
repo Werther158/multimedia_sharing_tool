@@ -12,13 +12,13 @@ private:
     Connectivity *c;
 public:
     TcpClientThread();
-    ~TcpClientThread();
     void setConnectivity(Connectivity *c);
     void run();
 signals:
     void writeText(QString);
     void clientConnected();
     void otherGuyDisconnected();
+    void stopReceivingVideoStream();
 };
 
 #endif // TCPCLIENTTHREAD_H
