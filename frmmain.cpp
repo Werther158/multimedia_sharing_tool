@@ -1,8 +1,5 @@
 #include "frmmain.h"
 #include "ui_frmmain.h"
-#include "dictionary.h"
-#include <QString>
-#include <QCloseEvent>
 
 FrmMain::FrmMain(QWidget *parent) :
     QWidget(parent),
@@ -10,6 +7,7 @@ FrmMain::FrmMain(QWidget *parent) :
 {
     ui->setupUi(this);
     setFixedSize(size());
+    setWindowIcon(QIcon("./media/mst_logo.png"));
 }
 
 FrmMain::~FrmMain()

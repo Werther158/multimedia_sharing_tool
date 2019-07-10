@@ -2,6 +2,8 @@
 #define FRMMAIN_H
 
 #include <QWidget>
+#include <QString>
+#include <QCloseEvent>
 #include "dictionary.h"
 
 namespace Ui {

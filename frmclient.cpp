@@ -11,6 +11,7 @@ FrmClient::FrmClient(QWidget *parent) :
     ui->txtIpServer->setText("127.0.0.1");
     ui->txtPort->setText("1234");
     setFixedSize(size());
+    setWindowIcon(QIcon("./media/mst_logo.png"));
 }
 
 FrmClient::~FrmClient()

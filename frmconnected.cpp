@@ -8,6 +8,7 @@ FrmConnected::FrmConnected(QWidget *parent) :
     ui->setupUi(this);
     ui->lblResize2->setText("100%");
     setFixedSize(size());
+    setWindowIcon(QIcon("./media/mst_logo.png"));
     this->setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowTitleHint);
 
     enableListConfiguration();

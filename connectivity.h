@@ -13,6 +13,9 @@
 #include <string.h>
 #include <arpa/inet.h>
 #include <QObject>
+#include <curl/easy.h>
+#include <sstream>
+#include <iostream>
 
 #include <configurations.h>
 
@@ -20,7 +23,8 @@ class Connectivity : public QObject
 {
     Q_OBJECT
 private:
-    int sock = 0, valread;
+    int sock = 0;
+    ssize_t valread;
     struct sockaddr_in serv_addr;
     int server_fd;
     struct sockaddr_in address;

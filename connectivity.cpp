@@ -1,14 +1,10 @@
 #include <connectivity.h>
-#include <curl/curl.h>
-#include <curl/easy.h>
-#include <sstream>
-#include <iostream>
 
 using namespace std;
 
 size_t write_data(void *ptr, size_t size, size_t nmemb, void *stream) {
-    string data((const char*) ptr, (size_t) size * nmemb);
-    *((stringstream*) stream) << data;
+    string data(reinterpret_cast<const char*>(ptr), reinterpret_cast<size_t>(size) * nmemb);
+    *(reinterpret_cast<stringstream*>(stream)) << data;
     return size * nmemb;
 }
 
@@ -47,7 +43,7 @@ string Connectivity::getPublicIp() {
 
 int Connectivity::tcpServer(uint16_t PORT)
 {
-    char *hello = "Hello from server";
+    string hello = "Hello from server";
 
     // Creating socket file descriptor
     if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0)
@@ -68,7 +64,7 @@ int Connectivity::tcpServer(uint16_t PORT)
     address.sin_port = htons( PORT );
 
     // Forcefully attaching socket to the port
-    if (bind(server_fd, (struct sockaddr *)&address,
+    if (bind(server_fd, reinterpret_cast<struct sockaddr *>(&address),
                                  sizeof(address))<0)
     {
         perror("bind failed");
@@ -80,15 +76,15 @@ int Connectivity::tcpServer(uint16_t PORT)
         exit(EXIT_FAILURE);
     }
     emit writeText("Server running");
-    if ((sock = accept(server_fd, (struct sockaddr *)&address,
-                       (socklen_t*)&addrlen))<0)
+    if ((sock = accept(server_fd, reinterpret_cast<struct sockaddr *>(&address),
+                       reinterpret_cast<socklen_t*>(&addrlen)))<0)
     {
         perror("accept");
         exit(EXIT_FAILURE);
     }
 
     valread = read(sock, buffer, BUFFER_SIZE);
-    send(sock, hello, strlen(hello), 0);
+    send(sock, hello.c_str(), strlen(hello.c_str()), 0);
 
     emit writeText("Client connected\n");
     emit clientConnected();
@@ -100,7 +96,7 @@ int Connectivity::tcpServer(uint16_t PORT)
 
 int Connectivity::tcpClient(string server_ip, uint16_t PORT)
 {
-    char *hello = "Hello from client";
+    string hello = "Hello from client";
 
     if ((sock = socket(AF_INET, SOCK_STREAM, 0)) < 0)
     {
@@ -118,13 +114,13 @@ int Connectivity::tcpClient(string server_ip, uint16_t PORT)
         return -1;
     }
 
-    if (::connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0)
+    if (::connect(sock, reinterpret_cast<struct sockaddr *>(&serv_addr), sizeof(serv_addr)) < 0)
     {
         printf("\nConnection Failed \n");
         return -1;
     }
 
-    send(sock, hello, strlen(hello), 0 );
+    send(sock, hello.c_str(), strlen(hello.c_str()), 0 );
     valread = read(sock, buffer, BUFFER_SIZE);
 
     emit writeText("Client connected\n");

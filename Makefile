@@ -2537,6 +2537,7 @@ frmrunning.o: frmrunning.cpp frmrunning.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractitemview.h \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractscrollarea.h \
 		../../Qt/5.13.0/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../Qt/5.13.0/gcc_64/include/QtWidgets/QSpacerItem \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/QTextEdit \
 		../../Qt/5.13.0/gcc_64/include/QtWidgets/qtextedit.h \
 		../../Qt/5.13.0/gcc_64/include/QtGui/qtextdocument.h \

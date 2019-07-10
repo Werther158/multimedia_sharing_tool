@@ -1,14 +1,13 @@
 #include "frmrunning.h"
 #include "ui_frmrunning.h"
 
-#include <iostream>
-
 FrmRunning::FrmRunning(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::FrmRunning)
 {
     ui->setupUi(this);
     setFixedSize(size());
+    setWindowIcon(QIcon("./media/mst_logo.png"));
 
     this->setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowTitleHint);
     ui->btnStopStream->setEnabled(false);

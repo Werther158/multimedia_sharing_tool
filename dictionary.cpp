@@ -1,5 +1,4 @@
 #include "dictionary.h"
-#include "string"
 
 Dictionary::Dictionary()
 {
