@@ -34,6 +34,7 @@ void FrmRunning::startServer()
     QObject::connect(tcp_server_thread, SIGNAL(clientConnected()), this, SLOT(clientConnected()));
     QObject::connect(tcp_server_thread, SIGNAL(otherGuyDisconnected()), this, SLOT(otherGuyDisconnected()));
     QObject::connect(tcp_server_thread, SIGNAL(startServerStream()), this, SLOT(startServerStream()));
+    QObject::connect(tcp_server_thread, SIGNAL(streamingEnded()), this, SLOT(streamingEnded()));
     tcp_server_thread->start();
 }
 
@@ -142,6 +143,7 @@ void FrmRunning::on_btnToggleConfig_clicked()
 
 void FrmRunning::startServerStream()
 {
+    ui->txtBox->append("Streaming started");
     // Start serverStreamThread
     server_stream_thread = new ServerStreamThread();
     QObject::connect(server_stream_thread, SIGNAL(writeText(QString)), this, SLOT(writeTextOnTxtBox(QString)));
@@ -154,6 +156,7 @@ void FrmRunning::startServerStream()
 
 void FrmRunning::on_btnStopStream_clicked()
 {
+    ui->txtBox->append("Streaming ended");
     ui->btnStopStream->setEnabled(false);
     c.tcpWriteCommand(-3);
     is_stream_active = false;
@@ -161,4 +164,18 @@ void FrmRunning::on_btnStopStream_clicked()
     server_stream_thread->~ServerStreamThread();
     QPixmap stream_inactive_pix(QDir::currentPath() + "/media/stream_inactive.png");
     ui->lblState3->setPixmap(stream_inactive_pix);
+}
+
+void FrmRunning::streamingEnded()
+{
+    ui->txtBox->append("Streaming ended");
+    QPixmap stream_inactive_pix(QDir::currentPath() + "/media/stream_inactive.png");
+    ui->lblState3->setPixmap(stream_inactive_pix);
+    if(is_stream_active)
+    {
+        ui->btnStopStream->setEnabled(false);
+        disconnect(server_stream_thread, nullptr, nullptr, nullptr);
+        server_stream_thread->~ServerStreamThread();
+        is_stream_active = false;
+    }
 }

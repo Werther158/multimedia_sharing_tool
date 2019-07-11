@@ -19,6 +19,7 @@ signals:
     void clientConnected();
     void otherGuyDisconnected();
     void startServerStream();
+    void streamingEnded();
 };
 
 #endif // TCPSERVERTHREAD_H

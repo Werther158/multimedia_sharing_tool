@@ -31,7 +31,7 @@ private slots:
     void on_btnToggleConfig_clicked();
     void startServerStream();
     void on_btnStopStream_clicked();
-
+    void streamingEnded();
 private:
     Ui::FrmRunning *ui;
     Dictionary* dict;

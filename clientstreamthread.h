@@ -13,6 +13,7 @@ public:
     void run();
 signals:
     void sendStartStreamingCommand();
+    void streamingEnded();
 };
 
 #endif // CLIENTSTREAMTHREAD_H

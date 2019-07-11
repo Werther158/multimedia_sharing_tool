@@ -137,8 +137,10 @@ void FrmConnected::on_btnStartStreaming_clicked()
     if(client_connected)
     {
         // Start streaming thread
+        ui->txtBox->append("Streaming started");
         client_stream_thread = new ClientStreamThread();
         QObject::connect(client_stream_thread, SIGNAL(sendStartStreamingCommand()), this, SLOT(sendStartStreamingCommand()));
+        QObject::connect(client_stream_thread, SIGNAL(streamingEnded()), this, SLOT(streamingEnded()));
         client_stream_thread->start();
         is_stream_active = true;
         ui->btnStartStreaming->setEnabled(false);
@@ -163,6 +165,7 @@ void FrmConnected::stopReceivingVideoStream()
 {
     if(is_stream_active)
     {
+        ui->txtBox->append("Streaming ended");
         disconnect(client_stream_thread, nullptr, nullptr, nullptr);
         client_stream_thread->~ClientStreamThread();
         is_stream_active = false;
@@ -189,4 +192,10 @@ void FrmConnected::uiStreamingInactive()
     ui->lblResize->setEnabled(false);
     ui->scrollbarResize->setEnabled(false);
     ui->lblResize2->setEnabled(false);
+}
+
+void FrmConnected::streamingEnded()
+{
+    stopReceivingVideoStream();
+    c.tcpWriteCommand(-4);
 }

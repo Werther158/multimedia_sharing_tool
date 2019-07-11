@@ -18,4 +18,5 @@ void ClientStreamThread::run()
     std::string command;
     command = "ffplay udp://" + Configurations::server_ip + ":" + std::to_string(Configurations::port);
     std::system(command.c_str());
+    emit streamingEnded();
 }

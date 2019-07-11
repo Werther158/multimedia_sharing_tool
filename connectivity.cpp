@@ -86,7 +86,7 @@ int Connectivity::tcpServer(uint16_t PORT)
     valread = read(sock, buffer, BUFFER_SIZE);
     send(sock, hello.c_str(), strlen(hello.c_str()), 0);
 
-    emit writeText("Client connected\n");
+    emit writeText("Client connected");
     emit clientConnected();
 
     tcpRead();
@@ -123,7 +123,7 @@ int Connectivity::tcpClient(string server_ip, uint16_t PORT)
     send(sock, hello.c_str(), strlen(hello.c_str()), 0 );
     valread = read(sock, buffer, BUFFER_SIZE);
 
-    emit writeText("Client connected\n");
+    emit writeText("Client connected");
     emit clientConnected();
 
     tcpRead();
@@ -151,6 +151,11 @@ void Connectivity::tcpRead()
         if(buffer[0] == -3) // (Client side) Stop receiving video stream
         {
             emit stopReceivingVideoStream();
+        }
+        else
+        if(buffer[0] == -4) // (Server side) Streaming ended
+        {
+            emit streamingEnded();
         }
         else
         if(Configurations::system == SERVER)

@@ -15,5 +15,6 @@ void TcpServerThread::run()
     connect(c, SIGNAL(startServerStream()), this, SIGNAL(startServerStream()));
     connect(c, SIGNAL(clientConnected()), this, SIGNAL(clientConnected()));
     connect(c, SIGNAL(otherGuyDisconnected()), this, SIGNAL(otherGuyDisconnected()));
+    connect(c, SIGNAL(streamingEnded()), this, SIGNAL(streamingEnded()));
     (*c).tcpServer(Configurations::port);
 }
