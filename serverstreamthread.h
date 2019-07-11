@@ -13,6 +13,7 @@ public:
     void run();
 signals:
     void writeText(QString);
+    void stopStream();
 };
 
 #endif // SERVERSTREAMTHREAD_H

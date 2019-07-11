@@ -68,15 +68,15 @@ static const uint qt_meta_data_Connectivity[] = {
        4,    0,   47,    2, 0x06 /* Public */,
        5,    0,   48,    2, 0x06 /* Public */,
        6,    0,   49,    2, 0x06 /* Public */,
-       7,    0,   50,    2, 0x06 /* Public */,
-       8,    0,   51,    2, 0x06 /* Public */,
+       7,    1,   50,    2, 0x06 /* Public */,
+       8,    0,   53,    2, 0x06 /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString,    3,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void,
+    QMetaType::Void, QMetaType::Bool,    2,
     QMetaType::Void,
 
        0        // eod
@@ -92,7 +92,7 @@ void Connectivity::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         case 1: _t->clientConnected(); break;
         case 2: _t->otherGuyDisconnected(); break;
         case 3: _t->startServerStream(); break;
-        case 4: _t->stopReceivingVideoStream(); break;
+        case 4: _t->stopReceivingVideoStream((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 5: _t->streamingEnded(); break;
         default: ;
         }
@@ -127,7 +127,7 @@ void Connectivity::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
             }
         }
         {
-            using _t = void (Connectivity::*)();
+            using _t = void (Connectivity::*)(bool );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Connectivity::stopReceivingVideoStream)) {
                 *result = 4;
                 return;
@@ -209,9 +209,10 @@ void Connectivity::startServerStream()
 }
 
 // SIGNAL 4
-void Connectivity::stopReceivingVideoStream()
+void Connectivity::stopReceivingVideoStream(bool _t1)
 {
-    QMetaObject::activate(this, &staticMetaObject, 4, nullptr);
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    QMetaObject::activate(this, &staticMetaObject, 4, _a);
 }
 
 // SIGNAL 5

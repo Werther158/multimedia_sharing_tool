@@ -7,6 +7,8 @@ ServerStreamThread::ServerStreamThread()
 ServerStreamThread::~ServerStreamThread()
 {
     std::system("killall ffmpeg");
+    std::string command = "fuser -k " + std::to_string(Configurations::port) + "/udp";
+    std::system(command.c_str());
     quit();
     wait();
 }
@@ -23,4 +25,5 @@ void ServerStreamThread::run()
     command = "ffmpeg -re -i " + Configurations::file_name + " -c copy -f matroska udp://" +
             Configurations::client_ip + ":" + std::to_string(Configurations::port);
     std::system(command.c_str());
+    emit stopStream();
 }

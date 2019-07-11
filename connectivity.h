@@ -16,6 +16,7 @@
 #include <curl/easy.h>
 #include <sstream>
 #include <iostream>
+#include <time.h>
 
 #include <configurations.h>
 
@@ -33,6 +34,7 @@ private:
     char buffer[BUFFER_SIZE] = {0};
 
     void tcpRead();
+
 public:
     Connectivity();
     ~Connectivity();
@@ -41,12 +43,13 @@ public:
     int tcpClient(std::string server_ip, uint16_t PORT);
     void tcpWriteData(QString text);
     void tcpWriteCommand(char command);
+    void killTcpSocket();
 signals:
     void writeText(QString text);
     void clientConnected();
     void otherGuyDisconnected();
     void startServerStream();
-    void stopReceivingVideoStream();
+    void stopReceivingVideoStream(bool);
     void streamingEnded();
 };
 

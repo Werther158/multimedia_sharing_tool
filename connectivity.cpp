@@ -138,22 +138,22 @@ void Connectivity::tcpRead()
         memset(buffer, 0, BUFFER_SIZE);
         valread = read(sock, buffer, BUFFER_SIZE);
 
-        if(buffer[0] == -1) // The other guy clicked disconnect
+        if(buffer[0] == (char)-1) // The other guy clicked disconnect
         {
             emit otherGuyDisconnected();
             break;
         }
-        if(buffer[0] == -2) // (Server side) Start sending video stream to client
+        if(buffer[0] == (char)-2) // (Server side) Start sending video stream to client
         {
             emit startServerStream();
         }
         else
-        if(buffer[0] == -3) // (Client side) Stop receiving video stream
+        if(buffer[0] == (char)-3) // (Client side) Stop receiving video stream
         {
-            emit stopReceivingVideoStream();
+            emit stopReceivingVideoStream(false);
         }
         else
-        if(buffer[0] == -4) // (Server side) Streaming ended
+        if(buffer[0] == (char)-4) // (Server side) Streaming ended
         {
             emit streamingEnded();
         }
@@ -178,4 +178,9 @@ void Connectivity::tcpWriteCommand(char command)
 {
     buffer[0] = command;
     send(sock, buffer, 1, 0);
+}
+
+void Connectivity::killTcpSocket()
+{
+    close(sock);
 }

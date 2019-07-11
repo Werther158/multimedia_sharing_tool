@@ -32,7 +32,7 @@ private slots:
     void sendStartStreamingCommand();
     void on_btnToggleConfig_clicked();
     void on_btnStartStreaming_clicked();
-    void stopReceivingVideoStream();
+    void stopReceivingVideoStream(bool is_video_ended);
     void streamingEnded();
 
 private:

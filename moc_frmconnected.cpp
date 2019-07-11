@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_FrmConnected_t {
-    QByteArrayData data[13];
-    char stringdata0[239];
+    QByteArrayData data[14];
+    char stringdata0[254];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -44,7 +44,8 @@ QT_MOC_LITERAL(8, 117, 25), // "sendStartStreamingCommand"
 QT_MOC_LITERAL(9, 143, 26), // "on_btnToggleConfig_clicked"
 QT_MOC_LITERAL(10, 170, 28), // "on_btnStartStreaming_clicked"
 QT_MOC_LITERAL(11, 199, 24), // "stopReceivingVideoStream"
-QT_MOC_LITERAL(12, 224, 14) // "streamingEnded"
+QT_MOC_LITERAL(12, 224, 14), // "is_video_ended"
+QT_MOC_LITERAL(13, 239, 14) // "streamingEnded"
 
     },
     "FrmConnected\0on_btnDisconnect_clicked\0"
@@ -53,7 +54,8 @@ QT_MOC_LITERAL(12, 224, 14) // "streamingEnded"
     "sendStartStreamingCommand\0"
     "on_btnToggleConfig_clicked\0"
     "on_btnStartStreaming_clicked\0"
-    "stopReceivingVideoStream\0streamingEnded"
+    "stopReceivingVideoStream\0is_video_ended\0"
+    "streamingEnded"
 };
 #undef QT_MOC_LITERAL
 
@@ -79,8 +81,8 @@ static const uint qt_meta_data_FrmConnected[] = {
        8,    0,   71,    2, 0x08 /* Private */,
        9,    0,   72,    2, 0x08 /* Private */,
       10,    0,   73,    2, 0x08 /* Private */,
-      11,    0,   74,    2, 0x08 /* Private */,
-      12,    0,   75,    2, 0x08 /* Private */,
+      11,    1,   74,    2, 0x08 /* Private */,
+      13,    0,   77,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -91,7 +93,7 @@ static const uint qt_meta_data_FrmConnected[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void,
+    QMetaType::Void, QMetaType::Bool,   12,
     QMetaType::Void,
 
        0        // eod
@@ -111,7 +113,7 @@ void FrmConnected::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         case 5: _t->sendStartStreamingCommand(); break;
         case 6: _t->on_btnToggleConfig_clicked(); break;
         case 7: _t->on_btnStartStreaming_clicked(); break;
-        case 8: _t->stopReceivingVideoStream(); break;
+        case 8: _t->stopReceivingVideoStream((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 9: _t->streamingEnded(); break;
         default: ;
         }

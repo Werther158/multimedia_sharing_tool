@@ -32,6 +32,7 @@ private slots:
     void startServerStream();
     void on_btnStopStream_clicked();
     void streamingEnded();
+    void stopStream();
 private:
     Ui::FrmRunning *ui;
     Dictionary* dict;

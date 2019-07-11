@@ -96,6 +96,7 @@ void FrmRunning::stopThreads()
     disconnect(tcp_server_thread, nullptr, nullptr, nullptr);
     tcp_server_thread->terminate();
     tcp_server_thread->wait();
+    c.killTcpSocket();
 
     if(is_stream_active)
     {
@@ -147,6 +148,7 @@ void FrmRunning::startServerStream()
     // Start serverStreamThread
     server_stream_thread = new ServerStreamThread();
     QObject::connect(server_stream_thread, SIGNAL(writeText(QString)), this, SLOT(writeTextOnTxtBox(QString)));
+    QObject::connect(server_stream_thread, SIGNAL(stopStream()), this, SLOT(stopStream()));
     server_stream_thread->start();
     ui->btnStopStream->setEnabled(true);
     is_stream_active = true;
@@ -154,7 +156,7 @@ void FrmRunning::startServerStream()
     ui->lblState3->setPixmap(stream_active_pix);
 }
 
-void FrmRunning::on_btnStopStream_clicked()
+void FrmRunning::stopStream()
 {
     ui->txtBox->append("Streaming ended");
     ui->btnStopStream->setEnabled(false);
@@ -164,6 +166,11 @@ void FrmRunning::on_btnStopStream_clicked()
     server_stream_thread->~ServerStreamThread();
     QPixmap stream_inactive_pix(QDir::currentPath() + "/media/stream_inactive.png");
     ui->lblState3->setPixmap(stream_inactive_pix);
+}
+
+void FrmRunning::on_btnStopStream_clicked()
+{
+    stopStream();
 }
 
 void FrmRunning::streamingEnded()

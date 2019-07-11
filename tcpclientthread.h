@@ -18,7 +18,7 @@ signals:
     void writeText(QString);
     void clientConnected();
     void otherGuyDisconnected();
-    void stopReceivingVideoStream();
+    void stopReceivingVideoStream(bool);
 };
 
 #endif // TCPCLIENTTHREAD_H

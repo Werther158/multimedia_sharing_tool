@@ -62,13 +62,13 @@ static const uint qt_meta_data_TcpClientThread[] = {
        1,    1,   34,    2, 0x06 /* Public */,
        3,    0,   37,    2, 0x06 /* Public */,
        4,    0,   38,    2, 0x06 /* Public */,
-       5,    0,   39,    2, 0x06 /* Public */,
+       5,    1,   39,    2, 0x06 /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString,    2,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void,
+    QMetaType::Void, QMetaType::Bool,    2,
 
        0        // eod
 };
@@ -82,7 +82,7 @@ void TcpClientThread::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
         case 0: _t->writeText((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 1: _t->clientConnected(); break;
         case 2: _t->otherGuyDisconnected(); break;
-        case 3: _t->stopReceivingVideoStream(); break;
+        case 3: _t->stopReceivingVideoStream((*reinterpret_cast< bool(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -109,7 +109,7 @@ void TcpClientThread::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
             }
         }
         {
-            using _t = void (TcpClientThread::*)();
+            using _t = void (TcpClientThread::*)(bool );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&TcpClientThread::stopReceivingVideoStream)) {
                 *result = 3;
                 return;
@@ -178,9 +178,10 @@ void TcpClientThread::otherGuyDisconnected()
 }
 
 // SIGNAL 3
-void TcpClientThread::stopReceivingVideoStream()
+void TcpClientThread::stopReceivingVideoStream(bool _t1)
 {
-    QMetaObject::activate(this, &staticMetaObject, 3, nullptr);
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    QMetaObject::activate(this, &staticMetaObject, 3, _a);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

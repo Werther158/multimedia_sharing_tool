@@ -22,7 +22,7 @@ FrmConnected::FrmConnected(QWidget *parent) :
     QObject::connect(tcp_client_thread, SIGNAL(writeText(QString)), this, SLOT(writeTextOnTxtBox(QString)));
     QObject::connect(tcp_client_thread, SIGNAL(clientConnected()), this, SLOT(clientConnected()));
     QObject::connect(tcp_client_thread, SIGNAL(otherGuyDisconnected()), this, SLOT(otherGuyDisconnected()));
-    QObject::connect(tcp_client_thread, SIGNAL(stopReceivingVideoStream()), this, SLOT(stopReceivingVideoStream()));
+    QObject::connect(tcp_client_thread, SIGNAL(stopReceivingVideoStream(bool)), this, SLOT(stopReceivingVideoStream(bool)));
     tcp_client_thread->start();
 
     ui->btnStartStreaming->setEnabled(false);
@@ -152,8 +152,11 @@ void FrmConnected::stopThreads()
     disconnect(tcp_client_thread, nullptr, nullptr, nullptr);
     tcp_client_thread->terminate();
     tcp_client_thread->wait();
+    c.killTcpSocket();
+
     if(is_stream_active)
     {
+        std::system("killall ffplay");
         disconnect(client_stream_thread, nullptr, nullptr, nullptr);
         client_stream_thread->~ClientStreamThread();
         is_stream_active = false;
@@ -161,10 +164,13 @@ void FrmConnected::stopThreads()
     }
 }
 
-void FrmConnected::stopReceivingVideoStream()
+void FrmConnected::stopReceivingVideoStream(bool is_video_ended)
 {
     if(is_stream_active)
     {
+        if(!is_video_ended)
+            std::system("killall ffplay");
+
         ui->txtBox->append("Streaming ended");
         disconnect(client_stream_thread, nullptr, nullptr, nullptr);
         client_stream_thread->~ClientStreamThread();
@@ -196,6 +202,6 @@ void FrmConnected::uiStreamingInactive()
 
 void FrmConnected::streamingEnded()
 {
-    stopReceivingVideoStream();
+    stopReceivingVideoStream(true);
     c.tcpWriteCommand(-4);
 }
