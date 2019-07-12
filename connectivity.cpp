@@ -43,8 +43,6 @@ string Connectivity::getPublicIp() {
 
 int Connectivity::tcpServer(uint16_t PORT)
 {
-    string hello = "Hello from server";
-
     // Creating socket file descriptor
     if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0)
     {
@@ -84,7 +82,8 @@ int Connectivity::tcpServer(uint16_t PORT)
     }
 
     valread = read(sock, buffer, BUFFER_SIZE);
-    send(sock, hello.c_str(), strlen(hello.c_str()), 0);
+    send(sock, Configurations::client_ip.c_str(), strlen(Configurations::client_ip.c_str()), 0);
+    Configurations::my_own_used_ip = buffer;
 
     emit writeText("Client connected");
     emit clientConnected();
@@ -96,8 +95,6 @@ int Connectivity::tcpServer(uint16_t PORT)
 
 int Connectivity::tcpClient(string server_ip, uint16_t PORT)
 {
-    string hello = "Hello from client";
-
     if ((sock = socket(AF_INET, SOCK_STREAM, 0)) < 0)
     {
         printf("\n Socket creation error \n");
@@ -120,8 +117,9 @@ int Connectivity::tcpClient(string server_ip, uint16_t PORT)
         return -1;
     }
 
-    send(sock, hello.c_str(), strlen(hello.c_str()), 0 );
+    send(sock, Configurations::server_ip.c_str(), strlen(Configurations::server_ip.c_str()), 0 );
     valread = read(sock, buffer, BUFFER_SIZE);
+    Configurations::my_own_used_ip = buffer;
 
     emit writeText("Client connected");
     emit clientConnected();

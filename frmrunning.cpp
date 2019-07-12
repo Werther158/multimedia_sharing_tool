@@ -1,6 +1,7 @@
 #include "frmrunning.h"
 #include "ui_frmrunning.h"
 
+
 FrmRunning::FrmRunning(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::FrmRunning)
@@ -18,6 +19,8 @@ FrmRunning::FrmRunning(QWidget *parent) :
     QRect desktopRect = QApplication::desktop()->availableGeometry(this);
     QPoint center = desktopRect.center();
     move(center.x()- static_cast<int>(width()*0.5),center.y()- static_cast<int>(height()*0.5));
+
+    ui->txtLine->installEventFilter(this);
 }
 
 FrmRunning::~FrmRunning()
@@ -153,6 +156,7 @@ void FrmRunning::startServerStream()
     server_stream_thread = new ServerStreamThread();
     QObject::connect(server_stream_thread, SIGNAL(writeText(QString)), this, SLOT(writeTextOnTxtBox(QString)));
     QObject::connect(server_stream_thread, SIGNAL(stopStream()), this, SLOT(stopStream()));
+    QObject::connect(this, SIGNAL(setStreamingEnded()), server_stream_thread, SLOT(setStreamingEnded()));
     server_stream_thread->start();
     ui->btnStopStream->setEnabled(true);
     is_stream_active = true;
@@ -186,6 +190,7 @@ void FrmRunning::streamingEnded()
     {
         ui->btnStopStream->setEnabled(false);
         disconnect(server_stream_thread, nullptr, nullptr, nullptr);
+        emit setStreamingEnded();
         server_stream_thread->~ServerStreamThread();
         is_stream_active = false;
     }

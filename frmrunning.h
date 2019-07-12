@@ -50,6 +50,8 @@ private:
     void stopThreads();
     void enableListConfiguration();
     void disableListConfiguration();
+signals:
+    void setStreamingEnded();
 };
 
 #endif // FRMRUNNING_H

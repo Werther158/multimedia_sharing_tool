@@ -9,7 +9,7 @@ FrmServer::FrmServer(QWidget *parent) :
     std::string public_ip = Connectivity::getPublicIp();
     ui->lblIpServer2->setText(QString::fromStdString(public_ip));
     ui->txtIpClient->setText("127.0.0.1");
-    ui->txtPort->setText("1234");
+    ui->txtPort->setText("8090");
     setFixedSize(size());
     setWindowIcon(QIcon("./media/mst_logo.png"));
 

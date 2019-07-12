@@ -17,6 +17,7 @@ uint8_t Configurations::system;
 uint8_t Configurations::source;
 std::string Configurations::server_ip;
 std::string Configurations::client_ip;
+std::string Configurations::my_own_used_ip;
 uint16_t Configurations::port;
 std::string Configurations::password;
 bool Configurations::leave_client_config;

@@ -25,6 +25,7 @@ public:
     static uint8_t source;
     static std::string server_ip;
     static std::string client_ip;
+    static std::string my_own_used_ip; // My Ip used to connect to Server or Client
     static uint16_t port;
     static std::string password;
     static bool leave_client_config;
