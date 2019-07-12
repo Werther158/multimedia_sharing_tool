@@ -8,6 +8,7 @@
 #include <clientstreamthread.h>
 #include <QWidget>
 #include <QDir>
+#include <qdesktopwidget.h>
 
 namespace Ui {
 class FrmConnected;

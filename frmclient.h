@@ -2,6 +2,7 @@
 #define FRMCLIENT_H
 
 #include <QWidget>
+#include <qdesktopwidget.h>
 #include "dictionary.h"
 #include <connectivity.h>
 #include <configurations.h>

@@ -8,6 +8,7 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QDir>
+#include <qdesktopwidget.h>
 
 namespace Ui {
 class FrmServer;

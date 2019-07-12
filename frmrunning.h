@@ -8,6 +8,7 @@
 #include <serverstreamthread.h>
 #include <QWidget>
 #include <QDir>
+#include <qdesktopwidget.h>
 
 namespace Ui {
 class FrmRunning;

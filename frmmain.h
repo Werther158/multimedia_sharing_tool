@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QString>
 #include <QCloseEvent>
+#include <qdesktopwidget.h>
 #include "dictionary.h"
 
 namespace Ui {

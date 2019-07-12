@@ -26,6 +26,10 @@ FrmConnected::FrmConnected(QWidget *parent) :
     tcp_client_thread->start();
 
     ui->btnStartStreaming->setEnabled(false);
+
+    QRect desktopRect = QApplication::desktop()->availableGeometry(this);
+    QPoint center = desktopRect.center();
+    move(center.x()- static_cast<int>(width()*0.5),center.y()- static_cast<int>(height()*0.5));
 }
 
 FrmConnected::~FrmConnected()
@@ -156,7 +160,7 @@ void FrmConnected::stopThreads()
 
     if(is_stream_active)
     {
-        std::system("killall ffplay");
+        std::system("bash -c \"killall ffplay\"");
         disconnect(client_stream_thread, nullptr, nullptr, nullptr);
         client_stream_thread->~ClientStreamThread();
         is_stream_active = false;
@@ -169,7 +173,7 @@ void FrmConnected::stopReceivingVideoStream(bool is_video_ended)
     if(is_stream_active)
     {
         if(!is_video_ended)
-            std::system("killall ffplay");
+            std::system("bash -c \"killall ffplay\"");
 
         ui->txtBox->append("Streaming ended");
         disconnect(client_stream_thread, nullptr, nullptr, nullptr);
