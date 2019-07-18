@@ -64,7 +64,7 @@ void Dictionary::setTextOflblIpServerS(QLabel *lbl)
 {
     lbl->setToolTip(QString::fromStdString(choices("Il tuo indirizzo IP pubblico, da comunicare al client.\nSe il sistema non è connesso ad internet sarà mostrato l'indirizzo 127.0.0.1.",
                                                    "Your public IP address, tell it to the client.\nIf your system isn't connected to internet, 127.0.0.1 will be shown.")));
-    lbl->setText("Tuo IP:");
+    lbl->setText(QString::fromStdString(choices("Tuo IP:", "Your IP:")));
 }
 
 void Dictionary::setTextOflblIpClientS(QLabel *lbl)
@@ -261,7 +261,7 @@ void Dictionary::setTextOflblIpClientC(QLabel *lbl)
 {
     lbl->setToolTip(QString::fromStdString(choices("Il tuo indirizzo IP pubblico, da comunicare al server.\nSe il sistema non è connesso ad internet sarà mostrato l'indirizzo 127.0.0.1.",
                                                    "Your public IP address, tell it to the server.\nIf your system isn't connected to internet, 127.0.0.1 will be shown.")));
-    lbl->setText("Tuo IP:");
+    lbl->setText(QString::fromStdString(choices("Tuo IP:", "Your IP:")));
 }
 
 void Dictionary::setTextOflblIpServerC(QLabel *lbl)
