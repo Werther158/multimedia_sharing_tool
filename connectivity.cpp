@@ -74,14 +74,30 @@ int Connectivity::tcpServer(uint16_t PORT)
         exit(EXIT_FAILURE);
     }
     emit writeText("Server running");
-    if ((sock = accept(server_fd, reinterpret_cast<struct sockaddr *>(&address),
-                       reinterpret_cast<socklen_t*>(&addrlen)))<0)
-    {
-        perror("accept");
-        exit(EXIT_FAILURE);
-    }
 
+    do {
+        if ((sock = accept(server_fd, reinterpret_cast<struct sockaddr *>(&address),
+                           reinterpret_cast<socklen_t*>(&addrlen)))<0)
+        {
+            perror("accept");
+            exit(EXIT_FAILURE);
+        }
+        cout << "server read";
+        valread = read(sock, buffer, BUFFER_SIZE);
+        cout << "server send";
+        if (string(buffer) == Configurations::password)
+        {
+            send(sock, "ok", strlen(Configurations::client_ip.c_str()), 0);
+        }
+        else
+        {
+            send(sock, "no", strlen(Configurations::client_ip.c_str()), 0);
+        }
+    } while(string(buffer) != Configurations::password);
+
+    cout << "server read";
     valread = read(sock, buffer, BUFFER_SIZE);
+    cout << "server send";
     send(sock, Configurations::client_ip.c_str(), strlen(Configurations::client_ip.c_str()), 0);
     Configurations::my_own_used_ip = buffer;
 
@@ -117,14 +133,26 @@ int Connectivity::tcpClient(string server_ip, uint16_t PORT)
         return -1;
     }
 
-    send(sock, Configurations::server_ip.c_str(), strlen(Configurations::server_ip.c_str()), 0 );
+    cout << "client send";
+    send(sock, Configurations::password.c_str(), strlen(Configurations::server_ip.c_str()), 0 );
+    cout << "client read";
     valread = read(sock, buffer, BUFFER_SIZE);
-    Configurations::my_own_used_ip = buffer;
 
-    emit writeText("Client connected");
-    emit clientConnected();
+    if(string(buffer) == "ok")
+    {
+        cout << "client send";
+        send(sock, Configurations::server_ip.c_str(), strlen(Configurations::server_ip.c_str()), 0 );
+        cout << "client read";
+        valread = read(sock, buffer, BUFFER_SIZE);
+        Configurations::my_own_used_ip = buffer;
 
-    tcpRead();
+        emit writeText("Client connected");
+        emit clientConnected();
+
+        tcpRead();
+    }
+    else
+        emit otherGuyDisconnected();
 
     return 0;
 }
