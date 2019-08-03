@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'frmclient.ui'
 **
-** Created by: Qt User Interface Compiler version 5.13.0
+** Created by: Qt User Interface Compiler version 5.12.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -408,30 +408,30 @@ public:
 
     void retranslateUi(QWidget *FrmClient)
     {
-        FrmClient->setWindowTitle(QCoreApplication::translate("FrmClient", "MST - Client", nullptr));
-        lblInfoServer->setText(QCoreApplication::translate("FrmClient", "lblInfoServer", nullptr));
-        lblBandwidth->setText(QCoreApplication::translate("FrmClient", "lblBandwidth", nullptr));
-        lblBandwidthvalue->setText(QCoreApplication::translate("FrmClient", "lblBandwidthvalue", nullptr));
-        label_3->setText(QCoreApplication::translate("FrmClient", "mbit/s", nullptr));
-        lblResolution->setText(QCoreApplication::translate("FrmClient", "lblResolution", nullptr));
-        lblFps->setText(QCoreApplication::translate("FrmClient", "lblFps", nullptr));
-        lblBuffer->setText(QCoreApplication::translate("FrmClient", "lblBuffer", nullptr));
-        lblVideo->setText(QCoreApplication::translate("FrmClient", "lblVideo", nullptr));
-        lblColorScale->setText(QCoreApplication::translate("FrmClient", "lblColorScale", nullptr));
-        lblEncoding->setText(QCoreApplication::translate("FrmClient", "lblEncoding", nullptr));
-        lblAudio->setText(QCoreApplication::translate("FrmClient", "lblAudio", nullptr));
-        lblControls->setText(QCoreApplication::translate("FrmClient", "lblControls", nullptr));
-        btnBack->setText(QCoreApplication::translate("FrmClient", "btnBack", nullptr));
-        btnLoadConfig->setText(QCoreApplication::translate("FrmClient", "btnLoadConfig", nullptr));
-        btnSaveConfig->setText(QCoreApplication::translate("FrmClient", "btnSaveConfig", nullptr));
-        btnConnect->setText(QCoreApplication::translate("FrmClient", "btnConnect", nullptr));
-        lblConfig->setText(QCoreApplication::translate("FrmClient", "lblConfig", nullptr));
-        lblIpServer->setText(QCoreApplication::translate("FrmClient", "lblIpServer", nullptr));
-        lblPort->setText(QCoreApplication::translate("FrmClient", "lblPort", nullptr));
-        lblPassword->setText(QCoreApplication::translate("FrmClient", "lblPassword", nullptr));
+        FrmClient->setWindowTitle(QApplication::translate("FrmClient", "MST - Client", nullptr));
+        lblInfoServer->setText(QApplication::translate("FrmClient", "lblInfoServer", nullptr));
+        lblBandwidth->setText(QApplication::translate("FrmClient", "lblBandwidth", nullptr));
+        lblBandwidthvalue->setText(QApplication::translate("FrmClient", "lblBandwidthvalue", nullptr));
+        label_3->setText(QApplication::translate("FrmClient", "mbit/s", nullptr));
+        lblResolution->setText(QApplication::translate("FrmClient", "lblResolution", nullptr));
+        lblFps->setText(QApplication::translate("FrmClient", "lblFps", nullptr));
+        lblBuffer->setText(QApplication::translate("FrmClient", "lblBuffer", nullptr));
+        lblVideo->setText(QApplication::translate("FrmClient", "lblVideo", nullptr));
+        lblColorScale->setText(QApplication::translate("FrmClient", "lblColorScale", nullptr));
+        lblEncoding->setText(QApplication::translate("FrmClient", "lblEncoding", nullptr));
+        lblAudio->setText(QApplication::translate("FrmClient", "lblAudio", nullptr));
+        lblControls->setText(QApplication::translate("FrmClient", "lblControls", nullptr));
+        btnBack->setText(QApplication::translate("FrmClient", "btnBack", nullptr));
+        btnLoadConfig->setText(QApplication::translate("FrmClient", "btnLoadConfig", nullptr));
+        btnSaveConfig->setText(QApplication::translate("FrmClient", "btnSaveConfig", nullptr));
+        btnConnect->setText(QApplication::translate("FrmClient", "btnConnect", nullptr));
+        lblConfig->setText(QApplication::translate("FrmClient", "lblConfig", nullptr));
+        lblIpServer->setText(QApplication::translate("FrmClient", "lblIpServer", nullptr));
+        lblPort->setText(QApplication::translate("FrmClient", "lblPort", nullptr));
+        lblPassword->setText(QApplication::translate("FrmClient", "lblPassword", nullptr));
         txtIpServer->setText(QString());
-        lblIpClient->setText(QCoreApplication::translate("FrmClient", "lblIpClient", nullptr));
-        lblIpClient2->setText(QCoreApplication::translate("FrmClient", "lblIpClient2", nullptr));
+        lblIpClient->setText(QApplication::translate("FrmClient", "lblIpClient", nullptr));
+        lblIpClient2->setText(QApplication::translate("FrmClient", "lblIpClient2", nullptr));
     } // retranslateUi
 
 };

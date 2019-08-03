@@ -1,19 +1,18 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'frmrunning.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.13.0)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.12.4)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include <memory>
 #include "frmrunning.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'frmrunning.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.13.0. It"
+#error "This file was generated using the moc from 5.12.4. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -23,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_FrmRunning_t {
     QByteArrayData data[14];
-    char stringdata0[223];
+    char stringdata0[228];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -43,16 +42,16 @@ QT_MOC_LITERAL(7, 90, 15), // "clientConnected"
 QT_MOC_LITERAL(8, 106, 20), // "otherGuyDisconnected"
 QT_MOC_LITERAL(9, 127, 26), // "on_btnToggleConfig_clicked"
 QT_MOC_LITERAL(10, 154, 17), // "startServerStream"
-QT_MOC_LITERAL(11, 172, 24), // "on_btnStopStream_clicked"
-QT_MOC_LITERAL(12, 197, 14), // "streamingEnded"
-QT_MOC_LITERAL(13, 212, 10) // "stopStream"
+QT_MOC_LITERAL(11, 172, 29), // "on_btnStartStopStream_clicked"
+QT_MOC_LITERAL(12, 202, 14), // "streamingEnded"
+QT_MOC_LITERAL(13, 217, 10) // "stopStream"
 
     },
     "FrmRunning\0setStreamingEnded\0\0"
     "on_btnStop_clicked\0writeTextOnTxtBox\0"
     "str\0on_btnSend_clicked\0clientConnected\0"
     "otherGuyDisconnected\0on_btnToggleConfig_clicked\0"
-    "startServerStream\0on_btnStopStream_clicked\0"
+    "startServerStream\0on_btnStartStopStream_clicked\0"
     "streamingEnded\0stopStream"
 };
 #undef QT_MOC_LITERAL
@@ -117,7 +116,7 @@ void FrmRunning::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 5: _t->otherGuyDisconnected(); break;
         case 6: _t->on_btnToggleConfig_clicked(); break;
         case 7: _t->startServerStream(); break;
-        case 8: _t->on_btnStopStream_clicked(); break;
+        case 8: _t->on_btnStartStopStream_clicked(); break;
         case 9: _t->streamingEnded(); break;
         case 10: _t->stopStream(); break;
         default: ;

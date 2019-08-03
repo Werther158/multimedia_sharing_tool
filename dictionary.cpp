@@ -299,9 +299,12 @@ std::string Dictionary::getTextOfbtnStopRunning()
     return choices("Ferma server", "Stop server");
 }
 
-std::string Dictionary::getTextOfbtnStopStream()
+std::string Dictionary::getTextOfbtnStartStopStream(int select)
 {
-    return choices("Ferma streaming", "Stop streaming");
+    if(select == 0)
+        return choices("Avvia streaming", "Start streaming");
+    else
+        return choices("Ferma streaming", "Stop streaming");
 }
 
 void Dictionary::setTooltipOflblState2(QLabel *lbl)
@@ -329,14 +332,26 @@ std::string Dictionary::getTextOfchkFullscreen()
     return choices("Schermo intero", "Fullscreen");
 }
 
-std::string Dictionary::getTextOfbtnDisconnect()
+std::string Dictionary::getTextOfbtnDisconnect(int select)
 {
-    return choices("Disconnetti", "Disconnect");
+    if(select == 0)
+        return choices("Annulla", "Cancel");
+    else
+        return choices("Disconnetti", "Disconnect");
 }
 
-void Dictionary::getTextOfbtnStartStreaming(QPushButton *btn)
+void Dictionary::getTextOfbtnStartStreaming(QPushButton *btn, int select)
 {
-    btn->setToolTip(QString::fromStdString(choices("Crea una connessione UDP con il server e inizia ad acquisire lo streaming video.",
-                                                   "Start a UDP connection with the server and begin to capture video streaming.")));
-    btn->setText(QString::fromStdString(choices("Avvia streaming", "Start streaming")));
+    if(select == 0)
+    {
+        btn->setToolTip(QString::fromStdString(choices("Crea una connessione RTSP con il server e inizia ad acquisire lo streaming video.",
+                                                       "Start a RTSP connection with the server and begin to capture video streaming.")));
+        btn->setText(QString::fromStdString(choices("Avvia streaming", "Start streaming")));
+    }
+    else
+    {
+        btn->setToolTip(QString::fromStdString(choices("Interrompe la connessione RTSP con il server.",
+                                                       "End the RTSP connection.")));
+        btn->setText(QString::fromStdString(choices("Ferma streaming", "Stop streaming")));
+    }
 }

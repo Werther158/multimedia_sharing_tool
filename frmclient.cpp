@@ -85,6 +85,8 @@ void FrmClient::setConfigurations()
 
 void FrmClient::on_btnConnect_clicked()
 {
+    ui->btnConnect->setEnabled(false);
+    ui->btnConnect->repaint();
     setConfigurations();
 
     // Control that all data are correct

@@ -51,6 +51,7 @@ signals:
     void startServerStream();
     void stopReceivingVideoStream(bool);
     void streamingEnded();
+    void startStreaming();
 };
 
 #endif // CONNECTIVITY_H

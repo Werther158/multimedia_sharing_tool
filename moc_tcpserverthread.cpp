@@ -1,19 +1,18 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tcpserverthread.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.13.0)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.12.4)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include <memory>
 #include "tcpserverthread.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'tcpserverthread.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.13.0. It"
+#error "This file was generated using the moc from 5.12.4. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -173,7 +172,7 @@ int TcpServerThread::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 // SIGNAL 0
 void TcpServerThread::writeText(QString _t1)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 

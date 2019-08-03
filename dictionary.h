@@ -73,15 +73,15 @@ public:
     // FrmRunning
     void getTextOflblStateRunning(QLabel *lbl);
     std::string getTextOfbtnStopRunning();
-    std::string getTextOfbtnStopStream();
+    std::string getTextOfbtnStartStopStream(int select);
     void setTooltipOflblState2(QLabel *lbl);
     void setTooltipOflblState3(QLabel *lbl);
 
     // FrmConnected
     void getTextOflblResize(QLabel *lbl);
     std::string getTextOfchkFullscreen();
-    std::string getTextOfbtnDisconnect();
-    void getTextOfbtnStartStreaming(QPushButton *btn);
+    std::string getTextOfbtnDisconnect(int select);
+    void getTextOfbtnStartStreaming(QPushButton *btn, int select);
 };
 
 #endif // DICTIONARY_H

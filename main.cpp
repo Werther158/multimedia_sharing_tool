@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
     Dictionary dict;
     int selector;
 
-    dict.setLanguage(italian);
+    dict.setLanguage(english);
     selector = 0;
 
     while(selector != -1)

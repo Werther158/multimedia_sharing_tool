@@ -87,6 +87,8 @@ void FrmServer::setConfigurations()
 
 void FrmServer::on_btnStartServer_clicked()
 {
+    ui->btnStartServer->setEnabled(false);
+    ui->btnStartServer->repaint();
     setConfigurations();
     if(Configurations::source_choices[Configurations::source] == "Video file")
     {

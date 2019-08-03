@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'frmserver.ui'
 **
-** Created by: Qt User Interface Compiler version 5.13.0
+** Created by: Qt User Interface Compiler version 5.12.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -470,36 +470,36 @@ public:
 
     void retranslateUi(QWidget *FrmServer)
     {
-        FrmServer->setWindowTitle(QCoreApplication::translate("FrmServer", "MST - Server", nullptr));
-        lblInfoServer->setText(QCoreApplication::translate("FrmServer", "lblInfoServer", nullptr));
-        lblBandwidth->setText(QCoreApplication::translate("FrmServer", "lblBandwidth", nullptr));
-        lblBandwidthvalue->setText(QCoreApplication::translate("FrmServer", "lblBandwidthvalue", nullptr));
-        label_3->setText(QCoreApplication::translate("FrmServer", "mbit/s", nullptr));
-        lblConfig->setText(QCoreApplication::translate("FrmServer", "lblConfig", nullptr));
-        lblLeaveConfig->setText(QCoreApplication::translate("FrmServer", "lblLeaveConfig", nullptr));
+        FrmServer->setWindowTitle(QApplication::translate("FrmServer", "MST - Server", nullptr));
+        lblInfoServer->setText(QApplication::translate("FrmServer", "lblInfoServer", nullptr));
+        lblBandwidth->setText(QApplication::translate("FrmServer", "lblBandwidth", nullptr));
+        lblBandwidthvalue->setText(QApplication::translate("FrmServer", "lblBandwidthvalue", nullptr));
+        label_3->setText(QApplication::translate("FrmServer", "mbit/s", nullptr));
+        lblConfig->setText(QApplication::translate("FrmServer", "lblConfig", nullptr));
+        lblLeaveConfig->setText(QApplication::translate("FrmServer", "lblLeaveConfig", nullptr));
         chkLeaveConfig->setText(QString());
-        lblResolution->setText(QCoreApplication::translate("FrmServer", "lblResolution", nullptr));
-        lblFps->setText(QCoreApplication::translate("FrmServer", "lblFps", nullptr));
-        lblBuffer->setText(QCoreApplication::translate("FrmServer", "lblBuffer", nullptr));
-        lblVideo->setText(QCoreApplication::translate("FrmServer", "lblVideo", nullptr));
-        lblColorScale->setText(QCoreApplication::translate("FrmServer", "lblColorScale", nullptr));
-        lblEncoding->setText(QCoreApplication::translate("FrmServer", "lblEncoding", nullptr));
-        lblAudio->setText(QCoreApplication::translate("FrmServer", "lblAudio", nullptr));
-        lblControls->setText(QCoreApplication::translate("FrmServer", "lblControls", nullptr));
-        btnBack->setText(QCoreApplication::translate("FrmServer", "btnBack", nullptr));
-        btnLoadConfig->setText(QCoreApplication::translate("FrmServer", "btnLoadConfig", nullptr));
-        btnSaveConfig->setText(QCoreApplication::translate("FrmServer", "btnSaveConfig", nullptr));
-        btnStartServer->setText(QCoreApplication::translate("FrmServer", "btnStartServer", nullptr));
-        lblIpClient->setText(QCoreApplication::translate("FrmServer", "lblIpClient", nullptr));
-        lblPort->setText(QCoreApplication::translate("FrmServer", "lblPort", nullptr));
-        lblPassword->setText(QCoreApplication::translate("FrmServer", "lblPassword", nullptr));
+        lblResolution->setText(QApplication::translate("FrmServer", "lblResolution", nullptr));
+        lblFps->setText(QApplication::translate("FrmServer", "lblFps", nullptr));
+        lblBuffer->setText(QApplication::translate("FrmServer", "lblBuffer", nullptr));
+        lblVideo->setText(QApplication::translate("FrmServer", "lblVideo", nullptr));
+        lblColorScale->setText(QApplication::translate("FrmServer", "lblColorScale", nullptr));
+        lblEncoding->setText(QApplication::translate("FrmServer", "lblEncoding", nullptr));
+        lblAudio->setText(QApplication::translate("FrmServer", "lblAudio", nullptr));
+        lblControls->setText(QApplication::translate("FrmServer", "lblControls", nullptr));
+        btnBack->setText(QApplication::translate("FrmServer", "btnBack", nullptr));
+        btnLoadConfig->setText(QApplication::translate("FrmServer", "btnLoadConfig", nullptr));
+        btnSaveConfig->setText(QApplication::translate("FrmServer", "btnSaveConfig", nullptr));
+        btnStartServer->setText(QApplication::translate("FrmServer", "btnStartServer", nullptr));
+        lblIpClient->setText(QApplication::translate("FrmServer", "lblIpClient", nullptr));
+        lblPort->setText(QApplication::translate("FrmServer", "lblPort", nullptr));
+        lblPassword->setText(QApplication::translate("FrmServer", "lblPassword", nullptr));
         txtIpClient->setText(QString());
-#if QT_CONFIG(tooltip)
-        lblIpServer->setToolTip(QCoreApplication::translate("FrmServer", "<html><head/><body><p><br/></p></body></html>", nullptr));
-#endif // QT_CONFIG(tooltip)
-        lblIpServer->setText(QCoreApplication::translate("FrmServer", "lblIpServer", nullptr));
-        lblIpServer2->setText(QCoreApplication::translate("FrmServer", "lblIpServer2", nullptr));
-        lblSource->setText(QCoreApplication::translate("FrmServer", "lblSource", nullptr));
+#ifndef QT_NO_TOOLTIP
+        lblIpServer->setToolTip(QApplication::translate("FrmServer", "<html><head/><body><p><br/></p></body></html>", nullptr));
+#endif // QT_NO_TOOLTIP
+        lblIpServer->setText(QApplication::translate("FrmServer", "lblIpServer", nullptr));
+        lblIpServer2->setText(QApplication::translate("FrmServer", "lblIpServer2", nullptr));
+        lblSource->setText(QApplication::translate("FrmServer", "lblSource", nullptr));
     } // retranslateUi
 
 };

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'frmrunning.ui'
 **
-** Created by: Qt User Interface Compiler version 5.13.0
+** Created by: Qt User Interface Compiler version 5.12.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -42,7 +42,7 @@ public:
     QHBoxLayout *horizontalLayout_2;
     QLineEdit *txtLine;
     QPushButton *btnSend;
-    QPushButton *btnStopStream;
+    QPushButton *btnStartStopStream;
 
     void setupUi(QWidget *FrmRunning)
     {
@@ -57,7 +57,7 @@ public:
         btnToggleConfig->setGeometry(QRect(40, 260, 31, 25));
         layoutWidget = new QWidget(FrmRunning);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(230, 10, 121, 22));
+        layoutWidget->setGeometry(QRect(230, 10, 204, 22));
         horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
@@ -117,9 +117,9 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_2);
 
-        btnStopStream = new QPushButton(FrmRunning);
-        btnStopStream->setObjectName(QString::fromUtf8("btnStopStream"));
-        btnStopStream->setGeometry(QRect(80, 260, 121, 25));
+        btnStartStopStream = new QPushButton(FrmRunning);
+        btnStartStopStream->setObjectName(QString::fromUtf8("btnStartStopStream"));
+        btnStartStopStream->setGeometry(QRect(100, 260, 131, 25));
 
         retranslateUi(FrmRunning);
 
@@ -128,14 +128,14 @@ public:
 
     void retranslateUi(QWidget *FrmRunning)
     {
-        FrmRunning->setWindowTitle(QCoreApplication::translate("FrmRunning", "MST - Server running", nullptr));
-        btnStop->setText(QCoreApplication::translate("FrmRunning", "btnStop", nullptr));
-        btnToggleConfig->setText(QCoreApplication::translate("FrmRunning", "btnToggleConfig", nullptr));
-        lblState->setText(QCoreApplication::translate("FrmRunning", "lblState", nullptr));
-        lblState2->setText(QCoreApplication::translate("FrmRunning", "lblState2", nullptr));
-        lblState3->setText(QCoreApplication::translate("FrmRunning", "lblState3", nullptr));
-        btnSend->setText(QCoreApplication::translate("FrmRunning", ">", nullptr));
-        btnStopStream->setText(QCoreApplication::translate("FrmRunning", "btnStopStream", nullptr));
+        FrmRunning->setWindowTitle(QApplication::translate("FrmRunning", "MST - Server running", nullptr));
+        btnStop->setText(QApplication::translate("FrmRunning", "btnStop", nullptr));
+        btnToggleConfig->setText(QApplication::translate("FrmRunning", "btnToggleConfig", nullptr));
+        lblState->setText(QApplication::translate("FrmRunning", "lblState", nullptr));
+        lblState2->setText(QApplication::translate("FrmRunning", "lblState2", nullptr));
+        lblState3->setText(QApplication::translate("FrmRunning", "lblState3", nullptr));
+        btnSend->setText(QApplication::translate("FrmRunning", ">", nullptr));
+        btnStartStopStream->setText(QApplication::translate("FrmRunning", "btnStartStopStream", nullptr));
     } // retranslateUi
 
 };

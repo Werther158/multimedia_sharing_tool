@@ -23,9 +23,10 @@ FrmConnected::FrmConnected(QWidget *parent) :
     QObject::connect(tcp_client_thread, SIGNAL(clientConnected()), this, SLOT(clientConnected()));
     QObject::connect(tcp_client_thread, SIGNAL(otherGuyDisconnected()), this, SLOT(otherGuyDisconnected()));
     QObject::connect(tcp_client_thread, SIGNAL(stopReceivingVideoStream(bool)), this, SLOT(stopReceivingVideoStream(bool)));
+    QObject::connect(tcp_client_thread, SIGNAL(startStreaming()), this, SLOT(startStreaming()));
     tcp_client_thread->start();
 
-    ui->btnStartStreaming->setEnabled(false);
+    ui->btnStartStopStreaming->setEnabled(false);
 
     QRect desktopRect = QApplication::desktop()->availableGeometry(this);
     QPoint center = desktopRect.center();
@@ -42,8 +43,8 @@ void FrmConnected::setDict(Dictionary* dict)
     this->dict = dict;
     (*dict).getTextOflblResize(ui->lblResize);
     ui->chkFullScreen->setText(QString::fromStdString((*dict).getTextOfchkFullscreen()));
-    ui->btnDisconnect->setText(QString::fromStdString((*dict).getTextOfbtnDisconnect()));
-    (*dict).getTextOfbtnStartStreaming(ui->btnStartStreaming);
+    ui->btnDisconnect->setText(QString::fromStdString((*dict).getTextOfbtnDisconnect(0)));
+    (*dict).getTextOfbtnStartStreaming(ui->btnStartStopStreaming, 0);
     (*dict).getTextOflblStateRunning(ui->lblState);
     (*dict).setTooltipOflblState2(ui->lblState2);
     (*dict).setTooltipOflblState3(ui->lblState3);
@@ -56,6 +57,8 @@ void FrmConnected::setSelector(int* selector)
 
 void FrmConnected::on_btnDisconnect_clicked()
 {
+    ui->btnDisconnect->setEnabled(false);
+    ui->btnDisconnect->repaint();
     client_connected = false;
     c.tcpWriteCommand(-1);
     stopThreads();
@@ -80,8 +83,9 @@ void FrmConnected::writeTextOnTxtBox(QString str)
 void FrmConnected::clientConnected()
 {
     client_connected = true;
+    ui->btnDisconnect->setText(QString::fromStdString((*dict).getTextOfbtnDisconnect(1)));
     this->setWindowTitle("MST - Connected");
-    ui->btnStartStreaming->setEnabled(true);
+    ui->btnStartStopStreaming->setEnabled(true);
     QPixmap green_state(QDir::currentPath() + "/media/green_state.png");
     ui->lblState2->setPixmap(green_state);
 }
@@ -136,18 +140,37 @@ void FrmConnected::sendStartStreamingCommand()
     c.tcpWriteCommand(-2);
 }
 
-void FrmConnected::on_btnStartStreaming_clicked()
+// Start streaming thread
+void FrmConnected::startStreaming()
+{
+    ui->txtBox->append("Streaming started");
+    (*dict).getTextOfbtnStartStreaming(ui->btnStartStopStreaming, 1);
+    client_stream_thread = new ClientStreamThread();
+    QObject::connect(client_stream_thread, SIGNAL(sendStartStreamingCommand()), this, SLOT(sendStartStreamingCommand()));
+    QObject::connect(client_stream_thread, SIGNAL(streamingEnded()), this, SLOT(streamingEnded()));
+    client_stream_thread->start();
+    is_stream_active = true;
+}
+
+void FrmConnected::on_btnStartStopStreaming_clicked()
 {
     if(client_connected)
     {
-        // Start streaming thread
-        ui->txtBox->append("Streaming started");
-        client_stream_thread = new ClientStreamThread();
-        QObject::connect(client_stream_thread, SIGNAL(sendStartStreamingCommand()), this, SLOT(sendStartStreamingCommand()));
-        QObject::connect(client_stream_thread, SIGNAL(streamingEnded()), this, SLOT(streamingEnded()));
-        client_stream_thread->start();
-        is_stream_active = true;
-        ui->btnStartStreaming->setEnabled(false);
+        if(is_stream_active)
+        {
+            ui->btnStartStopStreaming->setEnabled(false);
+            ui->btnStartStopStreaming->repaint();
+            stopReceivingVideoStream(false);
+            (*dict).getTextOfbtnStartStreaming(ui->btnStartStopStreaming, 0);
+            ui->btnStartStopStreaming->setEnabled(true);
+        }
+        else
+        {
+            ui->btnStartStopStreaming->setEnabled(false);
+            ui->btnStartStopStreaming->repaint();
+            startStreaming();
+            ui->btnStartStopStreaming->setEnabled(true);
+        }
     }
 }
 
@@ -179,7 +202,6 @@ void FrmConnected::stopReceivingVideoStream(bool is_video_ended)
         disconnect(client_stream_thread, nullptr, nullptr, nullptr);
         client_stream_thread->~ClientStreamThread();
         is_stream_active = false;
-        ui->btnStartStreaming->setEnabled(true);
         uiStreamingInactive();
     }
 }

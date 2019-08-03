@@ -35,6 +35,9 @@ private slots:
     void on_btnStartStreaming_clicked();
     void stopReceivingVideoStream(bool is_video_ended);
     void streamingEnded();
+    void startStreaming();
+
+    void on_btnStartStopStreaming_clicked();
 
 private:
     Ui::FrmConnected *ui;

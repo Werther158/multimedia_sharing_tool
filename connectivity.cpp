@@ -184,6 +184,11 @@ void Connectivity::tcpRead()
             emit streamingEnded();
         }
         else
+        if(buffer[0] == (char)-5) // (Client side) Start streaming
+        {
+            emit startStreaming();
+        }
+        else
         if(Configurations::system == SERVER)
             emit writeText("CLIENT: " + QString(buffer));
         else

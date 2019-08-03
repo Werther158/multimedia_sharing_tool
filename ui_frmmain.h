@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'frmmain.ui'
 **
-** Created by: Qt User Interface Compiler version 5.13.0
+** Created by: Qt User Interface Compiler version 5.12.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -88,13 +88,13 @@ public:
 
     void retranslateUi(QWidget *FrmMain)
     {
-        FrmMain->setWindowTitle(QCoreApplication::translate("FrmMain", "MST - Multimedia Sharing Tool", nullptr));
-        lblStart->setText(QCoreApplication::translate("FrmMain", "lblStart", nullptr));
-        btnServer->setText(QCoreApplication::translate("FrmMain", "btnServer", nullptr));
-        btnClient->setText(QCoreApplication::translate("FrmMain", "btnClient", nullptr));
-        lblLang->setText(QCoreApplication::translate("FrmMain", "lblLang", nullptr));
-        btnLang->setText(QCoreApplication::translate("FrmMain", "btnLang", nullptr));
-        btnExit->setText(QCoreApplication::translate("FrmMain", "btnExit", nullptr));
+        FrmMain->setWindowTitle(QApplication::translate("FrmMain", "MST - Multimedia Sharing Tool", nullptr));
+        lblStart->setText(QApplication::translate("FrmMain", "lblStart", nullptr));
+        btnServer->setText(QApplication::translate("FrmMain", "btnServer", nullptr));
+        btnClient->setText(QApplication::translate("FrmMain", "btnClient", nullptr));
+        lblLang->setText(QApplication::translate("FrmMain", "lblLang", nullptr));
+        btnLang->setText(QApplication::translate("FrmMain", "btnLang", nullptr));
+        btnExit->setText(QApplication::translate("FrmMain", "btnExit", nullptr));
     } // retranslateUi
 
 };

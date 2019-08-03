@@ -11,7 +11,7 @@ FrmRunning::FrmRunning(QWidget *parent) :
     setWindowIcon(QIcon("./media/mst_logo.png"));
 
     this->setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowTitleHint);
-    ui->btnStopStream->setEnabled(false);
+    ui->btnStartStopStream->setEnabled(false);
     enableListConfiguration();
 
     startServer();
@@ -51,8 +51,8 @@ void FrmRunning::setDict(Dictionary* dict)
     (*dict).getTextOflblStateRunning(ui->lblState);
     (*dict).setTooltipOflblState2(ui->lblState2);
     (*dict).setTooltipOflblState3(ui->lblState3);
+    ui->btnStartStopStream->setText(QString::fromStdString((*dict).getTextOfbtnStartStopStream(0)));
     ui->btnStop->setText(QString::fromStdString((*dict).getTextOfbtnStopRunning()));
-    ui->btnStopStream->setText(QString::fromStdString((*dict).getTextOfbtnStopStream()));
 }
 
 void FrmRunning::setSelector(int* selector)
@@ -62,6 +62,8 @@ void FrmRunning::setSelector(int* selector)
 
 void FrmRunning::on_btnStop_clicked()
 {
+    ui->btnStartStopStream->setEnabled(false);
+    ui->btnStartStopStream->repaint();
     client_connected = false;
     c.tcpWriteCommand(-1);
     stopThreads();
@@ -88,6 +90,7 @@ void FrmRunning::clientConnected()
     client_connected = true;
     QPixmap green_state(QDir::currentPath() + "/media/green_state.png");
     ui->lblState2->setPixmap(green_state);
+    ui->btnStartStopStream->setEnabled(true);
 }
 
 void FrmRunning::otherGuyDisconnected()
@@ -107,7 +110,9 @@ void FrmRunning::stopThreads()
 
     if(is_stream_active)
     {
-        ui->btnStopStream->setEnabled(false);
+        ui->btnStartStopStream->setEnabled(false);
+        ui->btnStartStopStream->repaint();
+        ui->btnStartStopStream->setText(QString::fromStdString((*dict).getTextOfbtnStartStopStream(0)));
         disconnect(server_stream_thread, nullptr, nullptr, nullptr);
         server_stream_thread->~ServerStreamThread();
         is_stream_active = false;
@@ -124,6 +129,7 @@ void FrmRunning::enableListConfiguration()
 
     ui->listConfigurations->setHidden(false);
 }
+
 void FrmRunning::disableListConfiguration()
 {
     QPixmap eyegrey(QDir::currentPath() + "/media/eyegrey.png");
@@ -158,16 +164,17 @@ void FrmRunning::startServerStream()
     QObject::connect(server_stream_thread, SIGNAL(stopStream()), this, SLOT(stopStream()));
     QObject::connect(this, SIGNAL(setStreamingEnded()), server_stream_thread, SLOT(setStreamingEnded()));
     server_stream_thread->start();
-    ui->btnStopStream->setEnabled(true);
     is_stream_active = true;
     QPixmap stream_active_pix(QDir::currentPath() + "/media/stream_active.png");
     ui->lblState3->setPixmap(stream_active_pix);
+    ui->btnStartStopStream->setText(QString::fromStdString((*dict).getTextOfbtnStartStopStream(1)));
+    ui->btnStartStopStream->setEnabled(true);
 }
 
 void FrmRunning::stopStream()
 {
     ui->txtBox->append("Streaming ended");
-    ui->btnStopStream->setEnabled(false);
+    ui->btnStartStopStream->setText(QString::fromStdString((*dict).getTextOfbtnStartStopStream(0)));
     c.tcpWriteCommand(-3);
     is_stream_active = false;
     disconnect(server_stream_thread, nullptr, nullptr, nullptr);
@@ -176,9 +183,22 @@ void FrmRunning::stopStream()
     ui->lblState3->setPixmap(stream_inactive_pix);
 }
 
-void FrmRunning::on_btnStopStream_clicked()
+void FrmRunning::on_btnStartStopStream_clicked()
 {
-    stopStream();
+    if(is_stream_active) // Stop stream
+    {
+        ui->btnStartStopStream->setEnabled(false);
+        ui->btnStartStopStream->repaint();
+        stopStream();
+        ui->btnStartStopStream->setText(QString::fromStdString((*dict).getTextOfbtnStartStopStream(0)));
+        ui->btnStartStopStream->setEnabled(true);
+    }
+    else // Start stream
+    {
+        ui->btnStartStopStream->setEnabled(false);
+        ui->btnStartStopStream->repaint();
+        c.tcpWriteCommand(-5);
+    }
 }
 
 void FrmRunning::streamingEnded()
@@ -188,7 +208,7 @@ void FrmRunning::streamingEnded()
     ui->lblState3->setPixmap(stream_inactive_pix);
     if(is_stream_active)
     {
-        ui->btnStopStream->setEnabled(false);
+        ui->btnStartStopStream->setText(QString::fromStdString((*dict).getTextOfbtnStartStopStream(0)));
         disconnect(server_stream_thread, nullptr, nullptr, nullptr);
         emit setStreamingEnded();
         server_stream_thread->~ServerStreamThread();
