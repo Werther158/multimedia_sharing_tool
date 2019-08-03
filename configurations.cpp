@@ -11,8 +11,6 @@ int Configurations::buffer_choices[] = {0, 128, 64, 32, 16, 8};
 int Configurations::color_scale_choices[] = {-1, 24, 16, 15, 8, 4, 2, 1};
 std::string Configurations::controls_choices[] = {"T + M", "C", "T + M + C"};
 
-std::string Configurations::file_name;
-
 uint8_t Configurations::system;
 uint8_t Configurations::source;
 std::string Configurations::server_ip;
@@ -26,6 +24,10 @@ uint8_t Configurations::fps;
 uint8_t Configurations::buffer;
 uint8_t Configurations::color_scale;
 uint8_t Configurations::controls;
+
+std::string Configurations::file_name;
+std::string Configurations::camera_path;
+//cv::Rect Configurations::screen_roi;
 
 Configurations::Configurations()
 {

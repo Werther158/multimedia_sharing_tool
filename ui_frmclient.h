@@ -34,7 +34,7 @@ public:
     QLabel *lblBandwidthvalue;
     QLabel *label_3;
     QFrame *line_4;
-    QWidget *layoutWidget1;
+    QWidget *layoutWidget4;
     QHBoxLayout *horizontalLayout_14;
     QVBoxLayout *verticalLayout_2;
     QHBoxLayout *horizontalLayout_4;
@@ -63,7 +63,7 @@ public:
     QHBoxLayout *horizontalLayout_13;
     QLabel *lblControls;
     QComboBox *cmbControls;
-    QWidget *layoutWidget2;
+    QWidget *layoutWidget1;
     QHBoxLayout *horizontalLayout_16;
     QPushButton *btnBack;
     QSpacerItem *horizontalSpacer_8;
@@ -74,7 +74,7 @@ public:
     QSpacerItem *horizontalSpacer_9;
     QPushButton *btnConnect;
     QLabel *lblConfig;
-    QWidget *layoutWidget;
+    QWidget *layoutWidget2;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout_6;
     QLabel *lblIpServer;
@@ -131,22 +131,22 @@ public:
         line_4->setGeometry(QRect(0, 390, 561, 16));
         line_4->setFrameShape(QFrame::HLine);
         line_4->setFrameShadow(QFrame::Sunken);
-        layoutWidget1 = new QWidget(FrmClient);
-        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(20, 210, 491, 130));
-        horizontalLayout_14 = new QHBoxLayout(layoutWidget1);
+        layoutWidget4 = new QWidget(FrmClient);
+        layoutWidget4->setObjectName(QString::fromUtf8("layoutWidget4"));
+        layoutWidget4->setGeometry(QRect(20, 210, 491, 130));
+        horizontalLayout_14 = new QHBoxLayout(layoutWidget4);
         horizontalLayout_14->setObjectName(QString::fromUtf8("horizontalLayout_14"));
         horizontalLayout_14->setContentsMargins(0, 0, 0, 0);
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
-        lblResolution = new QLabel(layoutWidget1);
+        lblResolution = new QLabel(layoutWidget4);
         lblResolution->setObjectName(QString::fromUtf8("lblResolution"));
 
         horizontalLayout_4->addWidget(lblResolution);
 
-        cmbResolution = new QComboBox(layoutWidget1);
+        cmbResolution = new QComboBox(layoutWidget4);
         cmbResolution->setObjectName(QString::fromUtf8("cmbResolution"));
 
         horizontalLayout_4->addWidget(cmbResolution);
@@ -156,12 +156,12 @@ public:
 
         horizontalLayout_7 = new QHBoxLayout();
         horizontalLayout_7->setObjectName(QString::fromUtf8("horizontalLayout_7"));
-        lblFps = new QLabel(layoutWidget1);
+        lblFps = new QLabel(layoutWidget4);
         lblFps->setObjectName(QString::fromUtf8("lblFps"));
 
         horizontalLayout_7->addWidget(lblFps);
 
-        cmbFps = new QComboBox(layoutWidget1);
+        cmbFps = new QComboBox(layoutWidget4);
         cmbFps->setObjectName(QString::fromUtf8("cmbFps"));
 
         horizontalLayout_7->addWidget(cmbFps);
@@ -171,12 +171,12 @@ public:
 
         horizontalLayout_8 = new QHBoxLayout();
         horizontalLayout_8->setObjectName(QString::fromUtf8("horizontalLayout_8"));
-        lblBuffer = new QLabel(layoutWidget1);
+        lblBuffer = new QLabel(layoutWidget4);
         lblBuffer->setObjectName(QString::fromUtf8("lblBuffer"));
 
         horizontalLayout_8->addWidget(lblBuffer);
 
-        cmbBuffer = new QComboBox(layoutWidget1);
+        cmbBuffer = new QComboBox(layoutWidget4);
         cmbBuffer->setObjectName(QString::fromUtf8("cmbBuffer"));
 
         horizontalLayout_8->addWidget(cmbBuffer);
@@ -186,12 +186,12 @@ public:
 
         horizontalLayout_9 = new QHBoxLayout();
         horizontalLayout_9->setObjectName(QString::fromUtf8("horizontalLayout_9"));
-        lblVideo = new QLabel(layoutWidget1);
+        lblVideo = new QLabel(layoutWidget4);
         lblVideo->setObjectName(QString::fromUtf8("lblVideo"));
 
         horizontalLayout_9->addWidget(lblVideo);
 
-        cmbVideo = new QComboBox(layoutWidget1);
+        cmbVideo = new QComboBox(layoutWidget4);
         cmbVideo->setObjectName(QString::fromUtf8("cmbVideo"));
 
         horizontalLayout_9->addWidget(cmbVideo);
@@ -210,12 +210,12 @@ public:
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         horizontalLayout_10 = new QHBoxLayout();
         horizontalLayout_10->setObjectName(QString::fromUtf8("horizontalLayout_10"));
-        lblColorScale = new QLabel(layoutWidget1);
+        lblColorScale = new QLabel(layoutWidget4);
         lblColorScale->setObjectName(QString::fromUtf8("lblColorScale"));
 
         horizontalLayout_10->addWidget(lblColorScale);
 
-        cmbColorScale = new QComboBox(layoutWidget1);
+        cmbColorScale = new QComboBox(layoutWidget4);
         cmbColorScale->setObjectName(QString::fromUtf8("cmbColorScale"));
 
         horizontalLayout_10->addWidget(cmbColorScale);
@@ -225,12 +225,12 @@ public:
 
         horizontalLayout_11 = new QHBoxLayout();
         horizontalLayout_11->setObjectName(QString::fromUtf8("horizontalLayout_11"));
-        lblEncoding = new QLabel(layoutWidget1);
+        lblEncoding = new QLabel(layoutWidget4);
         lblEncoding->setObjectName(QString::fromUtf8("lblEncoding"));
 
         horizontalLayout_11->addWidget(lblEncoding);
 
-        cmbEncoding = new QComboBox(layoutWidget1);
+        cmbEncoding = new QComboBox(layoutWidget4);
         cmbEncoding->setObjectName(QString::fromUtf8("cmbEncoding"));
 
         horizontalLayout_11->addWidget(cmbEncoding);
@@ -240,12 +240,12 @@ public:
 
         horizontalLayout_12 = new QHBoxLayout();
         horizontalLayout_12->setObjectName(QString::fromUtf8("horizontalLayout_12"));
-        lblAudio = new QLabel(layoutWidget1);
+        lblAudio = new QLabel(layoutWidget4);
         lblAudio->setObjectName(QString::fromUtf8("lblAudio"));
 
         horizontalLayout_12->addWidget(lblAudio);
 
-        cmbAudio = new QComboBox(layoutWidget1);
+        cmbAudio = new QComboBox(layoutWidget4);
         cmbAudio->setObjectName(QString::fromUtf8("cmbAudio"));
 
         horizontalLayout_12->addWidget(cmbAudio);
@@ -255,12 +255,12 @@ public:
 
         horizontalLayout_13 = new QHBoxLayout();
         horizontalLayout_13->setObjectName(QString::fromUtf8("horizontalLayout_13"));
-        lblControls = new QLabel(layoutWidget1);
+        lblControls = new QLabel(layoutWidget4);
         lblControls->setObjectName(QString::fromUtf8("lblControls"));
 
         horizontalLayout_13->addWidget(lblControls);
 
-        cmbControls = new QComboBox(layoutWidget1);
+        cmbControls = new QComboBox(layoutWidget4);
         cmbControls->setObjectName(QString::fromUtf8("cmbControls"));
 
         horizontalLayout_13->addWidget(cmbControls);
@@ -271,13 +271,13 @@ public:
 
         horizontalLayout_14->addLayout(verticalLayout_3);
 
-        layoutWidget2 = new QWidget(FrmClient);
-        layoutWidget2->setObjectName(QString::fromUtf8("layoutWidget2"));
-        layoutWidget2->setGeometry(QRect(20, 410, 521, 29));
-        horizontalLayout_16 = new QHBoxLayout(layoutWidget2);
+        layoutWidget1 = new QWidget(FrmClient);
+        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(20, 410, 521, 29));
+        horizontalLayout_16 = new QHBoxLayout(layoutWidget1);
         horizontalLayout_16->setObjectName(QString::fromUtf8("horizontalLayout_16"));
         horizontalLayout_16->setContentsMargins(0, 0, 0, 0);
-        btnBack = new QPushButton(layoutWidget2);
+        btnBack = new QPushButton(layoutWidget1);
         btnBack->setObjectName(QString::fromUtf8("btnBack"));
 
         horizontalLayout_16->addWidget(btnBack);
@@ -288,7 +288,7 @@ public:
 
         horizontalLayout_15 = new QHBoxLayout();
         horizontalLayout_15->setObjectName(QString::fromUtf8("horizontalLayout_15"));
-        btnLoadConfig = new QPushButton(layoutWidget2);
+        btnLoadConfig = new QPushButton(layoutWidget1);
         btnLoadConfig->setObjectName(QString::fromUtf8("btnLoadConfig"));
 
         horizontalLayout_15->addWidget(btnLoadConfig);
@@ -297,7 +297,7 @@ public:
 
         horizontalLayout_15->addItem(horizontalSpacer_7);
 
-        btnSaveConfig = new QPushButton(layoutWidget2);
+        btnSaveConfig = new QPushButton(layoutWidget1);
         btnSaveConfig->setObjectName(QString::fromUtf8("btnSaveConfig"));
 
         horizontalLayout_15->addWidget(btnSaveConfig);
@@ -309,7 +309,7 @@ public:
 
         horizontalLayout_16->addItem(horizontalSpacer_9);
 
-        btnConnect = new QPushButton(layoutWidget2);
+        btnConnect = new QPushButton(layoutWidget1);
         btnConnect->setObjectName(QString::fromUtf8("btnConnect"));
 
         horizontalLayout_16->addWidget(btnConnect);
@@ -317,25 +317,25 @@ public:
         lblConfig = new QLabel(FrmClient);
         lblConfig->setObjectName(QString::fromUtf8("lblConfig"));
         lblConfig->setGeometry(QRect(20, 180, 413, 17));
-        layoutWidget = new QWidget(FrmClient);
-        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(20, 50, 284, 91));
-        horizontalLayout = new QHBoxLayout(layoutWidget);
+        layoutWidget2 = new QWidget(FrmClient);
+        layoutWidget2->setObjectName(QString::fromUtf8("layoutWidget2"));
+        layoutWidget2->setGeometry(QRect(20, 50, 284, 91));
+        horizontalLayout = new QHBoxLayout(layoutWidget2);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
         verticalLayout_6 = new QVBoxLayout();
         verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
-        lblIpServer = new QLabel(layoutWidget);
+        lblIpServer = new QLabel(layoutWidget2);
         lblIpServer->setObjectName(QString::fromUtf8("lblIpServer"));
 
         verticalLayout_6->addWidget(lblIpServer);
 
-        lblPort = new QLabel(layoutWidget);
+        lblPort = new QLabel(layoutWidget2);
         lblPort->setObjectName(QString::fromUtf8("lblPort"));
 
         verticalLayout_6->addWidget(lblPort);
 
-        lblPassword = new QLabel(layoutWidget);
+        lblPassword = new QLabel(layoutWidget2);
         lblPassword->setObjectName(QString::fromUtf8("lblPassword"));
 
         verticalLayout_6->addWidget(lblPassword);
@@ -362,17 +362,17 @@ public:
 
         verticalLayout_4 = new QVBoxLayout();
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
-        txtIpServer = new QLineEdit(layoutWidget);
+        txtIpServer = new QLineEdit(layoutWidget2);
         txtIpServer->setObjectName(QString::fromUtf8("txtIpServer"));
 
         verticalLayout_4->addWidget(txtIpServer);
 
-        txtPort = new QLineEdit(layoutWidget);
+        txtPort = new QLineEdit(layoutWidget2);
         txtPort->setObjectName(QString::fromUtf8("txtPort"));
 
         verticalLayout_4->addWidget(txtPort);
 
-        txtPassword = new QLineEdit(layoutWidget);
+        txtPassword = new QLineEdit(layoutWidget2);
         txtPassword->setObjectName(QString::fromUtf8("txtPassword"));
 
         verticalLayout_4->addWidget(txtPassword);

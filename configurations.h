@@ -19,8 +19,6 @@ public:
     static int color_scale_choices[];
     static std::string controls_choices[];
 
-    static std::string file_name;
-
     static uint8_t system;
     static uint8_t source;
     static std::string server_ip;
@@ -34,6 +32,12 @@ public:
     static uint8_t buffer;
     static uint8_t color_scale;
     static uint8_t controls;
+
+
+    // Streaming utils
+    static std::string file_name;
+    static std::string camera_path;
+    // static cv::Rect screen_roi;
 };
 
 #endif // CONFIGURATIONS_H

@@ -32,7 +32,6 @@ private slots:
     void otherGuyDisconnected();
     void sendStartStreamingCommand();
     void on_btnToggleConfig_clicked();
-    void on_btnStartStreaming_clicked();
     void stopReceivingVideoStream(bool is_video_ended);
     void streamingEnded();
     void startStreaming();

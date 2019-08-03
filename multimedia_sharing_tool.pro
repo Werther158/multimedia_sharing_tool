@@ -25,6 +25,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        camerathread.cpp \
         clientstreamthread.cpp \
         configurations.cpp \
         connectivity.cpp \
@@ -40,6 +41,7 @@ SOURCES += \
         tcpserverthread.cpp
 
 HEADERS += \
+        camerathread.h \
         clientstreamthread.h \
         configurations.h \
         connectivity.h \
