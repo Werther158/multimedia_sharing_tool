@@ -161,7 +161,6 @@ void FrmConnected::on_btnStartStopStreaming_clicked()
             ui->btnStartStopStreaming->setEnabled(false);
             ui->btnStartStopStreaming->repaint();
             stopReceivingVideoStream(false);
-            (*dict).getTextOfbtnStartStreaming(ui->btnStartStopStreaming, 0);
             ui->btnStartStopStreaming->setEnabled(true);
         }
         else
@@ -203,6 +202,7 @@ void FrmConnected::stopReceivingVideoStream(bool is_video_ended)
         client_stream_thread->~ClientStreamThread();
         is_stream_active = false;
         uiStreamingInactive();
+        (*dict).getTextOfbtnStartStreaming(ui->btnStartStopStreaming, 0);
     }
 }
 
