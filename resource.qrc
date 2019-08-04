@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/resources">
+        <file>media/eye.png</file>
+        <file>media/eyegrey.png</file>
+        <file>media/green_state.png</file>
+        <file>media/grey_state.png</file>
+        <file>media/mst_logo.ico</file>
+        <file>media/mst_logo.png</file>
+        <file>media/mst_logo2.png</file>
+        <file>media/mst_logo3.png</file>
+        <file>media/stream_active.png</file>
+        <file>media/stream_inactive.png</file>
+    </qresource>
+</RCC>

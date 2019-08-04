@@ -24,43 +24,61 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 CONFIG += c++11
 
+CONFIG(release, debug|release){
+    DESTDIR = ./build/release/bin
+    OBJECTS_DIR = ./build/release/obj
+    MOC_DIR = ./build/release/moc
+    RCC_DIR = ./build/release/rcc
+    UI_DIR = ./build/release/ui
+}
+
+CONFIG(debug, debug|release){
+    DESTDIR = ./build/debug/bin
+    OBJECTS_DIR = ./build/debug/obj
+    MOC_DIR = ./build/debug/moc
+    RCC_DIR = ./build/debug/rcc
+    UI_DIR = ./build/debug/ui
+}
+
 SOURCES += \
-        camerathread.cpp \
-        clientstreamthread.cpp \
-        configurations.cpp \
-        connectivity.cpp \
-        dictionary.cpp \
-        frmclient.cpp \
-        frmconnected.cpp \
-        frmrunning.cpp \
-        frmserver.cpp \
-        main.cpp \
-        frmmain.cpp \
-        serverstreamthread.cpp \
-        tcpclientthread.cpp \
-        tcpserverthread.cpp
+        src/camerathread.cpp \
+        src/clientstreamthread.cpp \
+        src/configurations.cpp \
+        src/connectivity.cpp \
+        src/dictionary.cpp \
+        src/frmclient.cpp \
+        src/frmconnected.cpp \
+        src/frmrunning.cpp \
+        src/frmserver.cpp \
+        src/main.cpp \
+        src/frmmain.cpp \
+        src/serverstreamthread.cpp \
+        src/tcpclientthread.cpp \
+        src/tcpserverthread.cpp
 
 HEADERS += \
-        camerathread.h \
-        clientstreamthread.h \
-        configurations.h \
-        connectivity.h \
-        dictionary.h \
-        frmclient.h \
-        frmconnected.h \
-        frmmain.h \
-        frmrunning.h \
-        frmserver.h \
-        serverstreamthread.h \
-        tcpclientthread.h \
-        tcpserverthread.h
+        include/camerathread.h \
+        include/clientstreamthread.h \
+        include/configurations.h \
+        include/connectivity.h \
+        include/dictionary.h \
+        include/frmclient.h \
+        include/frmconnected.h \
+        include/frmmain.h \
+        include/frmrunning.h \
+        include/frmserver.h \
+        include/serverstreamthread.h \
+        include/tcpclientthread.h \
+        include/tcpserverthread.h
+
+
 
 FORMS += \
-        frmclient.ui \
-        frmconnected.ui \
-        frmmain.ui \
-        frmrunning.ui \
-        frmserver.ui
+        ui/frmclient.ui \
+        ui/frmconnected.ui \
+        ui/frmmain.ui \
+        ui/frmrunning.ui \
+        ui/frmserver.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -72,10 +90,23 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 QMAKE_LFLAGS += -no-pie
 
 INCLUDEPATH += /usr/include/curl
+INCLUDEPATH += include/
 LIBS += -L/usr/local/lib -lcurl
 
 DISTFILES += \
     media/eye.png \
     media/eyegray.png \
+    media/eyegrey.png \
     media/green_state.ico \
+    media/green_state.png \
+    media/grey_state.png \
+    media/mst_logo.ico \
+    media/mst_logo.png \
+    media/mst_logo2.png \
+    media/mst_logo3.png \
+    media/stream_active.png \
+    media/stream_inactive.png \
     media/yellow_state.ico
+
+RESOURCES += \
+    resource.qrc
