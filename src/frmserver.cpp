@@ -9,7 +9,7 @@ FrmServer::FrmServer(QWidget *parent) :
     std::string public_ip = Connectivity::getPublicIp();
     ui->lblIpServer2->setText(QString::fromStdString(public_ip));
     ui->txtIpClient->setText("127.0.0.1");
-    ui->txtPort->setText("8090");
+    ui->txtPort->setText("49152");
     setFixedSize(size());
     setWindowIcon(QIcon(":/resources/media/mst_logo.png"));
 
@@ -87,6 +87,7 @@ void FrmServer::setConfigurations()
 
 void FrmServer::on_btnStartServer_clicked()
 {
+    bool go_on = true;
     ui->btnStartServer->setEnabled(false);
     ui->btnStartServer->repaint();
     setConfigurations();
@@ -94,8 +95,16 @@ void FrmServer::on_btnStartServer_clicked()
     {
         Configurations::file_name = QFileDialog::getOpenFileName(this, QString::fromStdString((*dict).getTextOpenafile()),
                                                          QDir::homePath(), "*.mkv").toStdString();
+        if(Configurations::file_name == "")
+        {
+            go_on = false;
+            ui->btnStartServer->setEnabled(true);
+        }
     }
 
-    *selector = 3;
-    this->close();
+    if(go_on)
+    {
+        *selector = 3;
+        this->close();
+    }
 }

@@ -34,10 +34,10 @@ CONFIG(release, debug|release){
 
 CONFIG(debug, debug|release){
     DESTDIR = ./build/debug/bin
+    UI_DIR = ./build/debug/ui
     OBJECTS_DIR = ./build/debug/obj
     MOC_DIR = ./build/debug/moc
     RCC_DIR = ./build/debug/rcc
-    UI_DIR = ./build/debug/ui
 }
 
 SOURCES += \
@@ -46,6 +46,8 @@ SOURCES += \
         src/configurations.cpp \
         src/connectivity.cpp \
         src/dictionary.cpp \
+        src/feedaudiopipethread.cpp \
+        src/feedvideopipethread.cpp \
         src/frmclient.cpp \
         src/frmconnected.cpp \
         src/frmrunning.cpp \
@@ -62,6 +64,8 @@ HEADERS += \
         include/configurations.h \
         include/connectivity.h \
         include/dictionary.h \
+    include/feedaudiopipethread.h \
+    include/feedvideopipethread.h \
         include/frmclient.h \
         include/frmconnected.h \
         include/frmmain.h \

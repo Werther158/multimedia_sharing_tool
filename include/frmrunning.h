@@ -5,10 +5,10 @@
 #include <connectivity.h>
 #include <configurations.h>
 #include <tcpserverthread.h>
-#include <serverstreamthread.h>
 #include <QWidget>
 #include <QDir>
 #include <qdesktopwidget.h>
+#include <camerathread.h>
 
 #include <QAction>
 
@@ -42,12 +42,11 @@ private:
     Dictionary* dict;
     int* selector;
     TcpServerThread *tcp_server_thread;
-    ServerStreamThread *server_stream_thread;
     Connectivity c;
-
     bool client_connected = false;
     bool listconfig_active = true;
     bool is_stream_active = false;
+    CameraThread *camera_thread;
 
     void startServer();
     void stopThreads();
@@ -55,6 +54,8 @@ private:
     void disableListConfiguration();
 signals:
     void setStreamingEnded();
+    void startServerStreamThread();
+    void stopServerStreamThread();
 };
 
 #endif // FRMRUNNING_H

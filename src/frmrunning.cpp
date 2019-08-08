@@ -113,8 +113,8 @@ void FrmRunning::stopThreads()
         ui->btnStartStopStream->setEnabled(false);
         ui->btnStartStopStream->repaint();
         ui->btnStartStopStream->setText(QString::fromStdString((*dict).getTextOfbtnStartStopStream(0)));
-        disconnect(server_stream_thread, nullptr, nullptr, nullptr);
-        server_stream_thread->~ServerStreamThread();
+        disconnect(camera_thread, nullptr, nullptr, nullptr);
+        camera_thread->~CameraThread();
         is_stream_active = false;
     }
 }
@@ -158,12 +158,13 @@ void FrmRunning::on_btnToggleConfig_clicked()
 void FrmRunning::startServerStream()
 {
     ui->txtBox->append("Streaming started");
-    // Start serverStreamThread
-    server_stream_thread = new ServerStreamThread();
-    QObject::connect(server_stream_thread, SIGNAL(writeText(QString)), this, SLOT(writeTextOnTxtBox(QString)));
-    QObject::connect(server_stream_thread, SIGNAL(stopStream()), this, SLOT(stopStream()));
-    QObject::connect(this, SIGNAL(setStreamingEnded()), server_stream_thread, SLOT(setStreamingEnded()));
-    server_stream_thread->start();
+    // Start cameraThread
+    camera_thread = new CameraThread();
+    QObject::connect(camera_thread, SIGNAL(writeText(QString)), this, SLOT(writeTextOnTxtBox(QString)));
+    QObject::connect(camera_thread, SIGNAL(stopStream()), this, SLOT(stopStream()));
+    QObject::connect(this, SIGNAL(setStreamingEnded()), camera_thread, SIGNAL(setStreamingEnded()));
+    camera_thread->start();
+
     is_stream_active = true;
     QPixmap stream_active_pix(":/resources/media/stream_active.png");
     ui->lblState3->setPixmap(stream_active_pix);
@@ -177,8 +178,8 @@ void FrmRunning::stopStream()
     ui->btnStartStopStream->setText(QString::fromStdString((*dict).getTextOfbtnStartStopStream(0)));
     c.tcpWriteCommand(-3);
     is_stream_active = false;
-    disconnect(server_stream_thread, nullptr, nullptr, nullptr);
-    server_stream_thread->~ServerStreamThread();
+    disconnect(camera_thread, nullptr, nullptr, nullptr);
+    camera_thread->~CameraThread();
     QPixmap stream_inactive_pix(":/resources/media/stream_inactive.png");
     ui->lblState3->setPixmap(stream_inactive_pix);
 }
@@ -209,9 +210,9 @@ void FrmRunning::streamingEnded()
     if(is_stream_active)
     {
         ui->btnStartStopStream->setText(QString::fromStdString((*dict).getTextOfbtnStartStopStream(0)));
-        disconnect(server_stream_thread, nullptr, nullptr, nullptr);
         emit setStreamingEnded();
-        server_stream_thread->~ServerStreamThread();
+        disconnect(camera_thread, nullptr, nullptr, nullptr);
+        camera_thread->~CameraThread();
         is_stream_active = false;
     }
 }

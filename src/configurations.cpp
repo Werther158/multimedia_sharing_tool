@@ -25,7 +25,7 @@ uint8_t Configurations::buffer;
 uint8_t Configurations::color_scale;
 uint8_t Configurations::controls;
 
-std::string Configurations::file_name;
+std::string Configurations::file_name = "";
 std::string Configurations::camera_path;
 //cv::Rect Configurations::screen_roi;
 

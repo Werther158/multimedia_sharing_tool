@@ -82,9 +82,7 @@ int Connectivity::tcpServer(uint16_t PORT)
             perror("accept");
             exit(EXIT_FAILURE);
         }
-        cout << "server read";
         valread = read(sock, buffer, BUFFER_SIZE);
-        cout << "server send";
         if (string(buffer) == Configurations::password)
         {
             send(sock, "ok", strlen(Configurations::client_ip.c_str()), 0);
@@ -95,9 +93,7 @@ int Connectivity::tcpServer(uint16_t PORT)
         }
     } while(string(buffer) != Configurations::password);
 
-    cout << "server read";
     valread = read(sock, buffer, BUFFER_SIZE);
-    cout << "server send";
     send(sock, Configurations::client_ip.c_str(), strlen(Configurations::client_ip.c_str()), 0);
     Configurations::my_own_used_ip = buffer;
 
@@ -133,16 +129,12 @@ int Connectivity::tcpClient(string server_ip, uint16_t PORT)
         return -1;
     }
 
-    cout << "client send";
     send(sock, Configurations::password.c_str(), strlen(Configurations::server_ip.c_str()), 0 );
-    cout << "client read";
     valread = read(sock, buffer, BUFFER_SIZE);
 
     if(string(buffer) == "ok")
     {
-        cout << "client send";
         send(sock, Configurations::server_ip.c_str(), strlen(Configurations::server_ip.c_str()), 0 );
-        cout << "client read";
         valread = read(sock, buffer, BUFFER_SIZE);
         Configurations::my_own_used_ip = buffer;
 

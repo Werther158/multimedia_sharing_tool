@@ -7,6 +7,8 @@
 #define SERVER 0
 #define CLIENT 1
 
+#define VIDEO_CHUNK 10
+
 class Configurations
 {
 public:
