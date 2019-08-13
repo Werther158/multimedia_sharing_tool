@@ -7,7 +7,15 @@ CameraThread::CameraThread()
 
 CameraThread::~CameraThread()
 {
-
+    thread_active = false;
+    quit();
+    wait();
+    close(mst_video_pipe);
+    close(mst_audio_pipe);
+    std::system("bash -c \"killall ffmpeg\"");
+    audio_pipe_thread->~FeedAudioPipeThread();
+    video_pipe_thread->~FeedVideoPipeThread();
+    std::system("rm -R /mst-temp");
 }
 
 std::string CameraThread::execCmd(const char* cmd)
@@ -44,12 +52,57 @@ long CameraThread::strToPositiveDigit(std::string s)
     }
 }
 
+void CameraThread::defineChunk()
+{
+    // Set begin and end H, M, S variables
+    begin_h = static_cast<int>(begin_chunk / 3600);
+    begin_chunk -= (begin_h * 3600);
+    begin_m = static_cast<int>(begin_chunk / 60);
+    begin_chunk -= (begin_m * 60);
+    begin_s = static_cast<int>(begin_chunk);
+    end_h = static_cast<int>(end_chunk / 3600);
+    end_chunk -= (end_h * 3600);
+    end_m = static_cast<int>(end_chunk / 60);
+    end_chunk -= (end_m * 60);
+    end_s = static_cast<int>(end_chunk);
+
+    // Construct audiochunk and videochunk path based on tik tok strategy
+    if(tik_tok)
+    {
+        audiochunk_out_path = "mst-temp/audio/tik";
+        videochunk_out_path = "mst-temp/frames/tik";
+        tik_tok = false;
+    }
+    else
+    {
+        audiochunk_out_path = "mst-temp/audio/tok";
+        videochunk_out_path = "mst-temp/frames/tok";
+        tik_tok = true;
+    }
+}
+
+void CameraThread::createChunk()
+{
+    // Extract bmp frames and audio from video chunk
+    // Extract frames
+    timing = " -ss " + std::to_string(begin_h) + ":" + std::to_string(begin_m) +
+            ":" + std::to_string(begin_s) + " -to " + std::to_string(end_h) +
+            ":" + std::to_string(end_m) + ":" + std::to_string(end_s);
+    command = "bash -c \"ffmpeg -i " + file_name + timing +
+            " -compression_algo raw -pix_fmt rgb24 " + videochunk_out_path + "/output%03d.bmp\"";
+    std::system(command.c_str());
+    // Extract audio
+    command = "bash -c \"ffmpeg -i " + file_name + timing +
+            " " + audiochunk_out_path + "/temp.aac -y\"";
+    std::system(command.c_str());
+
+    command = "bash -c \"ffmpeg -i " + audiochunk_out_path + "/temp.aac -ss 0 -to " + std::to_string(VIDEO_CHUNK) +
+            " " + audiochunk_out_path + "/audiochunk.aac -y\"";
+    std::system(command.c_str());
+}
+
 void CameraThread::captureFromFile()
 {
-    std::string file_name, strvideo_length, command, rtsp_url, timing;
-    long video_length, begin_chunk, end_chunk;
-    int begin_h, begin_m, begin_s, end_h, end_m, end_s;
-
     // Repair errors (if any) in input video file
     file_name = path + "/mst-temp/input_file.mkv";
     command = "ffmpeg -i " + Configurations::file_name + " -c copy -force_key_frames source " + file_name;
@@ -97,49 +150,13 @@ void CameraThread::captureFromFile()
         begin_chunk += (end_chunk - begin_chunk);
         if(begin_chunk == video_length)
             break;
-        if(end_chunk + VIDEO_CHUNK <= video_length)
+        if(end_chunk + VIDEO_CHUNK < video_length)
             end_chunk += VIDEO_CHUNK;
         else
             end_chunk += (video_length - end_chunk);
 
-        // Set begin and end H, M, S variables
-        begin_h = static_cast<int>(begin_chunk / 3600);
-        begin_chunk -= (begin_h * 3600);
-        begin_m = static_cast<int>(begin_chunk / 60);
-        begin_chunk -= (begin_m * 60);
-        begin_s = static_cast<int>(begin_chunk);
-        end_h = static_cast<int>(end_chunk / 3600);
-        end_chunk -= (end_h * 3600);
-        end_m = static_cast<int>(end_chunk / 60);
-        end_chunk -= (end_m * 60);
-        end_s = static_cast<int>(end_chunk);
-
-        // Construct audiochunk and videochunk path based on tik tok strategy
-        if(tik_tok)
-        {
-            audiochunk_out_path = "mst-temp/audio/tik";
-            videochunk_out_path = "mst-temp/frames/tik";
-            tik_tok = false;
-        }
-        else
-        {
-            audiochunk_out_path = "mst-temp/audio/tok";
-            videochunk_out_path = "mst-temp/frames/tok";
-            tik_tok = true;
-        }
-
-        // Extract bmp frames and audio from video chunk
-        // Extract frames
-        timing = " -ss " + std::to_string(begin_h) + ":" + std::to_string(begin_m) +
-                ":" + std::to_string(begin_s) + " -to " + std::to_string(end_h) +
-                ":" + std::to_string(end_m) + ":" + std::to_string(end_s);
-        command = "bash -c \"ffmpeg -i " + file_name + timing +
-                " -compression_algo raw -pix_fmt rgb24 " + videochunk_out_path + "/output%03d.bmp\"";
-        std::system(command.c_str());
-        // Extract audio
-        command = "bash -c \"ffmpeg -i mst-temp/audio/complete.aac" + timing +
-                " -vn " + audiochunk_out_path + "/audiochunk.aac -y\"";
-        std::system(command.c_str());
+        defineChunk();
+        createChunk();
 
         // Apply neural net and elaborations on chunk frames
 
@@ -152,8 +169,17 @@ void CameraThread::captureFromFile()
 
         // Wait for signal to start feeding mst audio
         sem_wait(&sem_audio);
-        command = "bash -c \"cat " + audiochunk_out_path + "/audiochunk.aac > " + mstaudio_pipe_path + " &\"";
-        std::system(command.c_str());
+        if(end_chunk == video_length) // If the end of file is reached, wait for the end of stream
+        {
+            command = "bash -c \"cat " + audiochunk_out_path + "/audiochunk.aac > " + mstaudio_pipe_path + " &\"";
+            std::system(command.c_str());
+        }
+        else
+        {
+            command = "bash -c \"cat " + audiochunk_out_path + "/audiochunk.aac > " + mstaudio_pipe_path + " &\"";
+            std::system(command.c_str());
+        }
+
     }
 
 }
@@ -185,9 +211,9 @@ void CameraThread::run()
     mkfifo(ffvideo_pipe_path.c_str(), 0666);
 
     server_stream_thread = new ServerStreamThread();
-    QObject::connect(server_stream_thread, SIGNAL(writeText(QString)), this, SIGNAL(writeText(QString)));
-    QObject::connect(server_stream_thread, SIGNAL(stopStream()), this, SIGNAL(stopStream()));
-    QObject::connect(this, SIGNAL(setStreamingEnded()), server_stream_thread, SLOT(setStreamingEnded()));
+    //QObject::connect(server_stream_thread, SIGNAL(writeText(QString)), this, SIGNAL(writeText(QString)));
+    //QObject::connect(server_stream_thread, SIGNAL(stopStream()), this, SIGNAL(stopStream()));
+    //QObject::connect(this, SIGNAL(setStreamingEnded()), server_stream_thread, SLOT(setStreamingEnded()));
     server_stream_thread->start();
 
     if(Configurations::source_choices[Configurations::source] == "Video file")
@@ -204,9 +230,6 @@ void CameraThread::run()
     {
         //captureFromScreen();
     }
-
-    close(mst_video_pipe);
-    close(mst_audio_pipe);
 }
 
 void CameraThread::beginCameraWork()

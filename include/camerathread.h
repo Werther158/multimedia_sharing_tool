@@ -35,12 +35,17 @@ private:
     int mst_audio_pipe, mst_video_pipe, ffmpeg_audio_pipe, ffmpeg_video_pipe;
     std::string path, mstaudio_pipe_path, mstvideo_pipe_path, ffaudio_pipe_path, ffvideo_pipe_path;
     std::string audiochunk_out_path, videochunk_out_path;
+    std::string file_name, strvideo_length, command, rtsp_url, timing;
+    long video_length, begin_chunk, end_chunk;
+    int begin_h, begin_m, begin_s, end_h, end_m, end_s;
 
     void captureFromFile();
     std::string execCmd(const char* cmd);
     long strToPositiveDigit(std::string s);
     void beginCameraWork();
     void ffmpegJob();
+    void defineChunk();
+    void createChunk();
 
 public slots:
     void notifyAudioToMstCondVar();

@@ -160,9 +160,9 @@ void FrmRunning::startServerStream()
     ui->txtBox->append("Streaming started");
     // Start cameraThread
     camera_thread = new CameraThread();
-    QObject::connect(camera_thread, SIGNAL(writeText(QString)), this, SLOT(writeTextOnTxtBox(QString)));
-    QObject::connect(camera_thread, SIGNAL(stopStream()), this, SLOT(stopStream()));
-    QObject::connect(this, SIGNAL(setStreamingEnded()), camera_thread, SIGNAL(setStreamingEnded()));
+    //QObject::connect(camera_thread, SIGNAL(writeText(QString)), this, SLOT(writeTextOnTxtBox(QString)));
+    //QObject::connect(this, SIGNAL(stopCamera()), camera_thread, SLOT(stop()));
+    //QObject::connect(this, SIGNAL(setStreamingEnded()), camera_thread, SIGNAL(setStreamingEnded()));
     camera_thread->start();
 
     is_stream_active = true;
@@ -210,7 +210,6 @@ void FrmRunning::streamingEnded()
     if(is_stream_active)
     {
         ui->btnStartStopStream->setText(QString::fromStdString((*dict).getTextOfbtnStartStopStream(0)));
-        emit setStreamingEnded();
         disconnect(camera_thread, nullptr, nullptr, nullptr);
         camera_thread->~CameraThread();
         is_stream_active = false;

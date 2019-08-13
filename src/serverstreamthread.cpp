@@ -6,13 +6,6 @@ ServerStreamThread::ServerStreamThread()
 
 ServerStreamThread::~ServerStreamThread()
 {
-    std::system("bash -c \"killall ffmpeg\"");
-    std::string command = "bash -c \"fuser -k " + std::to_string(Configurations::port + 1) + "/tcp\"";
-    std::system(command.c_str());
-    std::system("bash -c \"rm -R mst-temp\"");
-
-    quit();
-    wait();
 }
 
 std::string ServerStreamThread::execCmd(const char* cmd)
@@ -49,12 +42,8 @@ void ServerStreamThread::run()
     // Activate ffmpeg streaming command
     rtsp_url = "rtsp://" + Configurations::my_own_used_ip + "@" + Configurations::client_ip +
             ":" + std::to_string(Configurations::port + 1);
-    command = "ffmpeg -probesize 2147483647 -s 1280x720 -pix_fmt rgb24 -i " + ffvideo_pipe_path + " -vsync 1 -i " + ffaudio_pipe_path + " -r 25 -vcodec libx264 -crf 23 -preset ultrafast -f rtsp -rtsp_transport tcp " + rtsp_url;
+    command = "ffmpeg -probesize 2147483647 -s 1280x720 -pix_fmt rgb24 -i " + ffvideo_pipe_path + " -i " + ffaudio_pipe_path + " -vsync 1 -r 25 -vcodec libx264 -crf 23 -preset ultrafast -f rtsp -rtsp_transport tcp " + rtsp_url;
     std::system(command.c_str());
-
-    sleep(3);
-    if(!streaming_ended)
-        emit stopStream();
 }
 
 void ServerStreamThread::setStreamingEnded()

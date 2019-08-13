@@ -9,7 +9,10 @@ FeedVideoPipeThread::FeedVideoPipeThread()
 
 FeedVideoPipeThread::~FeedVideoPipeThread()
 {
-
+    close(mst_video_pipe);
+    close(ffmpeg_video_pipe);
+    terminate();
+    wait();
 }
 
 std::string FeedVideoPipeThread::execCmd(const char* cmd)

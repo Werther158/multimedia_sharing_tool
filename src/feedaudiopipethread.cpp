@@ -9,7 +9,10 @@ FeedAudioPipeThread::FeedAudioPipeThread()
 
 FeedAudioPipeThread::~FeedAudioPipeThread()
 {
-
+    close(mst_audio_pipe);
+    close(ffmpeg_audio_pipe);
+    terminate();
+    wait();
 }
 
 std::string FeedAudioPipeThread::execCmd(const char* cmd)
