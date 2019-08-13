@@ -144,6 +144,7 @@ void CameraThread::captureFromFile()
         // Apply neural net and elaborations on chunk frames
 
 
+
         // Wait for signal to start feeding mst video
         sem_wait(&sem_video);
         command = "bash -c \"cat " + videochunk_out_path + "/output*.bmp > " + mstvideo_pipe_path + " &\"";
