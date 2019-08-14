@@ -16,9 +16,9 @@
   <widget class="QPushButton" name="btnStop">
    <property name="geometry">
     <rect>
-     <x>258</x>
+     <x>248</x>
      <y>260</y>
-     <width>111</width>
+     <width>121</width>
      <height>25</height>
     </rect>
    </property>
@@ -44,7 +44,7 @@
     <rect>
      <x>230</x>
      <y>10</y>
-     <width>121</width>
+     <width>204</width>
      <height>22</height>
     </rect>
    </property>
@@ -143,9 +143,9 @@
   <widget class="QPushButton" name="btnStartStopStream">
    <property name="geometry">
     <rect>
-     <x>100</x>
+     <x>90</x>
      <y>260</y>
-     <width>131</width>
+     <width>141</width>
      <height>25</height>
     </rect>
    </property>

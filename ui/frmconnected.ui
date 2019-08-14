@@ -29,9 +29,9 @@
   <widget class="QPushButton" name="btnDisconnect">
    <property name="geometry">
     <rect>
-     <x>330</x>
+     <x>290</x>
      <y>290</y>
-     <width>89</width>
+     <width>111</width>
      <height>25</height>
     </rect>
    </property>
@@ -168,9 +168,9 @@
   <widget class="QPushButton" name="btnStartStopStreaming">
    <property name="geometry">
     <rect>
-     <x>70</x>
+     <x>120</x>
      <y>290</y>
-     <width>131</width>
+     <width>141</width>
      <height>25</height>
     </rect>
    </property>
@@ -183,7 +183,7 @@
     <rect>
      <x>290</x>
      <y>20</y>
-     <width>111</width>
+     <width>204</width>
      <height>22</height>
     </rect>
    </property>

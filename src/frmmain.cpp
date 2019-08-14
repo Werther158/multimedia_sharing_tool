@@ -7,11 +7,28 @@ FrmMain::FrmMain(QWidget *parent) :
 {
     ui->setupUi(this);
     setFixedSize(size());
-    setWindowIcon(QIcon(":/resources/media/mst_logo.png"));
 
     QRect desktopRect = QApplication::desktop()->availableGeometry(this);
     QPoint center = desktopRect.center();
     move(center.x()- static_cast<int>(width()*0.5),center.y()- static_cast<int>(height()*0.5));
+
+    // Set Icons
+    setWindowIcon(QIcon(":/resources/media/mst_logo.png"));
+
+    QPixmap server_img(":/resources/media/server.png");
+    QIcon ServerIcon(server_img);
+    ui->btnServer->setIcon(ServerIcon);
+    ui->btnServer->setIconSize(server_img.rect().size());
+
+    QPixmap client_img(":/resources/media/client.png");
+    QIcon ClientIcon(client_img);
+    ui->btnClient->setIcon(ClientIcon);
+    ui->btnClient->setIconSize(client_img.rect().size());
+
+    QPixmap exit_img(":/resources/media/exit.png");
+    QIcon ExitIcon(exit_img);
+    ui->btnExit->setIcon(ExitIcon);
+    ui->btnExit->setIconSize(exit_img.rect().size());
 }
 
 FrmMain::~FrmMain()
@@ -28,7 +45,7 @@ void FrmMain::setDict(Dictionary* d)
     ui->btnServer->setText(QString::fromStdString((*dict).getTextOfbtnServer()));
     ui->btnClient->setText(QString::fromStdString((*dict).getTextOfbtnClient()));
     ui->lblLang->setText(QString::fromStdString((*dict).getTextOflblLang()));
-    ui->btnLang->setText(QString::fromStdString((*dict).getTextOfbtnLang()));
+    (*dict).setIconOfbtnLang(ui->btnLang);
     ui->btnExit->setText(QString::fromStdString((*dict).getTextOfbtnExit()));
 }
 

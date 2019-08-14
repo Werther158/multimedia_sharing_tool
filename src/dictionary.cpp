@@ -31,12 +31,12 @@ std::string Dictionary::getTextOflblStart()
 
 std::string Dictionary::getTextOfbtnServer()
 {
-    return "Server";
+    return " Server";
 }
 
 std::string Dictionary::getTextOfbtnClient()
 {
-    return "Client";
+    return " Client";
 }
 
 std::string Dictionary::getTextOflblLang()
@@ -44,14 +44,26 @@ std::string Dictionary::getTextOflblLang()
     return choices("Lingua", "Language");
 }
 
-std::string Dictionary::getTextOfbtnLang()
+void Dictionary::setIconOfbtnLang(QPushButton *btn)
 {
-    return choices("ENG", "ITA");
+    QPixmap lang_img;
+    if(current_language == english)
+    {
+        lang_img.load(":/resources/media/italian.png");
+    }
+    else
+    {
+        lang_img.load(":/resources/media/english.png");
+    }
+
+    QIcon LangIcon(lang_img);
+    btn->setIcon(LangIcon);
+    btn->setIconSize(lang_img.rect().size());
 }
 
 std::string Dictionary::getTextOfbtnExit()
 {
-    return choices("Esci", "Exit");
+    return choices(" Esci", " Exit");
 }
 
 // FrmServer
@@ -166,22 +178,22 @@ std::string Dictionary::getTextOflblBandwidthvalue()
 
 std::string Dictionary::getTextOfbtnBack()
 {
-    return choices("Indietro", "Back");
+    return choices(" Indietro", " Back");
 }
 
 std::string Dictionary::getTextOfbtnLoadConfig()
 {
-    return choices("Carica configurazione", "Load configuration");
+    return choices(" Carica configurazione", " Load configuration");
 }
 
 std::string Dictionary::getTextOfbtnSaveConfig()
 {
-    return choices("Salva configurazione", "Save configuration");
+    return choices(" Salva configurazione", " Save configuration");
 }
 
 std::string Dictionary::getTextOfbtnStartServer()
 {
-    return choices("Avvia server", "Start server");
+    return choices(" Avvia server", " Start server");
 }
 
 void Dictionary::fillcmbSource(QComboBox *cmb)
@@ -254,7 +266,7 @@ void Dictionary::fillcmbControls(QComboBox *cmb)
 // FrmClient
 std::string Dictionary::getTextOfbtnConnect()
 {
-    return choices("Connetti", "Connect");
+    return choices(" Connetti", " Connect");
 }
 
 void Dictionary::setTextOflblIpClientC(QLabel *lbl)
@@ -296,15 +308,28 @@ void Dictionary::getTextOflblStateRunning(QLabel *lbl)
 
 std::string Dictionary::getTextOfbtnStopRunning()
 {
-    return choices("Ferma server", "Stop server");
+    return choices(" Ferma server", " Stop server");
 }
 
-std::string Dictionary::getTextOfbtnStartStopStream(int select)
+void Dictionary::setTIbtnStartStopStream(QPushButton *btn, int select)
 {
     if(select == 0)
-        return choices("Avvia streaming", "Start streaming");
+    {
+        QPixmap play_img(":/resources/media/play.png");
+        QIcon PlayIcon(play_img);
+        btn->setIcon(PlayIcon);
+        btn->setIconSize(play_img.rect().size());
+        btn->setText(QString::fromStdString(choices(" Avvia streaming", " Start streaming")));
+    }
+
     else
-        return choices("Ferma streaming", "Stop streaming");
+    {
+        QPixmap stop_img(":/resources/media/stop.png");
+        QIcon StopIcon(stop_img);
+        btn->setIcon(StopIcon);
+        btn->setIconSize(stop_img.rect().size());
+        btn->setText(QString::fromStdString(choices(" Ferma streaming", " Stop streaming")));
+    }
 }
 
 void Dictionary::setTooltipOflblState2(QLabel *lbl)
@@ -335,23 +360,32 @@ std::string Dictionary::getTextOfchkFullscreen()
 std::string Dictionary::getTextOfbtnDisconnect(int select)
 {
     if(select == 0)
-        return choices("Annulla", "Cancel");
+        return choices(" Annulla", " Cancel");
     else
-        return choices("Disconnetti", "Disconnect");
+        return choices(" Disconnetti", " Disconnect");
 }
 
 void Dictionary::getTextOfbtnStartStreaming(QPushButton *btn, int select)
 {
     if(select == 0)
     {
+        QPixmap play_img(":/resources/media/play.png");
+        QIcon PlayIcon(play_img);
+        btn->setIcon(PlayIcon);
+        btn->setIconSize(play_img.rect().size());
         btn->setToolTip(QString::fromStdString(choices("Crea una connessione RTSP con il server e inizia ad acquisire lo streaming video.",
                                                        "Start a RTSP connection with the server and begin to capture video streaming.")));
-        btn->setText(QString::fromStdString(choices("Avvia streaming", "Start streaming")));
+        btn->setText(QString::fromStdString(choices(" Avvia streaming", " Start streaming")));
     }
+
     else
     {
+        QPixmap stop_img(":/resources/media/stop.png");
+        QIcon StopIcon(stop_img);
+        btn->setIcon(StopIcon);
+        btn->setIconSize(stop_img.rect().size());
         btn->setToolTip(QString::fromStdString(choices("Interrompe la connessione RTSP con il server.",
                                                        "End the RTSP connection.")));
-        btn->setText(QString::fromStdString(choices("Ferma streaming", "Stop streaming")));
+        btn->setText(QString::fromStdString(choices(" Ferma streaming", " Stop streaming")));
     }
 }

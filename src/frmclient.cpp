@@ -11,11 +11,34 @@ FrmClient::FrmClient(QWidget *parent) :
     ui->txtIpServer->setText("127.0.0.1");
     ui->txtPort->setText("49152");
     setFixedSize(size());
-    setWindowIcon(QIcon(":/resources/media/mst_logo.png"));
 
     QRect desktopRect = QApplication::desktop()->availableGeometry(this);
     QPoint center = desktopRect.center();
     move(center.x()- static_cast<int>(width()*0.5),center.y()- static_cast<int>(height()*0.5));
+
+    // Set icons
+
+    setWindowIcon(QIcon(":/resources/media/mst_logo.png"));
+
+    QPixmap back_img(":/resources/media/back.png");
+    QIcon BackIcon(back_img);
+    ui->btnBack->setIcon(BackIcon);
+    ui->btnBack->setIconSize(back_img.rect().size());
+
+    QPixmap load_img(":/resources/media/load.png");
+    QIcon LoadIcon(load_img);
+    ui->btnLoadConfig->setIcon(LoadIcon);
+    ui->btnLoadConfig->setIconSize(load_img.rect().size());
+
+    QPixmap save_img(":/resources/media/save.png");
+    QIcon SaveIcon(save_img);
+    ui->btnSaveConfig->setIcon(SaveIcon);
+    ui->btnSaveConfig->setIconSize(save_img.rect().size());
+
+    QPixmap connect_img(":/resources/media/connect.png");
+    QIcon ConnectIcon(connect_img);
+    ui->btnConnect->setIcon(ConnectIcon);
+    ui->btnConnect->setIconSize(connect_img.rect().size());
 }
 
 FrmClient::~FrmClient()

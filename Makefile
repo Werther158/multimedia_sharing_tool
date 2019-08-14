@@ -800,15 +800,29 @@ compiler_rcc_clean:
 	-$(DEL_FILE) build/debug/rcc/qrc_resource.cpp
 build/debug/rcc/qrc_resource.cpp: resource.qrc \
 		../../Qt/5.12.4/gcc_64/bin/rcc \
-		media/mst_logo.png \
-		media/mst_logo3.png \
-		media/stream_active.png \
-		media/eye.png \
-		media/grey_state.png \
-		media/mst_logo2.png \
-		media/stream_inactive.png \
-		media/green_state.png \
+		media/play.png \
+		media/disconnect.png \
 		media/eyegrey.png \
+		media/stream_inactive.png \
+		media/mst_logo2.png \
+		media/green_state.png \
+		media/mst_logo3.png \
+		media/start.png \
+		media/grey_state.png \
+		media/exit.png \
+		media/italian.png \
+		media/english.png \
+		media/server.png \
+		media/load.png \
+		media/client.png \
+		media/mst_logo.png \
+		media/eye.png \
+		media/connect.png \
+		media/save.png \
+		media/back.png \
+		media/stop_server.png \
+		media/stop.png \
+		media/stream_active.png \
 		media/mst_logo.ico
 	/home/werther/Qt/5.12.4/gcc_64/bin/rcc -name resource resource.qrc -o build/debug/rcc/qrc_resource.cpp
 
@@ -2559,7 +2573,28 @@ build/debug/obj/frmclient.o: src/frmclient.cpp include/frmclient.h \
 		include/tcpclientthread.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/QThread \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qthread.h \
-		build/debug/ui/ui_frmclient.h
+		build/debug/ui/ui_frmclient.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/QVariant \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QApplication \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qapplication.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qcoreapplication.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qeventloop.h \
+		../../Qt/5.12.4/gcc_64/include/QtGui/qguiapplication.h \
+		../../Qt/5.12.4/gcc_64/include/QtGui/qinputmethod.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QFrame \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QHBoxLayout \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlayout.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QLineEdit \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlineedit.h \
+		../../Qt/5.12.4/gcc_64/include/QtGui/qtextcursor.h \
+		../../Qt/5.12.4/gcc_64/include/QtGui/qtextformat.h \
+		../../Qt/5.12.4/gcc_64/include/QtGui/qpen.h \
+		../../Qt/5.12.4/gcc_64/include/QtGui/qtextoption.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QSpacerItem \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/debug/obj/frmclient.o src/frmclient.cpp
 
 build/debug/obj/frmconnected.o: src/frmconnected.cpp include/frmconnected.h \
@@ -2699,7 +2734,39 @@ build/debug/obj/frmconnected.o: src/frmconnected.cpp include/frmconnected.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qdir.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qfileinfo.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		build/debug/ui/ui_frmconnected.h
+		build/debug/ui/ui_frmconnected.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/QVariant \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QApplication \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qapplication.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qcoreapplication.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qeventloop.h \
+		../../Qt/5.12.4/gcc_64/include/QtGui/qguiapplication.h \
+		../../Qt/5.12.4/gcc_64/include/QtGui/qinputmethod.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QCheckBox \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qcheckbox.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QHBoxLayout \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlayout.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QLineEdit \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlineedit.h \
+		../../Qt/5.12.4/gcc_64/include/QtGui/qtextcursor.h \
+		../../Qt/5.12.4/gcc_64/include/QtGui/qtextformat.h \
+		../../Qt/5.12.4/gcc_64/include/QtGui/qpen.h \
+		../../Qt/5.12.4/gcc_64/include/QtGui/qtextoption.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QListView \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlistview.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QScrollBar \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qscrollbar.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QSpacerItem \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QTextEdit \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qtextedit.h \
+		../../Qt/5.12.4/gcc_64/include/QtGui/qtextdocument.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/debug/obj/frmconnected.o src/frmconnected.cpp
 
 build/debug/obj/frmrunning.o: src/frmrunning.cpp include/frmrunning.h \
@@ -2845,7 +2912,35 @@ build/debug/obj/frmrunning.o: src/frmrunning.cpp include/frmrunning.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/QAction \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qaction.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qactiongroup.h \
-		build/debug/ui/ui_frmrunning.h
+		build/debug/ui/ui_frmrunning.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/QVariant \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QApplication \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qapplication.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qcoreapplication.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qeventloop.h \
+		../../Qt/5.12.4/gcc_64/include/QtGui/qguiapplication.h \
+		../../Qt/5.12.4/gcc_64/include/QtGui/qinputmethod.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QHBoxLayout \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlayout.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QLineEdit \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlineedit.h \
+		../../Qt/5.12.4/gcc_64/include/QtGui/qtextcursor.h \
+		../../Qt/5.12.4/gcc_64/include/QtGui/qtextformat.h \
+		../../Qt/5.12.4/gcc_64/include/QtGui/qpen.h \
+		../../Qt/5.12.4/gcc_64/include/QtGui/qtextoption.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QListView \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlistview.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QSpacerItem \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QTextEdit \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qtextedit.h \
+		../../Qt/5.12.4/gcc_64/include/QtGui/qtextdocument.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/debug/obj/frmrunning.o src/frmrunning.cpp
 
 build/debug/obj/frmserver.o: src/frmserver.cpp include/frmserver.h \
@@ -2986,7 +3081,30 @@ build/debug/obj/frmserver.o: src/frmserver.cpp include/frmserver.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qmessagebox.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/QDir \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		build/debug/ui/ui_frmserver.h
+		build/debug/ui/ui_frmserver.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/QVariant \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QApplication \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qapplication.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qcoreapplication.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qeventloop.h \
+		../../Qt/5.12.4/gcc_64/include/QtGui/qguiapplication.h \
+		../../Qt/5.12.4/gcc_64/include/QtGui/qinputmethod.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QCheckBox \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qcheckbox.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QFrame \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QHBoxLayout \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlayout.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QLineEdit \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlineedit.h \
+		../../Qt/5.12.4/gcc_64/include/QtGui/qtextcursor.h \
+		../../Qt/5.12.4/gcc_64/include/QtGui/qtextformat.h \
+		../../Qt/5.12.4/gcc_64/include/QtGui/qpen.h \
+		../../Qt/5.12.4/gcc_64/include/QtGui/qtextoption.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QSpacerItem \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/debug/obj/frmserver.o src/frmserver.cpp
 
 build/debug/obj/main.o: src/main.cpp include/frmmain.h \
@@ -3282,7 +3400,20 @@ build/debug/obj/frmmain.o: src/frmmain.cpp include/frmmain.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/QPushButton \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qpushbutton.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractbutton.h \
-		build/debug/ui/ui_frmmain.h
+		build/debug/ui/ui_frmmain.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/QVariant \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QApplication \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qapplication.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qcoreapplication.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qeventloop.h \
+		../../Qt/5.12.4/gcc_64/include/QtGui/qguiapplication.h \
+		../../Qt/5.12.4/gcc_64/include/QtGui/qinputmethod.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QHBoxLayout \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlayout.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QSpacerItem
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/debug/obj/frmmain.o src/frmmain.cpp
 
 build/debug/obj/serverstreamthread.o: src/serverstreamthread.cpp include/serverstreamthread.h \

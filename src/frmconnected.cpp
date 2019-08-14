@@ -8,7 +8,6 @@ FrmConnected::FrmConnected(QWidget *parent) :
     ui->setupUi(this);
     ui->lblResize2->setText("100%");
     setFixedSize(size());
-    setWindowIcon(QIcon(":/resources/media/mst_logo.png"));
     this->setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowTitleHint);
 
     enableListConfiguration();
@@ -31,6 +30,13 @@ FrmConnected::FrmConnected(QWidget *parent) :
     QRect desktopRect = QApplication::desktop()->availableGeometry(this);
     QPoint center = desktopRect.center();
     move(center.x()- static_cast<int>(width()*0.5),center.y()- static_cast<int>(height()*0.5));
+
+    setWindowIcon(QIcon(":/resources/media/mst_logo.png"));
+
+    QPixmap disconnect_img(":/resources/media/disconnect.png");
+    QIcon DisconnectIcon(disconnect_img);
+    ui->btnDisconnect->setIcon(DisconnectIcon);
+    ui->btnDisconnect->setIconSize(disconnect_img.rect().size());
 }
 
 FrmConnected::~FrmConnected()
@@ -57,10 +63,14 @@ void FrmConnected::setSelector(int* selector)
 
 void FrmConnected::on_btnDisconnect_clicked()
 {
-    ui->btnDisconnect->setEnabled(false);
-    ui->btnDisconnect->repaint();
-    client_connected = false;
-    c.tcpWriteCommand(-1);
+    if(client_connected)
+    {
+        ui->btnDisconnect->setEnabled(false);
+        ui->btnDisconnect->repaint();
+        client_connected = false;
+        c.tcpWriteCommand(-1);
+    }
+
     stopThreads();
     *selector = 2;
     this->close();

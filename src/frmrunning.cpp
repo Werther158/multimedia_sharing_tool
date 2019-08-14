@@ -8,7 +8,6 @@ FrmRunning::FrmRunning(QWidget *parent) :
 {
     ui->setupUi(this);
     setFixedSize(size());
-    setWindowIcon(QIcon(":/resources/media/mst_logo.png"));
 
     this->setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowTitleHint);
     ui->btnStartStopStream->setEnabled(false);
@@ -21,6 +20,15 @@ FrmRunning::FrmRunning(QWidget *parent) :
     move(center.x()- static_cast<int>(width()*0.5),center.y()- static_cast<int>(height()*0.5));
 
     ui->txtLine->installEventFilter(this);
+
+    // Set icons
+
+    setWindowIcon(QIcon(":/resources/media/mst_logo.png"));
+
+    QPixmap sserver_img(":/resources/media/stop_server.png");
+    QIcon SServerIcon(sserver_img);
+    ui->btnStop->setIcon(SServerIcon);
+    ui->btnStop->setIconSize(sserver_img.rect().size());
 }
 
 FrmRunning::~FrmRunning()
@@ -51,7 +59,7 @@ void FrmRunning::setDict(Dictionary* dict)
     (*dict).getTextOflblStateRunning(ui->lblState);
     (*dict).setTooltipOflblState2(ui->lblState2);
     (*dict).setTooltipOflblState3(ui->lblState3);
-    ui->btnStartStopStream->setText(QString::fromStdString((*dict).getTextOfbtnStartStopStream(0)));
+    (*dict).setTIbtnStartStopStream(ui->btnStartStopStream, 0);
     ui->btnStop->setText(QString::fromStdString((*dict).getTextOfbtnStopRunning()));
 }
 
@@ -112,7 +120,7 @@ void FrmRunning::stopThreads()
     {
         ui->btnStartStopStream->setEnabled(false);
         ui->btnStartStopStream->repaint();
-        ui->btnStartStopStream->setText(QString::fromStdString((*dict).getTextOfbtnStartStopStream(0)));
+        (*dict).setTIbtnStartStopStream(ui->btnStartStopStream, 0);
         disconnect(camera_thread, nullptr, nullptr, nullptr);
         camera_thread->~CameraThread();
         is_stream_active = false;
@@ -168,14 +176,14 @@ void FrmRunning::startServerStream()
     is_stream_active = true;
     QPixmap stream_active_pix(":/resources/media/stream_active.png");
     ui->lblState3->setPixmap(stream_active_pix);
-    ui->btnStartStopStream->setText(QString::fromStdString((*dict).getTextOfbtnStartStopStream(1)));
+    (*dict).setTIbtnStartStopStream(ui->btnStartStopStream, 1);
     ui->btnStartStopStream->setEnabled(true);
 }
 
 void FrmRunning::stopStream()
 {
     ui->txtBox->append("Streaming ended");
-    ui->btnStartStopStream->setText(QString::fromStdString((*dict).getTextOfbtnStartStopStream(0)));
+   (*dict).setTIbtnStartStopStream(ui->btnStartStopStream, 0);
     c.tcpWriteCommand(-3);
     is_stream_active = false;
     disconnect(camera_thread, nullptr, nullptr, nullptr);
@@ -191,7 +199,7 @@ void FrmRunning::on_btnStartStopStream_clicked()
         ui->btnStartStopStream->setEnabled(false);
         ui->btnStartStopStream->repaint();
         stopStream();
-        ui->btnStartStopStream->setText(QString::fromStdString((*dict).getTextOfbtnStartStopStream(0)));
+        (*dict).setTIbtnStartStopStream(ui->btnStartStopStream, 0);
         ui->btnStartStopStream->setEnabled(true);
     }
     else // Start stream
@@ -208,6 +216,6 @@ void FrmRunning::streamingEnded()
     ui->btnStartStopStream->repaint();
     if(is_stream_active)
         stopStream();
-    ui->btnStartStopStream->setText(QString::fromStdString((*dict).getTextOfbtnStartStopStream(0)));
+    (*dict).setTIbtnStartStopStream(ui->btnStartStopStream, 0);
     ui->btnStartStopStream->setEnabled(true);
 }

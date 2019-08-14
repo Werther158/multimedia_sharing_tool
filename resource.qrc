@@ -10,5 +10,19 @@
         <file>media/mst_logo3.png</file>
         <file>media/stream_active.png</file>
         <file>media/stream_inactive.png</file>
+        <file>media/server.png</file>
+        <file>media/client.png</file>
+        <file>media/italian.png</file>
+        <file>media/english.png</file>
+        <file>media/back.png</file>
+        <file>media/exit.png</file>
+        <file>media/connect.png</file>
+        <file>media/load.png</file>
+        <file>media/save.png</file>
+        <file>media/start.png</file>
+        <file>media/disconnect.png</file>
+        <file>media/play.png</file>
+        <file>media/stop.png</file>
+        <file>media/stop_server.png</file>
     </qresource>
 </RCC>

@@ -27,7 +27,7 @@ public:
     std::string getTextOfbtnServer();
     std::string getTextOfbtnClient();
     std::string getTextOflblLang();
-    std::string getTextOfbtnLang();
+    void setIconOfbtnLang(QPushButton *btn);
 
     // FrmServer
     std::string getTextOflblInfoServer();
@@ -73,7 +73,7 @@ public:
     // FrmRunning
     void getTextOflblStateRunning(QLabel *lbl);
     std::string getTextOfbtnStopRunning();
-    std::string getTextOfbtnStartStopStream(int select);
+    void setTIbtnStartStopStream(QPushButton *btn, int select);
     void setTooltipOflblState2(QLabel *lbl);
     void setTooltipOflblState3(QLabel *lbl);
 
