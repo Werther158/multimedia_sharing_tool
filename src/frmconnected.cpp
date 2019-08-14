@@ -160,7 +160,7 @@ void FrmConnected::on_btnStartStopStreaming_clicked()
         {
             ui->btnStartStopStreaming->setEnabled(false);
             ui->btnStartStopStreaming->repaint();
-            stopReceivingVideoStream(false);
+            c.tcpWriteCommand(-4);
             ui->btnStartStopStreaming->setEnabled(true);
         }
         else

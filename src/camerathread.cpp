@@ -15,7 +15,7 @@ CameraThread::~CameraThread()
     std::system("bash -c \"killall ffmpeg\"");
     audio_pipe_thread->~FeedAudioPipeThread();
     video_pipe_thread->~FeedVideoPipeThread();
-    std::system("rm -R /mst-temp");
+    std::system("bash -c \"rm -R mst-temp\"");
 }
 
 std::string CameraThread::execCmd(const char* cmd)

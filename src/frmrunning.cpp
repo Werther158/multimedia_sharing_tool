@@ -204,14 +204,10 @@ void FrmRunning::on_btnStartStopStream_clicked()
 
 void FrmRunning::streamingEnded()
 {
-    ui->txtBox->append("Streaming ended");
-    QPixmap stream_inactive_pix(":/resources/media/stream_inactive.png");
-    ui->lblState3->setPixmap(stream_inactive_pix);
+    ui->btnStartStopStream->setEnabled(false);
+    ui->btnStartStopStream->repaint();
     if(is_stream_active)
-    {
-        ui->btnStartStopStream->setText(QString::fromStdString((*dict).getTextOfbtnStartStopStream(0)));
-        disconnect(camera_thread, nullptr, nullptr, nullptr);
-        camera_thread->~CameraThread();
-        is_stream_active = false;
-    }
+        stopStream();
+    ui->btnStartStopStream->setText(QString::fromStdString((*dict).getTextOfbtnStartStopStream(0)));
+    ui->btnStartStopStream->setEnabled(true);
 }
