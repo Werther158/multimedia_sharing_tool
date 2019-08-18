@@ -108,28 +108,6 @@ void FrmServer::setConfigurations()
     Configurations::file_name = "";
 }
 
-/**
- * Permette all'utente di selezionare l'area di schermo da registrare.
- * @return  : void.
-*/
-void FrmServer::selectRegion()
-{
-    Display* disp;
-    Screen*  scrn;
-    cv::Mat img;
-    std::string title;
-
-    disp = XOpenDisplay(nullptr);
-    scrn = DefaultScreenOfDisplay(disp);
-    title = "Select area (SPACE or ENTER to confirm)";
-
-    ScreenShot screen(0, 0, scrn->width, scrn->height);
-    screen(img);
-
-    Configurations::rect = selectROI(title, img);
-    cv::destroyWindow(title);
-}
-
 void FrmServer::on_btnStartServer_clicked()
 {
     bool go_on = true;
@@ -144,13 +122,6 @@ void FrmServer::on_btnStartServer_clicked()
         {
             go_on = false;
             ui->btnStartServer->setEnabled(true);
-        }
-    }
-    else
-    {
-        if(Configurations::source_choices[Configurations::source] == "Screen")
-        {
-            selectRegion();
         }
     }
 

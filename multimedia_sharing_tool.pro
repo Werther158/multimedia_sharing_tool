@@ -95,10 +95,7 @@ QMAKE_LFLAGS += -no-pie
 
 INCLUDEPATH += /usr/include/curl
 INCLUDEPATH += include/
-INCLUDEPATH += "/usr/local/include/"
 LIBS += -L/usr/local/lib -lcurl
-LIBS += -lX11
-LIBS += `pkg-config --libs opencv`
 
 DISTFILES += \
     media/eye.png \

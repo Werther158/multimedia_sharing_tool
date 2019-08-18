@@ -24,7 +24,6 @@ public:
     void setDict(Dictionary* dict);
     void setSelector(int* selector);
     void setConfigurations();
-
 private slots:
     void on_btnBack_clicked();
     void on_btnStartServer_clicked();
@@ -33,7 +32,6 @@ private:
     Ui::FrmServer *ui;
     Dictionary* dict;
     int* selector;
-    void selectRegion();
 };
 
 #endif // FRMSERVER_H

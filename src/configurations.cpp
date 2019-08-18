@@ -27,7 +27,7 @@ uint8_t Configurations::controls;
 
 std::string Configurations::file_name = "";
 std::string Configurations::camera_path;
-cv::Rect2d Configurations::rect;
+//cv::Rect Configurations::screen_roi;
 
 Configurations::Configurations()
 {

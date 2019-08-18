@@ -11,11 +11,9 @@ CameraThread::~CameraThread()
     quit();
     wait();
     close(mst_video_pipe);
-    if(Configurations::source_choices[Configurations::source] == "Video file")
-        close(mst_audio_pipe);
+    close(mst_audio_pipe);
     std::system("bash -c \"killall ffmpeg\"");
-    if(Configurations::source_choices[Configurations::source] == "Video file")
-        audio_pipe_thread->~FeedAudioPipeThread();
+    audio_pipe_thread->~FeedAudioPipeThread();
     video_pipe_thread->~FeedVideoPipeThread();
     std::system("bash -c \"rm -R mst-temp\"");
 }
@@ -186,53 +184,10 @@ void CameraThread::captureFromFile()
 
 }
 
-void CameraThread::captureFromScreen()
-{
-    video_pipe_thread = new FeedVideoPipeThread();
-    QObject::connect(video_pipe_thread, SIGNAL(notifyVideoToMstCondVar()), this, SLOT(notifyVideoToMstCondVar()));
-    video_pipe_thread->start();
-
-    // Open mst pipes in write only mode // Not really used to write inside the pipe
-    if((mst_video_pipe = open(mstvideo_pipe_path.c_str(), O_WRONLY)) < 0)
-    {
-        std::cout << "Error opening MST video pipe\n";
-    }
-
-    while(thread_active)
-    {
-        // Define videochunk_out_path
-        if(tik_tok)
-        {
-            videochunk_out_path = "mst-temp/frames/tik";
-            tik_tok = false;
-        }
-        else
-        {
-            videochunk_out_path = "mst-temp/frames/tok";
-            tik_tok = true;
-        }
-
-        // Take screen frame
-        emit takeAScreenPicture(videochunk_out_path);
-
-        // Wait screen image to be ready
-        sem_wait(&sem_screen);
-
-        // Apply neural net and elaborations on chunk frames
-
-        // Wait for signal to start feeding mst video
-        sem_wait(&sem_video);
-        command = "bash -c \"cat " + videochunk_out_path + "/output.bmp > " + mstvideo_pipe_path + "\"";
-        std::system(command.c_str());
-
-    }
-}
-
 void CameraThread::run()
 {
     sem_init(&sem_audio, 0, 0);
     sem_init(&sem_video, 0, 0);
-    sem_init(&sem_screen, 0, 0);
 
     std::system("bash -c \"rm -R mst-temp\"");
     std::system("bash -c \"mkdir mst-temp\"");
@@ -250,16 +205,15 @@ void CameraThread::run()
     ffvideo_pipe_path = path + "/mst-temp/ffmpeg_video_pipe";
 
     // Create mst-ffmpeg video and audio pipes
-
+    mkfifo(mstaudio_pipe_path.c_str(), 0666);
     mkfifo(mstvideo_pipe_path.c_str(), 0666);
+    mkfifo(ffaudio_pipe_path.c_str(), 0666);
     mkfifo(ffvideo_pipe_path.c_str(), 0666);
-    if(Configurations::source_choices[Configurations::source] == "Video file")
-    {
-        mkfifo(mstaudio_pipe_path.c_str(), 0666);
-        mkfifo(ffaudio_pipe_path.c_str(), 0666);
-    }
 
     server_stream_thread = new ServerStreamThread();
+    //QObject::connect(server_stream_thread, SIGNAL(writeText(QString)), this, SIGNAL(writeText(QString)));
+    //QObject::connect(server_stream_thread, SIGNAL(stopStream()), this, SIGNAL(stopStream()));
+    //QObject::connect(this, SIGNAL(setStreamingEnded()), server_stream_thread, SLOT(setStreamingEnded()));
     server_stream_thread->start();
 
     if(Configurations::source_choices[Configurations::source] == "Video file")
@@ -274,18 +228,13 @@ void CameraThread::run()
     else
     if(Configurations::source_choices[Configurations::source] == "Screen")
     {
-        captureFromScreen();
+        //captureFromScreen();
     }
 }
 
 void CameraThread::beginCameraWork()
 {
 
-}
-
-void CameraThread::continueSendingScreenFrame()
-{
-    sem_post(&sem_screen);
 }
 
 void CameraThread::notifyAudioToMstCondVar()

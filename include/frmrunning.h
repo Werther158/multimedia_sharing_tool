@@ -36,7 +36,6 @@ private slots:
     void on_btnStartStopStream_clicked();
     void streamingEnded();
     void stopStream();
-    void takeAScreenPicture(std::string save_path);
 
 private:
     Ui::FrmRunning *ui;
@@ -57,7 +56,6 @@ signals:
     void setStreamingEnded();
     void startServerStreamThread();
     void stopServerStreamThread();
-    void continueSendingScreenFrame();
 };
 
 #endif // FRMRUNNING_H
