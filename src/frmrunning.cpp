@@ -29,6 +29,8 @@ FrmRunning::FrmRunning(QWidget *parent) :
     QIcon SServerIcon(sserver_img);
     ui->btnStop->setIcon(SServerIcon);
     ui->btnStop->setIconSize(sserver_img.rect().size());
+
+    qRegisterMetaType<std::string>("std::string");
 }
 
 FrmRunning::~FrmRunning()
@@ -168,9 +170,8 @@ void FrmRunning::startServerStream()
     ui->txtBox->append("Streaming started");
     // Start cameraThread
     camera_thread = new CameraThread();
-    //QObject::connect(camera_thread, SIGNAL(writeText(QString)), this, SLOT(writeTextOnTxtBox(QString)));
-    //QObject::connect(this, SIGNAL(stopCamera()), camera_thread, SLOT(stop()));
-    //QObject::connect(this, SIGNAL(setStreamingEnded()), camera_thread, SIGNAL(setStreamingEnded()));
+    QObject::connect(this, SIGNAL(continueSendingScreenFrame()), camera_thread, SLOT(continueSendingScreenFrame()));
+    QObject::connect(camera_thread, SIGNAL(takeAScreenPicture(std::string)), this, SLOT(takeAScreenPicture(std::string)));
     camera_thread->start();
 
     is_stream_active = true;
@@ -218,4 +219,25 @@ void FrmRunning::streamingEnded()
         stopStream();
     (*dict).setTIbtnStartStopStream(ui->btnStartStopStream, 0);
     ui->btnStartStopStream->setEnabled(true);
+}
+
+/**
+ * Cattura dello schermo (deve prendere in ingresso l'area
+ * tracciata dall'utente) e salvataggio in formato bmp.
+ * @return  : void.
+*/
+void FrmRunning::takeAScreenPicture(std::string save_path)
+{
+    ScreenShot screen(static_cast<int>(Configurations::rect.x),
+                      static_cast<int>(Configurations::rect.y),
+                      static_cast<int>(Configurations::rect.width),
+                      static_cast<int>(Configurations::rect.height));
+    cv::Mat imgCamera;
+    screen(imgCamera);
+
+
+    // Save image to /mst-temp/frames tik-tok folder
+    imwrite(save_path + "/output.bmp", imgCamera);
+
+    emit continueSendingScreenFrame();
 }
