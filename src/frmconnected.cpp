@@ -238,6 +238,5 @@ void FrmConnected::uiStreamingInactive()
 
 void FrmConnected::streamingEnded()
 {
-    stopReceivingVideoStream(true);
     c.tcpWriteCommand(-4);
 }

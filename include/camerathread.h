@@ -29,7 +29,7 @@ private:
     ServerStreamThread *server_stream_thread;
     FeedAudioPipeThread *audio_pipe_thread;
     FeedVideoPipeThread *video_pipe_thread;
-    sem_t sem_audio, sem_video;
+    sem_t sem_audio, sem_video, sem_screen;
     bool thread_active = true;
     bool tik_tok = true; // Used to prevent audio and frames to be subscribed in subsequent iterations
     int mst_audio_pipe, mst_video_pipe, ffmpeg_audio_pipe, ffmpeg_video_pipe;
@@ -46,15 +46,18 @@ private:
     void ffmpegJob();
     void defineChunk();
     void createChunk();
+    void captureFromScreen();
 
 public slots:
     void notifyAudioToMstCondVar();
     void notifyVideoToMstCondVar();
+    void continueSendingScreenFrame();
 
 signals:
     void writeText(QString);
     void stopStream();
     void setStreamingEnded();
+    void takeAScreenPicture(std::string save_path);
 };
 
 #endif // CAMERATHREAD_H

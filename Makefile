@@ -17,7 +17,7 @@ CXX           = g++
 DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -g -std=gnu++11 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I. -I/usr/include/curl -Iinclude -I../../Qt/5.12.4/gcc_64/include -I../../Qt/5.12.4/gcc_64/include/QtWidgets -I../../Qt/5.12.4/gcc_64/include/QtGui -I../../Qt/5.12.4/gcc_64/include/QtCore -Ibuild/debug/moc -I/usr/include/libdrm -Ibuild/debug/ui -I../../Qt/5.12.4/gcc_64/mkspecs/linux-g++
+INCPATH       = -I. -I/usr/include/curl -Iinclude -I/usr/local/include -I../../Qt/5.12.4/gcc_64/include -I../../Qt/5.12.4/gcc_64/include/QtWidgets -I../../Qt/5.12.4/gcc_64/include/QtGui -I../../Qt/5.12.4/gcc_64/include/QtCore -Ibuild/debug/moc -I/usr/include/libdrm -Ibuild/debug/ui -I../../Qt/5.12.4/gcc_64/mkspecs/linux-g++
 QMAKE         = /home/werther/Qt/5.12.4/gcc_64/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -40,7 +40,7 @@ DISTNAME      = multimedia_sharing_tool1.0.0
 DISTDIR = /home/werther/Desktop/multimedia_sharing_tool/build/debug/obj/multimedia_sharing_tool1.0.0
 LINK          = g++
 LFLAGS        = -no-pie -Wl,-rpath,/home/werther/Qt/5.12.4/gcc_64/lib
-LIBS          = $(SUBLIBS) -L/usr/local/lib -lcurl /home/werther/Qt/5.12.4/gcc_64/lib/libQt5Widgets.so /home/werther/Qt/5.12.4/gcc_64/lib/libQt5Gui.so /home/werther/Qt/5.12.4/gcc_64/lib/libQt5Core.so -lGL -lpthread   
+LIBS          = $(SUBLIBS) -L/usr/local/lib -lcurl -lX11 `pkg-config --libs opencv` /home/werther/Qt/5.12.4/gcc_64/lib/libQt5Widgets.so /home/werther/Qt/5.12.4/gcc_64/lib/libQt5Gui.so /home/werther/Qt/5.12.4/gcc_64/lib/libQt5Core.so -lGL -lpthread   
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -887,13 +887,52 @@ build/debug/moc/moc_camerathread.cpp: include/camerathread.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qvarlengtharray.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qcontainerfwd.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qobject_impl.h \
+		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/core.hpp \
+		/usr/local/include/opencv2/core/cvdef.h \
+		/usr/local/include/opencv2/core/hal/interface.h \
+		/usr/local/include/opencv2/core/cv_cpu_dispatch.h \
+		/usr/local/include/opencv2/core/cv_cpu_helper.h \
+		/usr/local/include/opencv2/core/fast_math.hpp \
+		/usr/local/include/opencv2/core/version.hpp \
+		/usr/local/include/opencv2/core/base.hpp \
+		/usr/local/include/opencv2/opencv_modules.hpp \
+		/usr/local/include/opencv2/core/cvstd.hpp \
+		/usr/local/include/opencv2/core/ptr.inl.hpp \
+		/usr/local/include/opencv2/core/neon_utils.hpp \
+		/usr/local/include/opencv2/core/vsx_utils.hpp \
+		/usr/local/include/opencv2/core/check.hpp \
+		/usr/local/include/opencv2/core/traits.hpp \
+		/usr/local/include/opencv2/core/matx.hpp \
+		/usr/local/include/opencv2/core/saturate.hpp \
+		/usr/local/include/opencv2/core/types.hpp \
+		/usr/local/include/opencv2/core/mat.hpp \
+		/usr/local/include/opencv2/core/bufferpool.hpp \
+		/usr/local/include/opencv2/core/mat.inl.hpp \
+		/usr/local/include/opencv2/core/persistence.hpp \
+		/usr/local/include/opencv2/core/operations.hpp \
+		/usr/local/include/opencv2/core/cvstd.inl.hpp \
+		/usr/local/include/opencv2/core/utility.hpp \
+		/usr/local/include/opencv2/core/core_c.h \
+		/usr/local/include/opencv2/core/types_c.h \
+		/usr/local/include/opencv2/core/optim.hpp \
+		/usr/local/include/opencv2/core/ovx.hpp \
+		/usr/local/include/opencv2/imgproc/imgproc_c.h \
+		/usr/local/include/opencv2/imgproc/types_c.h \
+		/usr/local/include/opencv2/highgui.hpp \
+		/usr/local/include/opencv2/imgcodecs.hpp \
+		/usr/local/include/opencv2/videoio.hpp \
+		/usr/local/include/opencv2/highgui/highgui_c.h \
+		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
+		/usr/local/include/opencv2/videoio/videoio_c.h \
+		/usr/local/include/opencv2/core/core.hpp \
 		include/configurations.h \
 		include/serverstreamthread.h \
 		include/feedaudiopipethread.h \
 		include/feedvideopipethread.h \
 		build/debug/moc/moc_predefs.h \
 		../../Qt/5.12.4/gcc_64/bin/moc
-	/home/werther/Qt/5.12.4/gcc_64/bin/moc $(DEFINES) --include /home/werther/Desktop/multimedia_sharing_tool/build/debug/moc/moc_predefs.h -I/home/werther/Qt/5.12.4/gcc_64/mkspecs/linux-g++ -I/home/werther/Desktop/multimedia_sharing_tool -I/usr/include/curl -I/home/werther/Desktop/multimedia_sharing_tool/include -I/home/werther/Qt/5.12.4/gcc_64/include -I/home/werther/Qt/5.12.4/gcc_64/include/QtWidgets -I/home/werther/Qt/5.12.4/gcc_64/include/QtGui -I/home/werther/Qt/5.12.4/gcc_64/include/QtCore -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++ -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/i686-w64-mingw32.static -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/backward -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include-fixed -I/home/werther/Downloads/mxe/usr/i686-w64-mingw32.static/include include/camerathread.h -o build/debug/moc/moc_camerathread.cpp
+	/home/werther/Qt/5.12.4/gcc_64/bin/moc $(DEFINES) --include /home/werther/Desktop/multimedia_sharing_tool/build/debug/moc/moc_predefs.h -I/home/werther/Qt/5.12.4/gcc_64/mkspecs/linux-g++ -I/home/werther/Desktop/multimedia_sharing_tool -I/usr/include/curl -I/home/werther/Desktop/multimedia_sharing_tool/include -I/usr/local/include -I/home/werther/Qt/5.12.4/gcc_64/include -I/home/werther/Qt/5.12.4/gcc_64/include/QtWidgets -I/home/werther/Qt/5.12.4/gcc_64/include/QtGui -I/home/werther/Qt/5.12.4/gcc_64/include/QtCore -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++ -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/i686-w64-mingw32.static -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/backward -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include-fixed -I/home/werther/Downloads/mxe/usr/i686-w64-mingw32.static/include include/camerathread.h -o build/debug/moc/moc_camerathread.cpp
 
 build/debug/moc/moc_clientstreamthread.cpp: include/clientstreamthread.h \
 		include/connectivity.h \
@@ -952,7 +991,7 @@ build/debug/moc/moc_clientstreamthread.cpp: include/clientstreamthread.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qthread.h \
 		build/debug/moc/moc_predefs.h \
 		../../Qt/5.12.4/gcc_64/bin/moc
-	/home/werther/Qt/5.12.4/gcc_64/bin/moc $(DEFINES) --include /home/werther/Desktop/multimedia_sharing_tool/build/debug/moc/moc_predefs.h -I/home/werther/Qt/5.12.4/gcc_64/mkspecs/linux-g++ -I/home/werther/Desktop/multimedia_sharing_tool -I/usr/include/curl -I/home/werther/Desktop/multimedia_sharing_tool/include -I/home/werther/Qt/5.12.4/gcc_64/include -I/home/werther/Qt/5.12.4/gcc_64/include/QtWidgets -I/home/werther/Qt/5.12.4/gcc_64/include/QtGui -I/home/werther/Qt/5.12.4/gcc_64/include/QtCore -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++ -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/i686-w64-mingw32.static -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/backward -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include-fixed -I/home/werther/Downloads/mxe/usr/i686-w64-mingw32.static/include include/clientstreamthread.h -o build/debug/moc/moc_clientstreamthread.cpp
+	/home/werther/Qt/5.12.4/gcc_64/bin/moc $(DEFINES) --include /home/werther/Desktop/multimedia_sharing_tool/build/debug/moc/moc_predefs.h -I/home/werther/Qt/5.12.4/gcc_64/mkspecs/linux-g++ -I/home/werther/Desktop/multimedia_sharing_tool -I/usr/include/curl -I/home/werther/Desktop/multimedia_sharing_tool/include -I/usr/local/include -I/home/werther/Qt/5.12.4/gcc_64/include -I/home/werther/Qt/5.12.4/gcc_64/include/QtWidgets -I/home/werther/Qt/5.12.4/gcc_64/include/QtGui -I/home/werther/Qt/5.12.4/gcc_64/include/QtCore -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++ -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/i686-w64-mingw32.static -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/backward -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include-fixed -I/home/werther/Downloads/mxe/usr/i686-w64-mingw32.static/include include/clientstreamthread.h -o build/debug/moc/moc_clientstreamthread.cpp
 
 build/debug/moc/moc_connectivity.cpp: include/connectivity.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/QObject \
@@ -1008,7 +1047,7 @@ build/debug/moc/moc_connectivity.cpp: include/connectivity.h \
 		include/configurations.h \
 		build/debug/moc/moc_predefs.h \
 		../../Qt/5.12.4/gcc_64/bin/moc
-	/home/werther/Qt/5.12.4/gcc_64/bin/moc $(DEFINES) --include /home/werther/Desktop/multimedia_sharing_tool/build/debug/moc/moc_predefs.h -I/home/werther/Qt/5.12.4/gcc_64/mkspecs/linux-g++ -I/home/werther/Desktop/multimedia_sharing_tool -I/usr/include/curl -I/home/werther/Desktop/multimedia_sharing_tool/include -I/home/werther/Qt/5.12.4/gcc_64/include -I/home/werther/Qt/5.12.4/gcc_64/include/QtWidgets -I/home/werther/Qt/5.12.4/gcc_64/include/QtGui -I/home/werther/Qt/5.12.4/gcc_64/include/QtCore -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++ -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/i686-w64-mingw32.static -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/backward -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include-fixed -I/home/werther/Downloads/mxe/usr/i686-w64-mingw32.static/include include/connectivity.h -o build/debug/moc/moc_connectivity.cpp
+	/home/werther/Qt/5.12.4/gcc_64/bin/moc $(DEFINES) --include /home/werther/Desktop/multimedia_sharing_tool/build/debug/moc/moc_predefs.h -I/home/werther/Qt/5.12.4/gcc_64/mkspecs/linux-g++ -I/home/werther/Desktop/multimedia_sharing_tool -I/usr/include/curl -I/home/werther/Desktop/multimedia_sharing_tool/include -I/usr/local/include -I/home/werther/Qt/5.12.4/gcc_64/include -I/home/werther/Qt/5.12.4/gcc_64/include/QtWidgets -I/home/werther/Qt/5.12.4/gcc_64/include/QtGui -I/home/werther/Qt/5.12.4/gcc_64/include/QtCore -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++ -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/i686-w64-mingw32.static -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/backward -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include-fixed -I/home/werther/Downloads/mxe/usr/i686-w64-mingw32.static/include include/connectivity.h -o build/debug/moc/moc_connectivity.cpp
 
 build/debug/moc/moc_feedaudiopipethread.cpp: include/feedaudiopipethread.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/QThread \
@@ -1064,7 +1103,7 @@ build/debug/moc/moc_feedaudiopipethread.cpp: include/feedaudiopipethread.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qobject_impl.h \
 		build/debug/moc/moc_predefs.h \
 		../../Qt/5.12.4/gcc_64/bin/moc
-	/home/werther/Qt/5.12.4/gcc_64/bin/moc $(DEFINES) --include /home/werther/Desktop/multimedia_sharing_tool/build/debug/moc/moc_predefs.h -I/home/werther/Qt/5.12.4/gcc_64/mkspecs/linux-g++ -I/home/werther/Desktop/multimedia_sharing_tool -I/usr/include/curl -I/home/werther/Desktop/multimedia_sharing_tool/include -I/home/werther/Qt/5.12.4/gcc_64/include -I/home/werther/Qt/5.12.4/gcc_64/include/QtWidgets -I/home/werther/Qt/5.12.4/gcc_64/include/QtGui -I/home/werther/Qt/5.12.4/gcc_64/include/QtCore -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++ -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/i686-w64-mingw32.static -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/backward -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include-fixed -I/home/werther/Downloads/mxe/usr/i686-w64-mingw32.static/include include/feedaudiopipethread.h -o build/debug/moc/moc_feedaudiopipethread.cpp
+	/home/werther/Qt/5.12.4/gcc_64/bin/moc $(DEFINES) --include /home/werther/Desktop/multimedia_sharing_tool/build/debug/moc/moc_predefs.h -I/home/werther/Qt/5.12.4/gcc_64/mkspecs/linux-g++ -I/home/werther/Desktop/multimedia_sharing_tool -I/usr/include/curl -I/home/werther/Desktop/multimedia_sharing_tool/include -I/usr/local/include -I/home/werther/Qt/5.12.4/gcc_64/include -I/home/werther/Qt/5.12.4/gcc_64/include/QtWidgets -I/home/werther/Qt/5.12.4/gcc_64/include/QtGui -I/home/werther/Qt/5.12.4/gcc_64/include/QtCore -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++ -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/i686-w64-mingw32.static -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/backward -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include-fixed -I/home/werther/Downloads/mxe/usr/i686-w64-mingw32.static/include include/feedaudiopipethread.h -o build/debug/moc/moc_feedaudiopipethread.cpp
 
 build/debug/moc/moc_feedvideopipethread.cpp: include/feedvideopipethread.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/QThread \
@@ -1120,7 +1159,7 @@ build/debug/moc/moc_feedvideopipethread.cpp: include/feedvideopipethread.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qobject_impl.h \
 		build/debug/moc/moc_predefs.h \
 		../../Qt/5.12.4/gcc_64/bin/moc
-	/home/werther/Qt/5.12.4/gcc_64/bin/moc $(DEFINES) --include /home/werther/Desktop/multimedia_sharing_tool/build/debug/moc/moc_predefs.h -I/home/werther/Qt/5.12.4/gcc_64/mkspecs/linux-g++ -I/home/werther/Desktop/multimedia_sharing_tool -I/usr/include/curl -I/home/werther/Desktop/multimedia_sharing_tool/include -I/home/werther/Qt/5.12.4/gcc_64/include -I/home/werther/Qt/5.12.4/gcc_64/include/QtWidgets -I/home/werther/Qt/5.12.4/gcc_64/include/QtGui -I/home/werther/Qt/5.12.4/gcc_64/include/QtCore -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++ -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/i686-w64-mingw32.static -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/backward -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include-fixed -I/home/werther/Downloads/mxe/usr/i686-w64-mingw32.static/include include/feedvideopipethread.h -o build/debug/moc/moc_feedvideopipethread.cpp
+	/home/werther/Qt/5.12.4/gcc_64/bin/moc $(DEFINES) --include /home/werther/Desktop/multimedia_sharing_tool/build/debug/moc/moc_predefs.h -I/home/werther/Qt/5.12.4/gcc_64/mkspecs/linux-g++ -I/home/werther/Desktop/multimedia_sharing_tool -I/usr/include/curl -I/home/werther/Desktop/multimedia_sharing_tool/include -I/usr/local/include -I/home/werther/Qt/5.12.4/gcc_64/include -I/home/werther/Qt/5.12.4/gcc_64/include/QtWidgets -I/home/werther/Qt/5.12.4/gcc_64/include/QtGui -I/home/werther/Qt/5.12.4/gcc_64/include/QtCore -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++ -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/i686-w64-mingw32.static -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/backward -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include-fixed -I/home/werther/Downloads/mxe/usr/i686-w64-mingw32.static/include include/feedvideopipethread.h -o build/debug/moc/moc_feedvideopipethread.cpp
 
 build/debug/moc/moc_frmclient.cpp: include/frmclient.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/QWidget \
@@ -1257,7 +1296,7 @@ build/debug/moc/moc_frmclient.cpp: include/frmclient.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qthread.h \
 		build/debug/moc/moc_predefs.h \
 		../../Qt/5.12.4/gcc_64/bin/moc
-	/home/werther/Qt/5.12.4/gcc_64/bin/moc $(DEFINES) --include /home/werther/Desktop/multimedia_sharing_tool/build/debug/moc/moc_predefs.h -I/home/werther/Qt/5.12.4/gcc_64/mkspecs/linux-g++ -I/home/werther/Desktop/multimedia_sharing_tool -I/usr/include/curl -I/home/werther/Desktop/multimedia_sharing_tool/include -I/home/werther/Qt/5.12.4/gcc_64/include -I/home/werther/Qt/5.12.4/gcc_64/include/QtWidgets -I/home/werther/Qt/5.12.4/gcc_64/include/QtGui -I/home/werther/Qt/5.12.4/gcc_64/include/QtCore -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++ -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/i686-w64-mingw32.static -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/backward -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include-fixed -I/home/werther/Downloads/mxe/usr/i686-w64-mingw32.static/include include/frmclient.h -o build/debug/moc/moc_frmclient.cpp
+	/home/werther/Qt/5.12.4/gcc_64/bin/moc $(DEFINES) --include /home/werther/Desktop/multimedia_sharing_tool/build/debug/moc/moc_predefs.h -I/home/werther/Qt/5.12.4/gcc_64/mkspecs/linux-g++ -I/home/werther/Desktop/multimedia_sharing_tool -I/usr/include/curl -I/home/werther/Desktop/multimedia_sharing_tool/include -I/usr/local/include -I/home/werther/Qt/5.12.4/gcc_64/include -I/home/werther/Qt/5.12.4/gcc_64/include/QtWidgets -I/home/werther/Qt/5.12.4/gcc_64/include/QtGui -I/home/werther/Qt/5.12.4/gcc_64/include/QtCore -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++ -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/i686-w64-mingw32.static -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/backward -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include-fixed -I/home/werther/Downloads/mxe/usr/i686-w64-mingw32.static/include include/frmclient.h -o build/debug/moc/moc_frmclient.cpp
 
 build/debug/moc/moc_frmconnected.cpp: include/frmconnected.h \
 		include/dictionary.h \
@@ -1398,7 +1437,7 @@ build/debug/moc/moc_frmconnected.cpp: include/frmconnected.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qdesktopwidget.h \
 		build/debug/moc/moc_predefs.h \
 		../../Qt/5.12.4/gcc_64/bin/moc
-	/home/werther/Qt/5.12.4/gcc_64/bin/moc $(DEFINES) --include /home/werther/Desktop/multimedia_sharing_tool/build/debug/moc/moc_predefs.h -I/home/werther/Qt/5.12.4/gcc_64/mkspecs/linux-g++ -I/home/werther/Desktop/multimedia_sharing_tool -I/usr/include/curl -I/home/werther/Desktop/multimedia_sharing_tool/include -I/home/werther/Qt/5.12.4/gcc_64/include -I/home/werther/Qt/5.12.4/gcc_64/include/QtWidgets -I/home/werther/Qt/5.12.4/gcc_64/include/QtGui -I/home/werther/Qt/5.12.4/gcc_64/include/QtCore -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++ -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/i686-w64-mingw32.static -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/backward -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include-fixed -I/home/werther/Downloads/mxe/usr/i686-w64-mingw32.static/include include/frmconnected.h -o build/debug/moc/moc_frmconnected.cpp
+	/home/werther/Qt/5.12.4/gcc_64/bin/moc $(DEFINES) --include /home/werther/Desktop/multimedia_sharing_tool/build/debug/moc/moc_predefs.h -I/home/werther/Qt/5.12.4/gcc_64/mkspecs/linux-g++ -I/home/werther/Desktop/multimedia_sharing_tool -I/usr/include/curl -I/home/werther/Desktop/multimedia_sharing_tool/include -I/usr/local/include -I/home/werther/Qt/5.12.4/gcc_64/include -I/home/werther/Qt/5.12.4/gcc_64/include/QtWidgets -I/home/werther/Qt/5.12.4/gcc_64/include/QtGui -I/home/werther/Qt/5.12.4/gcc_64/include/QtCore -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++ -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/i686-w64-mingw32.static -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/backward -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include-fixed -I/home/werther/Downloads/mxe/usr/i686-w64-mingw32.static/include include/frmconnected.h -o build/debug/moc/moc_frmconnected.cpp
 
 build/debug/moc/moc_frmmain.cpp: include/frmmain.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/QWidget \
@@ -1531,7 +1570,7 @@ build/debug/moc/moc_frmmain.cpp: include/frmmain.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractbutton.h \
 		build/debug/moc/moc_predefs.h \
 		../../Qt/5.12.4/gcc_64/bin/moc
-	/home/werther/Qt/5.12.4/gcc_64/bin/moc $(DEFINES) --include /home/werther/Desktop/multimedia_sharing_tool/build/debug/moc/moc_predefs.h -I/home/werther/Qt/5.12.4/gcc_64/mkspecs/linux-g++ -I/home/werther/Desktop/multimedia_sharing_tool -I/usr/include/curl -I/home/werther/Desktop/multimedia_sharing_tool/include -I/home/werther/Qt/5.12.4/gcc_64/include -I/home/werther/Qt/5.12.4/gcc_64/include/QtWidgets -I/home/werther/Qt/5.12.4/gcc_64/include/QtGui -I/home/werther/Qt/5.12.4/gcc_64/include/QtCore -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++ -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/i686-w64-mingw32.static -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/backward -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include-fixed -I/home/werther/Downloads/mxe/usr/i686-w64-mingw32.static/include include/frmmain.h -o build/debug/moc/moc_frmmain.cpp
+	/home/werther/Qt/5.12.4/gcc_64/bin/moc $(DEFINES) --include /home/werther/Desktop/multimedia_sharing_tool/build/debug/moc/moc_predefs.h -I/home/werther/Qt/5.12.4/gcc_64/mkspecs/linux-g++ -I/home/werther/Desktop/multimedia_sharing_tool -I/usr/include/curl -I/home/werther/Desktop/multimedia_sharing_tool/include -I/usr/local/include -I/home/werther/Qt/5.12.4/gcc_64/include -I/home/werther/Qt/5.12.4/gcc_64/include/QtWidgets -I/home/werther/Qt/5.12.4/gcc_64/include/QtGui -I/home/werther/Qt/5.12.4/gcc_64/include/QtCore -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++ -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/i686-w64-mingw32.static -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/backward -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include-fixed -I/home/werther/Downloads/mxe/usr/i686-w64-mingw32.static/include include/frmmain.h -o build/debug/moc/moc_frmmain.cpp
 
 build/debug/moc/moc_frmrunning.cpp: include/frmrunning.h \
 		include/dictionary.h \
@@ -1670,6 +1709,45 @@ build/debug/moc/moc_frmrunning.cpp: include/frmrunning.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qfileinfo.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qdesktopwidget.h \
 		include/camerathread.h \
+		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/core.hpp \
+		/usr/local/include/opencv2/core/cvdef.h \
+		/usr/local/include/opencv2/core/hal/interface.h \
+		/usr/local/include/opencv2/core/cv_cpu_dispatch.h \
+		/usr/local/include/opencv2/core/cv_cpu_helper.h \
+		/usr/local/include/opencv2/core/fast_math.hpp \
+		/usr/local/include/opencv2/core/version.hpp \
+		/usr/local/include/opencv2/core/base.hpp \
+		/usr/local/include/opencv2/opencv_modules.hpp \
+		/usr/local/include/opencv2/core/cvstd.hpp \
+		/usr/local/include/opencv2/core/ptr.inl.hpp \
+		/usr/local/include/opencv2/core/neon_utils.hpp \
+		/usr/local/include/opencv2/core/vsx_utils.hpp \
+		/usr/local/include/opencv2/core/check.hpp \
+		/usr/local/include/opencv2/core/traits.hpp \
+		/usr/local/include/opencv2/core/matx.hpp \
+		/usr/local/include/opencv2/core/saturate.hpp \
+		/usr/local/include/opencv2/core/types.hpp \
+		/usr/local/include/opencv2/core/mat.hpp \
+		/usr/local/include/opencv2/core/bufferpool.hpp \
+		/usr/local/include/opencv2/core/mat.inl.hpp \
+		/usr/local/include/opencv2/core/persistence.hpp \
+		/usr/local/include/opencv2/core/operations.hpp \
+		/usr/local/include/opencv2/core/cvstd.inl.hpp \
+		/usr/local/include/opencv2/core/utility.hpp \
+		/usr/local/include/opencv2/core/core_c.h \
+		/usr/local/include/opencv2/core/types_c.h \
+		/usr/local/include/opencv2/core/optim.hpp \
+		/usr/local/include/opencv2/core/ovx.hpp \
+		/usr/local/include/opencv2/imgproc/imgproc_c.h \
+		/usr/local/include/opencv2/imgproc/types_c.h \
+		/usr/local/include/opencv2/highgui.hpp \
+		/usr/local/include/opencv2/imgcodecs.hpp \
+		/usr/local/include/opencv2/videoio.hpp \
+		/usr/local/include/opencv2/highgui/highgui_c.h \
+		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
+		/usr/local/include/opencv2/videoio/videoio_c.h \
+		/usr/local/include/opencv2/core/core.hpp \
 		include/serverstreamthread.h \
 		include/feedaudiopipethread.h \
 		include/feedvideopipethread.h \
@@ -1678,7 +1756,7 @@ build/debug/moc/moc_frmrunning.cpp: include/frmrunning.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qactiongroup.h \
 		build/debug/moc/moc_predefs.h \
 		../../Qt/5.12.4/gcc_64/bin/moc
-	/home/werther/Qt/5.12.4/gcc_64/bin/moc $(DEFINES) --include /home/werther/Desktop/multimedia_sharing_tool/build/debug/moc/moc_predefs.h -I/home/werther/Qt/5.12.4/gcc_64/mkspecs/linux-g++ -I/home/werther/Desktop/multimedia_sharing_tool -I/usr/include/curl -I/home/werther/Desktop/multimedia_sharing_tool/include -I/home/werther/Qt/5.12.4/gcc_64/include -I/home/werther/Qt/5.12.4/gcc_64/include/QtWidgets -I/home/werther/Qt/5.12.4/gcc_64/include/QtGui -I/home/werther/Qt/5.12.4/gcc_64/include/QtCore -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++ -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/i686-w64-mingw32.static -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/backward -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include-fixed -I/home/werther/Downloads/mxe/usr/i686-w64-mingw32.static/include include/frmrunning.h -o build/debug/moc/moc_frmrunning.cpp
+	/home/werther/Qt/5.12.4/gcc_64/bin/moc $(DEFINES) --include /home/werther/Desktop/multimedia_sharing_tool/build/debug/moc/moc_predefs.h -I/home/werther/Qt/5.12.4/gcc_64/mkspecs/linux-g++ -I/home/werther/Desktop/multimedia_sharing_tool -I/usr/include/curl -I/home/werther/Desktop/multimedia_sharing_tool/include -I/usr/local/include -I/home/werther/Qt/5.12.4/gcc_64/include -I/home/werther/Qt/5.12.4/gcc_64/include/QtWidgets -I/home/werther/Qt/5.12.4/gcc_64/include/QtGui -I/home/werther/Qt/5.12.4/gcc_64/include/QtCore -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++ -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/i686-w64-mingw32.static -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/backward -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include-fixed -I/home/werther/Downloads/mxe/usr/i686-w64-mingw32.static/include include/frmrunning.h -o build/debug/moc/moc_frmrunning.cpp
 
 build/debug/moc/moc_frmserver.cpp: include/frmserver.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/QWidget \
@@ -1820,7 +1898,7 @@ build/debug/moc/moc_frmserver.cpp: include/frmserver.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qdesktopwidget.h \
 		build/debug/moc/moc_predefs.h \
 		../../Qt/5.12.4/gcc_64/bin/moc
-	/home/werther/Qt/5.12.4/gcc_64/bin/moc $(DEFINES) --include /home/werther/Desktop/multimedia_sharing_tool/build/debug/moc/moc_predefs.h -I/home/werther/Qt/5.12.4/gcc_64/mkspecs/linux-g++ -I/home/werther/Desktop/multimedia_sharing_tool -I/usr/include/curl -I/home/werther/Desktop/multimedia_sharing_tool/include -I/home/werther/Qt/5.12.4/gcc_64/include -I/home/werther/Qt/5.12.4/gcc_64/include/QtWidgets -I/home/werther/Qt/5.12.4/gcc_64/include/QtGui -I/home/werther/Qt/5.12.4/gcc_64/include/QtCore -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++ -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/i686-w64-mingw32.static -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/backward -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include-fixed -I/home/werther/Downloads/mxe/usr/i686-w64-mingw32.static/include include/frmserver.h -o build/debug/moc/moc_frmserver.cpp
+	/home/werther/Qt/5.12.4/gcc_64/bin/moc $(DEFINES) --include /home/werther/Desktop/multimedia_sharing_tool/build/debug/moc/moc_predefs.h -I/home/werther/Qt/5.12.4/gcc_64/mkspecs/linux-g++ -I/home/werther/Desktop/multimedia_sharing_tool -I/usr/include/curl -I/home/werther/Desktop/multimedia_sharing_tool/include -I/usr/local/include -I/home/werther/Qt/5.12.4/gcc_64/include -I/home/werther/Qt/5.12.4/gcc_64/include/QtWidgets -I/home/werther/Qt/5.12.4/gcc_64/include/QtGui -I/home/werther/Qt/5.12.4/gcc_64/include/QtCore -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++ -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/i686-w64-mingw32.static -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/backward -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include-fixed -I/home/werther/Downloads/mxe/usr/i686-w64-mingw32.static/include include/frmserver.h -o build/debug/moc/moc_frmserver.cpp
 
 build/debug/moc/moc_serverstreamthread.cpp: include/serverstreamthread.h \
 		include/configurations.h \
@@ -1877,7 +1955,7 @@ build/debug/moc/moc_serverstreamthread.cpp: include/serverstreamthread.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qobject_impl.h \
 		build/debug/moc/moc_predefs.h \
 		../../Qt/5.12.4/gcc_64/bin/moc
-	/home/werther/Qt/5.12.4/gcc_64/bin/moc $(DEFINES) --include /home/werther/Desktop/multimedia_sharing_tool/build/debug/moc/moc_predefs.h -I/home/werther/Qt/5.12.4/gcc_64/mkspecs/linux-g++ -I/home/werther/Desktop/multimedia_sharing_tool -I/usr/include/curl -I/home/werther/Desktop/multimedia_sharing_tool/include -I/home/werther/Qt/5.12.4/gcc_64/include -I/home/werther/Qt/5.12.4/gcc_64/include/QtWidgets -I/home/werther/Qt/5.12.4/gcc_64/include/QtGui -I/home/werther/Qt/5.12.4/gcc_64/include/QtCore -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++ -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/i686-w64-mingw32.static -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/backward -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include-fixed -I/home/werther/Downloads/mxe/usr/i686-w64-mingw32.static/include include/serverstreamthread.h -o build/debug/moc/moc_serverstreamthread.cpp
+	/home/werther/Qt/5.12.4/gcc_64/bin/moc $(DEFINES) --include /home/werther/Desktop/multimedia_sharing_tool/build/debug/moc/moc_predefs.h -I/home/werther/Qt/5.12.4/gcc_64/mkspecs/linux-g++ -I/home/werther/Desktop/multimedia_sharing_tool -I/usr/include/curl -I/home/werther/Desktop/multimedia_sharing_tool/include -I/usr/local/include -I/home/werther/Qt/5.12.4/gcc_64/include -I/home/werther/Qt/5.12.4/gcc_64/include/QtWidgets -I/home/werther/Qt/5.12.4/gcc_64/include/QtGui -I/home/werther/Qt/5.12.4/gcc_64/include/QtCore -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++ -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/i686-w64-mingw32.static -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/backward -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include-fixed -I/home/werther/Downloads/mxe/usr/i686-w64-mingw32.static/include include/serverstreamthread.h -o build/debug/moc/moc_serverstreamthread.cpp
 
 build/debug/moc/moc_tcpclientthread.cpp: include/tcpclientthread.h \
 		include/connectivity.h \
@@ -1936,7 +2014,7 @@ build/debug/moc/moc_tcpclientthread.cpp: include/tcpclientthread.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qthread.h \
 		build/debug/moc/moc_predefs.h \
 		../../Qt/5.12.4/gcc_64/bin/moc
-	/home/werther/Qt/5.12.4/gcc_64/bin/moc $(DEFINES) --include /home/werther/Desktop/multimedia_sharing_tool/build/debug/moc/moc_predefs.h -I/home/werther/Qt/5.12.4/gcc_64/mkspecs/linux-g++ -I/home/werther/Desktop/multimedia_sharing_tool -I/usr/include/curl -I/home/werther/Desktop/multimedia_sharing_tool/include -I/home/werther/Qt/5.12.4/gcc_64/include -I/home/werther/Qt/5.12.4/gcc_64/include/QtWidgets -I/home/werther/Qt/5.12.4/gcc_64/include/QtGui -I/home/werther/Qt/5.12.4/gcc_64/include/QtCore -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++ -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/i686-w64-mingw32.static -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/backward -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include-fixed -I/home/werther/Downloads/mxe/usr/i686-w64-mingw32.static/include include/tcpclientthread.h -o build/debug/moc/moc_tcpclientthread.cpp
+	/home/werther/Qt/5.12.4/gcc_64/bin/moc $(DEFINES) --include /home/werther/Desktop/multimedia_sharing_tool/build/debug/moc/moc_predefs.h -I/home/werther/Qt/5.12.4/gcc_64/mkspecs/linux-g++ -I/home/werther/Desktop/multimedia_sharing_tool -I/usr/include/curl -I/home/werther/Desktop/multimedia_sharing_tool/include -I/usr/local/include -I/home/werther/Qt/5.12.4/gcc_64/include -I/home/werther/Qt/5.12.4/gcc_64/include/QtWidgets -I/home/werther/Qt/5.12.4/gcc_64/include/QtGui -I/home/werther/Qt/5.12.4/gcc_64/include/QtCore -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++ -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/i686-w64-mingw32.static -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/backward -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include-fixed -I/home/werther/Downloads/mxe/usr/i686-w64-mingw32.static/include include/tcpclientthread.h -o build/debug/moc/moc_tcpclientthread.cpp
 
 build/debug/moc/moc_tcpserverthread.cpp: include/tcpserverthread.h \
 		include/connectivity.h \
@@ -1995,7 +2073,7 @@ build/debug/moc/moc_tcpserverthread.cpp: include/tcpserverthread.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qthread.h \
 		build/debug/moc/moc_predefs.h \
 		../../Qt/5.12.4/gcc_64/bin/moc
-	/home/werther/Qt/5.12.4/gcc_64/bin/moc $(DEFINES) --include /home/werther/Desktop/multimedia_sharing_tool/build/debug/moc/moc_predefs.h -I/home/werther/Qt/5.12.4/gcc_64/mkspecs/linux-g++ -I/home/werther/Desktop/multimedia_sharing_tool -I/usr/include/curl -I/home/werther/Desktop/multimedia_sharing_tool/include -I/home/werther/Qt/5.12.4/gcc_64/include -I/home/werther/Qt/5.12.4/gcc_64/include/QtWidgets -I/home/werther/Qt/5.12.4/gcc_64/include/QtGui -I/home/werther/Qt/5.12.4/gcc_64/include/QtCore -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++ -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/i686-w64-mingw32.static -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/backward -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include-fixed -I/home/werther/Downloads/mxe/usr/i686-w64-mingw32.static/include include/tcpserverthread.h -o build/debug/moc/moc_tcpserverthread.cpp
+	/home/werther/Qt/5.12.4/gcc_64/bin/moc $(DEFINES) --include /home/werther/Desktop/multimedia_sharing_tool/build/debug/moc/moc_predefs.h -I/home/werther/Qt/5.12.4/gcc_64/mkspecs/linux-g++ -I/home/werther/Desktop/multimedia_sharing_tool -I/usr/include/curl -I/home/werther/Desktop/multimedia_sharing_tool/include -I/usr/local/include -I/home/werther/Qt/5.12.4/gcc_64/include -I/home/werther/Qt/5.12.4/gcc_64/include/QtWidgets -I/home/werther/Qt/5.12.4/gcc_64/include/QtGui -I/home/werther/Qt/5.12.4/gcc_64/include/QtCore -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++ -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/i686-w64-mingw32.static -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/backward -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include-fixed -I/home/werther/Downloads/mxe/usr/i686-w64-mingw32.static/include include/tcpserverthread.h -o build/debug/moc/moc_tcpserverthread.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -2086,6 +2164,45 @@ build/debug/obj/camerathread.o: src/camerathread.cpp include/camerathread.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qvarlengtharray.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qcontainerfwd.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qobject_impl.h \
+		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/core.hpp \
+		/usr/local/include/opencv2/core/cvdef.h \
+		/usr/local/include/opencv2/core/hal/interface.h \
+		/usr/local/include/opencv2/core/cv_cpu_dispatch.h \
+		/usr/local/include/opencv2/core/cv_cpu_helper.h \
+		/usr/local/include/opencv2/core/fast_math.hpp \
+		/usr/local/include/opencv2/core/version.hpp \
+		/usr/local/include/opencv2/core/base.hpp \
+		/usr/local/include/opencv2/opencv_modules.hpp \
+		/usr/local/include/opencv2/core/cvstd.hpp \
+		/usr/local/include/opencv2/core/ptr.inl.hpp \
+		/usr/local/include/opencv2/core/neon_utils.hpp \
+		/usr/local/include/opencv2/core/vsx_utils.hpp \
+		/usr/local/include/opencv2/core/check.hpp \
+		/usr/local/include/opencv2/core/traits.hpp \
+		/usr/local/include/opencv2/core/matx.hpp \
+		/usr/local/include/opencv2/core/saturate.hpp \
+		/usr/local/include/opencv2/core/types.hpp \
+		/usr/local/include/opencv2/core/mat.hpp \
+		/usr/local/include/opencv2/core/bufferpool.hpp \
+		/usr/local/include/opencv2/core/mat.inl.hpp \
+		/usr/local/include/opencv2/core/persistence.hpp \
+		/usr/local/include/opencv2/core/operations.hpp \
+		/usr/local/include/opencv2/core/cvstd.inl.hpp \
+		/usr/local/include/opencv2/core/utility.hpp \
+		/usr/local/include/opencv2/core/core_c.h \
+		/usr/local/include/opencv2/core/types_c.h \
+		/usr/local/include/opencv2/core/optim.hpp \
+		/usr/local/include/opencv2/core/ovx.hpp \
+		/usr/local/include/opencv2/imgproc/imgproc_c.h \
+		/usr/local/include/opencv2/imgproc/types_c.h \
+		/usr/local/include/opencv2/highgui.hpp \
+		/usr/local/include/opencv2/imgcodecs.hpp \
+		/usr/local/include/opencv2/videoio.hpp \
+		/usr/local/include/opencv2/highgui/highgui_c.h \
+		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
+		/usr/local/include/opencv2/videoio/videoio_c.h \
+		/usr/local/include/opencv2/core/core.hpp \
 		include/configurations.h \
 		include/serverstreamthread.h \
 		include/feedaudiopipethread.h \
@@ -2906,6 +3023,45 @@ build/debug/obj/frmrunning.o: src/frmrunning.cpp include/frmrunning.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qfileinfo.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qdesktopwidget.h \
 		include/camerathread.h \
+		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/core.hpp \
+		/usr/local/include/opencv2/core/cvdef.h \
+		/usr/local/include/opencv2/core/hal/interface.h \
+		/usr/local/include/opencv2/core/cv_cpu_dispatch.h \
+		/usr/local/include/opencv2/core/cv_cpu_helper.h \
+		/usr/local/include/opencv2/core/fast_math.hpp \
+		/usr/local/include/opencv2/core/version.hpp \
+		/usr/local/include/opencv2/core/base.hpp \
+		/usr/local/include/opencv2/opencv_modules.hpp \
+		/usr/local/include/opencv2/core/cvstd.hpp \
+		/usr/local/include/opencv2/core/ptr.inl.hpp \
+		/usr/local/include/opencv2/core/neon_utils.hpp \
+		/usr/local/include/opencv2/core/vsx_utils.hpp \
+		/usr/local/include/opencv2/core/check.hpp \
+		/usr/local/include/opencv2/core/traits.hpp \
+		/usr/local/include/opencv2/core/matx.hpp \
+		/usr/local/include/opencv2/core/saturate.hpp \
+		/usr/local/include/opencv2/core/types.hpp \
+		/usr/local/include/opencv2/core/mat.hpp \
+		/usr/local/include/opencv2/core/bufferpool.hpp \
+		/usr/local/include/opencv2/core/mat.inl.hpp \
+		/usr/local/include/opencv2/core/persistence.hpp \
+		/usr/local/include/opencv2/core/operations.hpp \
+		/usr/local/include/opencv2/core/cvstd.inl.hpp \
+		/usr/local/include/opencv2/core/utility.hpp \
+		/usr/local/include/opencv2/core/core_c.h \
+		/usr/local/include/opencv2/core/types_c.h \
+		/usr/local/include/opencv2/core/optim.hpp \
+		/usr/local/include/opencv2/core/ovx.hpp \
+		/usr/local/include/opencv2/imgproc/imgproc_c.h \
+		/usr/local/include/opencv2/imgproc/types_c.h \
+		/usr/local/include/opencv2/highgui.hpp \
+		/usr/local/include/opencv2/imgcodecs.hpp \
+		/usr/local/include/opencv2/videoio.hpp \
+		/usr/local/include/opencv2/highgui/highgui_c.h \
+		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
+		/usr/local/include/opencv2/videoio/videoio_c.h \
+		/usr/local/include/opencv2/core/core.hpp \
 		include/serverstreamthread.h \
 		include/feedaudiopipethread.h \
 		include/feedvideopipethread.h \
@@ -3255,6 +3411,45 @@ build/debug/obj/main.o: src/main.cpp include/frmmain.h \
 		include/frmrunning.h \
 		include/tcpserverthread.h \
 		include/camerathread.h \
+		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/core.hpp \
+		/usr/local/include/opencv2/core/cvdef.h \
+		/usr/local/include/opencv2/core/hal/interface.h \
+		/usr/local/include/opencv2/core/cv_cpu_dispatch.h \
+		/usr/local/include/opencv2/core/cv_cpu_helper.h \
+		/usr/local/include/opencv2/core/fast_math.hpp \
+		/usr/local/include/opencv2/core/version.hpp \
+		/usr/local/include/opencv2/core/base.hpp \
+		/usr/local/include/opencv2/opencv_modules.hpp \
+		/usr/local/include/opencv2/core/cvstd.hpp \
+		/usr/local/include/opencv2/core/ptr.inl.hpp \
+		/usr/local/include/opencv2/core/neon_utils.hpp \
+		/usr/local/include/opencv2/core/vsx_utils.hpp \
+		/usr/local/include/opencv2/core/check.hpp \
+		/usr/local/include/opencv2/core/traits.hpp \
+		/usr/local/include/opencv2/core/matx.hpp \
+		/usr/local/include/opencv2/core/saturate.hpp \
+		/usr/local/include/opencv2/core/types.hpp \
+		/usr/local/include/opencv2/core/mat.hpp \
+		/usr/local/include/opencv2/core/bufferpool.hpp \
+		/usr/local/include/opencv2/core/mat.inl.hpp \
+		/usr/local/include/opencv2/core/persistence.hpp \
+		/usr/local/include/opencv2/core/operations.hpp \
+		/usr/local/include/opencv2/core/cvstd.inl.hpp \
+		/usr/local/include/opencv2/core/utility.hpp \
+		/usr/local/include/opencv2/core/core_c.h \
+		/usr/local/include/opencv2/core/types_c.h \
+		/usr/local/include/opencv2/core/optim.hpp \
+		/usr/local/include/opencv2/core/ovx.hpp \
+		/usr/local/include/opencv2/imgproc/imgproc_c.h \
+		/usr/local/include/opencv2/imgproc/types_c.h \
+		/usr/local/include/opencv2/highgui.hpp \
+		/usr/local/include/opencv2/imgcodecs.hpp \
+		/usr/local/include/opencv2/videoio.hpp \
+		/usr/local/include/opencv2/highgui/highgui_c.h \
+		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
+		/usr/local/include/opencv2/videoio/videoio_c.h \
+		/usr/local/include/opencv2/core/core.hpp \
 		include/serverstreamthread.h \
 		include/feedaudiopipethread.h \
 		include/feedvideopipethread.h \
