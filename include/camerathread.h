@@ -60,7 +60,7 @@ signals:
     void stopStream();
     void setStreamingEnded();
     void takeAScreenPicture(std::string save_path);
-    void runIntrusionDetection();
+    void runIntrusionDetection(bool single_frame);
 };
 
 #endif // CAMERATHREAD_H

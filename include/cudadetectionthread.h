@@ -7,13 +7,14 @@
 #include <jetson-utils/cudaMappedMemory.h>
 #include <semaphore.h>
 #include <configurations.h>
+#include <QDir>
 
 class CudaDetectionThread : public QThread
 {
     Q_OBJECT
 private:
     sem_t sem_run;
-    bool detection_running;
+    bool detection_running, single_frame;
     /*
      * Intrusion detection variables
      */
@@ -23,13 +24,15 @@ private:
     int    imgHeight;
     detectNet* net;
 
+    void detectOnImage(std::string file_path);
+
 public:
     CudaDetectionThread();
     ~CudaDetectionThread();
     void run();
 
 public slots:
-    void runIntrusionDetection();
+    void runIntrusionDetection(bool single_frame);
 
 signals:
     void detectionDone();

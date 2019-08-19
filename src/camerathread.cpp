@@ -163,7 +163,8 @@ void CameraThread::captureFromFile()
         createChunk();
 
         // Apply neural net and elaborations on chunk frames
-
+        emit runIntrusionDetection(false);
+        sem_wait(&sem_detection_done);
 
 
         // Wait for signal to start feeding mst video
@@ -221,7 +222,7 @@ void CameraThread::captureFromScreen()
         sem_wait(&sem_screen);
 
         // Apply neural net and elaborations on chunk frames
-        emit runIntrusionDetection();
+        emit runIntrusionDetection(true);
         sem_wait(&sem_detection_done);
 
         // Wait for signal to start feeding mst video
@@ -268,7 +269,7 @@ void CameraThread::run()
     server_stream_thread->start();
 
     cuda_detection_thread = new CudaDetectionThread();
-    QObject::connect(this, SIGNAL(runIntrusionDetection()), cuda_detection_thread, SLOT(runIntrusionDetection()));
+    QObject::connect(this, SIGNAL(runIntrusionDetection(bool)), cuda_detection_thread, SLOT(runIntrusionDetection(bool)));
     QObject::connect(cuda_detection_thread, SIGNAL(detectionDone()), this, SLOT(detectionDone()));
     cuda_detection_thread->start();
 
