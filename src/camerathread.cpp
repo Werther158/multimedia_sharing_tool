@@ -103,6 +103,51 @@ void CameraThread::createChunk()
     std::system(command.c_str());
 }
 
+void CameraThread::runIntrusionDetectionNw(std::string path)
+{
+    std::string file_path = path + "/output.bmp";
+    int argc = 4;
+    char c_file_path[file_path.size() + 1];
+    std::copy(file_path.begin(), file_path.end(), c_file_path);
+    c_file_path[file_path.size()] = '\0';
+    char *argv[] = {"./", "--network=ssd-mobilenet-v2", c_file_path, c_file_path};
+
+    /*
+     * create detection network
+     */
+    net = detectNet::Create(argc, argv);
+
+    if( !net )
+    {
+        printf("detectnet-console:   failed to initialize detectNet\n");
+        return;
+    }
+
+    if( !loadImageRGBA(file_path.c_str(), (float4**)&imgCPU, (float4**)&imgCUDA, &imgWidth, &imgHeight) )
+    {
+        printf("failed to load image '%s'\n", file_path.c_str());
+        return;
+    }
+
+    /*
+     * detect objects in image
+     */
+    detectNet::Detection* detections = nullptr;
+
+    net->Detect(imgCUDA, static_cast<uint32_t>(imgWidth), static_cast<uint32_t>(imgHeight), &detections);
+
+    // wait for the GPU to finish
+    CUDA(cudaDeviceSynchronize());
+
+    if( !saveImageRGBA(file_path.c_str(), (float4*)imgCPU, imgWidth, imgHeight, 255.0f) )
+        printf("detectnet-console:  failed saving %ix%i image to '%s'\n", imgWidth, imgHeight, file_path.c_str());
+    /*
+     * destroy resources
+     */
+    SAFE_DELETE(net);
+    CUDA(cudaFreeHost(imgCPU));
+}
+
 void CameraThread::captureFromFile()
 {
     // Repair errors (if any) in input video file
@@ -219,6 +264,7 @@ void CameraThread::captureFromScreen()
         sem_wait(&sem_screen);
 
         // Apply neural net and elaborations on chunk frames
+        runIntrusionDetectionNw(videochunk_out_path);
 
         // Wait for signal to start feeding mst video
         sem_wait(&sem_video);
@@ -276,6 +322,8 @@ void CameraThread::run()
     {
         captureFromScreen();
     }
+
+
 }
 
 void CameraThread::beginCameraWork()

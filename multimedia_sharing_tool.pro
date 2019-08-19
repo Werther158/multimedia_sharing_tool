@@ -75,8 +75,6 @@ HEADERS += \
         include/tcpclientthread.h \
         include/tcpserverthread.h
 
-
-
 FORMS += \
         ui/frmclient.ui \
         ui/frmconnected.ui \
@@ -99,6 +97,21 @@ INCLUDEPATH += "/usr/local/include/"
 LIBS += -L/usr/local/lib -lcurl
 LIBS += -lX11
 LIBS += `pkg-config --libs opencv`
+LIBS += -ljetson-inference
+LIBS += -ljetson-utils
+
+# Path to cuda toolkit install
+CUDA_DIR      = /usr/local/cuda
+# Path to header and libs files
+INCLUDEPATH  += $$CUDA_DIR/include
+QMAKE_LIBDIR += $$CUDA_DIR/lib64     # Note I'm using a 64 bits Operating system
+# libs used in your code
+LIBS += -lcudart -lcuda
+# GPU architecture
+#CUDA_ARCH     = sm_20
+# NVCC flags always used by default.
+NVCCFLAGS     = --compiler-options -fno-strict-aliasing -use_fast_math --ptxas-options=-v
+
 
 DISTFILES += \
     media/eye.png \

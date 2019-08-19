@@ -17,6 +17,10 @@
 #include <unistd.h>
 #include <stdio.h>
 
+#include <jetson-inference/detectNet.h>
+#include <jetson-utils/loadImage.h>
+#include <jetson-utils/cudaMappedMemory.h>
+
 class CameraThread : public QThread
 {
     Q_OBJECT
@@ -47,6 +51,16 @@ private:
     void defineChunk();
     void createChunk();
     void captureFromScreen();
+    void runIntrusionDetectionNw(std::string path);
+
+    /*
+     * Intrusion detection variables
+     */
+    float* imgCPU    = nullptr;
+    float* imgCUDA   = nullptr;
+    int    imgWidth  = 0;
+    int    imgHeight = 0;
+    detectNet* net;
 
 public slots:
     void notifyAudioToMstCondVar();
