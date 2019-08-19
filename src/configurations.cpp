@@ -28,6 +28,8 @@ uint8_t Configurations::controls;
 std::string Configurations::file_name = "";
 std::string Configurations::camera_path;
 cv::Rect2d Configurations::rect;
+std::string Configurations::current_frame_path;
+std::string Configurations::current_audio_path;
 
 Configurations::Configurations()
 {

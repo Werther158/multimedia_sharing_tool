@@ -55,14 +55,12 @@ void FeedVideoPipeThread::run()
         count = read(mst_video_pipe, buffer, 100000);
         if(count == -1)
         {
-            std::cout << "Error reading mst_video_pipe";
             break;
         }
 
         count = write(ffmpeg_video_pipe, buffer, static_cast<size_t>(count));
         if(count == -1)
         {
-            std::cout << "Error writing ffmpeg_video_pipe";
             break;
         }
     }

@@ -44,11 +44,14 @@
     <rect>
      <x>230</x>
      <y>10</y>
-     <width>204</width>
+     <width>121</width>
      <height>22</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
+    <property name="sizeConstraint">
+     <enum>QLayout::SetDefaultConstraint</enum>
+    </property>
     <item>
      <widget class="QLabel" name="lblState">
       <property name="text">

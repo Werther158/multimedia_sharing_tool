@@ -45,6 +45,7 @@ SOURCES += \
         src/clientstreamthread.cpp \
         src/configurations.cpp \
         src/connectivity.cpp \
+        src/cudadetectionthread.cpp \
         src/dictionary.cpp \
         src/feedaudiopipethread.cpp \
         src/feedvideopipethread.cpp \
@@ -63,6 +64,7 @@ HEADERS += \
         include/clientstreamthread.h \
         include/configurations.h \
         include/connectivity.h \
+    include/cudadetectionthread.h \
         include/dictionary.h \
     include/feedaudiopipethread.h \
     include/feedvideopipethread.h \

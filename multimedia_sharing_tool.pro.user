@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.9.2, 2019-08-19T14:31:40. -->
+<!-- Written by QtCreator 4.9.2, 2019-08-19T18:37:05. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -259,7 +259,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory"></value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/werther/Desktop/build-multimedia_sharing_tool-Desktop_Qt_5_12_4_GCC_64bit-Debug/build/debug/bin</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/werther/Desktop/multimedia_sharing_tool/build/release/bin</value>
    </valuemap>
    <value type="int" key="ProjectExplorer.Target.RunConfigurationCount">1</value>
   </valuemap>

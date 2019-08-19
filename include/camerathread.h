@@ -4,6 +4,7 @@
 #include <QThread>
 #include <configurations.h>
 #include <serverstreamthread.h>
+#include <cudadetectionthread.h>
 #include <feedaudiopipethread.h>
 #include <feedvideopipethread.h>
 #include <string>
@@ -17,10 +18,6 @@
 #include <unistd.h>
 #include <stdio.h>
 
-#include <jetson-inference/detectNet.h>
-#include <jetson-utils/loadImage.h>
-#include <jetson-utils/cudaMappedMemory.h>
-
 class CameraThread : public QThread
 {
     Q_OBJECT
@@ -31,14 +28,14 @@ public:
 
 private:
     ServerStreamThread *server_stream_thread;
+    CudaDetectionThread *cuda_detection_thread;
     FeedAudioPipeThread *audio_pipe_thread;
     FeedVideoPipeThread *video_pipe_thread;
-    sem_t sem_audio, sem_video, sem_screen;
+    sem_t sem_audio, sem_video, sem_screen, sem_detection_done;
     bool thread_active = true;
     bool tik_tok = true; // Used to prevent audio and frames to be subscribed in subsequent iterations
     int mst_audio_pipe, mst_video_pipe, ffmpeg_audio_pipe, ffmpeg_video_pipe;
     std::string path, mstaudio_pipe_path, mstvideo_pipe_path, ffaudio_pipe_path, ffvideo_pipe_path;
-    std::string audiochunk_out_path, videochunk_out_path;
     std::string file_name, strvideo_length, command, rtsp_url, timing;
     long video_length, begin_chunk, end_chunk;
     int begin_h, begin_m, begin_s, end_h, end_m, end_s;
@@ -51,27 +48,19 @@ private:
     void defineChunk();
     void createChunk();
     void captureFromScreen();
-    void runIntrusionDetectionNw(std::string path);
-
-    /*
-     * Intrusion detection variables
-     */
-    float* imgCPU    = nullptr;
-    float* imgCUDA   = nullptr;
-    int    imgWidth  = 0;
-    int    imgHeight = 0;
-    detectNet* net;
 
 public slots:
     void notifyAudioToMstCondVar();
     void notifyVideoToMstCondVar();
     void continueSendingScreenFrame();
+    void detectionDone();
 
 signals:
     void writeText(QString);
     void stopStream();
     void setStreamingEnded();
     void takeAScreenPicture(std::string save_path);
+    void runIntrusionDetection();
 };
 
 #endif // CAMERATHREAD_H

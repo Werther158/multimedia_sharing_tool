@@ -8,8 +8,9 @@ CameraThread::CameraThread()
 CameraThread::~CameraThread()
 {
     thread_active = false;
-    quit();
+    terminate();
     wait();
+    cuda_detection_thread->~CudaDetectionThread();
     close(mst_video_pipe);
     if(Configurations::source_choices[Configurations::source] == "Video file")
         close(mst_audio_pipe);
@@ -17,6 +18,7 @@ CameraThread::~CameraThread()
     if(Configurations::source_choices[Configurations::source] == "Video file")
         audio_pipe_thread->~FeedAudioPipeThread();
     video_pipe_thread->~FeedVideoPipeThread();
+    server_stream_thread->~ServerStreamThread();
     std::system("bash -c \"rm -R mst-temp\"");
 }
 
@@ -71,14 +73,14 @@ void CameraThread::defineChunk()
     // Construct audiochunk and videochunk path based on tik tok strategy
     if(tik_tok)
     {
-        audiochunk_out_path = "mst-temp/audio/tik";
-        videochunk_out_path = "mst-temp/frames/tik";
+        Configurations::current_audio_path = "mst-temp/audio/tik";
+        Configurations::current_frame_path = "mst-temp/frames/tik";
         tik_tok = false;
     }
     else
     {
-        audiochunk_out_path = "mst-temp/audio/tok";
-        videochunk_out_path = "mst-temp/frames/tok";
+        Configurations::current_audio_path = "mst-temp/audio/tok";
+        Configurations::current_frame_path = "mst-temp/frames/tok";
         tik_tok = true;
     }
 }
@@ -91,61 +93,16 @@ void CameraThread::createChunk()
             ":" + std::to_string(begin_s) + " -to " + std::to_string(end_h) +
             ":" + std::to_string(end_m) + ":" + std::to_string(end_s);
     command = "bash -c \"ffmpeg -i " + file_name + timing +
-            " -compression_algo raw -pix_fmt rgb24 " + videochunk_out_path + "/output%03d.bmp\"";
+            " -compression_algo raw -pix_fmt rgb24 " + Configurations::current_frame_path + "/output%03d.bmp\"";
     std::system(command.c_str());
     // Extract audio
     command = "bash -c \"ffmpeg -i " + file_name + timing +
-            " " + audiochunk_out_path + "/temp.aac -y\"";
+            " " + Configurations::current_audio_path + "/temp.aac -y\"";
     std::system(command.c_str());
 
-    command = "bash -c \"ffmpeg -i " + audiochunk_out_path + "/temp.aac -ss 0 -to " + std::to_string(VIDEO_CHUNK) +
-            " " + audiochunk_out_path + "/audiochunk.aac -y\"";
+    command = "bash -c \"ffmpeg -i " + Configurations::current_audio_path + "/temp.aac -ss 0 -to " + std::to_string(VIDEO_CHUNK) +
+            " " + Configurations::current_audio_path + "/audiochunk.aac -y\"";
     std::system(command.c_str());
-}
-
-void CameraThread::runIntrusionDetectionNw(std::string path)
-{
-    std::string file_path = path + "/output.bmp";
-    int argc = 4;
-    char c_file_path[file_path.size() + 1];
-    std::copy(file_path.begin(), file_path.end(), c_file_path);
-    c_file_path[file_path.size()] = '\0';
-    char *argv[] = {"./", "--network=ssd-mobilenet-v2", c_file_path, c_file_path};
-
-    /*
-     * create detection network
-     */
-    net = detectNet::Create(argc, argv);
-
-    if( !net )
-    {
-        printf("detectnet-console:   failed to initialize detectNet\n");
-        return;
-    }
-
-    if( !loadImageRGBA(file_path.c_str(), (float4**)&imgCPU, (float4**)&imgCUDA, &imgWidth, &imgHeight) )
-    {
-        printf("failed to load image '%s'\n", file_path.c_str());
-        return;
-    }
-
-    /*
-     * detect objects in image
-     */
-    detectNet::Detection* detections = nullptr;
-
-    net->Detect(imgCUDA, static_cast<uint32_t>(imgWidth), static_cast<uint32_t>(imgHeight), &detections);
-
-    // wait for the GPU to finish
-    CUDA(cudaDeviceSynchronize());
-
-    if( !saveImageRGBA(file_path.c_str(), (float4*)imgCPU, imgWidth, imgHeight, 255.0f) )
-        printf("detectnet-console:  failed saving %ix%i image to '%s'\n", imgWidth, imgHeight, file_path.c_str());
-    /*
-     * destroy resources
-     */
-    SAFE_DELETE(net);
-    CUDA(cudaFreeHost(imgCPU));
 }
 
 void CameraThread::captureFromFile()
@@ -211,19 +168,19 @@ void CameraThread::captureFromFile()
 
         // Wait for signal to start feeding mst video
         sem_wait(&sem_video);
-        command = "bash -c \"cat " + videochunk_out_path + "/output*.bmp > " + mstvideo_pipe_path + " &\"";
+        command = "bash -c \"cat " + Configurations::current_frame_path + "/output*.bmp > " + mstvideo_pipe_path + " &\"";
         std::system(command.c_str());
 
         // Wait for signal to start feeding mst audio
         sem_wait(&sem_audio);
         if(end_chunk == video_length) // If the end of file is reached, wait for the end of stream
         {
-            command = "bash -c \"cat " + audiochunk_out_path + "/audiochunk.aac > " + mstaudio_pipe_path + " &\"";
+            command = "bash -c \"cat " + Configurations::current_audio_path + "/audiochunk.aac > " + mstaudio_pipe_path + " &\"";
             std::system(command.c_str());
         }
         else
         {
-            command = "bash -c \"cat " + audiochunk_out_path + "/audiochunk.aac > " + mstaudio_pipe_path + " &\"";
+            command = "bash -c \"cat " + Configurations::current_audio_path + "/audiochunk.aac > " + mstaudio_pipe_path + " &\"";
             std::system(command.c_str());
         }
 
@@ -248,27 +205,28 @@ void CameraThread::captureFromScreen()
         // Define videochunk_out_path
         if(tik_tok)
         {
-            videochunk_out_path = "mst-temp/frames/tik";
+            Configurations::current_frame_path = "mst-temp/frames/tik";
             tik_tok = false;
         }
         else
         {
-            videochunk_out_path = "mst-temp/frames/tok";
+            Configurations::current_frame_path = "mst-temp/frames/tok";
             tik_tok = true;
         }
 
         // Take screen frame
-        emit takeAScreenPicture(videochunk_out_path);
+        emit takeAScreenPicture(Configurations::current_frame_path);
 
         // Wait screen image to be ready
         sem_wait(&sem_screen);
 
         // Apply neural net and elaborations on chunk frames
-        runIntrusionDetectionNw(videochunk_out_path);
+        emit runIntrusionDetection();
+        sem_wait(&sem_detection_done);
 
         // Wait for signal to start feeding mst video
         sem_wait(&sem_video);
-        command = "bash -c \"cat " + videochunk_out_path + "/output.bmp > " + mstvideo_pipe_path + "\"";
+        command = "bash -c \"cat " + Configurations::current_frame_path + "/output.bmp > " + mstvideo_pipe_path + "\"";
         std::system(command.c_str());
 
     }
@@ -279,6 +237,7 @@ void CameraThread::run()
     sem_init(&sem_audio, 0, 0);
     sem_init(&sem_video, 0, 0);
     sem_init(&sem_screen, 0, 0);
+    sem_init(&sem_detection_done, 0, 0);
 
     std::system("bash -c \"rm -R mst-temp\"");
     std::system("bash -c \"mkdir mst-temp\"");
@@ -308,6 +267,11 @@ void CameraThread::run()
     server_stream_thread = new ServerStreamThread();
     server_stream_thread->start();
 
+    cuda_detection_thread = new CudaDetectionThread();
+    QObject::connect(this, SIGNAL(runIntrusionDetection()), cuda_detection_thread, SLOT(runIntrusionDetection()));
+    QObject::connect(cuda_detection_thread, SIGNAL(detectionDone()), this, SLOT(detectionDone()));
+    cuda_detection_thread->start();
+
     if(Configurations::source_choices[Configurations::source] == "Video file")
     {
         captureFromFile();
@@ -322,8 +286,6 @@ void CameraThread::run()
     {
         captureFromScreen();
     }
-
-
 }
 
 void CameraThread::beginCameraWork()
@@ -344,4 +306,9 @@ void CameraThread::notifyAudioToMstCondVar()
 void CameraThread::notifyVideoToMstCondVar()
 {
     sem_post(&sem_video);
+}
+
+void CameraThread::detectionDone()
+{
+    sem_post(&sem_detection_done);
 }

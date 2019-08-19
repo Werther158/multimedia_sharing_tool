@@ -56,6 +56,8 @@ public:
     // Streaming utils
     static std::string file_name;
     static std::string camera_path;
+    static std::string current_frame_path;
+    static std::string current_audio_path;
     static cv::Rect2d rect; // Rectangle for the ROI
 };
 

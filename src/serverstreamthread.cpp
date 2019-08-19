@@ -6,6 +6,8 @@ ServerStreamThread::ServerStreamThread()
 
 ServerStreamThread::~ServerStreamThread()
 {
+    terminate();
+    wait();
 }
 
 std::string ServerStreamThread::execCmd(const char* cmd)
