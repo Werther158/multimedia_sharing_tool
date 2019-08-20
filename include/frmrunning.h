@@ -37,6 +37,7 @@ private slots:
     void streamingEnded();
     void stopStream();
     void takeAScreenPicture();
+    void saveCameraFrame(cv::Mat frame);
 
 private:
     Ui::FrmRunning *ui;
@@ -58,6 +59,7 @@ signals:
     void startServerStreamThread();
     void stopServerStreamThread();
     void takePictureDone();
+    void cameraFrameSaved();
 };
 
 #endif // FRMRUNNING_H

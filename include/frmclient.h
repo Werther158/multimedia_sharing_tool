@@ -25,6 +25,8 @@ public:
 private slots:
     void on_btnBack_clicked();
     void on_btnConnect_clicked();
+    void on_chkIntrusionDetection_stateChanged(int arg1);
+
 private:
     Ui::FrmClient *ui;
     Dictionary* dict;

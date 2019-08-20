@@ -10,7 +10,10 @@ CameraThread::~CameraThread()
     thread_active = false;
     terminate();
     wait();
-    cuda_detection_thread->~CudaDetectionThread();
+    if(Configurations::intrusion_detection_enabled)
+    {
+        cuda_detection_thread->~CudaDetectionThread();
+    }
     close(mst_video_pipe);
     if(Configurations::source_choices[Configurations::source] == "Video file")
         close(mst_audio_pipe);
@@ -100,7 +103,8 @@ void CameraThread::createChunk()
             " " + Configurations::current_audio_path + "/temp.aac -y\"";
     std::system(command.c_str());
 
-    command = "bash -c \"ffmpeg -i " + Configurations::current_audio_path + "/temp.aac -ss 0 -to " + std::to_string(VIDEO_CHUNK) +
+    command = "bash -c \"ffmpeg -i " + Configurations::current_audio_path + "/temp.aac -ss 0 -to " +
+            std::to_string(Configurations::video_chunk_seconds) +
             " " + Configurations::current_audio_path + "/audiochunk.aac -y\"";
     std::system(command.c_str());
 }
@@ -145,7 +149,7 @@ void CameraThread::captureFromFile()
     command = "bash -c \"ffmpeg -i " + file_name + " -vn mst-temp/audio/complete.aac -y\"";
     std::system(command.c_str());
 
-    begin_chunk = -1 * VIDEO_CHUNK;
+    begin_chunk = -1 * Configurations::video_chunk_seconds;
     end_chunk = 0;
 
     while(thread_active)
@@ -154,18 +158,20 @@ void CameraThread::captureFromFile()
         begin_chunk += (end_chunk - begin_chunk);
         if(begin_chunk == video_length)
             break;
-        if(end_chunk + VIDEO_CHUNK < video_length)
-            end_chunk += VIDEO_CHUNK;
+        if(end_chunk + Configurations::video_chunk_seconds < video_length)
+            end_chunk += Configurations::video_chunk_seconds;
         else
             end_chunk += (video_length - end_chunk);
 
         defineChunk();
         createChunk();
 
-        // Apply neural net and elaborations on chunk frames
-        emit runIntrusionDetection(false);
-        sem_wait(&sem_detection_done);
-
+        if(Configurations::intrusion_detection_enabled)
+        {
+            // Apply neural net on chunk frames
+            emit runIntrusionDetection(false);
+            sem_wait(&sem_detection_done);
+        }
 
         // Wait for signal to start feeding mst video
         sem_wait(&sem_video);
@@ -230,11 +236,15 @@ void CameraThread::captureFromCamera()
         cap >> frame;
 
         // Save image to /mst-temp/frames tik-tok folder
-        imwrite(Configurations::current_frame_path + "/output.bmp", frame);
+        emit saveCameraFrame(frame);
+        sem_wait(&sem_camera_frame);
 
-        // Apply neural net and elaborations on chunk frames
-        emit runIntrusionDetection(true);
-        sem_wait(&sem_detection_done);
+        if(Configurations::intrusion_detection_enabled)
+        {
+            // Apply neural net on frame
+            emit runIntrusionDetection(true);
+            sem_wait(&sem_detection_done);
+        }
 
         // Wait for signal to start feeding mst video
         sem_wait(&sem_video);
@@ -276,9 +286,12 @@ void CameraThread::captureFromScreen()
         // Wait image to be ready
         sem_wait(&sem_picture);
 
-        // Apply neural net and elaborations on chunk frames
-        emit runIntrusionDetection(true);
-        sem_wait(&sem_detection_done);
+        if(Configurations::intrusion_detection_enabled)
+        {
+            // Apply neural net on frame
+            emit runIntrusionDetection(true);
+            sem_wait(&sem_detection_done);
+        }
 
         // Wait for signal to start feeding mst video
         sem_wait(&sem_video);
@@ -294,6 +307,7 @@ void CameraThread::run()
     sem_init(&sem_video, 0, 0);
     sem_init(&sem_picture, 0, 0);
     sem_init(&sem_detection_done, 0, 0);
+    sem_init(&sem_camera_frame, 0, 0);
 
     std::system("bash -c \"rm -R mst-temp\"");
     std::system("bash -c \"mkdir mst-temp\"");
@@ -323,10 +337,13 @@ void CameraThread::run()
     server_stream_thread = new ServerStreamThread();
     server_stream_thread->start();
 
-    cuda_detection_thread = new CudaDetectionThread();
-    QObject::connect(this, SIGNAL(runIntrusionDetection(bool)), cuda_detection_thread, SLOT(runIntrusionDetection(bool)));
-    QObject::connect(cuda_detection_thread, SIGNAL(detectionDone()), this, SLOT(detectionDone()));
-    cuda_detection_thread->start();
+    if(Configurations::intrusion_detection_enabled)
+    {
+        cuda_detection_thread = new CudaDetectionThread();
+        QObject::connect(this, SIGNAL(runIntrusionDetection(bool)), cuda_detection_thread, SLOT(runIntrusionDetection(bool)));
+        QObject::connect(cuda_detection_thread, SIGNAL(detectionDone()), this, SLOT(detectionDone()));
+        cuda_detection_thread->start();
+    }
 
     if(Configurations::source_choices[Configurations::source] == "Video file")
     {
@@ -362,4 +379,9 @@ void CameraThread::notifyVideoToMstCondVar()
 void CameraThread::detectionDone()
 {
     sem_post(&sem_detection_done);
+}
+
+void CameraThread::cameraFrameSaved()
+{
+    sem_post(&sem_camera_frame);
 }

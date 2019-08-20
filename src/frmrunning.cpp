@@ -29,6 +29,8 @@ FrmRunning::FrmRunning(QWidget *parent) :
     QIcon SServerIcon(sserver_img);
     ui->btnStop->setIcon(SServerIcon);
     ui->btnStop->setIconSize(sserver_img.rect().size());
+
+    qRegisterMetaType<cv::Mat>("cv::Mat");
 }
 
 FrmRunning::~FrmRunning()
@@ -170,6 +172,8 @@ void FrmRunning::startServerStream()
     camera_thread = new CameraThread();
     QObject::connect(this, SIGNAL(takePictureDone()), camera_thread, SLOT(takePictureDone()));
     QObject::connect(camera_thread, SIGNAL(takeAScreenPicture()), this, SLOT(takeAScreenPicture()));
+    QObject::connect(camera_thread, SIGNAL(saveCameraFrame(cv::Mat)), this, SLOT(saveCameraFrame(cv::Mat)));
+    QObject::connect(this, SIGNAL(cameraFrameSaved()), camera_thread, SLOT(cameraFrameSaved()));
     camera_thread->start();
 
     is_stream_active = true;
@@ -238,4 +242,10 @@ void FrmRunning::takeAScreenPicture()
     imwrite(Configurations::current_frame_path + "/output.bmp", imgCamera);
 
     emit takePictureDone();
+}
+
+void FrmRunning::saveCameraFrame(cv::Mat frame)
+{
+    imwrite(Configurations::current_frame_path + "/output.bmp", frame);
+    emit cameraFrameSaved();
 }

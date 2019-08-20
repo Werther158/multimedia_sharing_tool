@@ -21,6 +21,7 @@ uint8_t Configurations::resolution;
 uint8_t Configurations::fps;
 uint8_t Configurations::color_scale;
 
+int Configurations::video_chunk_seconds;
 std::string Configurations::file_name = "";
 std::string Configurations::camera_path;
 cv::Rect2d Configurations::rect;
@@ -28,6 +29,11 @@ int Configurations::frame_width;
 int Configurations::frame_height;
 std::string Configurations::current_frame_path;
 std::string Configurations::current_audio_path;
+
+
+bool Configurations::intrusion_detection_enabled;
+bool Configurations::stream_on_detection_enabled;
+std::string Configurations::network;
 
 Configurations::Configurations()
 {

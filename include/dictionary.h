@@ -56,6 +56,8 @@ public:
     void fillcmbResolution(QComboBox *cmb);
     void fillcmbColorScale(QComboBox *cmb);
     void fillcmbFps(QComboBox *cmb);
+    void fillcmbVideoChunk(QComboBox *cmb);
+    void fillcmbNetwork(QComboBox *cmb);
     void setTextOfchkActivateOnDetection(QCheckBox *chk);
 
     // FrmClient

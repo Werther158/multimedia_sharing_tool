@@ -31,7 +31,7 @@ private:
     CudaDetectionThread *cuda_detection_thread;
     FeedAudioPipeThread *audio_pipe_thread;
     FeedVideoPipeThread *video_pipe_thread;
-    sem_t sem_audio, sem_video, sem_picture, sem_detection_done;
+    sem_t sem_audio, sem_video, sem_picture, sem_detection_done, sem_camera_frame;
     bool thread_active = true;
     bool tik_tok = true; // Used to prevent audio and frames to be subscribed in subsequent iterations
     int mst_audio_pipe, mst_video_pipe, ffmpeg_audio_pipe, ffmpeg_video_pipe;
@@ -54,6 +54,7 @@ public slots:
     void notifyVideoToMstCondVar();
     void takePictureDone();
     void detectionDone();
+    void cameraFrameSaved();
 
 signals:
     void writeText(QString);
@@ -62,6 +63,7 @@ signals:
     void takeAScreenPicture();
     void takeACameraPicture();
     void runIntrusionDetection(bool single_frame);
+    void saveCameraFrame(cv::Mat frame);
 };
 
 #endif // CAMERATHREAD_H

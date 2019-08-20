@@ -46,11 +46,15 @@ void CudaDetectionThread::run()
 {
     sem_init(&sem_run, 0, 0);
 
-    std::string file_path;
-    int argc = 4;
+    std::string file_path, network;
+    int argc;
+
+    argc = 4;
+    network = "--network=";
+    network += Configurations::network;
 
     file_path = Configurations::current_frame_path + "/output.bmp";
-    char *argv[] = {"./", "--network=ssd-mobilenet-v2", (char*)file_path.c_str(), (char*)file_path.c_str()};
+    char *argv[] = {"./", (char*)network.c_str(), (char*)file_path.c_str(), (char*)file_path.c_str()};
 
     /*
      * create detection network

@@ -200,6 +200,7 @@ void Dictionary::fillcmbSource(QComboBox *cmb)
     cmb->addItem(QString::fromStdString(choices("File video", "Video file")));
     cmb->addItem(QString::fromStdString(choices("Camera", "Camera")));
     cmb->addItem(QString::fromStdString(choices("Schermo", "Screen")));
+    cmb->setCurrentIndex(1);
 }
 
 void Dictionary::fillcmbResolution(QComboBox *cmb)
@@ -242,6 +243,22 @@ void Dictionary::fillcmbFps(QComboBox *cmb)
     cmb->addItem("25");
     cmb->addItem("20");
     cmb->addItem("15");
+}
+
+void Dictionary::fillcmbVideoChunk(QComboBox *cmb)
+{
+    cmb->addItem(QString::fromStdString(choices("5 secondi", "5 seconds")));
+    cmb->addItem(QString::fromStdString(choices("10 secondi", "10 seconds")));
+    cmb->addItem(QString::fromStdString(choices("15 secondi", "15 seconds")));
+    cmb->addItem(QString::fromStdString(choices("20 secondi", "20 seconds")));
+    cmb->addItem(QString::fromStdString(choices("25 secondi", "25 seconds")));
+    cmb->addItem(QString::fromStdString(choices("30 secondi", "30 seconds")));
+    cmb->setCurrentIndex(1);
+}
+
+void Dictionary::fillcmbNetwork(QComboBox *cmb)
+{
+    cmb->addItem("ssd-mobilenet-v2");
 }
 
 // FrmClient

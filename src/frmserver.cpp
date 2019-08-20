@@ -76,6 +76,8 @@ void FrmServer::setDict(Dictionary* dict)
     (*dict).fillcmbResolution(ui->cmbResolution);
     (*dict).fillcmbColorScale(ui->cmbColorScale);
     (*dict).fillcmbFps(ui->cmbFps);
+    (*dict).fillcmbVideoChunk(ui->cmbVideoChunk);
+    (*dict).fillcmbNetwork(ui->cmbNetwork);
 }
 
 void FrmServer::setSelector(int *selector)
@@ -140,6 +142,7 @@ void FrmServer::on_btnStartServer_clicked()
             go_on = false;
             ui->btnStartServer->setEnabled(true);
         }
+        Configurations::video_chunk_seconds = (ui->cmbVideoChunk->currentIndex() * 5) + 5;
     }
     else
     {
@@ -151,9 +154,58 @@ void FrmServer::on_btnStartServer_clicked()
         }
     }
 
+    if(ui->chkIntrusionDetection->checkState() == Qt::Unchecked)
+        Configurations::intrusion_detection_enabled = false;
+    else
+        Configurations::intrusion_detection_enabled = true;
+
+    if(ui->chkActivateOnDetection->checkState() == Qt::Unchecked)
+        Configurations::stream_on_detection_enabled = false;
+    else
+        Configurations::stream_on_detection_enabled = true;
+
+    Configurations::network = ui->cmbNetwork->currentText().toStdString();
+
     if(go_on)
     {
         *selector = 3;
         this->close();
+    }
+}
+
+void FrmServer::on_cmbSource_currentIndexChanged(int index)
+{
+    if(index == 0)
+    {
+        // Video file activated
+        ui->lblVideoChunk->setEnabled(true);
+        ui->cmbVideoChunk->setEnabled(true);
+    }
+    else
+    {
+        ui->lblVideoChunk->setEnabled(false);
+        ui->cmbVideoChunk->setEnabled(false);
+    }
+}
+
+void FrmServer::on_chkIntrusionDetection_stateChanged(int arg1)
+{
+    if(arg1 == 0)
+    {
+        // Deactivated
+        ui->chkActivateOnDetection->setEnabled(false);
+        ui->lblNetwork->setEnabled(false);
+        ui->cmbNetwork->setEnabled(false);
+        ui->lblThreshold->setEnabled(false);
+        ui->cmbThreshold->setEnabled(false);
+    }
+    else
+    {
+        // Activated
+        ui->chkActivateOnDetection->setEnabled(true);
+        ui->lblNetwork->setEnabled(true);
+        ui->cmbNetwork->setEnabled(true);
+        ui->lblThreshold->setEnabled(true);
+        ui->cmbThreshold->setEnabled(true);
     }
 }

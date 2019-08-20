@@ -24,8 +24,6 @@
 #define SERVER 0
 #define CLIENT 1
 
-#define VIDEO_CHUNK 10
-
 class Configurations
 {
 public:
@@ -49,6 +47,7 @@ public:
     static uint8_t color_scale;
 
     // Streaming utils
+    static int video_chunk_seconds;
     static std::string file_name;
     static std::string camera_path;
     static std::string current_frame_path;
@@ -56,6 +55,12 @@ public:
     static cv::Rect2d rect; // Rectangle for the ROI
     static int frame_width;
     static int frame_height;
+
+    // Neural network utils
+    static bool intrusion_detection_enabled;
+    static bool stream_on_detection_enabled;
+    static std::string network;
+
 };
 
 /**

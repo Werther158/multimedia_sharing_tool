@@ -29,6 +29,10 @@ private slots:
     void on_btnBack_clicked();
     void on_btnStartServer_clicked();
 
+    void on_cmbSource_currentIndexChanged(int index);
+
+    void on_chkIntrusionDetection_stateChanged(int arg1);
+
 private:
     Ui::FrmServer *ui;
     Dictionary* dict;

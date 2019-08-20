@@ -234,13 +234,20 @@
        <layout class="QHBoxLayout" name="horizontalLayout_9">
         <item>
          <widget class="QLabel" name="lblVideoChunk">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="text">
            <string>lblVideoChunk</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="cmbBuffer"/>
+         <widget class="QComboBox" name="cmbVideoChunk">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
