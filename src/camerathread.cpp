@@ -190,9 +190,7 @@ void CameraThread::captureFromFile()
             command = "bash -c \"cat " + Configurations::current_audio_path + "/audiochunk.aac > " + mstaudio_pipe_path + " &\"";
             std::system(command.c_str());
         }
-
     }
-
 }
 
 void CameraThread::captureFromCamera()

@@ -57,7 +57,6 @@ public:
     void fillcmbFps(QComboBox *cmb);
     void fillcmbVideoChunk(QComboBox *cmb);
     void fillcmbNetwork(QComboBox *cmb);
-    void setTextOfchkActivateOnDetection(QCheckBox *chk);
 
     // FrmClient
     std::string getTextOfbtnConnect();

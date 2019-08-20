@@ -64,7 +64,6 @@ void FrmServer::setDict(Dictionary* dict)
     (*dict).setTextOflblFps(ui->lblFps);
     (*dict).setTextOflblColorScale(ui->lblColorScale);
     (*dict).setTextOflblNetwork(ui->lblNetwork);
-    (*dict).setTextOfchkActivateOnDetection(ui->chkActivateOnDetection);
     ui->lblBandwidth->setText(QString::fromStdString((*dict).getTextOflblBandwidth()));
     ui->lblBandwidthvalue->setText(QString::fromStdString((*dict).getTextOflblBandwidthvalue()));
     ui->btnBack->setText(QString::fromStdString((*dict).getTextOfbtnBack()));
@@ -158,11 +157,6 @@ void FrmServer::on_btnStartServer_clicked()
     else
         Configurations::intrusion_detection_enabled = true;
 
-    if(ui->chkActivateOnDetection->checkState() == Qt::Unchecked)
-        Configurations::stream_on_detection_enabled = false;
-    else
-        Configurations::stream_on_detection_enabled = true;
-
     Configurations::network = ui->cmbNetwork->currentText().toStdString();
 
     if(go_on)
@@ -192,14 +186,12 @@ void FrmServer::on_chkIntrusionDetection_stateChanged(int arg1)
     if(arg1 == 0)
     {
         // Deactivated
-        ui->chkActivateOnDetection->setEnabled(false);
         ui->lblNetwork->setEnabled(false);
         ui->cmbNetwork->setEnabled(false);
     }
     else
     {
         // Activated
-        ui->chkActivateOnDetection->setEnabled(true);
         ui->lblNetwork->setEnabled(true);
         ui->cmbNetwork->setEnabled(true);
     }

@@ -112,16 +112,6 @@ void Dictionary::setTextOflblVideoChunk(QLabel *lbl)
     lbl->setText(QString::fromStdString(choices("Video Chunk:", "Video Chunk:")));
 }
 
-void Dictionary::setTextOfchkActivateOnDetection(QCheckBox *chk)
-{
-    chk->setToolTip(QString::fromStdString(choices("Se attivato, lo streaming comincerà non appena la rete neurale rileverà almeno una persona.\n"
-                                                   "Se disattivato, lo streaming sarà attivo sin da subito.",
-                                                   "If activated, the stream will start only when the neural network detects at least one person.\n"
-                                                   "If deactivated, the stream will be active from the start of the application.")));
-    chk->setText(QString::fromStdString(choices("Attiva stream con rilevamento",
-                                                "Activate stream on detection")));
-}
-
 void Dictionary::setTextOflblNetwork(QLabel *lbl)
 {
     lbl->setToolTip(QString::fromStdString(choices("Definisce la rete neurale da utilizzare per fare detection.",

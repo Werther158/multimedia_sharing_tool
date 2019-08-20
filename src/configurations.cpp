@@ -32,7 +32,6 @@ std::string Configurations::current_audio_path;
 
 
 bool Configurations::intrusion_detection_enabled;
-bool Configurations::stream_on_detection_enabled;
 std::string Configurations::network;
 
 Configurations::Configurations()

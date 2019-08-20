@@ -58,7 +58,6 @@ public:
 
     // Neural network utils
     static bool intrusion_detection_enabled;
-    static bool stream_on_detection_enabled;
     static std::string network;
 
 };
