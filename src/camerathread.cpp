@@ -189,6 +189,61 @@ void CameraThread::captureFromFile()
 
 }
 
+void CameraThread::captureFromCamera()
+{
+    cv::VideoCapture cap;
+    cv::Mat frame;
+
+    if(!cap.open(0))
+        return;
+
+    cap >> frame;
+
+    Configurations::frame_width = frame.cols;
+    Configurations::frame_height = frame.rows;
+
+    video_pipe_thread = new FeedVideoPipeThread();
+    QObject::connect(video_pipe_thread, SIGNAL(notifyVideoToMstCondVar()), this, SLOT(notifyVideoToMstCondVar()));
+    video_pipe_thread->start();
+
+    // Open mst pipes in write only mode // Not really used to write inside the pipe
+    if((mst_video_pipe = open(mstvideo_pipe_path.c_str(), O_WRONLY)) < 0)
+    {
+        std::cout << "Error opening MST video pipe\n";
+    }
+
+    while(thread_active)
+    {
+        // Define videochunk_out_path
+        if(tik_tok)
+        {
+            Configurations::current_frame_path = "mst-temp/frames/tik";
+            tik_tok = false;
+        }
+        else
+        {
+            Configurations::current_frame_path = "mst-temp/frames/tok";
+            tik_tok = true;
+        }
+
+        // Take a frame from camera
+        cap >> frame;
+
+        // Save image to /mst-temp/frames tik-tok folder
+        imwrite(Configurations::current_frame_path + "/output.bmp", frame);
+
+        // Apply neural net and elaborations on chunk frames
+        emit runIntrusionDetection(true);
+        sem_wait(&sem_detection_done);
+
+        // Wait for signal to start feeding mst video
+        sem_wait(&sem_video);
+        command = "bash -c \"cat " + Configurations::current_frame_path + "/output.bmp > " + mstvideo_pipe_path + "\"";
+        std::system(command.c_str());
+
+    }
+}
+
 void CameraThread::captureFromScreen()
 {
     video_pipe_thread = new FeedVideoPipeThread();
@@ -216,10 +271,10 @@ void CameraThread::captureFromScreen()
         }
 
         // Take screen frame
-        emit takeAScreenPicture(Configurations::current_frame_path);
+        emit takeAScreenPicture();
 
-        // Wait screen image to be ready
-        sem_wait(&sem_screen);
+        // Wait image to be ready
+        sem_wait(&sem_picture);
 
         // Apply neural net and elaborations on chunk frames
         emit runIntrusionDetection(true);
@@ -237,7 +292,7 @@ void CameraThread::run()
 {
     sem_init(&sem_audio, 0, 0);
     sem_init(&sem_video, 0, 0);
-    sem_init(&sem_screen, 0, 0);
+    sem_init(&sem_picture, 0, 0);
     sem_init(&sem_detection_done, 0, 0);
 
     std::system("bash -c \"rm -R mst-temp\"");
@@ -280,7 +335,7 @@ void CameraThread::run()
     else
     if(Configurations::source_choices[Configurations::source] == "Camera")
     {
-        //captureFromCamera();
+        captureFromCamera();
     }
     else
     if(Configurations::source_choices[Configurations::source] == "Screen")
@@ -289,14 +344,9 @@ void CameraThread::run()
     }
 }
 
-void CameraThread::beginCameraWork()
+void CameraThread::takePictureDone()
 {
-
-}
-
-void CameraThread::continueSendingScreenFrame()
-{
-    sem_post(&sem_screen);
+    sem_post(&sem_picture);
 }
 
 void CameraThread::notifyAudioToMstCondVar()

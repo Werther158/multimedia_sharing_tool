@@ -151,6 +151,8 @@ void FrmServer::on_btnStartServer_clicked()
         if(Configurations::source_choices[Configurations::source] == "Screen")
         {
             selectRegion();
+            Configurations::frame_width = Configurations::rect.width;
+            Configurations::frame_height = Configurations::rect.height;
         }
     }
 

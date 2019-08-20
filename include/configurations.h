@@ -59,6 +59,8 @@ public:
     static std::string current_frame_path;
     static std::string current_audio_path;
     static cv::Rect2d rect; // Rectangle for the ROI
+    static int frame_width;
+    static int frame_height;
 };
 
 /**

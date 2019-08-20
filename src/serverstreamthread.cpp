@@ -51,9 +51,9 @@ void ServerStreamThread::run()
     else
     {
         frame_size = "";
-        frame_size += std::to_string(static_cast<int>(Configurations::rect.width));
+        frame_size += std::to_string(Configurations::frame_width);
         frame_size += "x";
-        frame_size += std::to_string(static_cast<int>(Configurations::rect.height));
+        frame_size += std::to_string(Configurations::frame_height);
         command = "ffmpeg -re -s " + frame_size + " -pix_fmt rgb24 -i " + ffvideo_pipe_path + " -r 60 -vcodec libx264 -crf 23 -preset ultrafast -f rtsp -rtsp_transport tcp " + rtsp_url;
     }
 

@@ -31,7 +31,7 @@ private:
     CudaDetectionThread *cuda_detection_thread;
     FeedAudioPipeThread *audio_pipe_thread;
     FeedVideoPipeThread *video_pipe_thread;
-    sem_t sem_audio, sem_video, sem_screen, sem_detection_done;
+    sem_t sem_audio, sem_video, sem_picture, sem_detection_done;
     bool thread_active = true;
     bool tik_tok = true; // Used to prevent audio and frames to be subscribed in subsequent iterations
     int mst_audio_pipe, mst_video_pipe, ffmpeg_audio_pipe, ffmpeg_video_pipe;
@@ -43,23 +43,24 @@ private:
     void captureFromFile();
     std::string execCmd(const char* cmd);
     long strToPositiveDigit(std::string s);
-    void beginCameraWork();
     void ffmpegJob();
     void defineChunk();
     void createChunk();
     void captureFromScreen();
+    void captureFromCamera();
 
 public slots:
     void notifyAudioToMstCondVar();
     void notifyVideoToMstCondVar();
-    void continueSendingScreenFrame();
+    void takePictureDone();
     void detectionDone();
 
 signals:
     void writeText(QString);
     void stopStream();
     void setStreamingEnded();
-    void takeAScreenPicture(std::string save_path);
+    void takeAScreenPicture();
+    void takeACameraPicture();
     void runIntrusionDetection(bool single_frame);
 };
 

@@ -995,6 +995,14 @@ build/debug/moc/moc_camerathread.cpp: include/camerathread.h \
 		/usr/local/include/jetson-utils/loadImage.h \
 		/usr/local/include/jetson-utils/imageIO.h \
 		/usr/local/include/jetson-utils/cudaMappedMemory.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/QDir \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qdir.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qfileinfo.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qfile.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qfiledevice.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qiodevice.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qshareddata.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qhash.h \
 		include/feedaudiopipethread.h \
 		include/feedvideopipethread.h \
 		build/debug/moc/moc_predefs.h \
@@ -1346,6 +1354,14 @@ build/debug/moc/moc_cudadetectionthread.cpp: include/cudadetectionthread.h \
 		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
 		/usr/local/include/opencv2/videoio/videoio_c.h \
 		/usr/local/include/opencv2/core/core.hpp \
+		../../Qt/5.12.4/gcc_64/include/QtCore/QDir \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qdir.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qfileinfo.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qfile.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qfiledevice.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qiodevice.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qshareddata.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qhash.h \
 		build/debug/moc/moc_predefs.h \
 		../../Qt/5.12.4/gcc_64/bin/moc
 	/home/werther/Qt/5.12.4/gcc_64/bin/moc $(DEFINES) --include /home/werther/Desktop/multimedia_sharing_tool/build/debug/moc/moc_predefs.h -I/home/werther/Qt/5.12.4/gcc_64/mkspecs/linux-g++ -I/home/werther/Desktop/multimedia_sharing_tool -I/usr/include/curl -I/home/werther/Desktop/multimedia_sharing_tool/include -I/usr/local/include -I/usr/local/cuda/include -I/home/werther/Qt/5.12.4/gcc_64/include -I/home/werther/Qt/5.12.4/gcc_64/include/QtWidgets -I/home/werther/Qt/5.12.4/gcc_64/include/QtGui -I/home/werther/Qt/5.12.4/gcc_64/include/QtCore -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++ -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/i686-w64-mingw32.static -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/backward -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include-fixed -I/home/werther/Downloads/mxe/usr/i686-w64-mingw32.static/include include/cudadetectionthread.h -o build/debug/moc/moc_cudadetectionthread.cpp
@@ -2862,6 +2878,14 @@ build/debug/obj/camerathread.o: src/camerathread.cpp include/camerathread.h \
 		/usr/local/include/jetson-utils/loadImage.h \
 		/usr/local/include/jetson-utils/imageIO.h \
 		/usr/local/include/jetson-utils/cudaMappedMemory.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/QDir \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qdir.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qfileinfo.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qfile.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qfiledevice.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qiodevice.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qshareddata.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qhash.h \
 		include/feedaudiopipethread.h \
 		include/feedvideopipethread.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/debug/obj/camerathread.o src/camerathread.cpp
@@ -3248,7 +3272,15 @@ build/debug/obj/cudadetectionthread.o: src/cudadetectionthread.cpp include/cudad
 		/usr/local/include/opencv2/highgui/highgui_c.h \
 		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
 		/usr/local/include/opencv2/videoio/videoio_c.h \
-		/usr/local/include/opencv2/core/core.hpp
+		/usr/local/include/opencv2/core/core.hpp \
+		../../Qt/5.12.4/gcc_64/include/QtCore/QDir \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qdir.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qfileinfo.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qfile.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qfiledevice.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qiodevice.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qshareddata.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qhash.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/debug/obj/cudadetectionthread.o src/cudadetectionthread.cpp
 
 build/debug/obj/dictionary.o: src/dictionary.cpp include/dictionary.h \
