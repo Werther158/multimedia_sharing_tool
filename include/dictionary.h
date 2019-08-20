@@ -6,6 +6,7 @@
 #include <QComboBox>
 #include <QLabel>
 #include <QPushButton>
+#include <QCheckBox>
 
 enum lang {
     italian,
@@ -36,16 +37,14 @@ public:
     void setTextOflblPort(QLabel *lbl);
     void setTextOflblPasswordS(QLabel *lbl);
     void setTextOflblSource(QLabel *lbl);
+    void setTextOflblVideoChunk(QLabel *lbl);
     std::string getTextOflblConfig();
     std::string getTextOflblLeaveConfig();
     void setTextOflblResolution(QLabel *lbl);
     void setTextOflblFps(QLabel *lbl);
-    void setTextOflblBuffer(QLabel *lbl);
-    void setTextOflblVideo(QLabel *lbl);
     void setTextOflblColorScale(QLabel *lbl);
-    void setTextOflblEncoding(QLabel *lbl);
-    void setTextOflblAudio(QLabel *lbl);
-    void setTextOflblControls(QLabel *lbl);
+    void setTextOflblNetwork(QLabel *lbl);
+    void setTextOflblThreshold(QLabel *lbl);
     std::string getTextOflblBandwidth();
     std::string getTextOflblBandwidthvalue();
     std::string getTextOfbtnBack();
@@ -57,8 +56,7 @@ public:
     void fillcmbResolution(QComboBox *cmb);
     void fillcmbColorScale(QComboBox *cmb);
     void fillcmbFps(QComboBox *cmb);
-    void fillcmbBuffer(QComboBox *cmb);
-    void fillcmbControls(QComboBox *cmb);
+    void setTextOfchkActivateOnDetection(QCheckBox *chk);
 
     // FrmClient
     std::string getTextOfbtnConnect();

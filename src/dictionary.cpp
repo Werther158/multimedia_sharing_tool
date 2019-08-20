@@ -105,6 +105,37 @@ void Dictionary::setTextOflblSource(QLabel *lbl)
     lbl->setText(QString::fromStdString(choices("Sorgente:", "Source:")));
 }
 
+void Dictionary::setTextOflblVideoChunk(QLabel *lbl)
+{
+    lbl->setToolTip(QString::fromStdString(choices("Imposta la durata in secondi di ogni chunk estratto dal file video.",
+                                                   "Set the time length in seconds of each chunk extracted from the video file.")));
+    lbl->setText(QString::fromStdString(choices("Video Chunk:", "Video Chunk:")));
+}
+
+void Dictionary::setTextOfchkActivateOnDetection(QCheckBox *chk)
+{
+    chk->setToolTip(QString::fromStdString(choices("Se attivato, lo streaming comincerà non appena la rete neurale rileverà almeno una persona.\n"
+                                                   "Se disattivato, lo streaming sarà attivo sin da subito.",
+                                                   "If activated, the stream will start only when the neural network detects at least one person.\n"
+                                                   "If deactivated, the stream will be active from the start of the application.")));
+    chk->setText(QString::fromStdString(choices("Attiva stream con rilevamento",
+                                                "Activate stream on detection")));
+}
+
+void Dictionary::setTextOflblNetwork(QLabel *lbl)
+{
+    lbl->setToolTip(QString::fromStdString(choices("Definisce la rete neurale da utilizzare per fare detection.",
+                                                   "Defines the neural network to be used for detection.")));
+    lbl->setText(QString::fromStdString(choices("Rete", "Network")));
+}
+
+void Dictionary::setTextOflblThreshold(QLabel *lbl)
+{
+    lbl->setToolTip(QString::fromStdString(choices("Imposta una soglia di frame difference tra due frame adiacenti oltre la quale viene attivata la rete di intrusion detection.",
+                                                   "Sets a frame difference threshold between two adjacent frames above which the intrusion detection network is activated.")));
+    lbl->setText(QString::fromStdString(choices("Soglia", "Threshold")));
+}
+
 std::string Dictionary::getTextOflblConfig()
 {
     return choices("Configurazione streaming", "Streaming configuration");
@@ -127,43 +158,11 @@ void Dictionary::setTextOflblFps(QLabel *lbl)
     lbl->setText("FPS:");
 }
 
-void Dictionary::setTextOflblBuffer(QLabel *lbl)
-{
-    lbl->setToolTip(QString::fromStdString(choices("Buffer disponibile in output.\nUn valore maggiore consente di avere una "
-                                                   "fluidità maggiore, ma aumenterà la latenza.", "Available output buffer.\nA greater value "
-                                                   "makes the output streaming smoother, but it increases latency.")));
-    lbl->setText("Buffer:");
-}
-
-void Dictionary::setTextOflblVideo(QLabel *lbl)
-{
-    lbl->setToolTip(QString::fromStdString(choices("Compressione video.", "Video compression.")));
-    lbl->setText("Video:");
-}
-
 void Dictionary::setTextOflblColorScale(QLabel *lbl)
 {
     lbl->setToolTip(QString::fromStdString(choices("Scala colori dei pixel delle immagini in output.",
                                                    "Color scale of output image's pixels.")));
     lbl->setText(QString::fromStdString(choices("Scala colori:", "Color scale:")));
-}
-
-void Dictionary::setTextOflblEncoding(QLabel *lbl)
-{
-    lbl->setToolTip(QString::fromStdString(choices("Tipologie di codifica video.", "Encoding types.")));
-    lbl->setText(QString::fromStdString(choices("Codifica:", "Encoding:")));
-}
-
-void Dictionary::setTextOflblAudio(QLabel *lbl)
-{
-    lbl->setToolTip(QString::fromStdString(choices("Compressione audio.", "Audio compression.")));
-    lbl->setText("Audio:");
-}
-
-void Dictionary::setTextOflblControls(QLabel *lbl)
-{
-    lbl->setToolTip(QString::fromStdString(choices("Controlli sul server disponibili al client.\nT -> Tastiera\nM -> Mouse\nC -> Controller", "Server's controls available to the client.\nK -> Keayboard\nM -> Mouse\nC -> Controller")));
-    lbl->setText(QString::fromStdString(choices("Controlli:", "Controls:")));
 }
 
 std::string Dictionary::getTextOflblBandwidth()
@@ -243,24 +242,6 @@ void Dictionary::fillcmbFps(QComboBox *cmb)
     cmb->addItem("25");
     cmb->addItem("20");
     cmb->addItem("15");
-}
-
-void Dictionary::fillcmbBuffer(QComboBox *cmb)
-{
-    cmb->addItem(QString::fromStdString(choices("Disabilitato", "Disabled")));
-    cmb->addItem(QString::fromStdString(choices("128 frame", "128 frames")));
-    cmb->addItem(QString::fromStdString(choices("64 frame", "64 frames")));
-    cmb->addItem(QString::fromStdString(choices("32 frame", "32 frames")));
-    cmb->addItem(QString::fromStdString(choices("16 frame", "16 frames")));
-    cmb->addItem(QString::fromStdString(choices("8 frame", "8 frames")));
-}
-
-void Dictionary::fillcmbControls(QComboBox *cmb)
-{
-   cmb->addItem(QString::fromStdString(choices("Disabilitati", "Disabled")));
-   cmb->addItem(QString::fromStdString(choices("T + M", "K + M")));
-   cmb->addItem(QString::fromStdString(choices("C", "C")));
-   cmb->addItem(QString::fromStdString(choices("T + M + C", "K + M + C")));
 }
 
 // FrmClient

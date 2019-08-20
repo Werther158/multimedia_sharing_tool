@@ -219,28 +219,28 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_8">
         <item>
-         <widget class="QLabel" name="lblBuffer">
+         <widget class="QLabel" name="lblColorScale">
           <property name="text">
-           <string>lblBuffer</string>
+           <string>lblColorScale</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="cmbBuffer"/>
+         <widget class="QComboBox" name="cmbColorScale"/>
         </item>
        </layout>
       </item>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_9">
         <item>
-         <widget class="QLabel" name="lblVideo">
+         <widget class="QLabel" name="lblVideoChunk">
           <property name="text">
-           <string>lblVideo</string>
+           <string>lblVideoChunk</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="cmbVideo"/>
+         <widget class="QComboBox" name="cmbBuffer"/>
         </item>
        </layout>
       </item>
@@ -264,56 +264,67 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_10">
         <item>
-         <widget class="QLabel" name="lblColorScale">
+         <widget class="QCheckBox" name="chkIntrusionDetection">
           <property name="text">
-           <string>lblColorScale</string>
+           <string>CUDA NN Intrusion Detection</string>
           </property>
          </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="cmbColorScale"/>
         </item>
        </layout>
       </item>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_11">
         <item>
-         <widget class="QLabel" name="lblEncoding">
+         <widget class="QCheckBox" name="chkActivateOnDetection">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="text">
-           <string>lblEncoding</string>
+           <string>Activate stream on detection</string>
           </property>
          </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="cmbEncoding"/>
         </item>
        </layout>
       </item>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_12">
         <item>
-         <widget class="QLabel" name="lblAudio">
+         <widget class="QLabel" name="lblNetwork">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="text">
-           <string>lblAudio</string>
+           <string>Network</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="cmbAudio"/>
+         <widget class="QComboBox" name="cmbNetwork">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_13">
         <item>
-         <widget class="QLabel" name="lblControls">
+         <widget class="QLabel" name="lblThreshold">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="text">
-           <string>lblControls</string>
+           <string>Threshold</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="cmbControls"/>
+         <widget class="QComboBox" name="cmbThreshold">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -507,7 +518,7 @@
      <x>280</x>
      <y>50</y>
      <width>231</width>
-     <height>57</height>
+     <height>61</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_6">

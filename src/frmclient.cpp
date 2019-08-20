@@ -59,12 +59,11 @@ void FrmClient::setDict(Dictionary* dict)
     ui->lblConfig->setText(QString::fromStdString((*dict).getTextOflblConfig()));
     (*dict).setTextOflblResolution(ui->lblResolution);
     (*dict).setTextOflblFps(ui->lblFps);
-    (*dict).setTextOflblBuffer(ui->lblBuffer);
-    (*dict).setTextOflblVideo(ui->lblVideo);
     (*dict).setTextOflblColorScale(ui->lblColorScale);
-    (*dict).setTextOflblEncoding(ui->lblEncoding);
-    (*dict).setTextOflblAudio(ui->lblAudio);
-    (*dict).setTextOflblControls(ui->lblControls);
+    (*dict).setTextOflblVideoChunk(ui->lblVideoChunk);
+    (*dict).setTextOflblNetwork(ui->lblNetwork);
+    (*dict).setTextOflblThreshold(ui->lblThreshold);
+    (*dict).setTextOfchkActivateOnDetection(ui->chkActivateOnDetection);
     ui->lblBandwidth->setText(QString::fromStdString((*dict).getTextOflblBandwidth()));
     ui->lblBandwidthvalue->setText(QString::fromStdString((*dict).getTextOflblBandwidthvalue()));
     ui->btnBack->setText(QString::fromStdString((*dict).getTextOfbtnBack()));
@@ -74,8 +73,6 @@ void FrmClient::setDict(Dictionary* dict)
     (*dict).fillcmbResolution(ui->cmbResolution);
     (*dict).fillcmbColorScale(ui->cmbColorScale);
     (*dict).fillcmbFps(ui->cmbFps);
-    (*dict).fillcmbBuffer(ui->cmbBuffer);
-    (*dict).fillcmbControls(ui->cmbControls);
 }
 
 void FrmClient::setSelector(int *selector)
@@ -100,9 +97,7 @@ void FrmClient::setConfigurations()
     Configurations::leave_client_config = false;
     Configurations::resolution = static_cast<uint8_t>(ui->cmbResolution->currentIndex());
     Configurations::fps = static_cast<uint8_t>(ui->cmbFps->currentIndex());
-    Configurations::buffer = static_cast<uint8_t>(ui->cmbBuffer->currentIndex());
     Configurations::color_scale = static_cast<uint8_t>(ui->cmbColorScale->currentIndex());
-    Configurations::controls = static_cast<uint8_t>(ui->cmbControls->currentIndex());
     Configurations::file_name = "";
 }
 

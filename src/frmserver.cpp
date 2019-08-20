@@ -57,16 +57,15 @@ void FrmServer::setDict(Dictionary* dict)
     (*dict).setTextOflblPort(ui->lblPort);
     (*dict).setTextOflblPasswordS(ui->lblPassword);
     (*dict).setTextOflblSource(ui->lblSource);
+    (*dict).setTextOflblVideoChunk(ui->lblVideoChunk);
     ui->lblConfig->setText(QString::fromStdString((*dict).getTextOflblConfig()));
     ui->lblLeaveConfig->setText(QString::fromStdString((*dict).getTextOflblLeaveConfig()));
     (*dict).setTextOflblResolution(ui->lblResolution);
     (*dict).setTextOflblFps(ui->lblFps);
-    (*dict).setTextOflblBuffer(ui->lblBuffer);
-    (*dict).setTextOflblVideo(ui->lblVideo);
     (*dict).setTextOflblColorScale(ui->lblColorScale);
-    (*dict).setTextOflblEncoding(ui->lblEncoding);
-    (*dict).setTextOflblAudio(ui->lblAudio);
-    (*dict).setTextOflblControls(ui->lblControls);
+    (*dict).setTextOflblNetwork(ui->lblNetwork);
+    (*dict).setTextOflblThreshold(ui->lblThreshold);
+    (*dict).setTextOfchkActivateOnDetection(ui->chkActivateOnDetection);
     ui->lblBandwidth->setText(QString::fromStdString((*dict).getTextOflblBandwidth()));
     ui->lblBandwidthvalue->setText(QString::fromStdString((*dict).getTextOflblBandwidthvalue()));
     ui->btnBack->setText(QString::fromStdString((*dict).getTextOfbtnBack()));
@@ -77,8 +76,6 @@ void FrmServer::setDict(Dictionary* dict)
     (*dict).fillcmbResolution(ui->cmbResolution);
     (*dict).fillcmbColorScale(ui->cmbColorScale);
     (*dict).fillcmbFps(ui->cmbFps);
-    (*dict).fillcmbBuffer(ui->cmbBuffer);
-    (*dict).fillcmbControls(ui->cmbControls);
 }
 
 void FrmServer::setSelector(int *selector)
@@ -102,9 +99,7 @@ void FrmServer::setConfigurations()
     Configurations::leave_client_config = ui->chkLeaveConfig->isChecked();
     Configurations::resolution = static_cast<uint8_t>(ui->cmbResolution->currentIndex());
     Configurations::fps = static_cast<uint8_t>(ui->cmbFps->currentIndex());
-    Configurations::buffer = static_cast<uint8_t>(ui->cmbBuffer->currentIndex());
     Configurations::color_scale = static_cast<uint8_t>(ui->cmbColorScale->currentIndex());
-    Configurations::controls = static_cast<uint8_t>(ui->cmbControls->currentIndex());
     Configurations::file_name = "";
 }
 

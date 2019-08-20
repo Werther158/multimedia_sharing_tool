@@ -34,9 +34,7 @@ public:
     static std::string source_choices[];
     static std::string resolution_choices[];
     static int fps_choices[];
-    static int buffer_choices[];
     static int color_scale_choices[];
-    static std::string controls_choices[];
 
     static uint8_t system;
     static uint8_t source;
@@ -48,10 +46,7 @@ public:
     static bool leave_client_config;
     static uint8_t resolution;
     static uint8_t fps;
-    static uint8_t buffer;
     static uint8_t color_scale;
-    static uint8_t controls;
-
 
     // Streaming utils
     static std::string file_name;
