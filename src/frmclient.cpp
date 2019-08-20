@@ -62,7 +62,6 @@ void FrmClient::setDict(Dictionary* dict)
     (*dict).setTextOflblColorScale(ui->lblColorScale);
     (*dict).setTextOflblVideoChunk(ui->lblVideoChunk);
     (*dict).setTextOflblNetwork(ui->lblNetwork);
-    (*dict).setTextOflblThreshold(ui->lblThreshold);
     (*dict).setTextOfchkActivateOnDetection(ui->chkActivateOnDetection);
     ui->lblBandwidth->setText(QString::fromStdString((*dict).getTextOflblBandwidth()));
     ui->lblBandwidthvalue->setText(QString::fromStdString((*dict).getTextOflblBandwidthvalue()));
@@ -140,8 +139,6 @@ void FrmClient::on_chkIntrusionDetection_stateChanged(int arg1)
         ui->chkActivateOnDetection->setEnabled(false);
         ui->lblNetwork->setEnabled(false);
         ui->cmbNetwork->setEnabled(false);
-        ui->lblThreshold->setEnabled(false);
-        ui->cmbThreshold->setEnabled(false);
     }
     else
     {
@@ -149,7 +146,5 @@ void FrmClient::on_chkIntrusionDetection_stateChanged(int arg1)
         ui->chkActivateOnDetection->setEnabled(true);
         ui->lblNetwork->setEnabled(true);
         ui->cmbNetwork->setEnabled(true);
-        ui->lblThreshold->setEnabled(true);
-        ui->cmbThreshold->setEnabled(true);
     }
 }

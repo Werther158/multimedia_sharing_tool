@@ -44,7 +44,6 @@ public:
     void setTextOflblFps(QLabel *lbl);
     void setTextOflblColorScale(QLabel *lbl);
     void setTextOflblNetwork(QLabel *lbl);
-    void setTextOflblThreshold(QLabel *lbl);
     std::string getTextOflblBandwidth();
     std::string getTextOflblBandwidthvalue();
     std::string getTextOfbtnBack();

@@ -297,7 +297,6 @@ void CameraThread::captureFromScreen()
         sem_wait(&sem_video);
         command = "bash -c \"cat " + Configurations::current_frame_path + "/output.bmp > " + mstvideo_pipe_path + "\"";
         std::system(command.c_str());
-
     }
 }
 

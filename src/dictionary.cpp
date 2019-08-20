@@ -129,13 +129,6 @@ void Dictionary::setTextOflblNetwork(QLabel *lbl)
     lbl->setText(QString::fromStdString(choices("Rete", "Network")));
 }
 
-void Dictionary::setTextOflblThreshold(QLabel *lbl)
-{
-    lbl->setToolTip(QString::fromStdString(choices("Imposta una soglia di frame difference tra due frame adiacenti oltre la quale viene attivata la rete di intrusion detection.",
-                                                   "Sets a frame difference threshold between two adjacent frames above which the intrusion detection network is activated.")));
-    lbl->setText(QString::fromStdString(choices("Soglia", "Threshold")));
-}
-
 std::string Dictionary::getTextOflblConfig()
 {
     return choices("Configurazione streaming", "Streaming configuration");
