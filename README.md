@@ -5,7 +5,6 @@ Share video, screen, camera and audio with a RTSP stream through Lan or Wan supp
 ## External Dependencies:
 
 `sudo apt-get update`
-
 `sudo apt-get upgrade`
 
 `sudo apt-get install git`
