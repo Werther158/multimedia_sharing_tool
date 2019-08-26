@@ -15,10 +15,13 @@ Share video, screen, camera and audio with a RTSP stream through Lan or Wan supp
 
 ### CUDA Enabled OpenCV with Contrib  
 1. Remove any previous installations of x264  
-`$ sudo apt-get remove x264 libx264-dev`  
+```sh
+$ sudo apt-get remove x264 libx264-dev
+```  
 
 2. Install OpenCV dependencies  
-```$ sudo apt-get install build-essential checkinstall cmake pkg-config yasm  
+```sh
+$ sudo apt-get install build-essential checkinstall cmake pkg-config yasm  
 $ sudo apt-get install git gfortran  
 $ sudo apt-get install libjpeg8-dev libjasper-dev libpng12-dev  
 $ sudo apt-get install libtiff5-dev  
@@ -34,7 +37,8 @@ $ sudo apt-get install x264 v4l-utils
 ```
 
 3. Make a directory i.e. `build` inside `opencv` directory  
-```$ mkdir build
+```sh
+$ mkdir build
 $ cd build
 $ cmake -D CMAKE_BUILD_TYPE=RELEASE \
  -D CMAKE_INSTALL_PREFIX=/usr/local \
