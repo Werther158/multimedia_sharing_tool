@@ -20,7 +20,8 @@ FrmClient::FrmClient(QWidget *parent) :
 
     QRect desktopRect = QApplication::desktop()->availableGeometry(this);
     QPoint center = desktopRect.center();
-    move(center.x()- static_cast<int>(width()*0.5),center.y()- static_cast<int>(height()*0.5));
+    move(center.x()- static_cast<int>(width()*0.5),
+         center.y()- static_cast<int>(height()*0.5));
 
     // Set icons
 
@@ -54,26 +55,38 @@ FrmClient::~FrmClient()
     delete ui;
 }
 
+/**
+ * Set text of gui controls according to the current selected language.
+ * @param   : dict; set current dictionary based on current language.
+ * @return  : void.
+*/
 void FrmClient::setDict(Dictionary* dict)
 {
     this->dict = dict;
-    ui->lblInfoServer->setText(QString::fromStdString((*dict).getTextOflblInfoServer()));
+    ui->lblInfoServer->setText(QString::fromStdString
+                               ((*dict).getTextOflblInfoServer()));
     (*dict).setTextOflblIpClientC(ui->lblIpClient);
     (*dict).setTextOflblIpServerC(ui->lblIpServer);
     (*dict).setTextOflblPort(ui->lblPort);
     (*dict).setTextOflblPasswordC(ui->lblPassword);
-    ui->lblConfig->setText(QString::fromStdString((*dict).getTextOflblConfig()));
+    ui->lblConfig->setText(QString::fromStdString
+                           ((*dict).getTextOflblConfig()));
     (*dict).setTextOflblResolution(ui->lblResolution);
     (*dict).setTextOflblFps(ui->lblFps);
     (*dict).setTextOflblColorScale(ui->lblColorScale);
     (*dict).setTextOflblVideoChunk(ui->lblVideoChunk);
     (*dict).setTextOflblNetwork(ui->lblNetwork);
-    ui->lblBandwidth->setText(QString::fromStdString((*dict).getTextOflblBandwidth()));
-    ui->lblBandwidthvalue->setText(QString::fromStdString((*dict).getTextOflblBandwidthvalue()));
+    ui->lblBandwidth->setText(QString::fromStdString
+                              ((*dict).getTextOflblBandwidth()));
+    ui->lblBandwidthvalue->setText(QString::fromStdString
+                                   ((*dict).getTextOflblBandwidthvalue()));
     ui->btnBack->setText(QString::fromStdString((*dict).getTextOfbtnBack()));
-    ui->btnLoadConfig->setText(QString::fromStdString((*dict).getTextOfbtnLoadConfig()));
-    ui->btnSaveConfig->setText(QString::fromStdString((*dict).getTextOfbtnSaveConfig()));
-    ui->btnConnect->setText(QString::fromStdString((*dict).getTextOfbtnConnect()));
+    ui->btnLoadConfig->setText(QString::fromStdString
+                               ((*dict).getTextOfbtnLoadConfig()));
+    ui->btnSaveConfig->setText(QString::fromStdString
+                               ((*dict).getTextOfbtnSaveConfig()));
+    ui->btnConnect->setText(QString::fromStdString
+                            ((*dict).getTextOfbtnConnect()));
     (*dict).fillcmbResolution(ui->cmbResolution);
     (*dict).fillcmbColorScale(ui->cmbColorScale);
     (*dict).fillcmbFps(ui->cmbFps);
@@ -81,32 +94,62 @@ void FrmClient::setDict(Dictionary* dict)
     (*dict).fillcmbNetwork(ui->cmbNetwork);
 }
 
+/**
+ * Set the application selector.
+ * @param   : selector; variable passed from the main.
+ * @return  : void.
+*/
 void FrmClient::setSelector(int *selector)
 {
     this->selector = selector;
 }
 
+/**
+ * Return to Frame Main.
+ * @param   : void.
+ * @return  : void.
+*/
 void FrmClient::on_btnBack_clicked()
 {
     *selector = 0;
     this->close();
 }
 
+/**
+ * Set configurations variables.
+ * @param   : void.
+ * @return  : void.
+*/
 void FrmClient::setConfigurations()
 {
     Configurations::system = CLIENT;
     Configurations::source = 0;
     Configurations::server_ip = ui->txtIpServer->text().toStdString();
     Configurations::client_ip = ui->lblIpClient2->text().toStdString();
-    Configurations::port = static_cast<uint16_t>(stoi(ui->txtPort->text().toStdString()));
+    Configurations::port = static_cast<uint16_t>
+            (stoi(ui->txtPort->text().toStdString()));
     Configurations::password = ui->txtPassword->text().toStdString();
     Configurations::leave_client_config = false;
-    Configurations::resolution = static_cast<uint8_t>(ui->cmbResolution->currentIndex());
+    Configurations::resolution = static_cast<uint8_t>
+            (ui->cmbResolution->currentIndex());
     Configurations::fps = static_cast<uint8_t>(ui->cmbFps->currentIndex());
-    Configurations::color_scale = static_cast<uint8_t>(ui->cmbColorScale->currentIndex());
+    Configurations::color_scale = static_cast<uint8_t>
+            (ui->cmbColorScale->currentIndex());
     Configurations::file_name = "";
+    Configurations::video_chunk_seconds = (ui->cmbVideoChunk->currentIndex()
+                                           * 5) + 5;
+    if(ui->chkIntrusionDetection->checkState() == Qt::Unchecked)
+        Configurations::intrusion_detection_enabled = false;
+    else
+        Configurations::intrusion_detection_enabled = true;
+    Configurations::network = ui->cmbNetwork->currentText().toStdString();
 }
 
+/**
+ * Start the connection to the server.
+ * @param   : void.
+ * @return  : void.
+*/
 void FrmClient::on_btnConnect_clicked()
 {
     ui->btnConnect->setEnabled(false);
@@ -114,23 +157,19 @@ void FrmClient::on_btnConnect_clicked()
     setConfigurations();
 
     // Control that all data are correct
-    if(Configurations::server_ip != "") // Controllo da cambiare, molto debole.
+    if(Configurations::server_ip != "")
     {
-        Configurations::video_chunk_seconds = (ui->cmbVideoChunk->currentIndex() * 5) + 5;
-
-        if(ui->chkIntrusionDetection->checkState() == Qt::Unchecked)
-            Configurations::intrusion_detection_enabled = false;
-        else
-            Configurations::intrusion_detection_enabled = true;
-
-        Configurations::network = ui->cmbNetwork->currentText().toStdString();
-
         *selector = 4;
         this->close();
     }
 
 }
 
+/**
+ * Change gui on Inttrusion detection checked/unchecked action.
+ * @param   : void.
+ * @return  : void.
+*/
 void FrmClient::on_chkIntrusionDetection_stateChanged(int arg1)
 {
     if(arg1 == 0)

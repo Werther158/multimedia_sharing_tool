@@ -27,9 +27,15 @@ CudaDetectionThread::~CudaDetectionThread()
     CUDA(cudaFreeHost(imgCPU));
 }
 
+/**
+ * Using cuda, apply intrusion detection using the neural network.
+ * @param   : file_path; path of the frame to use.
+ * @return  : void.
+*/
 void CudaDetectionThread::detectOnImage(std::string file_path)
 {
-    if( !loadImageRGBA(file_path.c_str(), (float4**)&imgCPU, (float4**)&imgCUDA, &imgWidth, &imgHeight) )
+    if( !loadImageRGBA(file_path.c_str(), (float4**)&imgCPU,
+                       (float4**)&imgCUDA, &imgWidth, &imgHeight) )
     {
         printf("failed to load image '%s'\n", file_path.c_str());
         return;
@@ -40,15 +46,23 @@ void CudaDetectionThread::detectOnImage(std::string file_path)
      */
     detectNet::Detection* detections = nullptr;
 
-    net->Detect(imgCUDA, static_cast<uint32_t>(imgWidth), static_cast<uint32_t>(imgHeight), &detections);
+    net->Detect(imgCUDA, static_cast<uint32_t>
+                (imgWidth), static_cast<uint32_t>(imgHeight), &detections);
 
     // wait for the GPU to finish
     CUDA(cudaDeviceSynchronize());
 
-    if( !saveImageRGBA(file_path.c_str(), (float4*)imgCPU, imgWidth, imgHeight, 255.0f) )
-        printf("detectnet-console:  failed saving %ix%i image to '%s'\n", imgWidth, imgHeight, file_path.c_str());
+    if(!saveImageRGBA(file_path.c_str(), (float4*)imgCPU,
+                      imgWidth, imgHeight, 255.0f))
+        printf("detectnet-console:  failed saving %ix%i image to '%s'\n",
+               imgWidth, imgHeight, file_path.c_str());
 }
 
+/**
+ * Initialize the network and semaphores and start detection routine.
+ * @param   : void.
+ * @return  : void.
+*/
 void CudaDetectionThread::run()
 {
     sem_init(&sem_run, 0, 0);
@@ -61,7 +75,8 @@ void CudaDetectionThread::run()
     network += Configurations::network;
 
     file_path = Configurations::current_frame_path + "/output.bmp";
-    char *argv[] = {"./", (char*)network.c_str(), (char*)file_path.c_str(), (char*)file_path.c_str()};
+    char *argv[] = {"./", (char*)network.c_str(),
+                    (char*)file_path.c_str(), (char*)file_path.c_str()};
 
     /*
      * create detection network
@@ -87,10 +102,13 @@ void CudaDetectionThread::run()
         else
         {
             // Elaborate all chunk frames
-            QDir directory(QString::fromStdString(Configurations::current_frame_path));
-            QStringList images = directory.entryList(QStringList() << "*.bmp", QDir::Files);
+            QDir directory(QString::fromStdString
+                           (Configurations::current_frame_path));
+            QStringList images = directory.entryList
+                    (QStringList() << "*.bmp", QDir::Files);
             foreach(QString filename, images) {
-                detectOnImage(Configurations::current_frame_path + "/" + filename.toStdString());
+                detectOnImage(Configurations::current_frame_path
+                              + "/" + filename.toStdString());
             }
         }
 
@@ -98,6 +116,12 @@ void CudaDetectionThread::run()
     }
 }
 
+/**
+ * Gives the signal at the thread to start detection on frame.
+ * @param   : single_frame; true if detection has to be done on a single frame,
+ *            false otherwise.
+ * @return  : void.
+*/
 void CudaDetectionThread::runIntrusionDetection(bool single_frame)
 {
     this->single_frame = single_frame;

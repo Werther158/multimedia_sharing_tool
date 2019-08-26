@@ -11,7 +11,7 @@
 FeedVideoPipeThread::FeedVideoPipeThread()
 {
     thread_active = true;
-    path = execCmd("pwd");
+    path = Configurations::execCmd("pwd");
     mstvideo_pipe_path = path + "/mst-temp/mst_video_pipe";
     ffvideo_pipe_path = path + "/mst-temp/ffmpeg_video_pipe";
 }
@@ -24,26 +24,12 @@ FeedVideoPipeThread::~FeedVideoPipeThread()
     wait();
 }
 
-std::string FeedVideoPipeThread::execCmd(const char* cmd)
-{
-    std::array<char, 128> buffer;
-    std::string result;
-    auto pipe = popen(cmd, "r");
-
-    if (!pipe) throw std::runtime_error("popen() failed!");
-
-    while (!feof(pipe))
-    {
-        if (fgets(buffer.data(), 128, pipe) != nullptr)
-            result += buffer.data();
-    }
-
-    pclose(pipe);
-
-    result.pop_back(); // remove \n character
-    return result;
-}
-
+/**
+ * Start a routine that continuosly collect video data from mst_video_pipe and
+ * forward it to ffmpeg_video_pipe.
+ * @param   : void.
+ * @return  : void.
+*/
 void FeedVideoPipeThread::run()
 {
     if((mst_video_pipe = open(mstvideo_pipe_path.c_str(), O_RDONLY)) < 0)

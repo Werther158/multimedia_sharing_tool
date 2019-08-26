@@ -28,6 +28,7 @@ class Configurations
 {
 public:
     Configurations();
+    static std::string execCmd(const char* cmd);
 
     static std::string source_choices[];
     static std::string resolution_choices[];
@@ -38,7 +39,8 @@ public:
     static uint8_t source;
     static std::string server_ip;
     static std::string client_ip;
-    static std::string my_own_used_ip; // My Ip used to connect to Server or Client
+    // My Ip used to connect to Server or Client
+    static std::string my_own_used_ip;
     static uint16_t port;
     static std::string password;
     static bool leave_client_config;

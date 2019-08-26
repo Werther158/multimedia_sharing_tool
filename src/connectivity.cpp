@@ -9,12 +9,13 @@
 #include "connectivity.h"
 
 /**
- * Used by curl to write a payload on his stream; this allows to obtain the current
- * public ip address.
+ * Used by curl to write a payload on his stream; this allows to
+ * obtain the current public ip address.
 */
 size_t write_data(void *ptr, size_t size, size_t nmemb, void *stream)
 {
-    std::string data(reinterpret_cast<const char*>(ptr), reinterpret_cast<size_t>(size) * nmemb);
+    std::string data(reinterpret_cast<const char*>(ptr),
+                     reinterpret_cast<size_t>(size) * nmemb);
     *(reinterpret_cast<std::stringstream*>(stream)) << data;
     return size * nmemb;
 }
@@ -51,7 +52,8 @@ std::string Connectivity::getPublicIp()
     CURLcode res = curl_easy_perform(curl);
     /* Check for errors */
     if (res != CURLE_OK) {
-        fprintf(stderr, "curl_easy_perform() failed: %s. Check your internet connection.\n",
+        fprintf(stderr, "curl_easy_perform() failed: "
+                        "%s. Check your internet connection.\n",
                 curl_easy_strerror(res));
         output = "127.0.0.1";
     }
@@ -103,7 +105,8 @@ int Connectivity::tcpServer(uint16_t PORT)
     emit writeText("Server running");
 
     do {
-        if ((sock = accept(server_fd, reinterpret_cast<struct sockaddr *>(&address),
+        if ((sock = accept(server_fd, reinterpret_cast
+                           <struct sockaddr *>(&address),
                            reinterpret_cast<socklen_t*>(&addrlen)))<0)
         {
             perror("accept");
@@ -121,7 +124,8 @@ int Connectivity::tcpServer(uint16_t PORT)
     } while(std::string(buffer) != Configurations::password);
 
     valread = read(sock, buffer, BUFFER_SIZE);
-    send(sock, Configurations::client_ip.c_str(), strlen(Configurations::client_ip.c_str()), 0);
+    send(sock, Configurations::client_ip.c_str(),
+         strlen(Configurations::client_ip.c_str()), 0);
     Configurations::my_own_used_ip = buffer;
 
     emit writeText("Client connected");
@@ -156,18 +160,21 @@ int Connectivity::tcpClient(std::string server_ip, uint16_t PORT)
         return -1;
     }
 
-    if (::connect(sock, reinterpret_cast<struct sockaddr *>(&serv_addr), sizeof(serv_addr)) < 0)
+    if (::connect(sock, reinterpret_cast<struct sockaddr *>(&serv_addr),
+                  sizeof(serv_addr)) < 0)
     {
         printf("\nConnection Failed \n");
         return -1;
     }
 
-    send(sock, Configurations::password.c_str(), strlen(Configurations::server_ip.c_str()), 0 );
+    send(sock, Configurations::password.c_str(),
+         strlen(Configurations::server_ip.c_str()), 0 );
     valread = read(sock, buffer, BUFFER_SIZE);
 
     if(std::string(buffer) == "ok")
     {
-        send(sock, Configurations::server_ip.c_str(), strlen(Configurations::server_ip.c_str()), 0 );
+        send(sock, Configurations::server_ip.c_str(),
+             strlen(Configurations::server_ip.c_str()), 0 );
         valread = read(sock, buffer, BUFFER_SIZE);
         Configurations::my_own_used_ip = buffer;
 
@@ -194,27 +201,32 @@ void Connectivity::tcpRead()
         memset(buffer, 0, BUFFER_SIZE);
         valread = read(sock, buffer, BUFFER_SIZE);
 
-        if(buffer[0] == (char)-1) // The other guy clicked disconnect
+        // The other guy clicked disconnect
+        if(buffer[0] == (char)-1)
         {
             emit otherGuyDisconnected();
             break;
         }
-        if(buffer[0] == (char)-2) // (Server side) Start sending video stream to client
+        // (Server side) Start sending video stream to client
+        if(buffer[0] == (char)-2)
         {
             emit startServerStream();
         }
         else
-        if(buffer[0] == (char)-3) // (Client side) Stop receiving video stream
+        // (Client side) Stop receiving video stream
+        if(buffer[0] == (char)-3)
         {
             emit stopReceivingVideoStream(false);
         }
         else
-        if(buffer[0] == (char)-4) // (Server side) Streaming ended
+        // (Server side) Streaming ended
+        if(buffer[0] == (char)-4)
         {
             emit streamingEnded();
         }
         else
-        if(buffer[0] == (char)-5) // (Client side) Start streaming
+        // (Client side) Start streaming
+        if(buffer[0] == (char)-5)
         {
             emit startStreaming();
         }
@@ -234,7 +246,8 @@ void Connectivity::tcpRead()
 */
 void Connectivity::tcpWriteData(QString text)
 {
-    send(sock, text.toStdString().c_str(), strlen(text.toStdString().c_str()), 0);
+    send(sock, text.toStdString().c_str(),
+         strlen(text.toStdString().c_str()), 0);
     if(Configurations::system == CLIENT)
         emit writeText("CLIENT: " + text);
     else

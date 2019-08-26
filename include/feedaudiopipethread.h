@@ -7,6 +7,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <configurations.h>
 
 class FeedAudioPipeThread : public QThread
 {
@@ -14,13 +15,10 @@ class FeedAudioPipeThread : public QThread
 private:
     std::string path, mstaudio_pipe_path, ffaudio_pipe_path;
     int mst_audio_pipe, ffmpeg_audio_pipe;
-//    std::mutex mtx;
-//    std::condition_variable cond_var;
     bool thread_active;
     char buffer[100000];
     ssize_t count;
 
-    std::string execCmd(const char* cmd);
 public:
     FeedAudioPipeThread();
     ~FeedAudioPipeThread();

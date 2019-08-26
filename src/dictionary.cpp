@@ -82,48 +82,69 @@ std::string Dictionary::getTextOflblInfoServer()
 
 void Dictionary::setTextOflblIpServerS(QLabel *lbl)
 {
-    lbl->setToolTip(QString::fromStdString(choices("Il tuo indirizzo IP pubblico, da comunicare al client.\nSe il sistema non è connesso ad internet sarà mostrato l'indirizzo 127.0.0.1.",
-                                                   "Your public IP address, tell it to the client.\nIf your system isn't connected to internet, 127.0.0.1 will be shown.")));
+    lbl->setToolTip(QString::fromStdString
+                    (choices("Il tuo indirizzo IP pubblico, da comunicare al "
+                             "client.\nSe il sistema non è connesso ad "
+                             "internet sarà mostrato l'indirizzo 127.0.0.1.",
+                             "Your public IP address, tell it to the client.\n"
+                             "If your system isn't connected to internet, "
+                             "127.0.0.1 will be shown.")));
     lbl->setText(QString::fromStdString(choices("Tuo IP:", "Your IP:")));
 }
 
 void Dictionary::setTextOflblIpClientS(QLabel *lbl)
 {
-    lbl->setToolTip(QString::fromStdString(choices("Inserire l'indirizzo IP del client, pubblico o privato.",
-                                                   "Insert client's IP address, either public or private.")));
+    lbl->setToolTip(QString::fromStdString
+                    (choices("Inserire l'indirizzo IP del client, pubblico o "
+                             "privato.", "Insert client's IP address, "
+                                         "either public or private.")));
     lbl->setText("Client IP:");
 }
 
 void Dictionary::setTextOflblPort(QLabel *lbl)
 {
-    lbl->setToolTip(QString::fromStdString(choices("Porta del server.", "Server port.")));
+    lbl->setToolTip(QString::fromStdString
+                    (choices("Porta del server.", "Server port.")));
     lbl->setText(QString::fromStdString(choices("Porta:", "Port:")));
 }
 
 void Dictionary::setTextOflblPasswordS(QLabel *lbl)
 {
-    lbl->setToolTip(QString::fromStdString(choices("E' possibile impostare una password per la connessione del client.\nLasciare vuoto questo campo per non utilizzare nessuna password.",
-                                                   "It is possible to set a password for client connection.\nLeave it blank in order to use no password.")));
+    lbl->setToolTip(QString::fromStdString
+                    (choices("E' possibile impostare una password per la "
+                             "connessione del client.\nLasciare vuoto questo"
+                             " campo per non utilizzare nessuna password.",
+                             "It is possible to set a password for client "
+                             "connection.\nLeave it blank in order to use no "
+                             "password.")));
     lbl->setText("Password:");
 }
 
 void Dictionary::setTextOflblSource(QLabel *lbl)
 {
-    lbl->setToolTip(QString::fromStdString(choices("Sorgente video da inviare al client.", "Video source to use.")));
+    lbl->setToolTip(QString::fromStdString
+                    (choices("Sorgente video da inviare al client.",
+                             "Video source to use.")));
     lbl->setText(QString::fromStdString(choices("Sorgente:", "Source:")));
 }
 
 void Dictionary::setTextOflblVideoChunk(QLabel *lbl)
 {
-    lbl->setToolTip(QString::fromStdString(choices("Imposta la durata in secondi di ogni chunk estratto dal file video.",
-                                                   "Set the time length in seconds of each chunk extracted from the video file.")));
-    lbl->setText(QString::fromStdString(choices("Video Chunk:", "Video Chunk:")));
+    lbl->setToolTip(QString::fromStdString
+                    (choices("Imposta la durata in secondi di ogni chunk "
+                             "estratto dal file video.", "Set the time length"
+                             " in seconds of each chunk extracted from the "
+                                                         "video file.")));
+    lbl->setText(QString::fromStdString
+                 (choices("Video Chunk:", "Video Chunk:")));
 }
 
 void Dictionary::setTextOflblNetwork(QLabel *lbl)
 {
-    lbl->setToolTip(QString::fromStdString(choices("Definisce la rete neurale da utilizzare per fare detection.",
-                                                   "Defines the neural network to be used for detection.")));
+    lbl->setToolTip(QString::fromStdString
+                    (choices("Definisce la rete neurale da utilizzare per "
+                             "fare detection.", "Defines the neural network to"
+                                                " be used for detection.")));
     lbl->setText(QString::fromStdString(choices("Rete", "Network")));
 }
 
@@ -134,26 +155,34 @@ std::string Dictionary::getTextOflblConfig()
 
 std::string Dictionary::getTextOflblLeaveConfig()
 {
-    return choices("Lascia la configurazione al client:", "Leave the configuration to client:");
+    return choices("Lascia la configurazione al client:",
+                   "Leave the configuration to client:");
 }
 
 void Dictionary::setTextOflblResolution(QLabel *lbl)
 {
-    lbl->setToolTip(QString::fromStdString(choices("Risoluzione di output.", "Output resolution.")));
-    lbl->setText(QString::fromStdString(choices("Risoluzione:", "Resolution:")));
+    lbl->setToolTip(QString::fromStdString
+                    (choices("Risoluzione di output.", "Output resolution.")));
+    lbl->setText(QString::fromStdString
+                 (choices("Risoluzione:", "Resolution:")));
 }
 
 void Dictionary::setTextOflblFps(QLabel *lbl)
 {
-    lbl->setToolTip(QString::fromStdString(choices("FPS massimi desiderati in output.", "Maximum output FPS desired.")));
+    lbl->setToolTip(QString::fromStdString
+                    (choices("FPS massimi desiderati in output.",
+                             "Maximum output FPS desired.")));
     lbl->setText("FPS:");
 }
 
 void Dictionary::setTextOflblColorScale(QLabel *lbl)
 {
-    lbl->setToolTip(QString::fromStdString(choices("Scala colori dei pixel delle immagini in output.",
-                                                   "Color scale of output image's pixels.")));
-    lbl->setText(QString::fromStdString(choices("Scala colori:", "Color scale:")));
+    lbl->setToolTip(QString::fromStdString
+                    (choices("Scala colori dei pixel delle immagini in "
+                             "output.", "Color scale of output image's "
+                                        "pixels.")));
+    lbl->setText(QString::fromStdString
+                 (choices("Scala colori:", "Color scale:")));
 }
 
 std::string Dictionary::getTextOflblBandwidth()
@@ -260,22 +289,33 @@ std::string Dictionary::getTextOfbtnConnect()
 
 void Dictionary::setTextOflblIpClientC(QLabel *lbl)
 {
-    lbl->setToolTip(QString::fromStdString(choices("Il tuo indirizzo IP pubblico, da comunicare al server.\nSe il sistema non è connesso ad internet sarà mostrato l'indirizzo 127.0.0.1.",
-                                                   "Your public IP address, tell it to the server.\nIf your system isn't connected to internet, 127.0.0.1 will be shown.")));
+    lbl->setToolTip(QString::fromStdString
+                    (choices("Il tuo indirizzo IP pubblico, da comunicare al "
+                             "server.\nSe il sistema non è connesso ad "
+                             "internet sarà mostrato l'indirizzo 127.0.0.1.",
+                             "Your public IP address, tell it to the server."
+                             "\nIf your system isn't connected to internet, "
+                             "127.0.0.1 will be shown.")));
     lbl->setText(QString::fromStdString(choices("Tuo IP:", "Your IP:")));
 }
 
 void Dictionary::setTextOflblIpServerC(QLabel *lbl)
 {
-    lbl->setToolTip(QString::fromStdString(choices("Inserire l'indirizzo IP del server, pubblico o privato.",
-                                                   "Insert server's IP address, either public or private.")));
+    lbl->setToolTip(QString::fromStdString
+                    (choices("Inserire l'indirizzo IP del server,"
+                    " pubblico o privato.", "Insert server's IP address,"
+                                            " either public or private.")));
     lbl->setText("Server IP:");
 }
 
 void Dictionary::setTextOflblPasswordC(QLabel *lbl)
 {
-    lbl->setToolTip(QString::fromStdString(choices("Password per connettersi al server.\nSe lato server non è impostata alcuna password, lasciare il campo vuoto.",
-                                                   "Server connection password.\nIf server side no password is specified, leave the field blank.")));
+    lbl->setToolTip(QString::fromStdString
+                    (choices("Password per connettersi al server.\nSe lato "
+                             "server non è impostata alcuna password, lasciare"
+                             " il campo vuoto.", "Server connection password."
+                             "\nIf server side no password is specified, "
+                                                 "leave the field blank.")));
     lbl->setText("Password:");
 }
 
@@ -290,8 +330,12 @@ std::string Dictionary::getTextOpenafile()
 // FrmRunning
 void Dictionary::getTextOflblStateRunning(QLabel *lbl)
 {
-    lbl->setToolTip(QString::fromStdString(choices("Indica lo stato attuale del server.\nPosiziona il cursore sulle icone di stato per avere più informazioni.",
-                                                   "Indicates the actual state of the server.\nPlace the cursor over the status icons for more information.")));
+    lbl->setToolTip(QString::fromStdString
+                    (choices("Indica lo stato attuale del server.\nPosiziona "
+                    "il cursore sulle icone di stato per avere più "
+                    "informazioni.", "Indicates the actual state of the "
+                    "server.\nPlace the cursor over the status icons for more"
+                    " information.")));
     lbl->setText(QString::fromStdString(choices("Stato:", "State:")));
 }
 
@@ -308,7 +352,8 @@ void Dictionary::setTIbtnStartStopStream(QPushButton *btn, int select)
         QIcon PlayIcon(play_img);
         btn->setIcon(PlayIcon);
         btn->setIconSize(play_img.rect().size());
-        btn->setText(QString::fromStdString(choices(" Avvia streaming", " Start streaming")));
+        btn->setText(QString::fromStdString
+                     (choices(" Avvia streaming", " Start streaming")));
     }
 
     else
@@ -317,27 +362,40 @@ void Dictionary::setTIbtnStartStopStream(QPushButton *btn, int select)
         QIcon StopIcon(stop_img);
         btn->setIcon(StopIcon);
         btn->setIconSize(stop_img.rect().size());
-        btn->setText(QString::fromStdString(choices(" Ferma streaming", " Stop streaming")));
+        btn->setText(QString::fromStdString
+                    (choices(" Ferma streaming", " Stop streaming")));
     }
 }
 
 void Dictionary::setTooltipOflblState2(QLabel *lbl)
 {
-    lbl->setToolTip(QString::fromStdString(choices("Stato del collegamento Client-Server.\nGrigio: in attesa di collegamento.\nVerde: client collegato.",
-                                                   "Client-Server connection state.\nGrey: waiting for a connection.\nGreen: client connected.")));
+    lbl->setToolTip(QString::fromStdString
+                    (choices("Stato del collegamento Client-Server.\nGrigio: "
+                    "in attesa di collegamento.\nVerde: client collegato.",
+                    "Client-Server connection state.\nGrey: waiting for a "
+                    "connection.\nGreen: client connected.")));
 }
 
 void Dictionary::setTooltipOflblState3(QLabel *lbl)
 {
-    lbl->setToolTip(QString::fromStdString(choices("Stato dello streaming video Client-Server.\nGrigio: non attivo.\nVerde: attivo.",
-                                                   "Client-Server video streaming state.\nGrey: not active.\nGreen: active.")));
+    lbl->setToolTip(QString::fromStdString
+                    (choices("Stato dello streaming video Client-Server.\n"
+                             "Grigio: non attivo.\nVerde: attivo.", "Client-"
+                             "Server video streaming state.\nGrey: not active."
+                             "\nGreen: active.")));
 }
 
 // FrmConnected
 void Dictionary::getTextOflblResize(QLabel *lbl)
 {
-    lbl->setToolTip(QString::fromStdString(choices("Permette di ridimensionare la grandezza del video in output.\nN.B. Un valore diverso dal 100% richiede calcoli aggiuntivi che possono risultare in un calo di prestazioni.",
-                                                   "Allow to resize the dimensions of output video.\nN.B. A value different from 100% needs some more computing capabilities and it could lead to lower performance.")));
+    lbl->setToolTip(QString::fromStdString
+                    (choices("Permette di ridimensionare la grandezza del "
+                    "video in output.\nN.B. Un valore diverso dal 100% "
+                    "richiede calcoli aggiuntivi che possono risultare in "
+                    "un calo di prestazioni.", "Allow to resize the dimensions"
+                    " of output video.\nN.B. A value different from 100% needs"
+                    " some more computing capabilities and it could lead to "
+                                               "lower performance.")));
     lbl->setText(QString::fromStdString(choices("Ridimensiona:", "Resize:")));
 }
 
@@ -362,9 +420,13 @@ void Dictionary::getTextOfbtnStartStreaming(QPushButton *btn, int select)
         QIcon PlayIcon(play_img);
         btn->setIcon(PlayIcon);
         btn->setIconSize(play_img.rect().size());
-        btn->setToolTip(QString::fromStdString(choices("Crea una connessione RTSP con il server e inizia ad acquisire lo streaming video.",
-                                                       "Start a RTSP connection with the server and begin to capture video streaming.")));
-        btn->setText(QString::fromStdString(choices(" Avvia streaming", " Start streaming")));
+        btn->setToolTip(QString::fromStdString
+                        (choices("Crea una connessione RTSP con il server e "
+                        "inizia ad acquisire lo streaming video.", "Start a "
+                        "RTSP connection with the server and begin to "
+                        "capture video streaming.")));
+        btn->setText(QString::fromStdString
+                     (choices(" Avvia streaming", " Start streaming")));
     }
 
     else
@@ -373,8 +435,11 @@ void Dictionary::getTextOfbtnStartStreaming(QPushButton *btn, int select)
         QIcon StopIcon(stop_img);
         btn->setIcon(StopIcon);
         btn->setIconSize(stop_img.rect().size());
-        btn->setToolTip(QString::fromStdString(choices("Interrompe la connessione RTSP con il server.",
-                                                       "End the RTSP connection.")));
-        btn->setText(QString::fromStdString(choices(" Ferma streaming", " Stop streaming")));
+        btn->setToolTip(QString::fromStdString
+                        (choices("Interrompe la connessione RTSP "
+                                 "con il server.",
+                                 "End the RTSP connection.")));
+        btn->setText(QString::fromStdString(
+                         choices(" Ferma streaming", " Stop streaming")));
     }
 }

@@ -23,7 +23,8 @@ FrmRunning::FrmRunning(QWidget *parent) :
 
     QRect desktopRect = QApplication::desktop()->availableGeometry(this);
     QPoint center = desktopRect.center();
-    move(center.x()- static_cast<int>(width()*0.5),center.y()- static_cast<int>(height()*0.5));
+    move(center.x()- static_cast<int>(width()*0.5),
+         center.y()- static_cast<int>(height()*0.5));
 
     ui->txtLine->installEventFilter(this);
 
@@ -44,6 +45,11 @@ FrmRunning::~FrmRunning()
     delete ui;
 }
 
+/**
+ * Set gui and start TCP server.
+ * @param   : void.
+ * @return  : void.
+*/
 void FrmRunning::startServer()
 {
     QPixmap grey_state(":/resources/media/grey_state.png");
@@ -53,14 +59,24 @@ void FrmRunning::startServer()
 
     tcp_server_thread = new TcpServerThread();
     tcp_server_thread->setConnectivity(&c);
-    QObject::connect(tcp_server_thread, SIGNAL(writeText(QString)), this, SLOT(writeTextOnTxtBox(QString)));
-    QObject::connect(tcp_server_thread, SIGNAL(clientConnected()), this, SLOT(clientConnected()));
-    QObject::connect(tcp_server_thread, SIGNAL(otherGuyDisconnected()), this, SLOT(otherGuyDisconnected()));
-    QObject::connect(tcp_server_thread, SIGNAL(startServerStream()), this, SLOT(startServerStream()));
-    QObject::connect(tcp_server_thread, SIGNAL(streamingEnded()), this, SLOT(streamingEnded()));
+    QObject::connect(tcp_server_thread, SIGNAL(writeText(QString)),
+                     this, SLOT(writeTextOnTxtBox(QString)));
+    QObject::connect(tcp_server_thread, SIGNAL(clientConnected()),
+                     this, SLOT(clientConnected()));
+    QObject::connect(tcp_server_thread, SIGNAL(otherGuyDisconnected()),
+                     this, SLOT(otherGuyDisconnected()));
+    QObject::connect(tcp_server_thread, SIGNAL(startServerStream()),
+                     this, SLOT(startServerStream()));
+    QObject::connect(tcp_server_thread, SIGNAL(streamingEnded()),
+                     this, SLOT(streamingEnded()));
     tcp_server_thread->start();
 }
 
+/**
+ * Set text of gui controls according to the current selected language.
+ * @param   : dict; set current dictionary based on current language.
+ * @return  : void.
+*/
 void FrmRunning::setDict(Dictionary* dict)
 {
     this->dict = dict;
@@ -68,14 +84,25 @@ void FrmRunning::setDict(Dictionary* dict)
     (*dict).setTooltipOflblState2(ui->lblState2);
     (*dict).setTooltipOflblState3(ui->lblState3);
     (*dict).setTIbtnStartStopStream(ui->btnStartStopStream, 0);
-    ui->btnStop->setText(QString::fromStdString((*dict).getTextOfbtnStopRunning()));
+    ui->btnStop->setText(QString::fromStdString
+                         ((*dict).getTextOfbtnStopRunning()));
 }
 
+/**
+ * Set the application selector.
+ * @param   : selector; variable passed from the main.
+ * @return  : void.
+*/
 void FrmRunning::setSelector(int* selector)
 {
     this->selector = selector;
 }
 
+/**
+ * Stop stream and send to client the stream stop command.
+ * @param   : void.
+ * @return  : void.
+*/
 void FrmRunning::on_btnStop_clicked()
 {
     ui->btnStartStopStream->setEnabled(false);
@@ -87,11 +114,21 @@ void FrmRunning::on_btnStop_clicked()
     this->close();
 }
 
+/**
+ * Append text to txtBox.
+ * @param   : str; QString to append.
+ * @return  : void.
+*/
 void FrmRunning::writeTextOnTxtBox(QString str)
 {
     ui->txtBox->append(str);
 }
 
+/**
+ * Send a text message to the client.
+ * @param   : void.
+ * @return  : void.
+*/
 void FrmRunning::on_btnSend_clicked()
 {
     if(ui->txtLine->text() != "" && client_connected)
@@ -101,6 +138,11 @@ void FrmRunning::on_btnSend_clicked()
     }
 }
 
+/**
+ * Set boolean value of client connected at true and set the gui.
+ * @param   : void.
+ * @return  : void.
+*/
 void FrmRunning::clientConnected()
 {
     client_connected = true;
@@ -109,6 +151,12 @@ void FrmRunning::clientConnected()
     ui->btnStartStopStream->setEnabled(true);
 }
 
+/**
+ * If client disconnects, set boolean value of client connected at false,
+ * stop threads and restart the server.
+ * @param   : void.
+ * @return  : void.
+*/
 void FrmRunning::otherGuyDisconnected()
 {
     client_connected = false;
@@ -117,6 +165,11 @@ void FrmRunning::otherGuyDisconnected()
     startServer();
 }
 
+/**
+ * Set list configuration visible.
+ * @param   : void.
+ * @return  : void.
+*/
 void FrmRunning::stopThreads()
 {
     disconnect(tcp_server_thread, nullptr, nullptr, nullptr);
@@ -135,6 +188,11 @@ void FrmRunning::stopThreads()
     }
 }
 
+/**
+ * Set list configuration visible.
+ * @param   : void.
+ * @return  : void.
+*/
 void FrmRunning::enableListConfiguration()
 {
     QPixmap eye(":/resources/media/eye.png");
@@ -146,6 +204,11 @@ void FrmRunning::enableListConfiguration()
     ui->listConfigurations->setHidden(false);
 }
 
+/**
+ * Set list configuration not visible.
+ * @param   : void.
+ * @return  : void.
+*/
 void FrmRunning::disableListConfiguration()
 {
     QPixmap eyegrey(":/resources/media/eyegrey.png");
@@ -157,6 +220,11 @@ void FrmRunning::disableListConfiguration()
     ui->listConfigurations->setHidden(true);
 }
 
+/**
+ * Enable (or disable) list configuration.
+ * @param   : void.
+ * @return  : void.
+*/
 void FrmRunning::on_btnToggleConfig_clicked()
 {
     if(listconfig_active)
@@ -171,15 +239,24 @@ void FrmRunning::on_btnToggleConfig_clicked()
     }
 }
 
+/**
+ * Start camera thread and start sending video stream.
+ * @param   : void.
+ * @return  : void.
+*/
 void FrmRunning::startServerStream()
 {
     ui->txtBox->append("Streaming started");
     // Start cameraThread
     camera_thread = new CameraThread();
-    QObject::connect(this, SIGNAL(takePictureDone()), camera_thread, SLOT(takePictureDone()));
-    QObject::connect(camera_thread, SIGNAL(takeAScreenPicture()), this, SLOT(takeAScreenPicture()));
-    QObject::connect(camera_thread, SIGNAL(saveCameraFrame(cv::Mat)), this, SLOT(saveCameraFrame(cv::Mat)));
-    QObject::connect(this, SIGNAL(cameraFrameSaved()), camera_thread, SLOT(cameraFrameSaved()));
+    QObject::connect(this, SIGNAL(takePictureDone()),
+                     camera_thread, SLOT(takePictureDone()));
+    QObject::connect(camera_thread, SIGNAL(takeAScreenPicture()),
+                     this, SLOT(takeAScreenPicture()));
+    QObject::connect(camera_thread, SIGNAL(saveCameraFrame(cv::Mat)),
+                     this, SLOT(saveCameraFrame(cv::Mat)));
+    QObject::connect(this, SIGNAL(cameraFrameSaved()),
+                     camera_thread, SLOT(cameraFrameSaved()));
     camera_thread->start();
 
     is_stream_active = true;
@@ -189,6 +266,11 @@ void FrmRunning::startServerStream()
     ui->btnStartStopStream->setEnabled(true);
 }
 
+/**
+ * Quit camera thread and stop stream.
+ * @param   : void.
+ * @return  : void.
+*/
 void FrmRunning::stopStream()
 {
     ui->txtBox->append("Streaming ended");
@@ -201,6 +283,11 @@ void FrmRunning::stopStream()
     ui->lblState3->setPixmap(stream_inactive_pix);
 }
 
+/**
+ * Start (or stop) the streaming.
+ * @param   : void.
+ * @return  : void.
+*/
 void FrmRunning::on_btnStartStopStream_clicked()
 {
     if(is_stream_active) // Stop stream
@@ -219,6 +306,11 @@ void FrmRunning::on_btnStartStopStream_clicked()
     }
 }
 
+/**
+ * Set the gui to streaming stopped and call stopStream method.
+ * @param   : void.
+ * @return  : void.
+*/
 void FrmRunning::streamingEnded()
 {
     ui->btnStartStopStream->setEnabled(false);
@@ -250,6 +342,11 @@ void FrmRunning::takeAScreenPicture()
     emit takePictureDone();
 }
 
+/**
+ * Write camera frame to disk and emit write done signal.
+ * @param   : void.
+ * @return  : void.
+*/
 void FrmRunning::saveCameraFrame(cv::Mat frame)
 {
     imwrite(Configurations::current_frame_path + "/output.bmp", frame);

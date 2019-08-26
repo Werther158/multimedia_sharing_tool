@@ -19,7 +19,6 @@ public:
     ServerStreamThread();
     ~ServerStreamThread();
     void run();
-    std::string execCmd(const char* cmd);
 
 public slots:
     void setStreamingEnded();

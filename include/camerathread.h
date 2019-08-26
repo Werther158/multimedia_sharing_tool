@@ -62,7 +62,6 @@ private:
     int begin_h, begin_m, begin_s, end_h, end_m, end_s;
 
     void captureFromFile();
-    std::string execCmd(const char* cmd);
     long strToPositiveDigit(std::string s);
     void ffmpegJob();
     void defineChunk();

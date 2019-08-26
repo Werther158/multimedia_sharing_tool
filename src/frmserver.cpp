@@ -20,7 +20,8 @@ FrmServer::FrmServer(QWidget *parent) :
 
     QRect desktopRect = QApplication::desktop()->availableGeometry(this);
     QPoint center = desktopRect.center();
-    move(center.x()- static_cast<int>(width()*0.5),center.y()- static_cast<int>(height()*0.5));
+    move(center.x()- static_cast<int>(width()*0.5),
+         center.y()- static_cast<int>(height()*0.5));
 
     // Set icons
 
@@ -54,28 +55,42 @@ FrmServer::~FrmServer()
     delete ui;
 }
 
+/**
+ * Set text of gui controls according to the current selected language.
+ * @param   : dict; set current dictionary based on current language.
+ * @return  : void.
+*/
 void FrmServer::setDict(Dictionary* dict)
 {
     this->dict = dict;
-    ui->lblInfoServer->setText(QString::fromStdString((*dict).getTextOflblInfoServer()));
+    ui->lblInfoServer->setText(QString::fromStdString
+                               ((*dict).getTextOflblInfoServer()));
     (*dict).setTextOflblIpServerS(ui->lblIpServer);
     (*dict).setTextOflblIpClientS(ui->lblIpClient);
     (*dict).setTextOflblPort(ui->lblPort);
     (*dict).setTextOflblPasswordS(ui->lblPassword);
     (*dict).setTextOflblSource(ui->lblSource);
     (*dict).setTextOflblVideoChunk(ui->lblVideoChunk);
-    ui->lblConfig->setText(QString::fromStdString((*dict).getTextOflblConfig()));
-    ui->lblLeaveConfig->setText(QString::fromStdString((*dict).getTextOflblLeaveConfig()));
+    ui->lblConfig->setText(QString::fromStdString
+                           ((*dict).getTextOflblConfig()));
+    ui->lblLeaveConfig->setText(QString::fromStdString
+                                ((*dict).getTextOflblLeaveConfig()));
     (*dict).setTextOflblResolution(ui->lblResolution);
     (*dict).setTextOflblFps(ui->lblFps);
     (*dict).setTextOflblColorScale(ui->lblColorScale);
     (*dict).setTextOflblNetwork(ui->lblNetwork);
-    ui->lblBandwidth->setText(QString::fromStdString((*dict).getTextOflblBandwidth()));
-    ui->lblBandwidthvalue->setText(QString::fromStdString((*dict).getTextOflblBandwidthvalue()));
-    ui->btnBack->setText(QString::fromStdString((*dict).getTextOfbtnBack()));
-    ui->btnLoadConfig->setText(QString::fromStdString((*dict).getTextOfbtnLoadConfig()));
-    ui->btnSaveConfig->setText(QString::fromStdString((*dict).getTextOfbtnSaveConfig()));
-    ui->btnStartServer->setText(QString::fromStdString((*dict).getTextOfbtnStartServer()));
+    ui->lblBandwidth->setText(QString::fromStdString
+                              ((*dict).getTextOflblBandwidth()));
+    ui->lblBandwidthvalue->setText(QString::fromStdString
+                                   ((*dict).getTextOflblBandwidthvalue()));
+    ui->btnBack->setText(QString::fromStdString
+                         ((*dict).getTextOfbtnBack()));
+    ui->btnLoadConfig->setText(QString::fromStdString
+                               ((*dict).getTextOfbtnLoadConfig()));
+    ui->btnSaveConfig->setText(QString::fromStdString
+                               ((*dict).getTextOfbtnSaveConfig()));
+    ui->btnStartServer->setText(QString::fromStdString
+                                ((*dict).getTextOfbtnStartServer()));
     (*dict).fillcmbSource(ui->cmbSource);
     (*dict).fillcmbResolution(ui->cmbResolution);
     (*dict).fillcmbColorScale(ui->cmbColorScale);
@@ -84,33 +99,54 @@ void FrmServer::setDict(Dictionary* dict)
     (*dict).fillcmbNetwork(ui->cmbNetwork);
 }
 
+/**
+ * Set the application selector.
+ * @param   : selector; variable passed from the main.
+ * @return  : void.
+*/
 void FrmServer::setSelector(int *selector)
 {
     this->selector = selector;
 }
+
+/**
+ * Return to Frame Main.
+ * @param   : void.
+ * @return  : void.
+*/
 void FrmServer::on_btnBack_clicked()
 {
     *selector = 0;
     this->close();
 }
 
+/**
+ * Set configurations variables.
+ * @param   : void.
+ * @return  : void.
+*/
 void FrmServer::setConfigurations()
 {
     Configurations::system = SERVER;
-    Configurations::source = static_cast<uint8_t>(ui->cmbSource->currentIndex());
+    Configurations::source = static_cast<uint8_t>
+            (ui->cmbSource->currentIndex());
     Configurations::server_ip = ui->lblIpServer2->text().toStdString();
     Configurations::client_ip = ui->txtIpClient->text().toStdString();
-    Configurations::port = static_cast<uint16_t>(stoi(ui->txtPort->text().toStdString()));
+    Configurations::port = static_cast<uint16_t>
+            (stoi(ui->txtPort->text().toStdString()));
     Configurations::password = ui->txtPassword->text().toStdString();
     Configurations::leave_client_config = ui->chkLeaveConfig->isChecked();
-    Configurations::resolution = static_cast<uint8_t>(ui->cmbResolution->currentIndex());
+    Configurations::resolution = static_cast<uint8_t>
+            (ui->cmbResolution->currentIndex());
     Configurations::fps = static_cast<uint8_t>(ui->cmbFps->currentIndex());
-    Configurations::color_scale = static_cast<uint8_t>(ui->cmbColorScale->currentIndex());
+    Configurations::color_scale = static_cast<uint8_t>
+            (ui->cmbColorScale->currentIndex());
     Configurations::file_name = "";
 }
 
 /**
- * Permette all'utente di selezionare l'area di schermo da registrare.
+ * Allows the user to select the screen region to record.
+ * @param   : void.
  * @return  : void.
 */
 void FrmServer::selectRegion()
@@ -131,6 +167,11 @@ void FrmServer::selectRegion()
     cv::destroyWindow(title);
 }
 
+/**
+ * Set configuration variables and start the server.
+ * @param   : void.
+ * @return  : void.
+*/
 void FrmServer::on_btnStartServer_clicked()
 {
     bool go_on = true;
@@ -139,14 +180,16 @@ void FrmServer::on_btnStartServer_clicked()
     setConfigurations();
     if(Configurations::source_choices[Configurations::source] == "Video file")
     {
-        Configurations::file_name = QFileDialog::getOpenFileName(this, QString::fromStdString((*dict).getTextOpenafile()),
-                                                         QDir::homePath(), "*.mkv").toStdString();
+        Configurations::file_name = QFileDialog::getOpenFileName(this,
+                           QString::fromStdString((*dict).getTextOpenafile()),
+                           QDir::homePath(), "*.mkv").toStdString();
         if(Configurations::file_name == "")
         {
             go_on = false;
             ui->btnStartServer->setEnabled(true);
         }
-        Configurations::video_chunk_seconds = (ui->cmbVideoChunk->currentIndex() * 5) + 5;
+        Configurations::video_chunk_seconds =
+                (ui->cmbVideoChunk->currentIndex() * 5) + 5;
     }
     else
     {
@@ -172,6 +215,11 @@ void FrmServer::on_btnStartServer_clicked()
     }
 }
 
+/**
+ * Change gui according to source selection.
+ * @param   : void.
+ * @return  : void.
+*/
 void FrmServer::on_cmbSource_currentIndexChanged(int index)
 {
     if(index == 0)
@@ -187,6 +235,11 @@ void FrmServer::on_cmbSource_currentIndexChanged(int index)
     }
 }
 
+/**
+ * Change gui on Inttrusion detection checked/unchecked action.
+ * @param   : void.
+ * @return  : void.
+*/
 void FrmServer::on_chkIntrusionDetection_stateChanged(int arg1)
 {
     if(arg1 == 0)

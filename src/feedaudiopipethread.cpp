@@ -11,7 +11,7 @@
 FeedAudioPipeThread::FeedAudioPipeThread()
 {
     thread_active = true;
-    path = execCmd("pwd");
+    path = Configurations::execCmd("pwd");
     mstaudio_pipe_path = path + "/mst-temp/mst_audio_pipe";
     ffaudio_pipe_path = path + "/mst-temp/ffmpeg_audio_pipe";
 }
@@ -24,26 +24,12 @@ FeedAudioPipeThread::~FeedAudioPipeThread()
     wait();
 }
 
-std::string FeedAudioPipeThread::execCmd(const char* cmd)
-{
-    std::array<char, 128> buffer;
-    std::string result;
-    auto pipe = popen(cmd, "r");
-
-    if (!pipe) throw std::runtime_error("popen() failed!");
-
-    while (!feof(pipe))
-    {
-        if (fgets(buffer.data(), 128, pipe) != nullptr)
-            result += buffer.data();
-    }
-
-    pclose(pipe);
-
-    result.pop_back(); // remove \n character
-    return result;
-}
-
+/**
+ * Start a routine that continuosly collect audio data from mst_audio_pipe and
+ * forward it to ffmpeg_audio_pipe.
+ * @param   : void.
+ * @return  : void.
+*/
 void FeedAudioPipeThread::run()
 {
     if((mst_audio_pipe = open(mstaudio_pipe_path.c_str(), O_RDONLY)) < 0)

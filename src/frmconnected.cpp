@@ -28,18 +28,24 @@ FrmConnected::FrmConnected(QWidget *parent) :
     // Start TcpClientThread
     tcp_client_thread = new TcpClientThread();
     tcp_client_thread->setConnectivity(&c);
-    QObject::connect(tcp_client_thread, SIGNAL(writeText(QString)), this, SLOT(writeTextOnTxtBox(QString)));
-    QObject::connect(tcp_client_thread, SIGNAL(clientConnected()), this, SLOT(clientConnected()));
-    QObject::connect(tcp_client_thread, SIGNAL(otherGuyDisconnected()), this, SLOT(otherGuyDisconnected()));
-    QObject::connect(tcp_client_thread, SIGNAL(stopReceivingVideoStream(bool)), this, SLOT(stopReceivingVideoStream(bool)));
-    QObject::connect(tcp_client_thread, SIGNAL(startStreaming()), this, SLOT(startStreaming()));
+    QObject::connect(tcp_client_thread, SIGNAL(writeText(QString)),
+                     this, SLOT(writeTextOnTxtBox(QString)));
+    QObject::connect(tcp_client_thread, SIGNAL(clientConnected()),
+                     this, SLOT(clientConnected()));
+    QObject::connect(tcp_client_thread, SIGNAL(otherGuyDisconnected()),
+                     this, SLOT(otherGuyDisconnected()));
+    QObject::connect(tcp_client_thread, SIGNAL(stopReceivingVideoStream(bool)),
+                     this, SLOT(stopReceivingVideoStream(bool)));
+    QObject::connect(tcp_client_thread, SIGNAL(startStreaming()),
+                     this, SLOT(startStreaming()));
     tcp_client_thread->start();
 
     ui->btnStartStopStreaming->setEnabled(false);
 
     QRect desktopRect = QApplication::desktop()->availableGeometry(this);
     QPoint center = desktopRect.center();
-    move(center.x()- static_cast<int>(width()*0.5),center.y()- static_cast<int>(height()*0.5));
+    move(center.x()- static_cast<int>(width()*0.5),
+         center.y()- static_cast<int>(height()*0.5));
 
     setWindowIcon(QIcon(":/resources/media/mst_logo.png"));
 
@@ -54,23 +60,40 @@ FrmConnected::~FrmConnected()
     delete ui;
 }
 
+/**
+ * Set text of gui controls according to the current selected language.
+ * @param   : dict; set current dictionary based on current language.
+ * @return  : void.
+*/
 void FrmConnected::setDict(Dictionary* dict)
 {
     this->dict = dict;
     (*dict).getTextOflblResize(ui->lblResize);
-    ui->chkFullScreen->setText(QString::fromStdString((*dict).getTextOfchkFullscreen()));
-    ui->btnDisconnect->setText(QString::fromStdString((*dict).getTextOfbtnDisconnect(0)));
+    ui->chkFullScreen->setText(QString::fromStdString
+                               ((*dict).getTextOfchkFullscreen()));
+    ui->btnDisconnect->setText(QString::fromStdString
+                               ((*dict).getTextOfbtnDisconnect(0)));
     (*dict).getTextOfbtnStartStreaming(ui->btnStartStopStreaming, 0);
     (*dict).getTextOflblStateRunning(ui->lblState);
     (*dict).setTooltipOflblState2(ui->lblState2);
     (*dict).setTooltipOflblState3(ui->lblState3);
 }
 
+/**
+ * Set the application selector.
+ * @param   : selector; variable passed from the main.
+ * @return  : void.
+*/
 void FrmConnected::setSelector(int* selector)
 {
     this->selector = selector;
 }
 
+/**
+ * Stop running threads and close current frame.
+ * @param   : void.
+ * @return  : void.
+*/
 void FrmConnected::on_btnDisconnect_clicked()
 {
     if(client_connected)
@@ -86,6 +109,11 @@ void FrmConnected::on_btnDisconnect_clicked()
     this->close();
 }
 
+/**
+ * Send a text message to the server.
+ * @param   : void.
+ * @return  : void.
+*/
 void FrmConnected::on_btnSend_clicked()
 {
     if(ui->txtLine->text() != "" && client_connected)
@@ -95,21 +123,37 @@ void FrmConnected::on_btnSend_clicked()
     }
 }
 
+/**
+ * Append text on textBox.
+ * @param   : str; QString to append.
+ * @return  : void.
+*/
 void FrmConnected::writeTextOnTxtBox(QString str)
 {
     ui->txtBox->append(str);
 }
 
+/**
+ * Write on textBox the connection event of the client and change gui labels.
+ * @param   : void.
+ * @return  : void.
+*/
 void FrmConnected::clientConnected()
 {
     client_connected = true;
-    ui->btnDisconnect->setText(QString::fromStdString((*dict).getTextOfbtnDisconnect(1)));
+    ui->btnDisconnect->setText(QString::fromStdString
+                               ((*dict).getTextOfbtnDisconnect(1)));
     this->setWindowTitle("MST - Connected");
     ui->btnStartStopStreaming->setEnabled(true);
     QPixmap green_state(":/resources/media/green_state.png");
     ui->lblState2->setPixmap(green_state);
 }
 
+/**
+ * Close the client session when the server is shutted down.
+ * @param   : void.
+ * @return  : void.
+*/
 void FrmConnected::otherGuyDisconnected()
 {
     client_connected = false;
@@ -118,6 +162,11 @@ void FrmConnected::otherGuyDisconnected()
     this->close();
 }
 
+/**
+ * Set list configuration visible.
+ * @param   : void.
+ * @return  : void.
+*/
 void FrmConnected::enableListConfiguration()
 {
     QPixmap eye(":/resources/media/eye.png");
@@ -129,6 +178,11 @@ void FrmConnected::enableListConfiguration()
     ui->listConfigurations->setHidden(false);
 }
 
+/**
+ * Set list configuration not visible.
+ * @param   : void.
+ * @return  : void.
+*/
 void FrmConnected::disableListConfiguration()
 {
     QPixmap eyegrey(":/resources/media/eyegrey.png");
@@ -140,6 +194,11 @@ void FrmConnected::disableListConfiguration()
     ui->listConfigurations->setHidden(true);
 }
 
+/**
+ * Enable (or disable) list configuration.
+ * @param   : void.
+ * @return  : void.
+*/
 void FrmConnected::on_btnToggleConfig_clicked()
 {
     if(listconfig_active)
@@ -154,24 +213,40 @@ void FrmConnected::on_btnToggleConfig_clicked()
     }
 }
 
+/**
+ * Set streaming active and send streaming command.
+ * @param   : void.
+ * @return  : void.
+*/
 void FrmConnected::sendStartStreamingCommand()
 {
     uiStreamingActive();
     c.tcpWriteCommand(-2);
 }
 
-// Start streaming thread
+/**
+ * Start streaming thread.
+ * @param   : void.
+ * @return  : void.
+*/
 void FrmConnected::startStreaming()
 {
     ui->txtBox->append("Streaming started");
     (*dict).getTextOfbtnStartStreaming(ui->btnStartStopStreaming, 1);
     client_stream_thread = new ClientStreamThread();
-    QObject::connect(client_stream_thread, SIGNAL(sendStartStreamingCommand()), this, SLOT(sendStartStreamingCommand()));
-    QObject::connect(client_stream_thread, SIGNAL(streamingEnded()), this, SLOT(streamingEnded()));
+    QObject::connect(client_stream_thread, SIGNAL(sendStartStreamingCommand()),
+                     this, SLOT(sendStartStreamingCommand()));
+    QObject::connect(client_stream_thread, SIGNAL(streamingEnded()),
+                     this, SLOT(streamingEnded()));
     client_stream_thread->start();
     is_stream_active = true;
 }
 
+/**
+ * Activate (or deactivate) streaming.
+ * @param   : void.
+ * @return  : void.
+*/
 void FrmConnected::on_btnStartStopStreaming_clicked()
 {
     if(client_connected)
@@ -193,6 +268,11 @@ void FrmConnected::on_btnStartStopStreaming_clicked()
     }
 }
 
+/**
+ * Stop all active sub-threads.
+ * @param   : void.
+ * @return  : void.
+*/
 void FrmConnected::stopThreads()
 {
     disconnect(tcp_client_thread, nullptr, nullptr, nullptr);
@@ -210,6 +290,11 @@ void FrmConnected::stopThreads()
     }
 }
 
+/**
+ * Kill FFplay and set streaming ended.
+ * @param   : void.
+ * @return  : void.
+*/
 void FrmConnected::stopReceivingVideoStream(bool is_video_ended)
 {
     if(is_stream_active)
@@ -226,6 +311,11 @@ void FrmConnected::stopReceivingVideoStream(bool is_video_ended)
     }
 }
 
+/**
+ * Set streaming active.
+ * @param   : void.
+ * @return  : void.
+*/
 void FrmConnected::uiStreamingActive()
 {
     QPixmap stream_active_pix(":/resources/media/stream_active.png");
@@ -236,6 +326,11 @@ void FrmConnected::uiStreamingActive()
     ui->lblResize2->setEnabled(true);
 }
 
+/**
+ * Set streaming inactive.
+ * @param   : void.
+ * @return  : void.
+*/
 void FrmConnected::uiStreamingInactive()
 {
     QPixmap stream_inactive_pix(":/resources/media/stream_inactive.png");
@@ -246,6 +341,11 @@ void FrmConnected::uiStreamingInactive()
     ui->lblResize2->setEnabled(false);
 }
 
+/**
+ * Send streaming ended command.
+ * @param   : void.
+ * @return  : void.
+*/
 void FrmConnected::streamingEnded()
 {
     c.tcpWriteCommand(-4);

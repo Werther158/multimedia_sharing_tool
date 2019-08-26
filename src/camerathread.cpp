@@ -59,31 +59,6 @@ CameraThread::~CameraThread()
 //}
 
 /**
- * Executes a command and returns the command return value.
- * @param   : cmd; command to execute.
- * @return  : std::string; command return message/value.
-*/
-std::string CameraThread::execCmd(const char *cmd)
-{
-    std::array<char, 128> buffer;
-    std::string result;
-    auto pipe = popen(cmd, "r");
-
-    if (!pipe) throw std::runtime_error("popen() failed!");
-
-    while (!feof(pipe))
-    {
-        if (fgets(buffer.data(), 128, pipe) != nullptr)
-            result += buffer.data();
-    }
-
-    pclose(pipe);
-
-    result.pop_back(); // remove \n character
-    return result;
-}
-
-/**
  * Converts a string number into long.
  * @param   : s; std::string number.
  * @return  : long; converted long number.
@@ -145,18 +120,21 @@ void CameraThread::createChunk()
 {
     // Extract bmp frames and audio from video chunk
     // Extract frames
-    timing = " -ss " + std::to_string(begin_h) + ":" + std::to_string(begin_m) +
-            ":" + std::to_string(begin_s) + " -to " + std::to_string(end_h) +
-            ":" + std::to_string(end_m) + ":" + std::to_string(end_s);
+    timing = " -ss " + std::to_string(begin_h) + ":" +
+            std::to_string(begin_m) + ":" + std::to_string(begin_s) +
+            " -to " + std::to_string(end_h) + ":" + std::to_string(end_m) + ":"
+            + std::to_string(end_s);
     command = "bash -c \"ffmpeg -i " + file_name + timing +
-            " -compression_algo raw -pix_fmt rgb24 " + Configurations::current_frame_path + "/output%03d.bmp\"";
+            " -compression_algo raw -pix_fmt rgb24 " +
+            Configurations::current_frame_path + "/output%03d.bmp\"";
     std::system(command.c_str());
     // Extract audio
     command = "bash -c \"ffmpeg -i " + file_name + timing +
             " " + Configurations::current_audio_path + "/temp.aac -y\"";
     std::system(command.c_str());
 
-    command = "bash -c \"ffmpeg -i " + Configurations::current_audio_path + "/temp.aac -ss 0 -to " +
+    command = "bash -c \"ffmpeg -i " + Configurations::current_audio_path +
+            "/temp.aac -ss 0 -to " +
             std::to_string(Configurations::video_chunk_seconds) +
             " " + Configurations::current_audio_path + "/audiochunk.aac -y\"";
     std::system(command.c_str());
@@ -171,21 +149,25 @@ void CameraThread::captureFromFile()
 {
     // Repair errors (if any) in input video file
     file_name = path + "/mst-temp/input_file.mkv";
-    command = "ffmpeg -i " + Configurations::file_name + " -c copy -force_key_frames source " + file_name;
+    command = "ffmpeg -i " + Configurations::file_name +
+            " -c copy -force_key_frames source " + file_name;
     std::system(command.c_str());
 
     // Activate feed ffmpeg audio and video pipe
     audio_pipe_thread = new FeedAudioPipeThread();
-    QObject::connect(audio_pipe_thread, SIGNAL(notifyAudioToMstCondVar()), this, SLOT(notifyAudioToMstCondVar()));
+    QObject::connect(audio_pipe_thread, SIGNAL(notifyAudioToMstCondVar()),
+                     this, SLOT(notifyAudioToMstCondVar()));
     audio_pipe_thread->start();
 
     video_pipe_thread = new FeedVideoPipeThread();
-    QObject::connect(video_pipe_thread, SIGNAL(notifyVideoToMstCondVar()), this, SLOT(notifyVideoToMstCondVar()));
+    QObject::connect(video_pipe_thread, SIGNAL(notifyVideoToMstCondVar()),
+                     this, SLOT(notifyVideoToMstCondVar()));
     video_pipe_thread->start();
 
     // Get Video file length
-    command = "ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 " + file_name;
-    strvideo_length = execCmd(command.c_str());
+    command = "ffprobe -v error -show_entries format=duration -of "
+              "default=noprint_wrappers=1:nokey=1 " + file_name;
+    strvideo_length = Configurations::execCmd(command.c_str());
     video_length = strToPositiveDigit(strvideo_length);
     if(video_length == -1)
     {
@@ -193,7 +175,8 @@ void CameraThread::captureFromFile()
         return;
     }
 
-    // Open mst pipes in write only mode // Not really used to write inside the pipe
+    // Open mst pipes in write only mode.
+    // Not really used to write inside the pipe
     if((mst_video_pipe = open(mstvideo_pipe_path.c_str(), O_WRONLY)) < 0)
     {
         std::cout << "Error opening MST video pipe\n";
@@ -204,7 +187,8 @@ void CameraThread::captureFromFile()
     }
 
     // Extract the complete audio track
-    command = "bash -c \"ffmpeg -i " + file_name + " -vn mst-temp/audio/complete.aac -y\"";
+    command = "bash -c \"ffmpeg -i " + file_name +
+            " -vn mst-temp/audio/complete.aac -y\"";
     std::system(command.c_str());
 
     begin_chunk = -1 * Configurations::video_chunk_seconds;
@@ -212,7 +196,8 @@ void CameraThread::captureFromFile()
 
     while(thread_active)
     {
-        // Define the actual video chunk (in seconds) to use, if EOF is reached, exit
+        // Define the actual video chunk (in seconds) to use,
+        // if EOF is reached, exit.
         begin_chunk += (end_chunk - begin_chunk);
         if(begin_chunk == video_length)
             break;
@@ -233,19 +218,23 @@ void CameraThread::captureFromFile()
 
         // Wait for signal to start feeding mst video
         sem_wait(&sem_video);
-        command = "bash -c \"cat " + Configurations::current_frame_path + "/output*.bmp > " + mstvideo_pipe_path + " &\"";
+        command = "bash -c \"cat " + Configurations::current_frame_path +
+                "/output*.bmp > " + mstvideo_pipe_path + " &\"";
         std::system(command.c_str());
 
         // Wait for signal to start feeding mst audio
         sem_wait(&sem_audio);
-        if(end_chunk == video_length) // If the end of file is reached, wait for the end of stream
+        // If the end of file is reached, wait for the end of stream
+        if(end_chunk == video_length)
         {
-            command = "bash -c \"cat " + Configurations::current_audio_path + "/audiochunk.aac > " + mstaudio_pipe_path + " &\"";
+            command = "bash -c \"cat " + Configurations::current_audio_path +
+                    "/audiochunk.aac > " + mstaudio_pipe_path + " &\"";
             std::system(command.c_str());
         }
         else
         {
-            command = "bash -c \"cat " + Configurations::current_audio_path + "/audiochunk.aac > " + mstaudio_pipe_path + " &\"";
+            command = "bash -c \"cat " + Configurations::current_audio_path +
+                    "/audiochunk.aac > " + mstaudio_pipe_path + " &\"";
             std::system(command.c_str());
         }
     }
@@ -270,7 +259,8 @@ void CameraThread::captureFromCamera()
     Configurations::frame_height = frame.rows;
 
     video_pipe_thread = new FeedVideoPipeThread();
-    QObject::connect(video_pipe_thread, SIGNAL(notifyVideoToMstCondVar()), this, SLOT(notifyVideoToMstCondVar()));
+    QObject::connect(video_pipe_thread, SIGNAL(notifyVideoToMstCondVar()),
+                     this, SLOT(notifyVideoToMstCondVar()));
     video_pipe_thread->start();
 
     // Open mst pipes in write only mode // Not really used to write inside the pipe
@@ -311,7 +301,8 @@ void CameraThread::captureFromCamera()
 
         // Wait for signal to start feeding mst video
         sem_wait(&sem_video);
-        command = "bash -c \"cat " + Configurations::current_frame_path + "/output.bmp > " + mstvideo_pipe_path + "\"";
+        command = "bash -c \"cat " + Configurations::current_frame_path +
+                "/output.bmp > " + mstvideo_pipe_path + "\"";
         std::system(command.c_str());
 
     }
@@ -325,10 +316,12 @@ void CameraThread::captureFromCamera()
 void CameraThread::captureFromScreen()
 {
     video_pipe_thread = new FeedVideoPipeThread();
-    QObject::connect(video_pipe_thread, SIGNAL(notifyVideoToMstCondVar()), this, SLOT(notifyVideoToMstCondVar()));
+    QObject::connect(video_pipe_thread, SIGNAL(notifyVideoToMstCondVar()),
+                     this, SLOT(notifyVideoToMstCondVar()));
     video_pipe_thread->start();
 
-    // Open mst pipes in write only mode // Not really used to write inside the pipe
+    // Open mst pipes in write only mode.
+    // Not really used to write inside the pipe
     if((mst_video_pipe = open(mstvideo_pipe_path.c_str(), O_WRONLY)) < 0)
     {
         std::cout << "Error opening MST video pipe\n";
@@ -363,7 +356,8 @@ void CameraThread::captureFromScreen()
 
         // Wait for signal to start feeding mst video
         sem_wait(&sem_video);
-        command = "bash -c \"cat " + Configurations::current_frame_path + "/output.bmp > " + mstvideo_pipe_path + "\"";
+        command = "bash -c \"cat " + Configurations::current_frame_path +
+                "/output.bmp > " + mstvideo_pipe_path + "\"";
         std::system(command.c_str());
     }
 }
@@ -391,7 +385,7 @@ void CameraThread::run()
     std::system("bash -c \"mkdir mst-temp/audio/tik\"");
     std::system("bash -c \"mkdir mst-temp/audio/tok\"");
 
-    path = execCmd("pwd");
+    path = Configurations::execCmd("pwd");
     mstaudio_pipe_path = path + "/mst-temp/mst_audio_pipe";
     mstvideo_pipe_path = path + "/mst-temp/mst_video_pipe";
     ffaudio_pipe_path = path + "/mst-temp/ffmpeg_audio_pipe";
@@ -413,8 +407,11 @@ void CameraThread::run()
     if(Configurations::intrusion_detection_enabled)
     {
         cuda_detection_thread = new CudaDetectionThread();
-        QObject::connect(this, SIGNAL(runIntrusionDetection(bool)), cuda_detection_thread, SLOT(runIntrusionDetection(bool)));
-        QObject::connect(cuda_detection_thread, SIGNAL(detectionDone()), this, SLOT(detectionDone()));
+        QObject::connect(this, SIGNAL(runIntrusionDetection(bool)),
+                         cuda_detection_thread,
+                         SLOT(runIntrusionDetection(bool)));
+        QObject::connect(cuda_detection_thread, SIGNAL(detectionDone()),
+                         this, SLOT(detectionDone()));
         cuda_detection_thread->start();
     }
 
