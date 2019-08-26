@@ -7,6 +7,9 @@ Share video, screen, camera and audio with a RTSP stream through Lan or Wan supp
 `$ sudo apt-get update`  
 `$ sudo apt-get upgrade`
 
+### QT Creator
+[QT Home Page](https://www.qt.io/)
+
 ### CUDA  
 [CUDA Installation Guide](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)
 
