@@ -14,10 +14,10 @@ Share video, screen, camera and audio with a RTSP stream through Lan or Wan supp
 `$ sudo apt-get install ffmpeg`
 
 ### CUDA Enabled OpenCV with Contrib  
-Remove any previous installations of x264  
+1. Remove any previous installations of x264  
 `$ sudo apt-get remove x264 libx264-dev`  
 
-Install OpenCV dependencies  
+2. Install OpenCV dependencies  
 ```$ sudo apt-get install build-essential checkinstall cmake pkg-config yasm  
 $ sudo apt-get install git gfortran  
 $ sudo apt-get install libjpeg8-dev libjasper-dev libpng12-dev  
@@ -33,7 +33,7 @@ $ sudo apt-get install libopencore-amrnb-dev libopencore-amrwb-dev
 $ sudo apt-get install x264 v4l-utils
 ```
 
-Make a directory i.e. `build` inside `opencv` directory  
+3. Make a directory i.e. `build` inside `opencv` directory  
 ```$ mkdir build
 $ cd build
 $ cmake -D CMAKE_BUILD_TYPE=RELEASE \
