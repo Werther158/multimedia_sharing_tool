@@ -39,7 +39,13 @@ $ sudo apt-get install libopencore-amrnb-dev libopencore-amrwb-dev
 $ sudo apt-get install x264 v4l-utils
 ```
 
-3. Make a directory i.e. `build` inside `opencv` directory  
+3. Clone `Opencv` and `Opencv_contrib` version 3.4.7 repository
+```sh
+$ git clone -b 3.4.7 https://github.com/opencv/opencv
+$ git clone -b 3.4.7 https://github.com/opencv/opencv_contrib
+```
+
+4. Make a directory i.e. `build` inside `opencv` directory  
 ```sh
 $ mkdir build
 $ cd build
