@@ -58,12 +58,12 @@ public:
 
     // Neural network utils
     static bool intrusion_detection_enabled;
-    static std::string network;
+    static std::string network; // Defines the tipe of network to use
 
 };
 
 /**
- * Struct che definisce uno screenshot dello schermo.
+ * Defines a screen screenshot.
 */
 struct ScreenShot
 {

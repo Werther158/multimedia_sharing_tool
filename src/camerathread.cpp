@@ -1,8 +1,15 @@
-﻿#include "camerathread.h"
+﻿//_____________________________________________________________________________
+//_____________________________________________________________________________
+//                                CAMERA THREAD
+// Acts like a camera allowing to acquire and manipulate frames.
+//_____________________________________________________________________________
+//_____________________________________________________________________________
+
+#include "camerathread.h"
 
 CameraThread::CameraThread()
 {
-
+    thread_active = true;
 }
 
 CameraThread::~CameraThread()
@@ -25,7 +32,38 @@ CameraThread::~CameraThread()
     std::system("bash -c \"rm -R mst-temp\"");
 }
 
-std::string CameraThread::execCmd(const char* cmd)
+/**
+ * Scale resolution of a bmp image using CUDA.
+ * @param   : void.
+ * @return  : void.
+*/
+//void CameraThread::imageScale()
+//{
+//    Mat inputHost = imread(inputFile, CV_LOAD_IMAGE_COLOR);
+//    cuda::GpuMat inputDevice(inputHost);
+//    cuda::GpuMat outputDevice;
+//    const int ksize = 21;
+//    const int type = CV_64F;
+//    Timer timer;
+//    timer.Start();
+//    cuda::resize(inputDevice, outputDevice, Size(), 2.0, 2.0, CV_INTER_CUBIC);
+//    cv::Ptr<cuda::Filter> gauss = cv::cuda::createGaussianFilter(inputDevice.type(), outputDevice.type(), Size(ksize, ksize), 6.0, 6.0);
+//    gauss->apply(inputDevice, outputDevice);
+//    timer.Stop();
+//    printf("OpenCV GPU code ran in: %f msecs. \n", timer.ElapsedTime());
+//    Mat outputHost;
+//    outputDevice.download(outputHost);
+//    imwrite(outputFile, outputHost);
+//    inputHost.release();
+//    outputDevice.release();
+//}
+
+/**
+ * Executes a command and returns the command return value.
+ * @param   : cmd; command to execute.
+ * @return  : std::string; command return message/value.
+*/
+std::string CameraThread::execCmd(const char *cmd)
 {
     std::array<char, 128> buffer;
     std::string result;
@@ -45,6 +83,11 @@ std::string CameraThread::execCmd(const char* cmd)
     return result;
 }
 
+/**
+ * Converts a string number into long.
+ * @param   : s; std::string number.
+ * @return  : long; converted long number.
+*/
 long CameraThread::strToPositiveDigit(std::string s)
 {
     char *control;
@@ -59,6 +102,11 @@ long CameraThread::strToPositiveDigit(std::string s)
     }
 }
 
+/**
+ * Defines the next video chunk, based on class variables.
+ * @param   : void.
+ * @return  : void.
+*/
 void CameraThread::defineChunk()
 {
     // Set begin and end H, M, S variables
@@ -88,6 +136,11 @@ void CameraThread::defineChunk()
     }
 }
 
+/**
+ * Creates phisically on disk the next chunk of video and audio.
+ * @param   : void.
+ * @return  : void.
+*/
 void CameraThread::createChunk()
 {
     // Extract bmp frames and audio from video chunk
@@ -109,6 +162,11 @@ void CameraThread::createChunk()
     std::system(command.c_str());
 }
 
+/**
+ * Manage a file manipulation and frames stream.
+ * @param   : void.
+ * @return  : void.
+*/
 void CameraThread::captureFromFile()
 {
     // Repair errors (if any) in input video file
@@ -193,6 +251,11 @@ void CameraThread::captureFromFile()
     }
 }
 
+/**
+ * Manage a camera frames manipulation and stream.
+ * @param   : void.
+ * @return  : void.
+*/
 void CameraThread::captureFromCamera()
 {
     cv::VideoCapture cap;
@@ -237,6 +300,8 @@ void CameraThread::captureFromCamera()
         emit saveCameraFrame(frame);
         sem_wait(&sem_camera_frame);
 
+
+
         if(Configurations::intrusion_detection_enabled)
         {
             // Apply neural net on frame
@@ -252,6 +317,11 @@ void CameraThread::captureFromCamera()
     }
 }
 
+/**
+ * Manage a screen frames manipulation and stream.
+ * @param   : void.
+ * @return  : void.
+*/
 void CameraThread::captureFromScreen()
 {
     video_pipe_thread = new FeedVideoPipeThread();
@@ -298,6 +368,12 @@ void CameraThread::captureFromScreen()
     }
 }
 
+/**
+ * Init semaphores, makes directories on disk and start the production of
+ * content choosed by the user.
+ * @param   : void.
+ * @return  : void.
+*/
 void CameraThread::run()
 {
     sem_init(&sem_audio, 0, 0);
@@ -358,26 +434,51 @@ void CameraThread::run()
     }
 }
 
+/**
+ * Called when a screen picture is taked and stored on disk.
+ * @param   : void.
+ * @return  : void.
+*/
 void CameraThread::takePictureDone()
 {
     sem_post(&sem_picture);
 }
 
+/**
+ * Audio chunk could be pushed inside the productor pipe.
+ * @param   : void.
+ * @return  : void.
+*/
 void CameraThread::notifyAudioToMstCondVar()
 {
     sem_post(&sem_audio);
 }
 
+/**
+ * Video chunk could be pushed inside the productor pipe.
+ * @param   : void.
+ * @return  : void.
+*/
 void CameraThread::notifyVideoToMstCondVar()
 {
     sem_post(&sem_video);
 }
 
+/**
+ * Intrusion detection on frame(/s) applied and written changes to disk.
+ * @param   : void.
+ * @return  : void.
+*/
 void CameraThread::detectionDone()
 {
     sem_post(&sem_detection_done);
 }
 
+/**
+ * Called when a camera picture is taked and stored on disk.
+ * @param   : void.
+ * @return  : void.
+*/
 void CameraThread::cameraFrameSaved()
 {
     sem_post(&sem_camera_frame);

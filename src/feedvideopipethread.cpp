@@ -1,7 +1,16 @@
+//_____________________________________________________________________________
+//_____________________________________________________________________________
+//                             FEED VIDEO PIPE THREAD
+// Bridge that connects Camera Thread to FFmpeg process, receiving video from a
+// camera pipe and forwarding it to an ffmpeg pipe.
+//_____________________________________________________________________________
+//_____________________________________________________________________________
+
 #include "feedvideopipethread.h"
 
 FeedVideoPipeThread::FeedVideoPipeThread()
 {
+    thread_active = true;
     path = execCmd("pwd");
     mstvideo_pipe_path = path + "/mst-temp/mst_video_pipe";
     ffvideo_pipe_path = path + "/mst-temp/ffmpeg_video_pipe";

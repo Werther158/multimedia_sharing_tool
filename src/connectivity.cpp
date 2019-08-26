@@ -1,22 +1,44 @@
+//_____________________________________________________________________________
+//_____________________________________________________________________________
+//                                CONNECTIVITY
+// Manages the TCP/IP Client-Server connection and communication, allowing the
+// exchange of messages and commands between the client and the server.
+//_____________________________________________________________________________
+//_____________________________________________________________________________
+
 #include "connectivity.h"
 
-using namespace std;
-
-size_t write_data(void *ptr, size_t size, size_t nmemb, void *stream) {
-    string data(reinterpret_cast<const char*>(ptr), reinterpret_cast<size_t>(size) * nmemb);
-    *(reinterpret_cast<stringstream*>(stream)) << data;
+/**
+ * Used by curl to write a payload on his stream; this allows to obtain the current
+ * public ip address.
+*/
+size_t write_data(void *ptr, size_t size, size_t nmemb, void *stream)
+{
+    std::string data(reinterpret_cast<const char*>(ptr), reinterpret_cast<size_t>(size) * nmemb);
+    *(reinterpret_cast<std::stringstream*>(stream)) << data;
     return size * nmemb;
 }
 
-Connectivity::Connectivity() {
+Connectivity::Connectivity()
+{
+    sock = 0;
+    opt = 1;
+    addrlen = sizeof(address);
 }
 
-Connectivity::~Connectivity() {
+Connectivity::~Connectivity()
+{
 }
 
-string Connectivity::getPublicIp() {
+/**
+ * Retrieve the current public ip address.
+ * @param   : void.
+ * @return  : std::string; public ip address.
+*/
+std::string Connectivity::getPublicIp()
+{
     void* curl;
-    string output;
+    std::string output;
     curl = curl_easy_init();
     curl_easy_setopt(curl, CURLOPT_URL, "https://api.ipify.org/");
     curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
@@ -41,6 +63,11 @@ string Connectivity::getPublicIp() {
     return output;
 }
 
+/**
+ * Start TCP Server.
+ * @param   : PORT; choosen port.
+ * @return  : int; return value success / error.
+*/
 int Connectivity::tcpServer(uint16_t PORT)
 {
     // Creating socket file descriptor
@@ -83,7 +110,7 @@ int Connectivity::tcpServer(uint16_t PORT)
             exit(EXIT_FAILURE);
         }
         valread = read(sock, buffer, BUFFER_SIZE);
-        if (string(buffer) == Configurations::password)
+        if (std::string(buffer) == Configurations::password)
         {
             send(sock, "ok", strlen(Configurations::client_ip.c_str()), 0);
         }
@@ -91,7 +118,7 @@ int Connectivity::tcpServer(uint16_t PORT)
         {
             send(sock, "no", strlen(Configurations::client_ip.c_str()), 0);
         }
-    } while(string(buffer) != Configurations::password);
+    } while(std::string(buffer) != Configurations::password);
 
     valread = read(sock, buffer, BUFFER_SIZE);
     send(sock, Configurations::client_ip.c_str(), strlen(Configurations::client_ip.c_str()), 0);
@@ -105,7 +132,13 @@ int Connectivity::tcpServer(uint16_t PORT)
     return 0;
 }
 
-int Connectivity::tcpClient(string server_ip, uint16_t PORT)
+/**
+ * Start TCP Client.
+ * @param   : server_ip; server's ip.
+ * @param   : PORT; choosen port.
+ * @return  : int; return value success / error.
+*/
+int Connectivity::tcpClient(std::string server_ip, uint16_t PORT)
 {
     if ((sock = socket(AF_INET, SOCK_STREAM, 0)) < 0)
     {
@@ -132,7 +165,7 @@ int Connectivity::tcpClient(string server_ip, uint16_t PORT)
     send(sock, Configurations::password.c_str(), strlen(Configurations::server_ip.c_str()), 0 );
     valread = read(sock, buffer, BUFFER_SIZE);
 
-    if(string(buffer) == "ok")
+    if(std::string(buffer) == "ok")
     {
         send(sock, Configurations::server_ip.c_str(), strlen(Configurations::server_ip.c_str()), 0 );
         valread = read(sock, buffer, BUFFER_SIZE);
@@ -149,6 +182,11 @@ int Connectivity::tcpClient(string server_ip, uint16_t PORT)
     return 0;
 }
 
+/**
+ * Used by client to continuesly listen for new messages from the server.
+ * @param   : void.
+ * @return  : void.
+*/
 void Connectivity::tcpRead()
 {
     while(1)
@@ -188,6 +226,12 @@ void Connectivity::tcpRead()
     }
 }
 
+/**
+ * Send text to socket and emit a signal to write text to the
+ * local machine frame textBox.
+ * @param   : text; text to send.
+ * @return  : void.
+*/
 void Connectivity::tcpWriteData(QString text)
 {
     send(sock, text.toStdString().c_str(), strlen(text.toStdString().c_str()), 0);
@@ -197,12 +241,22 @@ void Connectivity::tcpWriteData(QString text)
         emit writeText("SERVER: " + text);
 }
 
+/**
+ * Send a command through the socket.
+ * @param   : command; command to send.
+ * @return  : void.
+*/
 void Connectivity::tcpWriteCommand(char command)
 {
     buffer[0] = command;
     send(sock, buffer, 1, 0);
 }
 
+/**
+ * Close the socket.
+ * @param   : void.
+ * @return  : void.
+*/
 void Connectivity::killTcpSocket()
 {
     close(sock);

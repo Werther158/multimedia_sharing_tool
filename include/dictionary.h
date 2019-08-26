@@ -16,7 +16,7 @@ enum lang {
 class Dictionary
 {
 private:
-    lang current_language;
+    lang current_language; // Language switch (Italian / English)
 public:
     Dictionary();
     lang getLanguage();

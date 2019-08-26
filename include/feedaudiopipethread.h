@@ -14,9 +14,9 @@ class FeedAudioPipeThread : public QThread
 private:
     std::string path, mstaudio_pipe_path, ffaudio_pipe_path;
     int mst_audio_pipe, ffmpeg_audio_pipe;
-    std::mutex mtx;
-    std::condition_variable cond_var;
-    bool thread_active = true;
+//    std::mutex mtx;
+//    std::condition_variable cond_var;
+    bool thread_active;
     char buffer[100000];
     ssize_t count;
 

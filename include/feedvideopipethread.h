@@ -14,9 +14,9 @@ class FeedVideoPipeThread : public QThread
 private:
     std::string path, mstvideo_pipe_path, ffvideo_pipe_path;
     int mst_video_pipe, ffmpeg_video_pipe;
-    std::mutex mtx;
-    std::condition_variable cond_var;
-    bool thread_active = true;
+//    std::mutex mtx;
+//    std::condition_variable cond_var;
+    bool thread_active;
     char buffer[100000];
     ssize_t count;
 

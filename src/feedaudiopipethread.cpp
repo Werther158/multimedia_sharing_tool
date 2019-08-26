@@ -1,7 +1,16 @@
+//_____________________________________________________________________________
+//_____________________________________________________________________________
+//                             FEED AUDIO PIPE THREAD
+// Bridge that connects Camera Thread to FFmpeg process, receiving audio from a
+// camera pipe and forwarding it to an ffmpeg pipe.
+//_____________________________________________________________________________
+//_____________________________________________________________________________
+
 #include "feedaudiopipethread.h"
 
 FeedAudioPipeThread::FeedAudioPipeThread()
 {
+    thread_active = true;
     path = execCmd("pwd");
     mstaudio_pipe_path = path + "/mst-temp/mst_audio_pipe";
     ffaudio_pipe_path = path + "/mst-temp/ffmpeg_audio_pipe";

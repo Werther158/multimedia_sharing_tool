@@ -1,3 +1,10 @@
+//_____________________________________________________________________________
+//_____________________________________________________________________________
+//                                CLIENT STREAM THREAD
+// Allows the client to receive a video stream.
+//_____________________________________________________________________________
+//_____________________________________________________________________________
+
 #include "clientstreamthread.h"
 
 ClientStreamThread::ClientStreamThread()
@@ -13,6 +20,11 @@ ClientStreamThread::~ClientStreamThread()
     wait();
 }
 
+/**
+ * Start RTSP receiver; calling FFplay.
+ * @param   : void.
+ * @return  : void.
+*/
 void ClientStreamThread::run()
 {
     emit sendStartStreamingCommand();

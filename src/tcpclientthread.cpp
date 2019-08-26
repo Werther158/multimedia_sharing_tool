@@ -1,3 +1,11 @@
+//_____________________________________________________________________________
+//_____________________________________________________________________________
+//                             TCP CLIENT THREAD
+// Used by the client to maintain opened a connection with the server;
+// constantely listening for new messages.
+//_____________________________________________________________________________
+//_____________________________________________________________________________
+
 #include "tcpclientthread.h"
 
 TcpClientThread::TcpClientThread()

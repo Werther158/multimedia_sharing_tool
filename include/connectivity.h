@@ -24,13 +24,13 @@ class Connectivity : public QObject
 {
     Q_OBJECT
 private:
-    int sock = 0;
+    int sock; // Used in Tcp socket
     ssize_t valread;
     struct sockaddr_in serv_addr;
     int server_fd;
     struct sockaddr_in address;
-    int opt = 1;
-    int addrlen = sizeof(address);
+    int opt;
+    int addrlen;
     char buffer[BUFFER_SIZE] = {0};
 
     void tcpRead();

@@ -1,3 +1,9 @@
+//_____________________________________________________________________________
+//_____________________________________________________________________________
+//                             FRAME CONNECTED
+//_____________________________________________________________________________
+//_____________________________________________________________________________
+
 #include "frmconnected.h"
 #include "ui_frmconnected.h"
 
@@ -9,6 +15,10 @@ FrmConnected::FrmConnected(QWidget *parent) :
     ui->lblResize2->setText("100%");
     setFixedSize(size());
     this->setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowTitleHint);
+
+    client_connected = false;
+    listconfig_active = true;
+    is_stream_active = false;
 
     enableListConfiguration();
 

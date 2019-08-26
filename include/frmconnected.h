@@ -46,9 +46,9 @@ private:
     ClientStreamThread *client_stream_thread;
     Connectivity c;
 
-    bool client_connected = false;
-    bool listconfig_active = true;
-    bool is_stream_active = false;
+    bool client_connected;
+    bool listconfig_active;
+    bool is_stream_active;
 
     void enableListConfiguration();
     void disableListConfiguration();

@@ -14,7 +14,9 @@ class CudaDetectionThread : public QThread
     Q_OBJECT
 private:
     sem_t sem_run;
-    bool detection_running, single_frame;
+    bool detection_running;
+    // Tell if the nn has to be applied to a single frame or to an entire chunk
+    bool single_frame;
     /*
      * Intrusion detection variables
      */
