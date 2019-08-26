@@ -5,5 +5,4 @@ Share video, screen, camera and audio with a RTSP stream through Lan or Wan supp
 ## External Dependencies:
 
 FFmpeg
-
 `sudo apt-get install ffmpeg`
