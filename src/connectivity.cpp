@@ -178,6 +178,19 @@ int Connectivity::tcpClient(std::string server_ip, uint16_t PORT)
         valread = read(sock, buffer, BUFFER_SIZE);
         Configurations::my_own_used_ip = buffer;
 
+        // Fill buffer with client configurations
+        buffer[1] = static_cast<char>(Configurations::resolution);
+        buffer[2] = static_cast<char>(Configurations::fps);
+        buffer[3] = static_cast<char>(Configurations::color_scale);
+        buffer[4] = static_cast<char>(Configurations::video_chunk_seconds);
+        if(Configurations::intrusion_detection_enabled)
+            buffer[5] = 1;
+        else
+            buffer[5] = 0;
+
+        // Transfer client's configurations to the server
+        tcpWriteCommand(-6);
+
         emit writeText("Client connected");
         emit clientConnected();
 
@@ -229,6 +242,22 @@ void Connectivity::tcpRead()
         if(buffer[0] == (char)-5)
         {
             emit startStreaming();
+        }
+        else
+        // (Server side) Receive client configuration
+        if(buffer[0] == (char)-6)
+        {
+            if(Configurations::leave_client_config)
+            {
+                Configurations::resolution = static_cast<uint8_t>(buffer[1]);
+                Configurations::fps = static_cast<uint8_t>(buffer[2]);
+                Configurations::color_scale = static_cast<uint8_t>(buffer[3]);
+                Configurations::video_chunk_seconds = static_cast<uint8_t>(buffer[4]);
+                if(buffer[5] == 1)
+                    Configurations::intrusion_detection_enabled = true;
+                else
+                    Configurations::intrusion_detection_enabled = false;
+            }
         }
         else
         if(Configurations::system == SERVER)

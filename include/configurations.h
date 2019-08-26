@@ -49,7 +49,7 @@ public:
     static uint8_t color_scale;
 
     // Streaming utils
-    static int video_chunk_seconds;
+    static uint8_t video_chunk_seconds;
     static std::string file_name;
     static std::string camera_path;
     static std::string current_frame_path;

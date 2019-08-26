@@ -32,7 +32,7 @@ uint8_t Configurations::resolution;
 uint8_t Configurations::fps;
 uint8_t Configurations::color_scale;
 
-int Configurations::video_chunk_seconds;
+uint8_t Configurations::video_chunk_seconds;
 std::string Configurations::file_name = "";
 std::string Configurations::camera_path;
 cv::Rect2d Configurations::rect;

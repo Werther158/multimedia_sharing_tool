@@ -142,6 +142,12 @@ void FrmServer::setConfigurations()
     Configurations::color_scale = static_cast<uint8_t>
             (ui->cmbColorScale->currentIndex());
     Configurations::file_name = "";
+    if(ui->chkIntrusionDetection->checkState() == Qt::Unchecked)
+        Configurations::intrusion_detection_enabled = false;
+    else
+        Configurations::intrusion_detection_enabled = true;
+
+    Configurations::network = ui->cmbNetwork->currentText().toStdString();
 }
 
 /**
@@ -200,13 +206,6 @@ void FrmServer::on_btnStartServer_clicked()
             Configurations::frame_height = Configurations::rect.height;
         }
     }
-
-    if(ui->chkIntrusionDetection->checkState() == Qt::Unchecked)
-        Configurations::intrusion_detection_enabled = false;
-    else
-        Configurations::intrusion_detection_enabled = true;
-
-    Configurations::network = ui->cmbNetwork->currentText().toStdString();
 
     if(go_on)
     {
