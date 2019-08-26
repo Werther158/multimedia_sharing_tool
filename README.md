@@ -4,14 +4,50 @@ Share video, screen, camera and audio with a RTSP stream through Lan or Wan supp
 
 ## External Dependencies:
 
-`sudo apt-get update`  
-`sudo apt-get upgrade`
+`$ sudo apt-get update`  
+`$ sudo apt-get upgrade`
 
-CUDA:
+### CUDA  
+[CUDA Installation Guide](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)
 
-(https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html "CUDA Installation Guide")
+### FFmpeg  
+`$ sudo apt-get install ffmpeg`
 
-FFmpeg:
+### CUDA Enabled OpenCV with Contrib  
+Remove any previous installations of x264  
+`$ sudo apt-get remove x264 libx264-dev`  
+Install OpenCV dependencies  
+`$ sudo apt-get install build-essential checkinstall cmake pkg-config yasm  
+$ sudo apt-get install git gfortran  
+$ sudo apt-get install libjpeg8-dev libjasper-dev libpng12-dev  
+$ sudo apt-get install libtiff5-dev  
+$ sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev libdc1394-22-dev  
+$ sudo apt-get install libxine2-dev libv4l-dev  
+$ sudo apt-get install libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev  
+$ sudo apt-get install libqt4-dev libgtk2.0-dev libtbb-dev  
+$ sudo apt-get install libatlas-base-dev  
+$ sudo apt-get install libfaac-dev libmp3lame-dev libtheora-dev  
+$ sudo apt-get install libvorbis-dev libxvidcore-dev  
+$ sudo apt-get install libopencore-amrnb-dev libopencore-amrwb-dev  
+$ sudo apt-get install x264 v4l-utils  `
+Make a directory i.e. `build` inside `opencv` directory  
 
-`sudo apt-get install ffmpeg`
-
+`$$ mkdir build
+$ cd build
+$ cmake -D CMAKE_BUILD_TYPE=RELEASE \
+ -D CMAKE_INSTALL_PREFIX=/usr/local \
+ -D WITH_CUDA=ON \
+ -D ENABLE_FAST_MATH=1 \
+ -D CUDA_FAST_MATH=1 \
+ -D WITH_CUBLAS=1 \
+ -D INSTALL_PYTHON_EXAMPLES=ON \
+ -D INSTALL_C_EXAMPLES=OFF \
+ -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib-3.3.0/modules \
+ -D PYTHON_EXECUTABLE=~/.virtualenvs/cv/bin/python \
+ -D WITH_GTK=ON \
+ -D ENABLE_PRECOMPILED_HEADERS=OFF \
+ -D BUILD_EXAMPLES=ON ..
+$ nproc
+# use the number that nproc returns which is nothing but the number of cores of your processor. Let's say it returns 4.
+$ make -j4 
+$ sudo make install`
