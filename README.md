@@ -17,7 +17,7 @@ Share video, screen, camera and audio with a RTSP stream through Lan or Wan supp
 Remove any previous installations of x264  
 `$ sudo apt-get remove x264 libx264-dev`  
 Install OpenCV dependencies  
-`$ sudo apt-get install build-essential checkinstall cmake pkg-config yasm  
+```$ sudo apt-get install build-essential checkinstall cmake pkg-config yasm  
 $ sudo apt-get install git gfortran  
 $ sudo apt-get install libjpeg8-dev libjasper-dev libpng12-dev  
 $ sudo apt-get install libtiff5-dev  
@@ -29,10 +29,10 @@ $ sudo apt-get install libatlas-base-dev
 $ sudo apt-get install libfaac-dev libmp3lame-dev libtheora-dev  
 $ sudo apt-get install libvorbis-dev libxvidcore-dev  
 $ sudo apt-get install libopencore-amrnb-dev libopencore-amrwb-dev  
-$ sudo apt-get install x264 v4l-utils  `
+$ sudo apt-get install x264 v4l-utils  ```
 Make a directory i.e. `build` inside `opencv` directory  
 
-`$$ mkdir build
+```$ mkdir build
 $ cd build
 $ cmake -D CMAKE_BUILD_TYPE=RELEASE \
  -D CMAKE_INSTALL_PREFIX=/usr/local \
@@ -42,7 +42,7 @@ $ cmake -D CMAKE_BUILD_TYPE=RELEASE \
  -D WITH_CUBLAS=1 \
  -D INSTALL_PYTHON_EXAMPLES=ON \
  -D INSTALL_C_EXAMPLES=OFF \
- -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib-3.3.0/modules \
+ -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules \
  -D PYTHON_EXECUTABLE=~/.virtualenvs/cv/bin/python \
  -D WITH_GTK=ON \
  -D ENABLE_PRECOMPILED_HEADERS=OFF \
@@ -50,4 +50,4 @@ $ cmake -D CMAKE_BUILD_TYPE=RELEASE \
 $ nproc
 # use the number that nproc returns which is nothing but the number of cores of your processor. Let's say it returns 4.
 $ make -j4 
-$ sudo make install`
+$ sudo make install```
