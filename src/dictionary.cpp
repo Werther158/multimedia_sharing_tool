@@ -185,6 +185,16 @@ void Dictionary::setTextOflblColorScale(QLabel *lbl)
                  (choices("Scala colori:", "Color scale:")));
 }
 
+void Dictionary::setTextOflblBlur(QLabel *lbl)
+{
+    lbl->setToolTip(QString::fromStdString
+                    (choices("Quantità dell'effetto sfocatura alle immagini"
+                             " trasmesse", "Quantity of blur effect added "
+                                           "to transmitted frames")));
+    lbl->setText(QString::fromStdString
+                 (choices("Sfocatura: ", "Blur: ")));
+}
+
 std::string Dictionary::getTextOfbtnBack()
 {
     return choices(" Indietro", " Back");
@@ -368,7 +378,7 @@ void Dictionary::setTooltipOflblState3(QLabel *lbl)
 void Dictionary::fillModel(QStandardItemModel *model)
 {
     QString resolution, color_scale, source, seconds,
-            enable, disable, network;
+            enable, disable, network, blur_effect;
     int row;
 
     row = 0;
@@ -379,9 +389,10 @@ void Dictionary::fillModel(QStandardItemModel *model)
         source = "source";
         color_scale = "Color scale: ";
         seconds = " seconds";
-        enable = "enable";
-        disable = "disable";
+        enable = "enabled";
+        disable = "disabled";
         network = "Network: ";
+        blur_effect = "Blur: ";
     }
     else
     {
@@ -392,6 +403,7 @@ void Dictionary::fillModel(QStandardItemModel *model)
         enable = "abilitato";
         disable = "disabilitato";
         network = "Rete: ";
+        blur_effect = "Sfocatura: ";
     }
 
     if(Configurations::resolution != 0)
@@ -436,27 +448,13 @@ void Dictionary::fillModel(QStandardItemModel *model)
 
     model->setItem(row, 0, new QStandardItem(network +
                    QString::fromStdString(Configurations::network)));
+    row++;
+    int a = Configurations::blur_effect;
+    model->setItem(row, 0, new QStandardItem(blur_effect + QString::number
+                                             (Configurations::blur_effect)));
 }
 
 // FrmConnected
-void Dictionary::getTextOflblResize(QLabel *lbl)
-{
-    lbl->setToolTip(QString::fromStdString
-                    (choices("Permette di ridimensionare la grandezza del "
-                    "video in output.\nN.B. Un valore diverso dal 100% "
-                    "richiede calcoli aggiuntivi che possono risultare in "
-                    "un calo di prestazioni.", "Allow to resize the dimensions"
-                    " of output video.\nN.B. A value different from 100% needs"
-                    " some more computing capabilities and it could lead to "
-                                               "lower performance.")));
-    lbl->setText(QString::fromStdString(choices("Ridimensiona:", "Resize:")));
-}
-
-std::string Dictionary::getTextOfchkFullscreen()
-{
-    return choices("Schermo intero", "Fullscreen");
-}
-
 std::string Dictionary::getTextOfbtnDisconnect(int select)
 {
     if(select == 0)

@@ -3,10 +3,12 @@
 
 #include <stdlib.h>
 #include <string>
-#include "opencv2/imgproc.hpp"
+#include "opencv2/opencv.hpp"
+#include <opencv2/imgproc/imgproc.hpp>
 #include "opencv2/highgui.hpp"
 #include "opencv2/imgcodecs.hpp"
 #include <opencv2/core/core.hpp>
+#include <opencv2/core/cuda.hpp>
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #undef Bool
@@ -29,6 +31,7 @@ class Configurations
 public:
     Configurations();
     static std::string execCmd(const char* cmd);
+    static long strToPositiveDigit(std::string s);
 
     static std::string source_choices[];
     static std::string resolution_choices[];
@@ -57,6 +60,8 @@ public:
     static cv::Rect2d rect; // Rectangle for the ROI
     static int frame_width;
     static int frame_height;
+    static bool frame_size_changed;
+    static int blur_effect;
 
     // Neural network utils
     static bool intrusion_detection_enabled;

@@ -36,20 +36,21 @@ void ServerStreamThread::run()
 
     ffvideo_pipe_path = path + "/mst-temp/ffmpeg_video_pipe";
 
+    frame_size = "";
+    frame_size += std::to_string(Configurations::frame_width);
+    frame_size += "x";
+    frame_size += std::to_string(Configurations::frame_height);
+
     if(Configurations::source_choices[Configurations::source] == "Video file")
     {
         ffaudio_pipe_path = path + "/mst-temp/ffmpeg_audio_pipe";
-        command = "ffmpeg -probesize 2147483647 -s 1280x720 -pix_fmt rgb24 -i "
+        command = "ffmpeg -probesize 2147483647 -s " + frame_size + " -pix_fmt rgb24 -i "
                 + ffvideo_pipe_path + " -i " + ffaudio_pipe_path +
                 " -vsync 1 -r 25 -vcodec libx264 -crf 23 -preset ultrafast"
                 " -f rtsp -rtsp_transport tcp " + rtsp_url;
     }
     else
     {
-        frame_size = "";
-        frame_size += std::to_string(Configurations::frame_width);
-        frame_size += "x";
-        frame_size += std::to_string(Configurations::frame_height);
         command = "ffmpeg -re -s " + frame_size + " -pix_fmt rgb24 -i " +
                 ffvideo_pipe_path + " -r 60 -vcodec libx264 -crf 23 "
                 "-preset ultrafast -f rtsp -rtsp_transport tcp " + rtsp_url;

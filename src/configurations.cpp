@@ -38,6 +38,8 @@ std::string Configurations::camera_path;
 cv::Rect2d Configurations::rect;
 int Configurations::frame_width;
 int Configurations::frame_height;
+bool Configurations::frame_size_changed = false;
+int Configurations::blur_effect;
 std::string Configurations::current_frame_path;
 std::string Configurations::current_audio_path;
 
@@ -72,4 +74,23 @@ std::string Configurations::execCmd(const char *cmd)
 
     result.pop_back(); // remove \n character
     return result;
+}
+
+/**
+ * Converts a string number into long.
+ * @param   : s; std::string number.
+ * @return  : long; converted long number.
+*/
+long Configurations::strToPositiveDigit(std::string s)
+{
+    char *control;
+    long value = std::strtol(s.c_str(), &control, 10);
+    if(*control != '\0' && *control != '.')
+    {
+        return -1;
+    }
+    else
+    {
+        return value;
+    }
 }

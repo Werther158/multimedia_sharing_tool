@@ -20,6 +20,7 @@ signals:
     void otherGuyDisconnected();
     void stopReceivingVideoStream(bool);
     void startStreaming();
+    void updateListConfigurations();
 };
 
 #endif // TCPCLIENTTHREAD_H

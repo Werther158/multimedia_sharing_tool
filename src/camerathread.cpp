@@ -33,51 +33,6 @@ CameraThread::~CameraThread()
 }
 
 /**
- * Scale resolution of a bmp image using CUDA.
- * @param   : void.
- * @return  : void.
-*/
-//void CameraThread::imageScale()
-//{
-//    Mat inputHost = imread(inputFile, CV_LOAD_IMAGE_COLOR);
-//    cuda::GpuMat inputDevice(inputHost);
-//    cuda::GpuMat outputDevice;
-//    const int ksize = 21;
-//    const int type = CV_64F;
-//    Timer timer;
-//    timer.Start();
-//    cuda::resize(inputDevice, outputDevice, Size(), 2.0, 2.0, CV_INTER_CUBIC);
-//    cv::Ptr<cuda::Filter> gauss = cv::cuda::createGaussianFilter(inputDevice.type(), outputDevice.type(), Size(ksize, ksize), 6.0, 6.0);
-//    gauss->apply(inputDevice, outputDevice);
-//    timer.Stop();
-//    printf("OpenCV GPU code ran in: %f msecs. \n", timer.ElapsedTime());
-//    Mat outputHost;
-//    outputDevice.download(outputHost);
-//    imwrite(outputFile, outputHost);
-//    inputHost.release();
-//    outputDevice.release();
-//}
-
-/**
- * Converts a string number into long.
- * @param   : s; std::string number.
- * @return  : long; converted long number.
-*/
-long CameraThread::strToPositiveDigit(std::string s)
-{
-    char *control;
-    long value = std::strtol(s.c_str(), &control, 10);
-    if(!*control)
-    {
-        return -1;
-    }
-    else
-    {
-        return value;
-    }
-}
-
-/**
  * Defines the next video chunk, based on class variables.
  * @param   : void.
  * @return  : void.
@@ -168,7 +123,7 @@ void CameraThread::captureFromFile()
     command = "ffprobe -v error -show_entries format=duration -of "
               "default=noprint_wrappers=1:nokey=1 " + file_name;
     strvideo_length = Configurations::execCmd(command.c_str());
-    video_length = strToPositiveDigit(strvideo_length);
+    video_length = Configurations::strToPositiveDigit(strvideo_length);
     if(video_length == -1)
     {
         std::cout << "Invalid input file";
@@ -209,11 +164,23 @@ void CameraThread::captureFromFile()
         defineChunk();
         createChunk();
 
+        // Apply intrusion detection on chunk
         if(Configurations::intrusion_detection_enabled)
         {
             // Apply neural net on chunk frames
             emit runIntrusionDetection(false);
             sem_wait(&sem_detection_done);
+        }
+
+        // Apply resize and eventually blur filtering on chunk
+        QDir directory(QString::fromStdString
+                       (Configurations::current_frame_path));
+        QStringList images = directory.entryList
+                (QStringList() << "*.bmp", QDir::Files);
+        foreach(QString filename, images) {
+            emit imageScaleBlur(Configurations::current_frame_path
+                          + "/" + filename.toStdString());
+            sem_wait(&sem_picture);
         }
 
         // Wait for signal to start feeding mst video
@@ -290,14 +257,17 @@ void CameraThread::captureFromCamera()
         emit saveCameraFrame(frame);
         sem_wait(&sem_camera_frame);
 
-
-
+        // Apply intrusion detection
         if(Configurations::intrusion_detection_enabled)
         {
             // Apply neural net on frame
             emit runIntrusionDetection(true);
             sem_wait(&sem_detection_done);
         }
+
+        // Apply resize and eventually blur filtering
+        emit imageScaleBlur(Configurations::current_frame_path + "/output.bmp");
+        sem_wait(&sem_picture);
 
         // Wait for signal to start feeding mst video
         sem_wait(&sem_video);
@@ -347,12 +317,17 @@ void CameraThread::captureFromScreen()
         // Wait image to be ready
         sem_wait(&sem_picture);
 
+        // Apply intrusion detection
         if(Configurations::intrusion_detection_enabled)
         {
             // Apply neural net on frame
             emit runIntrusionDetection(true);
             sem_wait(&sem_detection_done);
         }
+
+        // Apply resize and eventually blur filtering
+        emit imageScaleBlur(Configurations::current_frame_path + "/output.bmp");
+        sem_wait(&sem_picture);
 
         // Wait for signal to start feeding mst video
         sem_wait(&sem_video);
@@ -436,7 +411,7 @@ void CameraThread::run()
  * @param   : void.
  * @return  : void.
 */
-void CameraThread::takePictureDone()
+void CameraThread::pictureReady()
 {
     sem_post(&sem_picture);
 }

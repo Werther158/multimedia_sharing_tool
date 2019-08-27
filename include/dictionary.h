@@ -46,6 +46,7 @@ public:
     void setTextOflblResolution(QLabel *lbl);
     void setTextOflblFps(QLabel *lbl);
     void setTextOflblColorScale(QLabel *lbl);
+    void setTextOflblBlur(QLabel *lbl);
     void setTextOflblNetwork(QLabel *lbl);
     std::string getTextOfbtnBack();
     std::string getTextOfbtnStartServer();
@@ -76,8 +77,6 @@ public:
     void fillModel(QStandardItemModel *model);
 
     // FrmConnected
-    void getTextOflblResize(QLabel *lbl);
-    std::string getTextOfchkFullscreen();
     std::string getTextOfbtnDisconnect(int select);
     void getTextOfbtnStartStreaming(QPushButton *btn, int select);
 };

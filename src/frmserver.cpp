@@ -67,6 +67,7 @@ void FrmServer::setDict(Dictionary* dict)
     (*dict).setTextOflblPasswordS(ui->lblPassword);
     (*dict).setTextOflblSource(ui->lblSource);
     (*dict).setTextOflblVideoChunk(ui->lblVideoChunk);
+    (*dict).setTextOflblBlur(ui->lblBlur);
     ui->lblConfig->setText(QString::fromStdString
                            ((*dict).getTextOflblConfig()));
     ui->lblLeaveConfig->setText(QString::fromStdString
@@ -136,6 +137,8 @@ void FrmServer::setConfigurations()
         Configurations::intrusion_detection_enabled = true;
 
     Configurations::network = ui->cmbNetwork->currentText().toStdString();
+
+    Configurations::blur_effect = ui->sldBlur->value();
 }
 
 /**

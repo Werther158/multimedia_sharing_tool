@@ -66,6 +66,47 @@ std::string Connectivity::getPublicIp()
 }
 
 /**
+ * Send local configuration via TCP command.
+ * @param   : void.
+ * @return  : void.
+*/
+void Connectivity::sendLocalConfigurations()
+{
+    // Fill buffer with configurations
+    buffer[0] = -6;
+    buffer[1] = static_cast<char>(Configurations::resolution);
+    buffer[2] = static_cast<char>(Configurations::fps);
+    buffer[3] = static_cast<char>(Configurations::color_scale);
+    buffer[4] = static_cast<char>(Configurations::video_chunk_seconds);
+    if(Configurations::intrusion_detection_enabled)
+        buffer[5] = 1;
+    else
+        buffer[5] = 0;
+    buffer[6] = static_cast<char>(Configurations::blur_effect);
+
+    // Transfer configurations to the other end of tcp connection
+    send(sock, buffer, 7, 0);
+}
+
+/**
+ * Set local Configurations with thoose received by TCP.
+ * @param   : void.
+ * @return  : void.
+*/
+void Connectivity::setLocalConfigurations()
+{
+    Configurations::resolution = static_cast<uint8_t>(buffer[1]);
+    Configurations::fps = static_cast<uint8_t>(buffer[2]);
+    Configurations::color_scale = static_cast<uint8_t>(buffer[3]);
+    Configurations::video_chunk_seconds = static_cast<uint8_t>(buffer[4]);
+    if(buffer[5] == 1)
+        Configurations::intrusion_detection_enabled = true;
+    else
+        Configurations::intrusion_detection_enabled = false;
+    Configurations::blur_effect = static_cast<int>(buffer[6]);
+}
+
+/**
  * Start TCP Server.
  * @param   : PORT; choosen port.
  * @return  : int; return value success / error.
@@ -178,19 +219,8 @@ int Connectivity::tcpClient(std::string server_ip, uint16_t PORT)
         valread = read(sock, buffer, BUFFER_SIZE);
         Configurations::my_own_used_ip = buffer;
 
-        // Fill buffer with client configurations
-        buffer[0] = -6;
-        buffer[1] = static_cast<char>(Configurations::resolution);
-        buffer[2] = static_cast<char>(Configurations::fps);
-        buffer[3] = static_cast<char>(Configurations::color_scale);
-        buffer[4] = static_cast<char>(Configurations::video_chunk_seconds);
-        if(Configurations::intrusion_detection_enabled)
-            buffer[5] = 1;
-        else
-            buffer[5] = 0;
-
-        // Transfer client's configurations to the server
-        send(sock, buffer, 6, 0);
+        // Send client configurations
+        sendLocalConfigurations();
 
         emit writeText("Client connected");
         emit clientConnected();
@@ -245,20 +275,24 @@ void Connectivity::tcpRead()
             emit startStreaming();
         }
         else
-        // (Server side) Receive client configuration
+        // (Server/Client side) Receive TCP configurations and set local
+        //    configurations accordingly
         if(buffer[0] == (char)-6)
         {
-            if(Configurations::leave_client_config)
+            if(Configurations::system == SERVER)
             {
-                Configurations::resolution = static_cast<uint8_t>(buffer[1]);
-                Configurations::fps = static_cast<uint8_t>(buffer[2]);
-                Configurations::color_scale = static_cast<uint8_t>(buffer[3]);
-                Configurations::video_chunk_seconds = static_cast<uint8_t>(buffer[4]);
-                if(buffer[5] == 1)
-                    Configurations::intrusion_detection_enabled = true;
-                else
-                    Configurations::intrusion_detection_enabled = false;
+                if(Configurations::leave_client_config)
+                {
+                    setLocalConfigurations();
+                }
+                sendLocalConfigurations();
             }
+            else
+            {
+                setLocalConfigurations();
+                emit updateListConfigurations();
+            }
+
         }
         else
         if(Configurations::system == SERVER)

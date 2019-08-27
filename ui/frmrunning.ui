@@ -44,7 +44,7 @@
     <rect>
      <x>230</x>
      <y>10</y>
-     <width>121</width>
+     <width>204</width>
      <height>22</height>
     </rect>
    </property>
@@ -112,7 +112,11 @@
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QListView" name="listConfigurations"/>
+     <widget class="QListView" name="listConfigurations">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+     </widget>
     </item>
     <item>
      <widget class="QTextEdit" name="txtBox">

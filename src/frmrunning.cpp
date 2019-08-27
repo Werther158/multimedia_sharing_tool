@@ -40,6 +40,7 @@ FrmRunning::FrmRunning(QWidget *parent) :
     fillListConfiguration();
 
     qRegisterMetaType<cv::Mat>("cv::Mat");
+    qRegisterMetaType<std::string>("std::string");
 }
 
 FrmRunning::~FrmRunning()
@@ -54,7 +55,7 @@ FrmRunning::~FrmRunning()
 */
 void FrmRunning::fillListConfiguration()
 {
-    QStandardItemModel *model = new QStandardItemModel(6, 1, this);
+    QStandardItemModel *model = new QStandardItemModel(7, 1, this);
     (*dict).fillModel(model);
     ui->listConfigurations->setModel(model);
 }
@@ -159,7 +160,19 @@ void FrmRunning::on_btnSend_clicked()
 */
 void FrmRunning::clientConnected()
 {
+    char* resolution;
+
     fillListConfiguration();
+    resolution = std::strtok((char*)Configurations::resolution_choices
+                             [Configurations::resolution].c_str(), " x");
+    if(Configurations::strToPositiveDigit(resolution) != -1)
+    {
+        Configurations::frame_size_changed = true;
+        // Set new resolution to frame
+        Configurations::frame_width = Configurations::strToPositiveDigit(resolution);
+        resolution = std::strtok(nullptr, " x");
+        Configurations::frame_height = Configurations::strToPositiveDigit(resolution);
+    }
     client_connected = true;
     QPixmap green_state(":/resources/media/green_state.png");
     ui->lblState2->setPixmap(green_state);
@@ -264,14 +277,16 @@ void FrmRunning::startServerStream()
     ui->txtBox->append("Streaming started");
     // Start cameraThread
     camera_thread = new CameraThread();
-    QObject::connect(this, SIGNAL(takePictureDone()),
-                     camera_thread, SLOT(takePictureDone()));
+    QObject::connect(this, SIGNAL(pictureReady()),
+                     camera_thread, SLOT(pictureReady()));
     QObject::connect(camera_thread, SIGNAL(takeAScreenPicture()),
                      this, SLOT(takeAScreenPicture()));
     QObject::connect(camera_thread, SIGNAL(saveCameraFrame(cv::Mat)),
                      this, SLOT(saveCameraFrame(cv::Mat)));
     QObject::connect(this, SIGNAL(cameraFrameSaved()),
                      camera_thread, SLOT(cameraFrameSaved()));
+    QObject::connect(camera_thread, SIGNAL(imageScaleBlur(std::string)),
+                     this, SLOT(imageScaleBlur(std::string)));
     camera_thread->start();
 
     is_stream_active = true;
@@ -350,11 +365,10 @@ void FrmRunning::takeAScreenPicture()
     cv::Mat imgCamera;
     screen(imgCamera);
 
-
     // Save image to /mst-temp/frames tik-tok folder
     imwrite(Configurations::current_frame_path + "/output.bmp", imgCamera);
 
-    emit takePictureDone();
+    emit pictureReady();
 }
 
 /**
@@ -366,4 +380,47 @@ void FrmRunning::saveCameraFrame(cv::Mat frame)
 {
     imwrite(Configurations::current_frame_path + "/output.bmp", frame);
     emit cameraFrameSaved();
+}
+
+/**
+ * Scale resolution of a bmp image using CUDA.
+ * @param   : void.
+ * @return  : void.
+*/
+void FrmRunning::imageScaleBlur(std::string frame_path)
+{
+    cv::Mat input_host = cv::imread(frame_path);
+    cv::Mat output_host;
+    cv::cuda::GpuMat input_device(input_host);
+    cv::cuda::GpuMat output_device, output_both;
+    cv::Size size;
+
+    if(Configurations::frame_size_changed)
+    {
+        // Set new resolution to frame
+        size.width = Configurations::frame_width;
+        size.height = Configurations::frame_height;
+        cv::cuda::resize(input_device, output_device, size);
+        if(Configurations::blur_effect != 0)
+        {
+            cv::Ptr<cv::cuda::Filter> gauss = cv::cuda::createGaussianFilter
+                    (output_device.type(), output_both.type(),
+                     cv::Size(21, 21), Configurations::blur_effect * 2,
+                     Configurations::blur_effect * 2);
+            gauss->apply(output_device, output_both);
+        }
+        else
+            output_device.copyTo(output_both);
+
+        output_both.download(output_host);
+    }
+    else
+        input_host.copyTo(output_host);
+
+    input_host.release();
+    output_device.release();
+    output_both.release();
+
+    imwrite(frame_path, output_host);
+    emit pictureReady();
 }

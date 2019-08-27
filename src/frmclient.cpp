@@ -70,6 +70,7 @@ void FrmClient::setDict(Dictionary* dict)
     (*dict).setTextOflblResolution(ui->lblResolution);
     (*dict).setTextOflblFps(ui->lblFps);
     (*dict).setTextOflblColorScale(ui->lblColorScale);
+    (*dict).setTextOflblBlur(ui->lblBlur);
     (*dict).setTextOflblVideoChunk(ui->lblVideoChunk);
     (*dict).setTextOflblNetwork(ui->lblNetwork);
     ui->btnBack->setText(QString::fromStdString((*dict).getTextOfbtnBack()));
@@ -131,6 +132,7 @@ void FrmClient::setConfigurations()
     else
         Configurations::intrusion_detection_enabled = true;
     Configurations::network = ui->cmbNetwork->currentText().toStdString();
+    Configurations::blur_effect = ui->sldBlur->value();
 }
 
 /**

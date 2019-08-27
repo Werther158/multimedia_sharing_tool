@@ -44,7 +44,8 @@ void CudaDetectionThread::detectOnImage(std::string file_path)
     /*
      * detect objects in image
      */
-    detectNet::Detection* detections = nullptr;
+    detectNet::Detection* detections;
+    detections = nullptr;
 
     net->Detect(imgCUDA, static_cast<uint32_t>
                 (imgWidth), static_cast<uint32_t>(imgHeight), &detections);

@@ -36,5 +36,7 @@ void TcpClientThread::run()
     connect(c, SIGNAL(stopReceivingVideoStream(bool)),
             this, SIGNAL(stopReceivingVideoStream(bool)));
     connect(c, SIGNAL(startStreaming()), this, SIGNAL(startStreaming()));
+    connect(c, SIGNAL(updateListConfigurations()),
+            this, SIGNAL(updateListConfigurations()));
     (*c).tcpClient(Configurations::server_ip, Configurations::port);
 }

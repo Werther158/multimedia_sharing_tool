@@ -892,7 +892,8 @@ build/debug/moc/moc_camerathread.cpp: include/camerathread.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qcontainerfwd.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qobject_impl.h \
 		include/configurations.h \
-		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/opencv.hpp \
+		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core.hpp \
 		/usr/local/include/opencv2/core/cvdef.h \
 		/usr/local/include/opencv2/core/hal/interface.h \
@@ -901,7 +902,6 @@ build/debug/moc/moc_camerathread.cpp: include/camerathread.h \
 		/usr/local/include/opencv2/core/fast_math.hpp \
 		/usr/local/include/opencv2/core/version.hpp \
 		/usr/local/include/opencv2/core/base.hpp \
-		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core/cvstd.hpp \
 		/usr/local/include/opencv2/core/ptr.inl.hpp \
 		/usr/local/include/opencv2/core/neon_utils.hpp \
@@ -922,14 +922,117 @@ build/debug/moc/moc_camerathread.cpp: include/camerathread.h \
 		/usr/local/include/opencv2/core/types_c.h \
 		/usr/local/include/opencv2/core/optim.hpp \
 		/usr/local/include/opencv2/core/ovx.hpp \
-		/usr/local/include/opencv2/imgproc/imgproc_c.h \
-		/usr/local/include/opencv2/imgproc/types_c.h \
+		/usr/local/include/opencv2/calib3d.hpp \
+		/usr/local/include/opencv2/features2d.hpp \
+		/usr/local/include/opencv2/flann/miniflann.hpp \
+		/usr/local/include/opencv2/flann/defines.h \
+		/usr/local/include/opencv2/flann/config.h \
+		/usr/local/include/opencv2/core/affine.hpp \
+		/usr/local/include/opencv2/calib3d/calib3d_c.h \
+		/usr/local/include/opencv2/dnn.hpp \
+		/usr/local/include/opencv2/dnn/dnn.hpp \
+		/usr/local/include/opencv2/core/async.hpp \
+		/usr/local/include/opencv2/dnn/dict.hpp \
+		/usr/local/include/opencv2/dnn/layer.hpp \
+		/usr/local/include/opencv2/dnn/dnn.inl.hpp \
+		/usr/local/include/opencv2/dnn/utils/inference_engine.hpp \
+		/usr/local/include/opencv2/flann.hpp \
+		/usr/local/include/opencv2/flann/flann_base.hpp \
+		/usr/local/include/opencv2/flann/general.h \
+		/usr/local/include/opencv2/flann/matrix.h \
+		/usr/local/include/opencv2/flann/params.h \
+		/usr/local/include/opencv2/flann/any.h \
+		/usr/local/include/opencv2/flann/saving.h \
+		/usr/local/include/opencv2/flann/nn_index.h \
+		/usr/local/include/opencv2/flann/result_set.h \
+		/usr/local/include/opencv2/flann/all_indices.h \
+		/usr/local/include/opencv2/flann/kdtree_index.h \
+		/usr/local/include/opencv2/flann/dynamic_bitset.h \
+		/usr/local/include/opencv2/flann/dist.h \
+		/usr/local/include/opencv2/flann/heap.h \
+		/usr/local/include/opencv2/flann/allocator.h \
+		/usr/local/include/opencv2/flann/random.h \
+		/usr/local/include/opencv2/flann/kdtree_single_index.h \
+		/usr/local/include/opencv2/flann/kmeans_index.h \
+		/usr/local/include/opencv2/flann/logger.h \
+		/usr/local/include/opencv2/flann/composite_index.h \
+		/usr/local/include/opencv2/flann/linear_index.h \
+		/usr/local/include/opencv2/flann/hierarchical_clustering_index.h \
+		/usr/local/include/opencv2/flann/lsh_index.h \
+		/usr/local/include/opencv2/flann/lsh_table.h \
+		/usr/local/include/opencv2/flann/autotuned_index.h \
+		/usr/local/include/opencv2/flann/ground_truth.h \
+		/usr/local/include/opencv2/flann/index_testing.h \
+		/usr/local/include/opencv2/flann/timer.h \
+		/usr/local/include/opencv2/flann/sampling.h \
 		/usr/local/include/opencv2/highgui.hpp \
 		/usr/local/include/opencv2/imgcodecs.hpp \
 		/usr/local/include/opencv2/videoio.hpp \
 		/usr/local/include/opencv2/highgui/highgui_c.h \
+		/usr/local/include/opencv2/imgproc/imgproc_c.h \
+		/usr/local/include/opencv2/imgproc/types_c.h \
 		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
 		/usr/local/include/opencv2/videoio/videoio_c.h \
+		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/ml.hpp \
+		/usr/local/include/opencv2/ml/ml.inl.hpp \
+		/usr/local/include/opencv2/objdetect.hpp \
+		/usr/local/include/opencv2/objdetect/detection_based_tracker.hpp \
+		/usr/local/include/opencv2/objdetect/objdetect_c.h \
+		/usr/local/include/opencv2/photo.hpp \
+		/usr/local/include/opencv2/photo/photo_c.h \
+		/usr/local/include/opencv2/shape.hpp \
+		/usr/local/include/opencv2/shape/emdL1.hpp \
+		/usr/local/include/opencv2/shape/shape_transformer.hpp \
+		/usr/local/include/opencv2/shape/hist_cost.hpp \
+		/usr/local/include/opencv2/shape/shape_distance.hpp \
+		/usr/local/include/opencv2/stitching.hpp \
+		/usr/local/include/opencv2/stitching/warpers.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers.hpp \
+		/usr/local/include/opencv2/core/cuda.hpp \
+		/usr/local/include/opencv2/core/cuda_types.hpp \
+		/usr/local/include/opencv2/core/cuda.inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/matchers.hpp \
+		/usr/local/include/opencv2/xfeatures2d/cuda.hpp \
+		/usr/local/include/opencv2/stitching/detail/motion_estimators.hpp \
+		/usr/local/include/opencv2/stitching/detail/util.hpp \
+		/usr/local/include/opencv2/stitching/detail/util_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/camera.hpp \
+		/usr/local/include/opencv2/stitching/detail/exposure_compensate.hpp \
+		/usr/local/include/opencv2/stitching/detail/seam_finders.hpp \
+		/usr/local/include/opencv2/stitching/detail/blenders.hpp \
+		/usr/local/include/opencv2/superres.hpp \
+		/usr/local/include/opencv2/superres/optical_flow.hpp \
+		/usr/local/include/opencv2/video.hpp \
+		/usr/local/include/opencv2/video/tracking.hpp \
+		/usr/local/include/opencv2/video/background_segm.hpp \
+		/usr/local/include/opencv2/video/tracking_c.h \
+		/usr/local/include/opencv2/videostab.hpp \
+		/usr/local/include/opencv2/videostab/stabilizer.hpp \
+		/usr/local/include/opencv2/videostab/global_motion.hpp \
+		/usr/local/include/opencv2/videostab/optical_flow.hpp \
+		/usr/local/include/opencv2/cudaoptflow.hpp \
+		/usr/local/include/opencv2/videostab/motion_core.hpp \
+		/usr/local/include/opencv2/videostab/outlier_rejection.hpp \
+		/usr/local/include/opencv2/cudaimgproc.hpp \
+		/usr/local/include/opencv2/videostab/motion_stabilizing.hpp \
+		/usr/local/include/opencv2/videostab/frame_source.hpp \
+		/usr/local/include/opencv2/videostab/log.hpp \
+		/usr/local/include/opencv2/videostab/inpainting.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching_inl.hpp \
+		/usr/local/include/opencv2/videostab/deblurring.hpp \
+		/usr/local/include/opencv2/videostab/wobble_suppression.hpp \
+		/usr/local/include/opencv2/videostab/ring_buffer.hpp \
+		/usr/local/include/opencv2/cudaarithm.hpp \
+		/usr/local/include/opencv2/cudabgsegm.hpp \
+		/usr/local/include/opencv2/cudafeatures2d.hpp \
+		/usr/local/include/opencv2/cudafilters.hpp \
+		/usr/local/include/opencv2/cudaobjdetect.hpp \
+		/usr/local/include/opencv2/cudastereo.hpp \
+		/usr/local/include/opencv2/cudawarping.hpp \
+		/usr/local/include/opencv2/imgproc/imgproc.hpp \
 		/usr/local/include/opencv2/core/core.hpp \
 		include/serverstreamthread.h \
 		include/cudadetectionthread.h \
@@ -1003,7 +1106,6 @@ build/debug/moc/moc_camerathread.cpp: include/camerathread.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qhash.h \
 		include/feedaudiopipethread.h \
 		include/feedvideopipethread.h \
-		/usr/local/include/opencv2/core/cuda/warp.hpp \
 		build/debug/moc/moc_predefs.h \
 		../../Qt/5.12.4/gcc_64/bin/moc
 	/home/werther/Qt/5.12.4/gcc_64/bin/moc $(DEFINES) --include /home/werther/Desktop/multimedia_sharing_tool/build/debug/moc/moc_predefs.h -I/home/werther/Qt/5.12.4/gcc_64/mkspecs/linux-g++ -I/home/werther/Desktop/multimedia_sharing_tool -I/usr/include/curl -I/home/werther/Desktop/multimedia_sharing_tool/include -I/usr/local/include -I/usr/local/cuda/include -I/home/werther/Qt/5.12.4/gcc_64/include -I/home/werther/Qt/5.12.4/gcc_64/include/QtWidgets -I/home/werther/Qt/5.12.4/gcc_64/include/QtGui -I/home/werther/Qt/5.12.4/gcc_64/include/QtCore -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++ -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/i686-w64-mingw32.static -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/backward -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include-fixed -I/home/werther/Downloads/mxe/usr/i686-w64-mingw32.static/include include/camerathread.h -o build/debug/moc/moc_camerathread.cpp
@@ -1061,7 +1163,8 @@ build/debug/moc/moc_clientstreamthread.cpp: include/clientstreamthread.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qcontainerfwd.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qobject_impl.h \
 		include/configurations.h \
-		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/opencv.hpp \
+		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core.hpp \
 		/usr/local/include/opencv2/core/cvdef.h \
 		/usr/local/include/opencv2/core/hal/interface.h \
@@ -1070,7 +1173,6 @@ build/debug/moc/moc_clientstreamthread.cpp: include/clientstreamthread.h \
 		/usr/local/include/opencv2/core/fast_math.hpp \
 		/usr/local/include/opencv2/core/version.hpp \
 		/usr/local/include/opencv2/core/base.hpp \
-		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core/cvstd.hpp \
 		/usr/local/include/opencv2/core/ptr.inl.hpp \
 		/usr/local/include/opencv2/core/neon_utils.hpp \
@@ -1091,14 +1193,117 @@ build/debug/moc/moc_clientstreamthread.cpp: include/clientstreamthread.h \
 		/usr/local/include/opencv2/core/types_c.h \
 		/usr/local/include/opencv2/core/optim.hpp \
 		/usr/local/include/opencv2/core/ovx.hpp \
-		/usr/local/include/opencv2/imgproc/imgproc_c.h \
-		/usr/local/include/opencv2/imgproc/types_c.h \
+		/usr/local/include/opencv2/calib3d.hpp \
+		/usr/local/include/opencv2/features2d.hpp \
+		/usr/local/include/opencv2/flann/miniflann.hpp \
+		/usr/local/include/opencv2/flann/defines.h \
+		/usr/local/include/opencv2/flann/config.h \
+		/usr/local/include/opencv2/core/affine.hpp \
+		/usr/local/include/opencv2/calib3d/calib3d_c.h \
+		/usr/local/include/opencv2/dnn.hpp \
+		/usr/local/include/opencv2/dnn/dnn.hpp \
+		/usr/local/include/opencv2/core/async.hpp \
+		/usr/local/include/opencv2/dnn/dict.hpp \
+		/usr/local/include/opencv2/dnn/layer.hpp \
+		/usr/local/include/opencv2/dnn/dnn.inl.hpp \
+		/usr/local/include/opencv2/dnn/utils/inference_engine.hpp \
+		/usr/local/include/opencv2/flann.hpp \
+		/usr/local/include/opencv2/flann/flann_base.hpp \
+		/usr/local/include/opencv2/flann/general.h \
+		/usr/local/include/opencv2/flann/matrix.h \
+		/usr/local/include/opencv2/flann/params.h \
+		/usr/local/include/opencv2/flann/any.h \
+		/usr/local/include/opencv2/flann/saving.h \
+		/usr/local/include/opencv2/flann/nn_index.h \
+		/usr/local/include/opencv2/flann/result_set.h \
+		/usr/local/include/opencv2/flann/all_indices.h \
+		/usr/local/include/opencv2/flann/kdtree_index.h \
+		/usr/local/include/opencv2/flann/dynamic_bitset.h \
+		/usr/local/include/opencv2/flann/dist.h \
+		/usr/local/include/opencv2/flann/heap.h \
+		/usr/local/include/opencv2/flann/allocator.h \
+		/usr/local/include/opencv2/flann/random.h \
+		/usr/local/include/opencv2/flann/kdtree_single_index.h \
+		/usr/local/include/opencv2/flann/kmeans_index.h \
+		/usr/local/include/opencv2/flann/logger.h \
+		/usr/local/include/opencv2/flann/composite_index.h \
+		/usr/local/include/opencv2/flann/linear_index.h \
+		/usr/local/include/opencv2/flann/hierarchical_clustering_index.h \
+		/usr/local/include/opencv2/flann/lsh_index.h \
+		/usr/local/include/opencv2/flann/lsh_table.h \
+		/usr/local/include/opencv2/flann/autotuned_index.h \
+		/usr/local/include/opencv2/flann/ground_truth.h \
+		/usr/local/include/opencv2/flann/index_testing.h \
+		/usr/local/include/opencv2/flann/timer.h \
+		/usr/local/include/opencv2/flann/sampling.h \
 		/usr/local/include/opencv2/highgui.hpp \
 		/usr/local/include/opencv2/imgcodecs.hpp \
 		/usr/local/include/opencv2/videoio.hpp \
 		/usr/local/include/opencv2/highgui/highgui_c.h \
+		/usr/local/include/opencv2/imgproc/imgproc_c.h \
+		/usr/local/include/opencv2/imgproc/types_c.h \
 		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
 		/usr/local/include/opencv2/videoio/videoio_c.h \
+		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/ml.hpp \
+		/usr/local/include/opencv2/ml/ml.inl.hpp \
+		/usr/local/include/opencv2/objdetect.hpp \
+		/usr/local/include/opencv2/objdetect/detection_based_tracker.hpp \
+		/usr/local/include/opencv2/objdetect/objdetect_c.h \
+		/usr/local/include/opencv2/photo.hpp \
+		/usr/local/include/opencv2/photo/photo_c.h \
+		/usr/local/include/opencv2/shape.hpp \
+		/usr/local/include/opencv2/shape/emdL1.hpp \
+		/usr/local/include/opencv2/shape/shape_transformer.hpp \
+		/usr/local/include/opencv2/shape/hist_cost.hpp \
+		/usr/local/include/opencv2/shape/shape_distance.hpp \
+		/usr/local/include/opencv2/stitching.hpp \
+		/usr/local/include/opencv2/stitching/warpers.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers.hpp \
+		/usr/local/include/opencv2/core/cuda.hpp \
+		/usr/local/include/opencv2/core/cuda_types.hpp \
+		/usr/local/include/opencv2/core/cuda.inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/matchers.hpp \
+		/usr/local/include/opencv2/xfeatures2d/cuda.hpp \
+		/usr/local/include/opencv2/stitching/detail/motion_estimators.hpp \
+		/usr/local/include/opencv2/stitching/detail/util.hpp \
+		/usr/local/include/opencv2/stitching/detail/util_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/camera.hpp \
+		/usr/local/include/opencv2/stitching/detail/exposure_compensate.hpp \
+		/usr/local/include/opencv2/stitching/detail/seam_finders.hpp \
+		/usr/local/include/opencv2/stitching/detail/blenders.hpp \
+		/usr/local/include/opencv2/superres.hpp \
+		/usr/local/include/opencv2/superres/optical_flow.hpp \
+		/usr/local/include/opencv2/video.hpp \
+		/usr/local/include/opencv2/video/tracking.hpp \
+		/usr/local/include/opencv2/video/background_segm.hpp \
+		/usr/local/include/opencv2/video/tracking_c.h \
+		/usr/local/include/opencv2/videostab.hpp \
+		/usr/local/include/opencv2/videostab/stabilizer.hpp \
+		/usr/local/include/opencv2/videostab/global_motion.hpp \
+		/usr/local/include/opencv2/videostab/optical_flow.hpp \
+		/usr/local/include/opencv2/cudaoptflow.hpp \
+		/usr/local/include/opencv2/videostab/motion_core.hpp \
+		/usr/local/include/opencv2/videostab/outlier_rejection.hpp \
+		/usr/local/include/opencv2/cudaimgproc.hpp \
+		/usr/local/include/opencv2/videostab/motion_stabilizing.hpp \
+		/usr/local/include/opencv2/videostab/frame_source.hpp \
+		/usr/local/include/opencv2/videostab/log.hpp \
+		/usr/local/include/opencv2/videostab/inpainting.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching_inl.hpp \
+		/usr/local/include/opencv2/videostab/deblurring.hpp \
+		/usr/local/include/opencv2/videostab/wobble_suppression.hpp \
+		/usr/local/include/opencv2/videostab/ring_buffer.hpp \
+		/usr/local/include/opencv2/cudaarithm.hpp \
+		/usr/local/include/opencv2/cudabgsegm.hpp \
+		/usr/local/include/opencv2/cudafeatures2d.hpp \
+		/usr/local/include/opencv2/cudafilters.hpp \
+		/usr/local/include/opencv2/cudaobjdetect.hpp \
+		/usr/local/include/opencv2/cudastereo.hpp \
+		/usr/local/include/opencv2/cudawarping.hpp \
+		/usr/local/include/opencv2/imgproc/imgproc.hpp \
 		/usr/local/include/opencv2/core/core.hpp \
 		../../Qt/5.12.4/gcc_64/include/QtCore/QThread \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qthread.h \
@@ -1158,7 +1363,8 @@ build/debug/moc/moc_connectivity.cpp: include/connectivity.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qcontainerfwd.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qobject_impl.h \
 		include/configurations.h \
-		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/opencv.hpp \
+		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core.hpp \
 		/usr/local/include/opencv2/core/cvdef.h \
 		/usr/local/include/opencv2/core/hal/interface.h \
@@ -1167,7 +1373,6 @@ build/debug/moc/moc_connectivity.cpp: include/connectivity.h \
 		/usr/local/include/opencv2/core/fast_math.hpp \
 		/usr/local/include/opencv2/core/version.hpp \
 		/usr/local/include/opencv2/core/base.hpp \
-		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core/cvstd.hpp \
 		/usr/local/include/opencv2/core/ptr.inl.hpp \
 		/usr/local/include/opencv2/core/neon_utils.hpp \
@@ -1188,14 +1393,117 @@ build/debug/moc/moc_connectivity.cpp: include/connectivity.h \
 		/usr/local/include/opencv2/core/types_c.h \
 		/usr/local/include/opencv2/core/optim.hpp \
 		/usr/local/include/opencv2/core/ovx.hpp \
-		/usr/local/include/opencv2/imgproc/imgproc_c.h \
-		/usr/local/include/opencv2/imgproc/types_c.h \
+		/usr/local/include/opencv2/calib3d.hpp \
+		/usr/local/include/opencv2/features2d.hpp \
+		/usr/local/include/opencv2/flann/miniflann.hpp \
+		/usr/local/include/opencv2/flann/defines.h \
+		/usr/local/include/opencv2/flann/config.h \
+		/usr/local/include/opencv2/core/affine.hpp \
+		/usr/local/include/opencv2/calib3d/calib3d_c.h \
+		/usr/local/include/opencv2/dnn.hpp \
+		/usr/local/include/opencv2/dnn/dnn.hpp \
+		/usr/local/include/opencv2/core/async.hpp \
+		/usr/local/include/opencv2/dnn/dict.hpp \
+		/usr/local/include/opencv2/dnn/layer.hpp \
+		/usr/local/include/opencv2/dnn/dnn.inl.hpp \
+		/usr/local/include/opencv2/dnn/utils/inference_engine.hpp \
+		/usr/local/include/opencv2/flann.hpp \
+		/usr/local/include/opencv2/flann/flann_base.hpp \
+		/usr/local/include/opencv2/flann/general.h \
+		/usr/local/include/opencv2/flann/matrix.h \
+		/usr/local/include/opencv2/flann/params.h \
+		/usr/local/include/opencv2/flann/any.h \
+		/usr/local/include/opencv2/flann/saving.h \
+		/usr/local/include/opencv2/flann/nn_index.h \
+		/usr/local/include/opencv2/flann/result_set.h \
+		/usr/local/include/opencv2/flann/all_indices.h \
+		/usr/local/include/opencv2/flann/kdtree_index.h \
+		/usr/local/include/opencv2/flann/dynamic_bitset.h \
+		/usr/local/include/opencv2/flann/dist.h \
+		/usr/local/include/opencv2/flann/heap.h \
+		/usr/local/include/opencv2/flann/allocator.h \
+		/usr/local/include/opencv2/flann/random.h \
+		/usr/local/include/opencv2/flann/kdtree_single_index.h \
+		/usr/local/include/opencv2/flann/kmeans_index.h \
+		/usr/local/include/opencv2/flann/logger.h \
+		/usr/local/include/opencv2/flann/composite_index.h \
+		/usr/local/include/opencv2/flann/linear_index.h \
+		/usr/local/include/opencv2/flann/hierarchical_clustering_index.h \
+		/usr/local/include/opencv2/flann/lsh_index.h \
+		/usr/local/include/opencv2/flann/lsh_table.h \
+		/usr/local/include/opencv2/flann/autotuned_index.h \
+		/usr/local/include/opencv2/flann/ground_truth.h \
+		/usr/local/include/opencv2/flann/index_testing.h \
+		/usr/local/include/opencv2/flann/timer.h \
+		/usr/local/include/opencv2/flann/sampling.h \
 		/usr/local/include/opencv2/highgui.hpp \
 		/usr/local/include/opencv2/imgcodecs.hpp \
 		/usr/local/include/opencv2/videoio.hpp \
 		/usr/local/include/opencv2/highgui/highgui_c.h \
+		/usr/local/include/opencv2/imgproc/imgproc_c.h \
+		/usr/local/include/opencv2/imgproc/types_c.h \
 		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
 		/usr/local/include/opencv2/videoio/videoio_c.h \
+		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/ml.hpp \
+		/usr/local/include/opencv2/ml/ml.inl.hpp \
+		/usr/local/include/opencv2/objdetect.hpp \
+		/usr/local/include/opencv2/objdetect/detection_based_tracker.hpp \
+		/usr/local/include/opencv2/objdetect/objdetect_c.h \
+		/usr/local/include/opencv2/photo.hpp \
+		/usr/local/include/opencv2/photo/photo_c.h \
+		/usr/local/include/opencv2/shape.hpp \
+		/usr/local/include/opencv2/shape/emdL1.hpp \
+		/usr/local/include/opencv2/shape/shape_transformer.hpp \
+		/usr/local/include/opencv2/shape/hist_cost.hpp \
+		/usr/local/include/opencv2/shape/shape_distance.hpp \
+		/usr/local/include/opencv2/stitching.hpp \
+		/usr/local/include/opencv2/stitching/warpers.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers.hpp \
+		/usr/local/include/opencv2/core/cuda.hpp \
+		/usr/local/include/opencv2/core/cuda_types.hpp \
+		/usr/local/include/opencv2/core/cuda.inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/matchers.hpp \
+		/usr/local/include/opencv2/xfeatures2d/cuda.hpp \
+		/usr/local/include/opencv2/stitching/detail/motion_estimators.hpp \
+		/usr/local/include/opencv2/stitching/detail/util.hpp \
+		/usr/local/include/opencv2/stitching/detail/util_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/camera.hpp \
+		/usr/local/include/opencv2/stitching/detail/exposure_compensate.hpp \
+		/usr/local/include/opencv2/stitching/detail/seam_finders.hpp \
+		/usr/local/include/opencv2/stitching/detail/blenders.hpp \
+		/usr/local/include/opencv2/superres.hpp \
+		/usr/local/include/opencv2/superres/optical_flow.hpp \
+		/usr/local/include/opencv2/video.hpp \
+		/usr/local/include/opencv2/video/tracking.hpp \
+		/usr/local/include/opencv2/video/background_segm.hpp \
+		/usr/local/include/opencv2/video/tracking_c.h \
+		/usr/local/include/opencv2/videostab.hpp \
+		/usr/local/include/opencv2/videostab/stabilizer.hpp \
+		/usr/local/include/opencv2/videostab/global_motion.hpp \
+		/usr/local/include/opencv2/videostab/optical_flow.hpp \
+		/usr/local/include/opencv2/cudaoptflow.hpp \
+		/usr/local/include/opencv2/videostab/motion_core.hpp \
+		/usr/local/include/opencv2/videostab/outlier_rejection.hpp \
+		/usr/local/include/opencv2/cudaimgproc.hpp \
+		/usr/local/include/opencv2/videostab/motion_stabilizing.hpp \
+		/usr/local/include/opencv2/videostab/frame_source.hpp \
+		/usr/local/include/opencv2/videostab/log.hpp \
+		/usr/local/include/opencv2/videostab/inpainting.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching_inl.hpp \
+		/usr/local/include/opencv2/videostab/deblurring.hpp \
+		/usr/local/include/opencv2/videostab/wobble_suppression.hpp \
+		/usr/local/include/opencv2/videostab/ring_buffer.hpp \
+		/usr/local/include/opencv2/cudaarithm.hpp \
+		/usr/local/include/opencv2/cudabgsegm.hpp \
+		/usr/local/include/opencv2/cudafeatures2d.hpp \
+		/usr/local/include/opencv2/cudafilters.hpp \
+		/usr/local/include/opencv2/cudaobjdetect.hpp \
+		/usr/local/include/opencv2/cudastereo.hpp \
+		/usr/local/include/opencv2/cudawarping.hpp \
+		/usr/local/include/opencv2/imgproc/imgproc.hpp \
 		/usr/local/include/opencv2/core/core.hpp \
 		build/debug/moc/moc_predefs.h \
 		../../Qt/5.12.4/gcc_64/bin/moc
@@ -1314,7 +1622,8 @@ build/debug/moc/moc_cudadetectionthread.cpp: include/cudadetectionthread.h \
 		/usr/local/include/jetson-utils/imageIO.h \
 		/usr/local/include/jetson-utils/cudaMappedMemory.h \
 		include/configurations.h \
-		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/opencv.hpp \
+		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core.hpp \
 		/usr/local/include/opencv2/core/cvdef.h \
 		/usr/local/include/opencv2/core/hal/interface.h \
@@ -1323,7 +1632,6 @@ build/debug/moc/moc_cudadetectionthread.cpp: include/cudadetectionthread.h \
 		/usr/local/include/opencv2/core/fast_math.hpp \
 		/usr/local/include/opencv2/core/version.hpp \
 		/usr/local/include/opencv2/core/base.hpp \
-		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core/cvstd.hpp \
 		/usr/local/include/opencv2/core/ptr.inl.hpp \
 		/usr/local/include/opencv2/core/neon_utils.hpp \
@@ -1344,14 +1652,117 @@ build/debug/moc/moc_cudadetectionthread.cpp: include/cudadetectionthread.h \
 		/usr/local/include/opencv2/core/types_c.h \
 		/usr/local/include/opencv2/core/optim.hpp \
 		/usr/local/include/opencv2/core/ovx.hpp \
-		/usr/local/include/opencv2/imgproc/imgproc_c.h \
-		/usr/local/include/opencv2/imgproc/types_c.h \
+		/usr/local/include/opencv2/calib3d.hpp \
+		/usr/local/include/opencv2/features2d.hpp \
+		/usr/local/include/opencv2/flann/miniflann.hpp \
+		/usr/local/include/opencv2/flann/defines.h \
+		/usr/local/include/opencv2/flann/config.h \
+		/usr/local/include/opencv2/core/affine.hpp \
+		/usr/local/include/opencv2/calib3d/calib3d_c.h \
+		/usr/local/include/opencv2/dnn.hpp \
+		/usr/local/include/opencv2/dnn/dnn.hpp \
+		/usr/local/include/opencv2/core/async.hpp \
+		/usr/local/include/opencv2/dnn/dict.hpp \
+		/usr/local/include/opencv2/dnn/layer.hpp \
+		/usr/local/include/opencv2/dnn/dnn.inl.hpp \
+		/usr/local/include/opencv2/dnn/utils/inference_engine.hpp \
+		/usr/local/include/opencv2/flann.hpp \
+		/usr/local/include/opencv2/flann/flann_base.hpp \
+		/usr/local/include/opencv2/flann/general.h \
+		/usr/local/include/opencv2/flann/matrix.h \
+		/usr/local/include/opencv2/flann/params.h \
+		/usr/local/include/opencv2/flann/any.h \
+		/usr/local/include/opencv2/flann/saving.h \
+		/usr/local/include/opencv2/flann/nn_index.h \
+		/usr/local/include/opencv2/flann/result_set.h \
+		/usr/local/include/opencv2/flann/all_indices.h \
+		/usr/local/include/opencv2/flann/kdtree_index.h \
+		/usr/local/include/opencv2/flann/dynamic_bitset.h \
+		/usr/local/include/opencv2/flann/dist.h \
+		/usr/local/include/opencv2/flann/heap.h \
+		/usr/local/include/opencv2/flann/allocator.h \
+		/usr/local/include/opencv2/flann/random.h \
+		/usr/local/include/opencv2/flann/kdtree_single_index.h \
+		/usr/local/include/opencv2/flann/kmeans_index.h \
+		/usr/local/include/opencv2/flann/logger.h \
+		/usr/local/include/opencv2/flann/composite_index.h \
+		/usr/local/include/opencv2/flann/linear_index.h \
+		/usr/local/include/opencv2/flann/hierarchical_clustering_index.h \
+		/usr/local/include/opencv2/flann/lsh_index.h \
+		/usr/local/include/opencv2/flann/lsh_table.h \
+		/usr/local/include/opencv2/flann/autotuned_index.h \
+		/usr/local/include/opencv2/flann/ground_truth.h \
+		/usr/local/include/opencv2/flann/index_testing.h \
+		/usr/local/include/opencv2/flann/timer.h \
+		/usr/local/include/opencv2/flann/sampling.h \
 		/usr/local/include/opencv2/highgui.hpp \
 		/usr/local/include/opencv2/imgcodecs.hpp \
 		/usr/local/include/opencv2/videoio.hpp \
 		/usr/local/include/opencv2/highgui/highgui_c.h \
+		/usr/local/include/opencv2/imgproc/imgproc_c.h \
+		/usr/local/include/opencv2/imgproc/types_c.h \
 		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
 		/usr/local/include/opencv2/videoio/videoio_c.h \
+		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/ml.hpp \
+		/usr/local/include/opencv2/ml/ml.inl.hpp \
+		/usr/local/include/opencv2/objdetect.hpp \
+		/usr/local/include/opencv2/objdetect/detection_based_tracker.hpp \
+		/usr/local/include/opencv2/objdetect/objdetect_c.h \
+		/usr/local/include/opencv2/photo.hpp \
+		/usr/local/include/opencv2/photo/photo_c.h \
+		/usr/local/include/opencv2/shape.hpp \
+		/usr/local/include/opencv2/shape/emdL1.hpp \
+		/usr/local/include/opencv2/shape/shape_transformer.hpp \
+		/usr/local/include/opencv2/shape/hist_cost.hpp \
+		/usr/local/include/opencv2/shape/shape_distance.hpp \
+		/usr/local/include/opencv2/stitching.hpp \
+		/usr/local/include/opencv2/stitching/warpers.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers.hpp \
+		/usr/local/include/opencv2/core/cuda.hpp \
+		/usr/local/include/opencv2/core/cuda_types.hpp \
+		/usr/local/include/opencv2/core/cuda.inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/matchers.hpp \
+		/usr/local/include/opencv2/xfeatures2d/cuda.hpp \
+		/usr/local/include/opencv2/stitching/detail/motion_estimators.hpp \
+		/usr/local/include/opencv2/stitching/detail/util.hpp \
+		/usr/local/include/opencv2/stitching/detail/util_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/camera.hpp \
+		/usr/local/include/opencv2/stitching/detail/exposure_compensate.hpp \
+		/usr/local/include/opencv2/stitching/detail/seam_finders.hpp \
+		/usr/local/include/opencv2/stitching/detail/blenders.hpp \
+		/usr/local/include/opencv2/superres.hpp \
+		/usr/local/include/opencv2/superres/optical_flow.hpp \
+		/usr/local/include/opencv2/video.hpp \
+		/usr/local/include/opencv2/video/tracking.hpp \
+		/usr/local/include/opencv2/video/background_segm.hpp \
+		/usr/local/include/opencv2/video/tracking_c.h \
+		/usr/local/include/opencv2/videostab.hpp \
+		/usr/local/include/opencv2/videostab/stabilizer.hpp \
+		/usr/local/include/opencv2/videostab/global_motion.hpp \
+		/usr/local/include/opencv2/videostab/optical_flow.hpp \
+		/usr/local/include/opencv2/cudaoptflow.hpp \
+		/usr/local/include/opencv2/videostab/motion_core.hpp \
+		/usr/local/include/opencv2/videostab/outlier_rejection.hpp \
+		/usr/local/include/opencv2/cudaimgproc.hpp \
+		/usr/local/include/opencv2/videostab/motion_stabilizing.hpp \
+		/usr/local/include/opencv2/videostab/frame_source.hpp \
+		/usr/local/include/opencv2/videostab/log.hpp \
+		/usr/local/include/opencv2/videostab/inpainting.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching_inl.hpp \
+		/usr/local/include/opencv2/videostab/deblurring.hpp \
+		/usr/local/include/opencv2/videostab/wobble_suppression.hpp \
+		/usr/local/include/opencv2/videostab/ring_buffer.hpp \
+		/usr/local/include/opencv2/cudaarithm.hpp \
+		/usr/local/include/opencv2/cudabgsegm.hpp \
+		/usr/local/include/opencv2/cudafeatures2d.hpp \
+		/usr/local/include/opencv2/cudafilters.hpp \
+		/usr/local/include/opencv2/cudaobjdetect.hpp \
+		/usr/local/include/opencv2/cudastereo.hpp \
+		/usr/local/include/opencv2/cudawarping.hpp \
+		/usr/local/include/opencv2/imgproc/imgproc.hpp \
 		/usr/local/include/opencv2/core/core.hpp \
 		../../Qt/5.12.4/gcc_64/include/QtCore/QDir \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qdir.h \
@@ -1418,7 +1829,8 @@ build/debug/moc/moc_feedaudiopipethread.cpp: include/feedaudiopipethread.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qcontainerfwd.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qobject_impl.h \
 		include/configurations.h \
-		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/opencv.hpp \
+		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core.hpp \
 		/usr/local/include/opencv2/core/cvdef.h \
 		/usr/local/include/opencv2/core/hal/interface.h \
@@ -1427,7 +1839,6 @@ build/debug/moc/moc_feedaudiopipethread.cpp: include/feedaudiopipethread.h \
 		/usr/local/include/opencv2/core/fast_math.hpp \
 		/usr/local/include/opencv2/core/version.hpp \
 		/usr/local/include/opencv2/core/base.hpp \
-		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core/cvstd.hpp \
 		/usr/local/include/opencv2/core/ptr.inl.hpp \
 		/usr/local/include/opencv2/core/neon_utils.hpp \
@@ -1448,14 +1859,117 @@ build/debug/moc/moc_feedaudiopipethread.cpp: include/feedaudiopipethread.h \
 		/usr/local/include/opencv2/core/types_c.h \
 		/usr/local/include/opencv2/core/optim.hpp \
 		/usr/local/include/opencv2/core/ovx.hpp \
-		/usr/local/include/opencv2/imgproc/imgproc_c.h \
-		/usr/local/include/opencv2/imgproc/types_c.h \
+		/usr/local/include/opencv2/calib3d.hpp \
+		/usr/local/include/opencv2/features2d.hpp \
+		/usr/local/include/opencv2/flann/miniflann.hpp \
+		/usr/local/include/opencv2/flann/defines.h \
+		/usr/local/include/opencv2/flann/config.h \
+		/usr/local/include/opencv2/core/affine.hpp \
+		/usr/local/include/opencv2/calib3d/calib3d_c.h \
+		/usr/local/include/opencv2/dnn.hpp \
+		/usr/local/include/opencv2/dnn/dnn.hpp \
+		/usr/local/include/opencv2/core/async.hpp \
+		/usr/local/include/opencv2/dnn/dict.hpp \
+		/usr/local/include/opencv2/dnn/layer.hpp \
+		/usr/local/include/opencv2/dnn/dnn.inl.hpp \
+		/usr/local/include/opencv2/dnn/utils/inference_engine.hpp \
+		/usr/local/include/opencv2/flann.hpp \
+		/usr/local/include/opencv2/flann/flann_base.hpp \
+		/usr/local/include/opencv2/flann/general.h \
+		/usr/local/include/opencv2/flann/matrix.h \
+		/usr/local/include/opencv2/flann/params.h \
+		/usr/local/include/opencv2/flann/any.h \
+		/usr/local/include/opencv2/flann/saving.h \
+		/usr/local/include/opencv2/flann/nn_index.h \
+		/usr/local/include/opencv2/flann/result_set.h \
+		/usr/local/include/opencv2/flann/all_indices.h \
+		/usr/local/include/opencv2/flann/kdtree_index.h \
+		/usr/local/include/opencv2/flann/dynamic_bitset.h \
+		/usr/local/include/opencv2/flann/dist.h \
+		/usr/local/include/opencv2/flann/heap.h \
+		/usr/local/include/opencv2/flann/allocator.h \
+		/usr/local/include/opencv2/flann/random.h \
+		/usr/local/include/opencv2/flann/kdtree_single_index.h \
+		/usr/local/include/opencv2/flann/kmeans_index.h \
+		/usr/local/include/opencv2/flann/logger.h \
+		/usr/local/include/opencv2/flann/composite_index.h \
+		/usr/local/include/opencv2/flann/linear_index.h \
+		/usr/local/include/opencv2/flann/hierarchical_clustering_index.h \
+		/usr/local/include/opencv2/flann/lsh_index.h \
+		/usr/local/include/opencv2/flann/lsh_table.h \
+		/usr/local/include/opencv2/flann/autotuned_index.h \
+		/usr/local/include/opencv2/flann/ground_truth.h \
+		/usr/local/include/opencv2/flann/index_testing.h \
+		/usr/local/include/opencv2/flann/timer.h \
+		/usr/local/include/opencv2/flann/sampling.h \
 		/usr/local/include/opencv2/highgui.hpp \
 		/usr/local/include/opencv2/imgcodecs.hpp \
 		/usr/local/include/opencv2/videoio.hpp \
 		/usr/local/include/opencv2/highgui/highgui_c.h \
+		/usr/local/include/opencv2/imgproc/imgproc_c.h \
+		/usr/local/include/opencv2/imgproc/types_c.h \
 		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
 		/usr/local/include/opencv2/videoio/videoio_c.h \
+		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/ml.hpp \
+		/usr/local/include/opencv2/ml/ml.inl.hpp \
+		/usr/local/include/opencv2/objdetect.hpp \
+		/usr/local/include/opencv2/objdetect/detection_based_tracker.hpp \
+		/usr/local/include/opencv2/objdetect/objdetect_c.h \
+		/usr/local/include/opencv2/photo.hpp \
+		/usr/local/include/opencv2/photo/photo_c.h \
+		/usr/local/include/opencv2/shape.hpp \
+		/usr/local/include/opencv2/shape/emdL1.hpp \
+		/usr/local/include/opencv2/shape/shape_transformer.hpp \
+		/usr/local/include/opencv2/shape/hist_cost.hpp \
+		/usr/local/include/opencv2/shape/shape_distance.hpp \
+		/usr/local/include/opencv2/stitching.hpp \
+		/usr/local/include/opencv2/stitching/warpers.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers.hpp \
+		/usr/local/include/opencv2/core/cuda.hpp \
+		/usr/local/include/opencv2/core/cuda_types.hpp \
+		/usr/local/include/opencv2/core/cuda.inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/matchers.hpp \
+		/usr/local/include/opencv2/xfeatures2d/cuda.hpp \
+		/usr/local/include/opencv2/stitching/detail/motion_estimators.hpp \
+		/usr/local/include/opencv2/stitching/detail/util.hpp \
+		/usr/local/include/opencv2/stitching/detail/util_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/camera.hpp \
+		/usr/local/include/opencv2/stitching/detail/exposure_compensate.hpp \
+		/usr/local/include/opencv2/stitching/detail/seam_finders.hpp \
+		/usr/local/include/opencv2/stitching/detail/blenders.hpp \
+		/usr/local/include/opencv2/superres.hpp \
+		/usr/local/include/opencv2/superres/optical_flow.hpp \
+		/usr/local/include/opencv2/video.hpp \
+		/usr/local/include/opencv2/video/tracking.hpp \
+		/usr/local/include/opencv2/video/background_segm.hpp \
+		/usr/local/include/opencv2/video/tracking_c.h \
+		/usr/local/include/opencv2/videostab.hpp \
+		/usr/local/include/opencv2/videostab/stabilizer.hpp \
+		/usr/local/include/opencv2/videostab/global_motion.hpp \
+		/usr/local/include/opencv2/videostab/optical_flow.hpp \
+		/usr/local/include/opencv2/cudaoptflow.hpp \
+		/usr/local/include/opencv2/videostab/motion_core.hpp \
+		/usr/local/include/opencv2/videostab/outlier_rejection.hpp \
+		/usr/local/include/opencv2/cudaimgproc.hpp \
+		/usr/local/include/opencv2/videostab/motion_stabilizing.hpp \
+		/usr/local/include/opencv2/videostab/frame_source.hpp \
+		/usr/local/include/opencv2/videostab/log.hpp \
+		/usr/local/include/opencv2/videostab/inpainting.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching_inl.hpp \
+		/usr/local/include/opencv2/videostab/deblurring.hpp \
+		/usr/local/include/opencv2/videostab/wobble_suppression.hpp \
+		/usr/local/include/opencv2/videostab/ring_buffer.hpp \
+		/usr/local/include/opencv2/cudaarithm.hpp \
+		/usr/local/include/opencv2/cudabgsegm.hpp \
+		/usr/local/include/opencv2/cudafeatures2d.hpp \
+		/usr/local/include/opencv2/cudafilters.hpp \
+		/usr/local/include/opencv2/cudaobjdetect.hpp \
+		/usr/local/include/opencv2/cudastereo.hpp \
+		/usr/local/include/opencv2/cudawarping.hpp \
+		/usr/local/include/opencv2/imgproc/imgproc.hpp \
 		/usr/local/include/opencv2/core/core.hpp \
 		build/debug/moc/moc_predefs.h \
 		../../Qt/5.12.4/gcc_64/bin/moc
@@ -1514,7 +2028,8 @@ build/debug/moc/moc_feedvideopipethread.cpp: include/feedvideopipethread.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qcontainerfwd.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qobject_impl.h \
 		include/configurations.h \
-		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/opencv.hpp \
+		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core.hpp \
 		/usr/local/include/opencv2/core/cvdef.h \
 		/usr/local/include/opencv2/core/hal/interface.h \
@@ -1523,7 +2038,6 @@ build/debug/moc/moc_feedvideopipethread.cpp: include/feedvideopipethread.h \
 		/usr/local/include/opencv2/core/fast_math.hpp \
 		/usr/local/include/opencv2/core/version.hpp \
 		/usr/local/include/opencv2/core/base.hpp \
-		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core/cvstd.hpp \
 		/usr/local/include/opencv2/core/ptr.inl.hpp \
 		/usr/local/include/opencv2/core/neon_utils.hpp \
@@ -1544,14 +2058,117 @@ build/debug/moc/moc_feedvideopipethread.cpp: include/feedvideopipethread.h \
 		/usr/local/include/opencv2/core/types_c.h \
 		/usr/local/include/opencv2/core/optim.hpp \
 		/usr/local/include/opencv2/core/ovx.hpp \
-		/usr/local/include/opencv2/imgproc/imgproc_c.h \
-		/usr/local/include/opencv2/imgproc/types_c.h \
+		/usr/local/include/opencv2/calib3d.hpp \
+		/usr/local/include/opencv2/features2d.hpp \
+		/usr/local/include/opencv2/flann/miniflann.hpp \
+		/usr/local/include/opencv2/flann/defines.h \
+		/usr/local/include/opencv2/flann/config.h \
+		/usr/local/include/opencv2/core/affine.hpp \
+		/usr/local/include/opencv2/calib3d/calib3d_c.h \
+		/usr/local/include/opencv2/dnn.hpp \
+		/usr/local/include/opencv2/dnn/dnn.hpp \
+		/usr/local/include/opencv2/core/async.hpp \
+		/usr/local/include/opencv2/dnn/dict.hpp \
+		/usr/local/include/opencv2/dnn/layer.hpp \
+		/usr/local/include/opencv2/dnn/dnn.inl.hpp \
+		/usr/local/include/opencv2/dnn/utils/inference_engine.hpp \
+		/usr/local/include/opencv2/flann.hpp \
+		/usr/local/include/opencv2/flann/flann_base.hpp \
+		/usr/local/include/opencv2/flann/general.h \
+		/usr/local/include/opencv2/flann/matrix.h \
+		/usr/local/include/opencv2/flann/params.h \
+		/usr/local/include/opencv2/flann/any.h \
+		/usr/local/include/opencv2/flann/saving.h \
+		/usr/local/include/opencv2/flann/nn_index.h \
+		/usr/local/include/opencv2/flann/result_set.h \
+		/usr/local/include/opencv2/flann/all_indices.h \
+		/usr/local/include/opencv2/flann/kdtree_index.h \
+		/usr/local/include/opencv2/flann/dynamic_bitset.h \
+		/usr/local/include/opencv2/flann/dist.h \
+		/usr/local/include/opencv2/flann/heap.h \
+		/usr/local/include/opencv2/flann/allocator.h \
+		/usr/local/include/opencv2/flann/random.h \
+		/usr/local/include/opencv2/flann/kdtree_single_index.h \
+		/usr/local/include/opencv2/flann/kmeans_index.h \
+		/usr/local/include/opencv2/flann/logger.h \
+		/usr/local/include/opencv2/flann/composite_index.h \
+		/usr/local/include/opencv2/flann/linear_index.h \
+		/usr/local/include/opencv2/flann/hierarchical_clustering_index.h \
+		/usr/local/include/opencv2/flann/lsh_index.h \
+		/usr/local/include/opencv2/flann/lsh_table.h \
+		/usr/local/include/opencv2/flann/autotuned_index.h \
+		/usr/local/include/opencv2/flann/ground_truth.h \
+		/usr/local/include/opencv2/flann/index_testing.h \
+		/usr/local/include/opencv2/flann/timer.h \
+		/usr/local/include/opencv2/flann/sampling.h \
 		/usr/local/include/opencv2/highgui.hpp \
 		/usr/local/include/opencv2/imgcodecs.hpp \
 		/usr/local/include/opencv2/videoio.hpp \
 		/usr/local/include/opencv2/highgui/highgui_c.h \
+		/usr/local/include/opencv2/imgproc/imgproc_c.h \
+		/usr/local/include/opencv2/imgproc/types_c.h \
 		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
 		/usr/local/include/opencv2/videoio/videoio_c.h \
+		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/ml.hpp \
+		/usr/local/include/opencv2/ml/ml.inl.hpp \
+		/usr/local/include/opencv2/objdetect.hpp \
+		/usr/local/include/opencv2/objdetect/detection_based_tracker.hpp \
+		/usr/local/include/opencv2/objdetect/objdetect_c.h \
+		/usr/local/include/opencv2/photo.hpp \
+		/usr/local/include/opencv2/photo/photo_c.h \
+		/usr/local/include/opencv2/shape.hpp \
+		/usr/local/include/opencv2/shape/emdL1.hpp \
+		/usr/local/include/opencv2/shape/shape_transformer.hpp \
+		/usr/local/include/opencv2/shape/hist_cost.hpp \
+		/usr/local/include/opencv2/shape/shape_distance.hpp \
+		/usr/local/include/opencv2/stitching.hpp \
+		/usr/local/include/opencv2/stitching/warpers.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers.hpp \
+		/usr/local/include/opencv2/core/cuda.hpp \
+		/usr/local/include/opencv2/core/cuda_types.hpp \
+		/usr/local/include/opencv2/core/cuda.inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/matchers.hpp \
+		/usr/local/include/opencv2/xfeatures2d/cuda.hpp \
+		/usr/local/include/opencv2/stitching/detail/motion_estimators.hpp \
+		/usr/local/include/opencv2/stitching/detail/util.hpp \
+		/usr/local/include/opencv2/stitching/detail/util_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/camera.hpp \
+		/usr/local/include/opencv2/stitching/detail/exposure_compensate.hpp \
+		/usr/local/include/opencv2/stitching/detail/seam_finders.hpp \
+		/usr/local/include/opencv2/stitching/detail/blenders.hpp \
+		/usr/local/include/opencv2/superres.hpp \
+		/usr/local/include/opencv2/superres/optical_flow.hpp \
+		/usr/local/include/opencv2/video.hpp \
+		/usr/local/include/opencv2/video/tracking.hpp \
+		/usr/local/include/opencv2/video/background_segm.hpp \
+		/usr/local/include/opencv2/video/tracking_c.h \
+		/usr/local/include/opencv2/videostab.hpp \
+		/usr/local/include/opencv2/videostab/stabilizer.hpp \
+		/usr/local/include/opencv2/videostab/global_motion.hpp \
+		/usr/local/include/opencv2/videostab/optical_flow.hpp \
+		/usr/local/include/opencv2/cudaoptflow.hpp \
+		/usr/local/include/opencv2/videostab/motion_core.hpp \
+		/usr/local/include/opencv2/videostab/outlier_rejection.hpp \
+		/usr/local/include/opencv2/cudaimgproc.hpp \
+		/usr/local/include/opencv2/videostab/motion_stabilizing.hpp \
+		/usr/local/include/opencv2/videostab/frame_source.hpp \
+		/usr/local/include/opencv2/videostab/log.hpp \
+		/usr/local/include/opencv2/videostab/inpainting.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching_inl.hpp \
+		/usr/local/include/opencv2/videostab/deblurring.hpp \
+		/usr/local/include/opencv2/videostab/wobble_suppression.hpp \
+		/usr/local/include/opencv2/videostab/ring_buffer.hpp \
+		/usr/local/include/opencv2/cudaarithm.hpp \
+		/usr/local/include/opencv2/cudabgsegm.hpp \
+		/usr/local/include/opencv2/cudafeatures2d.hpp \
+		/usr/local/include/opencv2/cudafilters.hpp \
+		/usr/local/include/opencv2/cudaobjdetect.hpp \
+		/usr/local/include/opencv2/cudastereo.hpp \
+		/usr/local/include/opencv2/cudawarping.hpp \
+		/usr/local/include/opencv2/imgproc/imgproc.hpp \
 		/usr/local/include/opencv2/core/core.hpp \
 		build/debug/moc/moc_predefs.h \
 		../../Qt/5.12.4/gcc_64/bin/moc
@@ -1694,7 +2311,8 @@ build/debug/moc/moc_frmclient.cpp: include/frmclient.h \
 		../../Qt/5.12.4/gcc_64/include/QtGui/QStandardItemModel \
 		../../Qt/5.12.4/gcc_64/include/QtGui/qstandarditemmodel.h \
 		include/configurations.h \
-		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/opencv.hpp \
+		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core.hpp \
 		/usr/local/include/opencv2/core/cvdef.h \
 		/usr/local/include/opencv2/core/hal/interface.h \
@@ -1703,7 +2321,6 @@ build/debug/moc/moc_frmclient.cpp: include/frmclient.h \
 		/usr/local/include/opencv2/core/fast_math.hpp \
 		/usr/local/include/opencv2/core/version.hpp \
 		/usr/local/include/opencv2/core/base.hpp \
-		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core/cvstd.hpp \
 		/usr/local/include/opencv2/core/ptr.inl.hpp \
 		/usr/local/include/opencv2/core/neon_utils.hpp \
@@ -1724,14 +2341,117 @@ build/debug/moc/moc_frmclient.cpp: include/frmclient.h \
 		/usr/local/include/opencv2/core/types_c.h \
 		/usr/local/include/opencv2/core/optim.hpp \
 		/usr/local/include/opencv2/core/ovx.hpp \
-		/usr/local/include/opencv2/imgproc/imgproc_c.h \
-		/usr/local/include/opencv2/imgproc/types_c.h \
+		/usr/local/include/opencv2/calib3d.hpp \
+		/usr/local/include/opencv2/features2d.hpp \
+		/usr/local/include/opencv2/flann/miniflann.hpp \
+		/usr/local/include/opencv2/flann/defines.h \
+		/usr/local/include/opencv2/flann/config.h \
+		/usr/local/include/opencv2/core/affine.hpp \
+		/usr/local/include/opencv2/calib3d/calib3d_c.h \
+		/usr/local/include/opencv2/dnn.hpp \
+		/usr/local/include/opencv2/dnn/dnn.hpp \
+		/usr/local/include/opencv2/core/async.hpp \
+		/usr/local/include/opencv2/dnn/dict.hpp \
+		/usr/local/include/opencv2/dnn/layer.hpp \
+		/usr/local/include/opencv2/dnn/dnn.inl.hpp \
+		/usr/local/include/opencv2/dnn/utils/inference_engine.hpp \
+		/usr/local/include/opencv2/flann.hpp \
+		/usr/local/include/opencv2/flann/flann_base.hpp \
+		/usr/local/include/opencv2/flann/general.h \
+		/usr/local/include/opencv2/flann/matrix.h \
+		/usr/local/include/opencv2/flann/params.h \
+		/usr/local/include/opencv2/flann/any.h \
+		/usr/local/include/opencv2/flann/saving.h \
+		/usr/local/include/opencv2/flann/nn_index.h \
+		/usr/local/include/opencv2/flann/result_set.h \
+		/usr/local/include/opencv2/flann/all_indices.h \
+		/usr/local/include/opencv2/flann/kdtree_index.h \
+		/usr/local/include/opencv2/flann/dynamic_bitset.h \
+		/usr/local/include/opencv2/flann/dist.h \
+		/usr/local/include/opencv2/flann/heap.h \
+		/usr/local/include/opencv2/flann/allocator.h \
+		/usr/local/include/opencv2/flann/random.h \
+		/usr/local/include/opencv2/flann/kdtree_single_index.h \
+		/usr/local/include/opencv2/flann/kmeans_index.h \
+		/usr/local/include/opencv2/flann/logger.h \
+		/usr/local/include/opencv2/flann/composite_index.h \
+		/usr/local/include/opencv2/flann/linear_index.h \
+		/usr/local/include/opencv2/flann/hierarchical_clustering_index.h \
+		/usr/local/include/opencv2/flann/lsh_index.h \
+		/usr/local/include/opencv2/flann/lsh_table.h \
+		/usr/local/include/opencv2/flann/autotuned_index.h \
+		/usr/local/include/opencv2/flann/ground_truth.h \
+		/usr/local/include/opencv2/flann/index_testing.h \
+		/usr/local/include/opencv2/flann/timer.h \
+		/usr/local/include/opencv2/flann/sampling.h \
 		/usr/local/include/opencv2/highgui.hpp \
 		/usr/local/include/opencv2/imgcodecs.hpp \
 		/usr/local/include/opencv2/videoio.hpp \
 		/usr/local/include/opencv2/highgui/highgui_c.h \
+		/usr/local/include/opencv2/imgproc/imgproc_c.h \
+		/usr/local/include/opencv2/imgproc/types_c.h \
 		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
 		/usr/local/include/opencv2/videoio/videoio_c.h \
+		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/ml.hpp \
+		/usr/local/include/opencv2/ml/ml.inl.hpp \
+		/usr/local/include/opencv2/objdetect.hpp \
+		/usr/local/include/opencv2/objdetect/detection_based_tracker.hpp \
+		/usr/local/include/opencv2/objdetect/objdetect_c.h \
+		/usr/local/include/opencv2/photo.hpp \
+		/usr/local/include/opencv2/photo/photo_c.h \
+		/usr/local/include/opencv2/shape.hpp \
+		/usr/local/include/opencv2/shape/emdL1.hpp \
+		/usr/local/include/opencv2/shape/shape_transformer.hpp \
+		/usr/local/include/opencv2/shape/hist_cost.hpp \
+		/usr/local/include/opencv2/shape/shape_distance.hpp \
+		/usr/local/include/opencv2/stitching.hpp \
+		/usr/local/include/opencv2/stitching/warpers.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers.hpp \
+		/usr/local/include/opencv2/core/cuda.hpp \
+		/usr/local/include/opencv2/core/cuda_types.hpp \
+		/usr/local/include/opencv2/core/cuda.inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/matchers.hpp \
+		/usr/local/include/opencv2/xfeatures2d/cuda.hpp \
+		/usr/local/include/opencv2/stitching/detail/motion_estimators.hpp \
+		/usr/local/include/opencv2/stitching/detail/util.hpp \
+		/usr/local/include/opencv2/stitching/detail/util_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/camera.hpp \
+		/usr/local/include/opencv2/stitching/detail/exposure_compensate.hpp \
+		/usr/local/include/opencv2/stitching/detail/seam_finders.hpp \
+		/usr/local/include/opencv2/stitching/detail/blenders.hpp \
+		/usr/local/include/opencv2/superres.hpp \
+		/usr/local/include/opencv2/superres/optical_flow.hpp \
+		/usr/local/include/opencv2/video.hpp \
+		/usr/local/include/opencv2/video/tracking.hpp \
+		/usr/local/include/opencv2/video/background_segm.hpp \
+		/usr/local/include/opencv2/video/tracking_c.h \
+		/usr/local/include/opencv2/videostab.hpp \
+		/usr/local/include/opencv2/videostab/stabilizer.hpp \
+		/usr/local/include/opencv2/videostab/global_motion.hpp \
+		/usr/local/include/opencv2/videostab/optical_flow.hpp \
+		/usr/local/include/opencv2/cudaoptflow.hpp \
+		/usr/local/include/opencv2/videostab/motion_core.hpp \
+		/usr/local/include/opencv2/videostab/outlier_rejection.hpp \
+		/usr/local/include/opencv2/cudaimgproc.hpp \
+		/usr/local/include/opencv2/videostab/motion_stabilizing.hpp \
+		/usr/local/include/opencv2/videostab/frame_source.hpp \
+		/usr/local/include/opencv2/videostab/log.hpp \
+		/usr/local/include/opencv2/videostab/inpainting.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching_inl.hpp \
+		/usr/local/include/opencv2/videostab/deblurring.hpp \
+		/usr/local/include/opencv2/videostab/wobble_suppression.hpp \
+		/usr/local/include/opencv2/videostab/ring_buffer.hpp \
+		/usr/local/include/opencv2/cudaarithm.hpp \
+		/usr/local/include/opencv2/cudabgsegm.hpp \
+		/usr/local/include/opencv2/cudafeatures2d.hpp \
+		/usr/local/include/opencv2/cudafilters.hpp \
+		/usr/local/include/opencv2/cudaobjdetect.hpp \
+		/usr/local/include/opencv2/cudastereo.hpp \
+		/usr/local/include/opencv2/cudawarping.hpp \
+		/usr/local/include/opencv2/imgproc/imgproc.hpp \
 		/usr/local/include/opencv2/core/core.hpp \
 		include/connectivity.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/QObject \
@@ -1877,7 +2597,8 @@ build/debug/moc/moc_frmconnected.cpp: include/frmconnected.h \
 		../../Qt/5.12.4/gcc_64/include/QtGui/QStandardItemModel \
 		../../Qt/5.12.4/gcc_64/include/QtGui/qstandarditemmodel.h \
 		include/configurations.h \
-		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/opencv.hpp \
+		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core.hpp \
 		/usr/local/include/opencv2/core/cvdef.h \
 		/usr/local/include/opencv2/core/hal/interface.h \
@@ -1886,7 +2607,6 @@ build/debug/moc/moc_frmconnected.cpp: include/frmconnected.h \
 		/usr/local/include/opencv2/core/fast_math.hpp \
 		/usr/local/include/opencv2/core/version.hpp \
 		/usr/local/include/opencv2/core/base.hpp \
-		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core/cvstd.hpp \
 		/usr/local/include/opencv2/core/ptr.inl.hpp \
 		/usr/local/include/opencv2/core/neon_utils.hpp \
@@ -1907,14 +2627,117 @@ build/debug/moc/moc_frmconnected.cpp: include/frmconnected.h \
 		/usr/local/include/opencv2/core/types_c.h \
 		/usr/local/include/opencv2/core/optim.hpp \
 		/usr/local/include/opencv2/core/ovx.hpp \
-		/usr/local/include/opencv2/imgproc/imgproc_c.h \
-		/usr/local/include/opencv2/imgproc/types_c.h \
+		/usr/local/include/opencv2/calib3d.hpp \
+		/usr/local/include/opencv2/features2d.hpp \
+		/usr/local/include/opencv2/flann/miniflann.hpp \
+		/usr/local/include/opencv2/flann/defines.h \
+		/usr/local/include/opencv2/flann/config.h \
+		/usr/local/include/opencv2/core/affine.hpp \
+		/usr/local/include/opencv2/calib3d/calib3d_c.h \
+		/usr/local/include/opencv2/dnn.hpp \
+		/usr/local/include/opencv2/dnn/dnn.hpp \
+		/usr/local/include/opencv2/core/async.hpp \
+		/usr/local/include/opencv2/dnn/dict.hpp \
+		/usr/local/include/opencv2/dnn/layer.hpp \
+		/usr/local/include/opencv2/dnn/dnn.inl.hpp \
+		/usr/local/include/opencv2/dnn/utils/inference_engine.hpp \
+		/usr/local/include/opencv2/flann.hpp \
+		/usr/local/include/opencv2/flann/flann_base.hpp \
+		/usr/local/include/opencv2/flann/general.h \
+		/usr/local/include/opencv2/flann/matrix.h \
+		/usr/local/include/opencv2/flann/params.h \
+		/usr/local/include/opencv2/flann/any.h \
+		/usr/local/include/opencv2/flann/saving.h \
+		/usr/local/include/opencv2/flann/nn_index.h \
+		/usr/local/include/opencv2/flann/result_set.h \
+		/usr/local/include/opencv2/flann/all_indices.h \
+		/usr/local/include/opencv2/flann/kdtree_index.h \
+		/usr/local/include/opencv2/flann/dynamic_bitset.h \
+		/usr/local/include/opencv2/flann/dist.h \
+		/usr/local/include/opencv2/flann/heap.h \
+		/usr/local/include/opencv2/flann/allocator.h \
+		/usr/local/include/opencv2/flann/random.h \
+		/usr/local/include/opencv2/flann/kdtree_single_index.h \
+		/usr/local/include/opencv2/flann/kmeans_index.h \
+		/usr/local/include/opencv2/flann/logger.h \
+		/usr/local/include/opencv2/flann/composite_index.h \
+		/usr/local/include/opencv2/flann/linear_index.h \
+		/usr/local/include/opencv2/flann/hierarchical_clustering_index.h \
+		/usr/local/include/opencv2/flann/lsh_index.h \
+		/usr/local/include/opencv2/flann/lsh_table.h \
+		/usr/local/include/opencv2/flann/autotuned_index.h \
+		/usr/local/include/opencv2/flann/ground_truth.h \
+		/usr/local/include/opencv2/flann/index_testing.h \
+		/usr/local/include/opencv2/flann/timer.h \
+		/usr/local/include/opencv2/flann/sampling.h \
 		/usr/local/include/opencv2/highgui.hpp \
 		/usr/local/include/opencv2/imgcodecs.hpp \
 		/usr/local/include/opencv2/videoio.hpp \
 		/usr/local/include/opencv2/highgui/highgui_c.h \
+		/usr/local/include/opencv2/imgproc/imgproc_c.h \
+		/usr/local/include/opencv2/imgproc/types_c.h \
 		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
 		/usr/local/include/opencv2/videoio/videoio_c.h \
+		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/ml.hpp \
+		/usr/local/include/opencv2/ml/ml.inl.hpp \
+		/usr/local/include/opencv2/objdetect.hpp \
+		/usr/local/include/opencv2/objdetect/detection_based_tracker.hpp \
+		/usr/local/include/opencv2/objdetect/objdetect_c.h \
+		/usr/local/include/opencv2/photo.hpp \
+		/usr/local/include/opencv2/photo/photo_c.h \
+		/usr/local/include/opencv2/shape.hpp \
+		/usr/local/include/opencv2/shape/emdL1.hpp \
+		/usr/local/include/opencv2/shape/shape_transformer.hpp \
+		/usr/local/include/opencv2/shape/hist_cost.hpp \
+		/usr/local/include/opencv2/shape/shape_distance.hpp \
+		/usr/local/include/opencv2/stitching.hpp \
+		/usr/local/include/opencv2/stitching/warpers.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers.hpp \
+		/usr/local/include/opencv2/core/cuda.hpp \
+		/usr/local/include/opencv2/core/cuda_types.hpp \
+		/usr/local/include/opencv2/core/cuda.inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/matchers.hpp \
+		/usr/local/include/opencv2/xfeatures2d/cuda.hpp \
+		/usr/local/include/opencv2/stitching/detail/motion_estimators.hpp \
+		/usr/local/include/opencv2/stitching/detail/util.hpp \
+		/usr/local/include/opencv2/stitching/detail/util_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/camera.hpp \
+		/usr/local/include/opencv2/stitching/detail/exposure_compensate.hpp \
+		/usr/local/include/opencv2/stitching/detail/seam_finders.hpp \
+		/usr/local/include/opencv2/stitching/detail/blenders.hpp \
+		/usr/local/include/opencv2/superres.hpp \
+		/usr/local/include/opencv2/superres/optical_flow.hpp \
+		/usr/local/include/opencv2/video.hpp \
+		/usr/local/include/opencv2/video/tracking.hpp \
+		/usr/local/include/opencv2/video/background_segm.hpp \
+		/usr/local/include/opencv2/video/tracking_c.h \
+		/usr/local/include/opencv2/videostab.hpp \
+		/usr/local/include/opencv2/videostab/stabilizer.hpp \
+		/usr/local/include/opencv2/videostab/global_motion.hpp \
+		/usr/local/include/opencv2/videostab/optical_flow.hpp \
+		/usr/local/include/opencv2/cudaoptflow.hpp \
+		/usr/local/include/opencv2/videostab/motion_core.hpp \
+		/usr/local/include/opencv2/videostab/outlier_rejection.hpp \
+		/usr/local/include/opencv2/cudaimgproc.hpp \
+		/usr/local/include/opencv2/videostab/motion_stabilizing.hpp \
+		/usr/local/include/opencv2/videostab/frame_source.hpp \
+		/usr/local/include/opencv2/videostab/log.hpp \
+		/usr/local/include/opencv2/videostab/inpainting.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching_inl.hpp \
+		/usr/local/include/opencv2/videostab/deblurring.hpp \
+		/usr/local/include/opencv2/videostab/wobble_suppression.hpp \
+		/usr/local/include/opencv2/videostab/ring_buffer.hpp \
+		/usr/local/include/opencv2/cudaarithm.hpp \
+		/usr/local/include/opencv2/cudabgsegm.hpp \
+		/usr/local/include/opencv2/cudafeatures2d.hpp \
+		/usr/local/include/opencv2/cudafilters.hpp \
+		/usr/local/include/opencv2/cudaobjdetect.hpp \
+		/usr/local/include/opencv2/cudastereo.hpp \
+		/usr/local/include/opencv2/cudawarping.hpp \
+		/usr/local/include/opencv2/imgproc/imgproc.hpp \
 		/usr/local/include/opencv2/core/core.hpp \
 		include/connectivity.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/QObject \
@@ -2070,7 +2893,8 @@ build/debug/moc/moc_frmmain.cpp: include/frmmain.h \
 		../../Qt/5.12.4/gcc_64/include/QtGui/QStandardItemModel \
 		../../Qt/5.12.4/gcc_64/include/QtGui/qstandarditemmodel.h \
 		include/configurations.h \
-		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/opencv.hpp \
+		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core.hpp \
 		/usr/local/include/opencv2/core/cvdef.h \
 		/usr/local/include/opencv2/core/hal/interface.h \
@@ -2079,7 +2903,6 @@ build/debug/moc/moc_frmmain.cpp: include/frmmain.h \
 		/usr/local/include/opencv2/core/fast_math.hpp \
 		/usr/local/include/opencv2/core/version.hpp \
 		/usr/local/include/opencv2/core/base.hpp \
-		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core/cvstd.hpp \
 		/usr/local/include/opencv2/core/ptr.inl.hpp \
 		/usr/local/include/opencv2/core/neon_utils.hpp \
@@ -2100,14 +2923,117 @@ build/debug/moc/moc_frmmain.cpp: include/frmmain.h \
 		/usr/local/include/opencv2/core/types_c.h \
 		/usr/local/include/opencv2/core/optim.hpp \
 		/usr/local/include/opencv2/core/ovx.hpp \
-		/usr/local/include/opencv2/imgproc/imgproc_c.h \
-		/usr/local/include/opencv2/imgproc/types_c.h \
+		/usr/local/include/opencv2/calib3d.hpp \
+		/usr/local/include/opencv2/features2d.hpp \
+		/usr/local/include/opencv2/flann/miniflann.hpp \
+		/usr/local/include/opencv2/flann/defines.h \
+		/usr/local/include/opencv2/flann/config.h \
+		/usr/local/include/opencv2/core/affine.hpp \
+		/usr/local/include/opencv2/calib3d/calib3d_c.h \
+		/usr/local/include/opencv2/dnn.hpp \
+		/usr/local/include/opencv2/dnn/dnn.hpp \
+		/usr/local/include/opencv2/core/async.hpp \
+		/usr/local/include/opencv2/dnn/dict.hpp \
+		/usr/local/include/opencv2/dnn/layer.hpp \
+		/usr/local/include/opencv2/dnn/dnn.inl.hpp \
+		/usr/local/include/opencv2/dnn/utils/inference_engine.hpp \
+		/usr/local/include/opencv2/flann.hpp \
+		/usr/local/include/opencv2/flann/flann_base.hpp \
+		/usr/local/include/opencv2/flann/general.h \
+		/usr/local/include/opencv2/flann/matrix.h \
+		/usr/local/include/opencv2/flann/params.h \
+		/usr/local/include/opencv2/flann/any.h \
+		/usr/local/include/opencv2/flann/saving.h \
+		/usr/local/include/opencv2/flann/nn_index.h \
+		/usr/local/include/opencv2/flann/result_set.h \
+		/usr/local/include/opencv2/flann/all_indices.h \
+		/usr/local/include/opencv2/flann/kdtree_index.h \
+		/usr/local/include/opencv2/flann/dynamic_bitset.h \
+		/usr/local/include/opencv2/flann/dist.h \
+		/usr/local/include/opencv2/flann/heap.h \
+		/usr/local/include/opencv2/flann/allocator.h \
+		/usr/local/include/opencv2/flann/random.h \
+		/usr/local/include/opencv2/flann/kdtree_single_index.h \
+		/usr/local/include/opencv2/flann/kmeans_index.h \
+		/usr/local/include/opencv2/flann/logger.h \
+		/usr/local/include/opencv2/flann/composite_index.h \
+		/usr/local/include/opencv2/flann/linear_index.h \
+		/usr/local/include/opencv2/flann/hierarchical_clustering_index.h \
+		/usr/local/include/opencv2/flann/lsh_index.h \
+		/usr/local/include/opencv2/flann/lsh_table.h \
+		/usr/local/include/opencv2/flann/autotuned_index.h \
+		/usr/local/include/opencv2/flann/ground_truth.h \
+		/usr/local/include/opencv2/flann/index_testing.h \
+		/usr/local/include/opencv2/flann/timer.h \
+		/usr/local/include/opencv2/flann/sampling.h \
 		/usr/local/include/opencv2/highgui.hpp \
 		/usr/local/include/opencv2/imgcodecs.hpp \
 		/usr/local/include/opencv2/videoio.hpp \
 		/usr/local/include/opencv2/highgui/highgui_c.h \
+		/usr/local/include/opencv2/imgproc/imgproc_c.h \
+		/usr/local/include/opencv2/imgproc/types_c.h \
 		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
 		/usr/local/include/opencv2/videoio/videoio_c.h \
+		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/ml.hpp \
+		/usr/local/include/opencv2/ml/ml.inl.hpp \
+		/usr/local/include/opencv2/objdetect.hpp \
+		/usr/local/include/opencv2/objdetect/detection_based_tracker.hpp \
+		/usr/local/include/opencv2/objdetect/objdetect_c.h \
+		/usr/local/include/opencv2/photo.hpp \
+		/usr/local/include/opencv2/photo/photo_c.h \
+		/usr/local/include/opencv2/shape.hpp \
+		/usr/local/include/opencv2/shape/emdL1.hpp \
+		/usr/local/include/opencv2/shape/shape_transformer.hpp \
+		/usr/local/include/opencv2/shape/hist_cost.hpp \
+		/usr/local/include/opencv2/shape/shape_distance.hpp \
+		/usr/local/include/opencv2/stitching.hpp \
+		/usr/local/include/opencv2/stitching/warpers.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers.hpp \
+		/usr/local/include/opencv2/core/cuda.hpp \
+		/usr/local/include/opencv2/core/cuda_types.hpp \
+		/usr/local/include/opencv2/core/cuda.inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/matchers.hpp \
+		/usr/local/include/opencv2/xfeatures2d/cuda.hpp \
+		/usr/local/include/opencv2/stitching/detail/motion_estimators.hpp \
+		/usr/local/include/opencv2/stitching/detail/util.hpp \
+		/usr/local/include/opencv2/stitching/detail/util_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/camera.hpp \
+		/usr/local/include/opencv2/stitching/detail/exposure_compensate.hpp \
+		/usr/local/include/opencv2/stitching/detail/seam_finders.hpp \
+		/usr/local/include/opencv2/stitching/detail/blenders.hpp \
+		/usr/local/include/opencv2/superres.hpp \
+		/usr/local/include/opencv2/superres/optical_flow.hpp \
+		/usr/local/include/opencv2/video.hpp \
+		/usr/local/include/opencv2/video/tracking.hpp \
+		/usr/local/include/opencv2/video/background_segm.hpp \
+		/usr/local/include/opencv2/video/tracking_c.h \
+		/usr/local/include/opencv2/videostab.hpp \
+		/usr/local/include/opencv2/videostab/stabilizer.hpp \
+		/usr/local/include/opencv2/videostab/global_motion.hpp \
+		/usr/local/include/opencv2/videostab/optical_flow.hpp \
+		/usr/local/include/opencv2/cudaoptflow.hpp \
+		/usr/local/include/opencv2/videostab/motion_core.hpp \
+		/usr/local/include/opencv2/videostab/outlier_rejection.hpp \
+		/usr/local/include/opencv2/cudaimgproc.hpp \
+		/usr/local/include/opencv2/videostab/motion_stabilizing.hpp \
+		/usr/local/include/opencv2/videostab/frame_source.hpp \
+		/usr/local/include/opencv2/videostab/log.hpp \
+		/usr/local/include/opencv2/videostab/inpainting.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching_inl.hpp \
+		/usr/local/include/opencv2/videostab/deblurring.hpp \
+		/usr/local/include/opencv2/videostab/wobble_suppression.hpp \
+		/usr/local/include/opencv2/videostab/ring_buffer.hpp \
+		/usr/local/include/opencv2/cudaarithm.hpp \
+		/usr/local/include/opencv2/cudabgsegm.hpp \
+		/usr/local/include/opencv2/cudafeatures2d.hpp \
+		/usr/local/include/opencv2/cudafilters.hpp \
+		/usr/local/include/opencv2/cudaobjdetect.hpp \
+		/usr/local/include/opencv2/cudastereo.hpp \
+		/usr/local/include/opencv2/cudawarping.hpp \
+		/usr/local/include/opencv2/imgproc/imgproc.hpp \
 		/usr/local/include/opencv2/core/core.hpp \
 		build/debug/moc/moc_predefs.h \
 		../../Qt/5.12.4/gcc_64/bin/moc
@@ -2248,7 +3174,8 @@ build/debug/moc/moc_frmrunning.cpp: include/frmrunning.h \
 		../../Qt/5.12.4/gcc_64/include/QtGui/QStandardItemModel \
 		../../Qt/5.12.4/gcc_64/include/QtGui/qstandarditemmodel.h \
 		include/configurations.h \
-		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/opencv.hpp \
+		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core.hpp \
 		/usr/local/include/opencv2/core/cvdef.h \
 		/usr/local/include/opencv2/core/hal/interface.h \
@@ -2257,7 +3184,6 @@ build/debug/moc/moc_frmrunning.cpp: include/frmrunning.h \
 		/usr/local/include/opencv2/core/fast_math.hpp \
 		/usr/local/include/opencv2/core/version.hpp \
 		/usr/local/include/opencv2/core/base.hpp \
-		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core/cvstd.hpp \
 		/usr/local/include/opencv2/core/ptr.inl.hpp \
 		/usr/local/include/opencv2/core/neon_utils.hpp \
@@ -2278,14 +3204,117 @@ build/debug/moc/moc_frmrunning.cpp: include/frmrunning.h \
 		/usr/local/include/opencv2/core/types_c.h \
 		/usr/local/include/opencv2/core/optim.hpp \
 		/usr/local/include/opencv2/core/ovx.hpp \
-		/usr/local/include/opencv2/imgproc/imgproc_c.h \
-		/usr/local/include/opencv2/imgproc/types_c.h \
+		/usr/local/include/opencv2/calib3d.hpp \
+		/usr/local/include/opencv2/features2d.hpp \
+		/usr/local/include/opencv2/flann/miniflann.hpp \
+		/usr/local/include/opencv2/flann/defines.h \
+		/usr/local/include/opencv2/flann/config.h \
+		/usr/local/include/opencv2/core/affine.hpp \
+		/usr/local/include/opencv2/calib3d/calib3d_c.h \
+		/usr/local/include/opencv2/dnn.hpp \
+		/usr/local/include/opencv2/dnn/dnn.hpp \
+		/usr/local/include/opencv2/core/async.hpp \
+		/usr/local/include/opencv2/dnn/dict.hpp \
+		/usr/local/include/opencv2/dnn/layer.hpp \
+		/usr/local/include/opencv2/dnn/dnn.inl.hpp \
+		/usr/local/include/opencv2/dnn/utils/inference_engine.hpp \
+		/usr/local/include/opencv2/flann.hpp \
+		/usr/local/include/opencv2/flann/flann_base.hpp \
+		/usr/local/include/opencv2/flann/general.h \
+		/usr/local/include/opencv2/flann/matrix.h \
+		/usr/local/include/opencv2/flann/params.h \
+		/usr/local/include/opencv2/flann/any.h \
+		/usr/local/include/opencv2/flann/saving.h \
+		/usr/local/include/opencv2/flann/nn_index.h \
+		/usr/local/include/opencv2/flann/result_set.h \
+		/usr/local/include/opencv2/flann/all_indices.h \
+		/usr/local/include/opencv2/flann/kdtree_index.h \
+		/usr/local/include/opencv2/flann/dynamic_bitset.h \
+		/usr/local/include/opencv2/flann/dist.h \
+		/usr/local/include/opencv2/flann/heap.h \
+		/usr/local/include/opencv2/flann/allocator.h \
+		/usr/local/include/opencv2/flann/random.h \
+		/usr/local/include/opencv2/flann/kdtree_single_index.h \
+		/usr/local/include/opencv2/flann/kmeans_index.h \
+		/usr/local/include/opencv2/flann/logger.h \
+		/usr/local/include/opencv2/flann/composite_index.h \
+		/usr/local/include/opencv2/flann/linear_index.h \
+		/usr/local/include/opencv2/flann/hierarchical_clustering_index.h \
+		/usr/local/include/opencv2/flann/lsh_index.h \
+		/usr/local/include/opencv2/flann/lsh_table.h \
+		/usr/local/include/opencv2/flann/autotuned_index.h \
+		/usr/local/include/opencv2/flann/ground_truth.h \
+		/usr/local/include/opencv2/flann/index_testing.h \
+		/usr/local/include/opencv2/flann/timer.h \
+		/usr/local/include/opencv2/flann/sampling.h \
 		/usr/local/include/opencv2/highgui.hpp \
 		/usr/local/include/opencv2/imgcodecs.hpp \
 		/usr/local/include/opencv2/videoio.hpp \
 		/usr/local/include/opencv2/highgui/highgui_c.h \
+		/usr/local/include/opencv2/imgproc/imgproc_c.h \
+		/usr/local/include/opencv2/imgproc/types_c.h \
 		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
 		/usr/local/include/opencv2/videoio/videoio_c.h \
+		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/ml.hpp \
+		/usr/local/include/opencv2/ml/ml.inl.hpp \
+		/usr/local/include/opencv2/objdetect.hpp \
+		/usr/local/include/opencv2/objdetect/detection_based_tracker.hpp \
+		/usr/local/include/opencv2/objdetect/objdetect_c.h \
+		/usr/local/include/opencv2/photo.hpp \
+		/usr/local/include/opencv2/photo/photo_c.h \
+		/usr/local/include/opencv2/shape.hpp \
+		/usr/local/include/opencv2/shape/emdL1.hpp \
+		/usr/local/include/opencv2/shape/shape_transformer.hpp \
+		/usr/local/include/opencv2/shape/hist_cost.hpp \
+		/usr/local/include/opencv2/shape/shape_distance.hpp \
+		/usr/local/include/opencv2/stitching.hpp \
+		/usr/local/include/opencv2/stitching/warpers.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers.hpp \
+		/usr/local/include/opencv2/core/cuda.hpp \
+		/usr/local/include/opencv2/core/cuda_types.hpp \
+		/usr/local/include/opencv2/core/cuda.inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/matchers.hpp \
+		/usr/local/include/opencv2/xfeatures2d/cuda.hpp \
+		/usr/local/include/opencv2/stitching/detail/motion_estimators.hpp \
+		/usr/local/include/opencv2/stitching/detail/util.hpp \
+		/usr/local/include/opencv2/stitching/detail/util_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/camera.hpp \
+		/usr/local/include/opencv2/stitching/detail/exposure_compensate.hpp \
+		/usr/local/include/opencv2/stitching/detail/seam_finders.hpp \
+		/usr/local/include/opencv2/stitching/detail/blenders.hpp \
+		/usr/local/include/opencv2/superres.hpp \
+		/usr/local/include/opencv2/superres/optical_flow.hpp \
+		/usr/local/include/opencv2/video.hpp \
+		/usr/local/include/opencv2/video/tracking.hpp \
+		/usr/local/include/opencv2/video/background_segm.hpp \
+		/usr/local/include/opencv2/video/tracking_c.h \
+		/usr/local/include/opencv2/videostab.hpp \
+		/usr/local/include/opencv2/videostab/stabilizer.hpp \
+		/usr/local/include/opencv2/videostab/global_motion.hpp \
+		/usr/local/include/opencv2/videostab/optical_flow.hpp \
+		/usr/local/include/opencv2/cudaoptflow.hpp \
+		/usr/local/include/opencv2/videostab/motion_core.hpp \
+		/usr/local/include/opencv2/videostab/outlier_rejection.hpp \
+		/usr/local/include/opencv2/cudaimgproc.hpp \
+		/usr/local/include/opencv2/videostab/motion_stabilizing.hpp \
+		/usr/local/include/opencv2/videostab/frame_source.hpp \
+		/usr/local/include/opencv2/videostab/log.hpp \
+		/usr/local/include/opencv2/videostab/inpainting.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching_inl.hpp \
+		/usr/local/include/opencv2/videostab/deblurring.hpp \
+		/usr/local/include/opencv2/videostab/wobble_suppression.hpp \
+		/usr/local/include/opencv2/videostab/ring_buffer.hpp \
+		/usr/local/include/opencv2/cudaarithm.hpp \
+		/usr/local/include/opencv2/cudabgsegm.hpp \
+		/usr/local/include/opencv2/cudafeatures2d.hpp \
+		/usr/local/include/opencv2/cudafilters.hpp \
+		/usr/local/include/opencv2/cudaobjdetect.hpp \
+		/usr/local/include/opencv2/cudastereo.hpp \
+		/usr/local/include/opencv2/cudawarping.hpp \
+		/usr/local/include/opencv2/imgproc/imgproc.hpp \
 		/usr/local/include/opencv2/core/core.hpp \
 		include/connectivity.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/QObject \
@@ -2362,7 +3391,6 @@ build/debug/moc/moc_frmrunning.cpp: include/frmrunning.h \
 		/usr/local/include/jetson-utils/cudaMappedMemory.h \
 		include/feedaudiopipethread.h \
 		include/feedvideopipethread.h \
-		/usr/local/include/opencv2/core/cuda/warp.hpp \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/QAction \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qaction.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qactiongroup.h \
@@ -2506,7 +3534,8 @@ build/debug/moc/moc_frmserver.cpp: include/frmserver.h \
 		../../Qt/5.12.4/gcc_64/include/QtGui/QStandardItemModel \
 		../../Qt/5.12.4/gcc_64/include/QtGui/qstandarditemmodel.h \
 		include/configurations.h \
-		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/opencv.hpp \
+		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core.hpp \
 		/usr/local/include/opencv2/core/cvdef.h \
 		/usr/local/include/opencv2/core/hal/interface.h \
@@ -2515,7 +3544,6 @@ build/debug/moc/moc_frmserver.cpp: include/frmserver.h \
 		/usr/local/include/opencv2/core/fast_math.hpp \
 		/usr/local/include/opencv2/core/version.hpp \
 		/usr/local/include/opencv2/core/base.hpp \
-		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core/cvstd.hpp \
 		/usr/local/include/opencv2/core/ptr.inl.hpp \
 		/usr/local/include/opencv2/core/neon_utils.hpp \
@@ -2536,14 +3564,117 @@ build/debug/moc/moc_frmserver.cpp: include/frmserver.h \
 		/usr/local/include/opencv2/core/types_c.h \
 		/usr/local/include/opencv2/core/optim.hpp \
 		/usr/local/include/opencv2/core/ovx.hpp \
-		/usr/local/include/opencv2/imgproc/imgproc_c.h \
-		/usr/local/include/opencv2/imgproc/types_c.h \
+		/usr/local/include/opencv2/calib3d.hpp \
+		/usr/local/include/opencv2/features2d.hpp \
+		/usr/local/include/opencv2/flann/miniflann.hpp \
+		/usr/local/include/opencv2/flann/defines.h \
+		/usr/local/include/opencv2/flann/config.h \
+		/usr/local/include/opencv2/core/affine.hpp \
+		/usr/local/include/opencv2/calib3d/calib3d_c.h \
+		/usr/local/include/opencv2/dnn.hpp \
+		/usr/local/include/opencv2/dnn/dnn.hpp \
+		/usr/local/include/opencv2/core/async.hpp \
+		/usr/local/include/opencv2/dnn/dict.hpp \
+		/usr/local/include/opencv2/dnn/layer.hpp \
+		/usr/local/include/opencv2/dnn/dnn.inl.hpp \
+		/usr/local/include/opencv2/dnn/utils/inference_engine.hpp \
+		/usr/local/include/opencv2/flann.hpp \
+		/usr/local/include/opencv2/flann/flann_base.hpp \
+		/usr/local/include/opencv2/flann/general.h \
+		/usr/local/include/opencv2/flann/matrix.h \
+		/usr/local/include/opencv2/flann/params.h \
+		/usr/local/include/opencv2/flann/any.h \
+		/usr/local/include/opencv2/flann/saving.h \
+		/usr/local/include/opencv2/flann/nn_index.h \
+		/usr/local/include/opencv2/flann/result_set.h \
+		/usr/local/include/opencv2/flann/all_indices.h \
+		/usr/local/include/opencv2/flann/kdtree_index.h \
+		/usr/local/include/opencv2/flann/dynamic_bitset.h \
+		/usr/local/include/opencv2/flann/dist.h \
+		/usr/local/include/opencv2/flann/heap.h \
+		/usr/local/include/opencv2/flann/allocator.h \
+		/usr/local/include/opencv2/flann/random.h \
+		/usr/local/include/opencv2/flann/kdtree_single_index.h \
+		/usr/local/include/opencv2/flann/kmeans_index.h \
+		/usr/local/include/opencv2/flann/logger.h \
+		/usr/local/include/opencv2/flann/composite_index.h \
+		/usr/local/include/opencv2/flann/linear_index.h \
+		/usr/local/include/opencv2/flann/hierarchical_clustering_index.h \
+		/usr/local/include/opencv2/flann/lsh_index.h \
+		/usr/local/include/opencv2/flann/lsh_table.h \
+		/usr/local/include/opencv2/flann/autotuned_index.h \
+		/usr/local/include/opencv2/flann/ground_truth.h \
+		/usr/local/include/opencv2/flann/index_testing.h \
+		/usr/local/include/opencv2/flann/timer.h \
+		/usr/local/include/opencv2/flann/sampling.h \
 		/usr/local/include/opencv2/highgui.hpp \
 		/usr/local/include/opencv2/imgcodecs.hpp \
 		/usr/local/include/opencv2/videoio.hpp \
 		/usr/local/include/opencv2/highgui/highgui_c.h \
+		/usr/local/include/opencv2/imgproc/imgproc_c.h \
+		/usr/local/include/opencv2/imgproc/types_c.h \
 		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
 		/usr/local/include/opencv2/videoio/videoio_c.h \
+		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/ml.hpp \
+		/usr/local/include/opencv2/ml/ml.inl.hpp \
+		/usr/local/include/opencv2/objdetect.hpp \
+		/usr/local/include/opencv2/objdetect/detection_based_tracker.hpp \
+		/usr/local/include/opencv2/objdetect/objdetect_c.h \
+		/usr/local/include/opencv2/photo.hpp \
+		/usr/local/include/opencv2/photo/photo_c.h \
+		/usr/local/include/opencv2/shape.hpp \
+		/usr/local/include/opencv2/shape/emdL1.hpp \
+		/usr/local/include/opencv2/shape/shape_transformer.hpp \
+		/usr/local/include/opencv2/shape/hist_cost.hpp \
+		/usr/local/include/opencv2/shape/shape_distance.hpp \
+		/usr/local/include/opencv2/stitching.hpp \
+		/usr/local/include/opencv2/stitching/warpers.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers.hpp \
+		/usr/local/include/opencv2/core/cuda.hpp \
+		/usr/local/include/opencv2/core/cuda_types.hpp \
+		/usr/local/include/opencv2/core/cuda.inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/matchers.hpp \
+		/usr/local/include/opencv2/xfeatures2d/cuda.hpp \
+		/usr/local/include/opencv2/stitching/detail/motion_estimators.hpp \
+		/usr/local/include/opencv2/stitching/detail/util.hpp \
+		/usr/local/include/opencv2/stitching/detail/util_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/camera.hpp \
+		/usr/local/include/opencv2/stitching/detail/exposure_compensate.hpp \
+		/usr/local/include/opencv2/stitching/detail/seam_finders.hpp \
+		/usr/local/include/opencv2/stitching/detail/blenders.hpp \
+		/usr/local/include/opencv2/superres.hpp \
+		/usr/local/include/opencv2/superres/optical_flow.hpp \
+		/usr/local/include/opencv2/video.hpp \
+		/usr/local/include/opencv2/video/tracking.hpp \
+		/usr/local/include/opencv2/video/background_segm.hpp \
+		/usr/local/include/opencv2/video/tracking_c.h \
+		/usr/local/include/opencv2/videostab.hpp \
+		/usr/local/include/opencv2/videostab/stabilizer.hpp \
+		/usr/local/include/opencv2/videostab/global_motion.hpp \
+		/usr/local/include/opencv2/videostab/optical_flow.hpp \
+		/usr/local/include/opencv2/cudaoptflow.hpp \
+		/usr/local/include/opencv2/videostab/motion_core.hpp \
+		/usr/local/include/opencv2/videostab/outlier_rejection.hpp \
+		/usr/local/include/opencv2/cudaimgproc.hpp \
+		/usr/local/include/opencv2/videostab/motion_stabilizing.hpp \
+		/usr/local/include/opencv2/videostab/frame_source.hpp \
+		/usr/local/include/opencv2/videostab/log.hpp \
+		/usr/local/include/opencv2/videostab/inpainting.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching_inl.hpp \
+		/usr/local/include/opencv2/videostab/deblurring.hpp \
+		/usr/local/include/opencv2/videostab/wobble_suppression.hpp \
+		/usr/local/include/opencv2/videostab/ring_buffer.hpp \
+		/usr/local/include/opencv2/cudaarithm.hpp \
+		/usr/local/include/opencv2/cudabgsegm.hpp \
+		/usr/local/include/opencv2/cudafeatures2d.hpp \
+		/usr/local/include/opencv2/cudafilters.hpp \
+		/usr/local/include/opencv2/cudaobjdetect.hpp \
+		/usr/local/include/opencv2/cudastereo.hpp \
+		/usr/local/include/opencv2/cudawarping.hpp \
+		/usr/local/include/opencv2/imgproc/imgproc.hpp \
 		/usr/local/include/opencv2/core/core.hpp \
 		include/connectivity.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/QObject \
@@ -2562,7 +3693,8 @@ build/debug/moc/moc_frmserver.cpp: include/frmserver.h \
 
 build/debug/moc/moc_serverstreamthread.cpp: include/serverstreamthread.h \
 		include/configurations.h \
-		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/opencv.hpp \
+		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core.hpp \
 		/usr/local/include/opencv2/core/cvdef.h \
 		/usr/local/include/opencv2/core/hal/interface.h \
@@ -2571,7 +3703,6 @@ build/debug/moc/moc_serverstreamthread.cpp: include/serverstreamthread.h \
 		/usr/local/include/opencv2/core/fast_math.hpp \
 		/usr/local/include/opencv2/core/version.hpp \
 		/usr/local/include/opencv2/core/base.hpp \
-		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core/cvstd.hpp \
 		/usr/local/include/opencv2/core/ptr.inl.hpp \
 		/usr/local/include/opencv2/core/neon_utils.hpp \
@@ -2592,14 +3723,117 @@ build/debug/moc/moc_serverstreamthread.cpp: include/serverstreamthread.h \
 		/usr/local/include/opencv2/core/types_c.h \
 		/usr/local/include/opencv2/core/optim.hpp \
 		/usr/local/include/opencv2/core/ovx.hpp \
-		/usr/local/include/opencv2/imgproc/imgproc_c.h \
-		/usr/local/include/opencv2/imgproc/types_c.h \
+		/usr/local/include/opencv2/calib3d.hpp \
+		/usr/local/include/opencv2/features2d.hpp \
+		/usr/local/include/opencv2/flann/miniflann.hpp \
+		/usr/local/include/opencv2/flann/defines.h \
+		/usr/local/include/opencv2/flann/config.h \
+		/usr/local/include/opencv2/core/affine.hpp \
+		/usr/local/include/opencv2/calib3d/calib3d_c.h \
+		/usr/local/include/opencv2/dnn.hpp \
+		/usr/local/include/opencv2/dnn/dnn.hpp \
+		/usr/local/include/opencv2/core/async.hpp \
+		/usr/local/include/opencv2/dnn/dict.hpp \
+		/usr/local/include/opencv2/dnn/layer.hpp \
+		/usr/local/include/opencv2/dnn/dnn.inl.hpp \
+		/usr/local/include/opencv2/dnn/utils/inference_engine.hpp \
+		/usr/local/include/opencv2/flann.hpp \
+		/usr/local/include/opencv2/flann/flann_base.hpp \
+		/usr/local/include/opencv2/flann/general.h \
+		/usr/local/include/opencv2/flann/matrix.h \
+		/usr/local/include/opencv2/flann/params.h \
+		/usr/local/include/opencv2/flann/any.h \
+		/usr/local/include/opencv2/flann/saving.h \
+		/usr/local/include/opencv2/flann/nn_index.h \
+		/usr/local/include/opencv2/flann/result_set.h \
+		/usr/local/include/opencv2/flann/all_indices.h \
+		/usr/local/include/opencv2/flann/kdtree_index.h \
+		/usr/local/include/opencv2/flann/dynamic_bitset.h \
+		/usr/local/include/opencv2/flann/dist.h \
+		/usr/local/include/opencv2/flann/heap.h \
+		/usr/local/include/opencv2/flann/allocator.h \
+		/usr/local/include/opencv2/flann/random.h \
+		/usr/local/include/opencv2/flann/kdtree_single_index.h \
+		/usr/local/include/opencv2/flann/kmeans_index.h \
+		/usr/local/include/opencv2/flann/logger.h \
+		/usr/local/include/opencv2/flann/composite_index.h \
+		/usr/local/include/opencv2/flann/linear_index.h \
+		/usr/local/include/opencv2/flann/hierarchical_clustering_index.h \
+		/usr/local/include/opencv2/flann/lsh_index.h \
+		/usr/local/include/opencv2/flann/lsh_table.h \
+		/usr/local/include/opencv2/flann/autotuned_index.h \
+		/usr/local/include/opencv2/flann/ground_truth.h \
+		/usr/local/include/opencv2/flann/index_testing.h \
+		/usr/local/include/opencv2/flann/timer.h \
+		/usr/local/include/opencv2/flann/sampling.h \
 		/usr/local/include/opencv2/highgui.hpp \
 		/usr/local/include/opencv2/imgcodecs.hpp \
 		/usr/local/include/opencv2/videoio.hpp \
 		/usr/local/include/opencv2/highgui/highgui_c.h \
+		/usr/local/include/opencv2/imgproc/imgproc_c.h \
+		/usr/local/include/opencv2/imgproc/types_c.h \
 		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
 		/usr/local/include/opencv2/videoio/videoio_c.h \
+		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/ml.hpp \
+		/usr/local/include/opencv2/ml/ml.inl.hpp \
+		/usr/local/include/opencv2/objdetect.hpp \
+		/usr/local/include/opencv2/objdetect/detection_based_tracker.hpp \
+		/usr/local/include/opencv2/objdetect/objdetect_c.h \
+		/usr/local/include/opencv2/photo.hpp \
+		/usr/local/include/opencv2/photo/photo_c.h \
+		/usr/local/include/opencv2/shape.hpp \
+		/usr/local/include/opencv2/shape/emdL1.hpp \
+		/usr/local/include/opencv2/shape/shape_transformer.hpp \
+		/usr/local/include/opencv2/shape/hist_cost.hpp \
+		/usr/local/include/opencv2/shape/shape_distance.hpp \
+		/usr/local/include/opencv2/stitching.hpp \
+		/usr/local/include/opencv2/stitching/warpers.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers.hpp \
+		/usr/local/include/opencv2/core/cuda.hpp \
+		/usr/local/include/opencv2/core/cuda_types.hpp \
+		/usr/local/include/opencv2/core/cuda.inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/matchers.hpp \
+		/usr/local/include/opencv2/xfeatures2d/cuda.hpp \
+		/usr/local/include/opencv2/stitching/detail/motion_estimators.hpp \
+		/usr/local/include/opencv2/stitching/detail/util.hpp \
+		/usr/local/include/opencv2/stitching/detail/util_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/camera.hpp \
+		/usr/local/include/opencv2/stitching/detail/exposure_compensate.hpp \
+		/usr/local/include/opencv2/stitching/detail/seam_finders.hpp \
+		/usr/local/include/opencv2/stitching/detail/blenders.hpp \
+		/usr/local/include/opencv2/superres.hpp \
+		/usr/local/include/opencv2/superres/optical_flow.hpp \
+		/usr/local/include/opencv2/video.hpp \
+		/usr/local/include/opencv2/video/tracking.hpp \
+		/usr/local/include/opencv2/video/background_segm.hpp \
+		/usr/local/include/opencv2/video/tracking_c.h \
+		/usr/local/include/opencv2/videostab.hpp \
+		/usr/local/include/opencv2/videostab/stabilizer.hpp \
+		/usr/local/include/opencv2/videostab/global_motion.hpp \
+		/usr/local/include/opencv2/videostab/optical_flow.hpp \
+		/usr/local/include/opencv2/cudaoptflow.hpp \
+		/usr/local/include/opencv2/videostab/motion_core.hpp \
+		/usr/local/include/opencv2/videostab/outlier_rejection.hpp \
+		/usr/local/include/opencv2/cudaimgproc.hpp \
+		/usr/local/include/opencv2/videostab/motion_stabilizing.hpp \
+		/usr/local/include/opencv2/videostab/frame_source.hpp \
+		/usr/local/include/opencv2/videostab/log.hpp \
+		/usr/local/include/opencv2/videostab/inpainting.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching_inl.hpp \
+		/usr/local/include/opencv2/videostab/deblurring.hpp \
+		/usr/local/include/opencv2/videostab/wobble_suppression.hpp \
+		/usr/local/include/opencv2/videostab/ring_buffer.hpp \
+		/usr/local/include/opencv2/cudaarithm.hpp \
+		/usr/local/include/opencv2/cudabgsegm.hpp \
+		/usr/local/include/opencv2/cudafeatures2d.hpp \
+		/usr/local/include/opencv2/cudafilters.hpp \
+		/usr/local/include/opencv2/cudaobjdetect.hpp \
+		/usr/local/include/opencv2/cudastereo.hpp \
+		/usr/local/include/opencv2/cudawarping.hpp \
+		/usr/local/include/opencv2/imgproc/imgproc.hpp \
 		/usr/local/include/opencv2/core/core.hpp \
 		../../Qt/5.12.4/gcc_64/include/QtCore/QThread \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qthread.h \
@@ -2709,7 +3943,8 @@ build/debug/moc/moc_tcpclientthread.cpp: include/tcpclientthread.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qcontainerfwd.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qobject_impl.h \
 		include/configurations.h \
-		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/opencv.hpp \
+		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core.hpp \
 		/usr/local/include/opencv2/core/cvdef.h \
 		/usr/local/include/opencv2/core/hal/interface.h \
@@ -2718,7 +3953,6 @@ build/debug/moc/moc_tcpclientthread.cpp: include/tcpclientthread.h \
 		/usr/local/include/opencv2/core/fast_math.hpp \
 		/usr/local/include/opencv2/core/version.hpp \
 		/usr/local/include/opencv2/core/base.hpp \
-		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core/cvstd.hpp \
 		/usr/local/include/opencv2/core/ptr.inl.hpp \
 		/usr/local/include/opencv2/core/neon_utils.hpp \
@@ -2739,14 +3973,117 @@ build/debug/moc/moc_tcpclientthread.cpp: include/tcpclientthread.h \
 		/usr/local/include/opencv2/core/types_c.h \
 		/usr/local/include/opencv2/core/optim.hpp \
 		/usr/local/include/opencv2/core/ovx.hpp \
-		/usr/local/include/opencv2/imgproc/imgproc_c.h \
-		/usr/local/include/opencv2/imgproc/types_c.h \
+		/usr/local/include/opencv2/calib3d.hpp \
+		/usr/local/include/opencv2/features2d.hpp \
+		/usr/local/include/opencv2/flann/miniflann.hpp \
+		/usr/local/include/opencv2/flann/defines.h \
+		/usr/local/include/opencv2/flann/config.h \
+		/usr/local/include/opencv2/core/affine.hpp \
+		/usr/local/include/opencv2/calib3d/calib3d_c.h \
+		/usr/local/include/opencv2/dnn.hpp \
+		/usr/local/include/opencv2/dnn/dnn.hpp \
+		/usr/local/include/opencv2/core/async.hpp \
+		/usr/local/include/opencv2/dnn/dict.hpp \
+		/usr/local/include/opencv2/dnn/layer.hpp \
+		/usr/local/include/opencv2/dnn/dnn.inl.hpp \
+		/usr/local/include/opencv2/dnn/utils/inference_engine.hpp \
+		/usr/local/include/opencv2/flann.hpp \
+		/usr/local/include/opencv2/flann/flann_base.hpp \
+		/usr/local/include/opencv2/flann/general.h \
+		/usr/local/include/opencv2/flann/matrix.h \
+		/usr/local/include/opencv2/flann/params.h \
+		/usr/local/include/opencv2/flann/any.h \
+		/usr/local/include/opencv2/flann/saving.h \
+		/usr/local/include/opencv2/flann/nn_index.h \
+		/usr/local/include/opencv2/flann/result_set.h \
+		/usr/local/include/opencv2/flann/all_indices.h \
+		/usr/local/include/opencv2/flann/kdtree_index.h \
+		/usr/local/include/opencv2/flann/dynamic_bitset.h \
+		/usr/local/include/opencv2/flann/dist.h \
+		/usr/local/include/opencv2/flann/heap.h \
+		/usr/local/include/opencv2/flann/allocator.h \
+		/usr/local/include/opencv2/flann/random.h \
+		/usr/local/include/opencv2/flann/kdtree_single_index.h \
+		/usr/local/include/opencv2/flann/kmeans_index.h \
+		/usr/local/include/opencv2/flann/logger.h \
+		/usr/local/include/opencv2/flann/composite_index.h \
+		/usr/local/include/opencv2/flann/linear_index.h \
+		/usr/local/include/opencv2/flann/hierarchical_clustering_index.h \
+		/usr/local/include/opencv2/flann/lsh_index.h \
+		/usr/local/include/opencv2/flann/lsh_table.h \
+		/usr/local/include/opencv2/flann/autotuned_index.h \
+		/usr/local/include/opencv2/flann/ground_truth.h \
+		/usr/local/include/opencv2/flann/index_testing.h \
+		/usr/local/include/opencv2/flann/timer.h \
+		/usr/local/include/opencv2/flann/sampling.h \
 		/usr/local/include/opencv2/highgui.hpp \
 		/usr/local/include/opencv2/imgcodecs.hpp \
 		/usr/local/include/opencv2/videoio.hpp \
 		/usr/local/include/opencv2/highgui/highgui_c.h \
+		/usr/local/include/opencv2/imgproc/imgproc_c.h \
+		/usr/local/include/opencv2/imgproc/types_c.h \
 		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
 		/usr/local/include/opencv2/videoio/videoio_c.h \
+		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/ml.hpp \
+		/usr/local/include/opencv2/ml/ml.inl.hpp \
+		/usr/local/include/opencv2/objdetect.hpp \
+		/usr/local/include/opencv2/objdetect/detection_based_tracker.hpp \
+		/usr/local/include/opencv2/objdetect/objdetect_c.h \
+		/usr/local/include/opencv2/photo.hpp \
+		/usr/local/include/opencv2/photo/photo_c.h \
+		/usr/local/include/opencv2/shape.hpp \
+		/usr/local/include/opencv2/shape/emdL1.hpp \
+		/usr/local/include/opencv2/shape/shape_transformer.hpp \
+		/usr/local/include/opencv2/shape/hist_cost.hpp \
+		/usr/local/include/opencv2/shape/shape_distance.hpp \
+		/usr/local/include/opencv2/stitching.hpp \
+		/usr/local/include/opencv2/stitching/warpers.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers.hpp \
+		/usr/local/include/opencv2/core/cuda.hpp \
+		/usr/local/include/opencv2/core/cuda_types.hpp \
+		/usr/local/include/opencv2/core/cuda.inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/matchers.hpp \
+		/usr/local/include/opencv2/xfeatures2d/cuda.hpp \
+		/usr/local/include/opencv2/stitching/detail/motion_estimators.hpp \
+		/usr/local/include/opencv2/stitching/detail/util.hpp \
+		/usr/local/include/opencv2/stitching/detail/util_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/camera.hpp \
+		/usr/local/include/opencv2/stitching/detail/exposure_compensate.hpp \
+		/usr/local/include/opencv2/stitching/detail/seam_finders.hpp \
+		/usr/local/include/opencv2/stitching/detail/blenders.hpp \
+		/usr/local/include/opencv2/superres.hpp \
+		/usr/local/include/opencv2/superres/optical_flow.hpp \
+		/usr/local/include/opencv2/video.hpp \
+		/usr/local/include/opencv2/video/tracking.hpp \
+		/usr/local/include/opencv2/video/background_segm.hpp \
+		/usr/local/include/opencv2/video/tracking_c.h \
+		/usr/local/include/opencv2/videostab.hpp \
+		/usr/local/include/opencv2/videostab/stabilizer.hpp \
+		/usr/local/include/opencv2/videostab/global_motion.hpp \
+		/usr/local/include/opencv2/videostab/optical_flow.hpp \
+		/usr/local/include/opencv2/cudaoptflow.hpp \
+		/usr/local/include/opencv2/videostab/motion_core.hpp \
+		/usr/local/include/opencv2/videostab/outlier_rejection.hpp \
+		/usr/local/include/opencv2/cudaimgproc.hpp \
+		/usr/local/include/opencv2/videostab/motion_stabilizing.hpp \
+		/usr/local/include/opencv2/videostab/frame_source.hpp \
+		/usr/local/include/opencv2/videostab/log.hpp \
+		/usr/local/include/opencv2/videostab/inpainting.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching_inl.hpp \
+		/usr/local/include/opencv2/videostab/deblurring.hpp \
+		/usr/local/include/opencv2/videostab/wobble_suppression.hpp \
+		/usr/local/include/opencv2/videostab/ring_buffer.hpp \
+		/usr/local/include/opencv2/cudaarithm.hpp \
+		/usr/local/include/opencv2/cudabgsegm.hpp \
+		/usr/local/include/opencv2/cudafeatures2d.hpp \
+		/usr/local/include/opencv2/cudafilters.hpp \
+		/usr/local/include/opencv2/cudaobjdetect.hpp \
+		/usr/local/include/opencv2/cudastereo.hpp \
+		/usr/local/include/opencv2/cudawarping.hpp \
+		/usr/local/include/opencv2/imgproc/imgproc.hpp \
 		/usr/local/include/opencv2/core/core.hpp \
 		../../Qt/5.12.4/gcc_64/include/QtCore/QThread \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qthread.h \
@@ -2807,7 +4144,8 @@ build/debug/moc/moc_tcpserverthread.cpp: include/tcpserverthread.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qcontainerfwd.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qobject_impl.h \
 		include/configurations.h \
-		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/opencv.hpp \
+		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core.hpp \
 		/usr/local/include/opencv2/core/cvdef.h \
 		/usr/local/include/opencv2/core/hal/interface.h \
@@ -2816,7 +4154,6 @@ build/debug/moc/moc_tcpserverthread.cpp: include/tcpserverthread.h \
 		/usr/local/include/opencv2/core/fast_math.hpp \
 		/usr/local/include/opencv2/core/version.hpp \
 		/usr/local/include/opencv2/core/base.hpp \
-		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core/cvstd.hpp \
 		/usr/local/include/opencv2/core/ptr.inl.hpp \
 		/usr/local/include/opencv2/core/neon_utils.hpp \
@@ -2837,14 +4174,117 @@ build/debug/moc/moc_tcpserverthread.cpp: include/tcpserverthread.h \
 		/usr/local/include/opencv2/core/types_c.h \
 		/usr/local/include/opencv2/core/optim.hpp \
 		/usr/local/include/opencv2/core/ovx.hpp \
-		/usr/local/include/opencv2/imgproc/imgproc_c.h \
-		/usr/local/include/opencv2/imgproc/types_c.h \
+		/usr/local/include/opencv2/calib3d.hpp \
+		/usr/local/include/opencv2/features2d.hpp \
+		/usr/local/include/opencv2/flann/miniflann.hpp \
+		/usr/local/include/opencv2/flann/defines.h \
+		/usr/local/include/opencv2/flann/config.h \
+		/usr/local/include/opencv2/core/affine.hpp \
+		/usr/local/include/opencv2/calib3d/calib3d_c.h \
+		/usr/local/include/opencv2/dnn.hpp \
+		/usr/local/include/opencv2/dnn/dnn.hpp \
+		/usr/local/include/opencv2/core/async.hpp \
+		/usr/local/include/opencv2/dnn/dict.hpp \
+		/usr/local/include/opencv2/dnn/layer.hpp \
+		/usr/local/include/opencv2/dnn/dnn.inl.hpp \
+		/usr/local/include/opencv2/dnn/utils/inference_engine.hpp \
+		/usr/local/include/opencv2/flann.hpp \
+		/usr/local/include/opencv2/flann/flann_base.hpp \
+		/usr/local/include/opencv2/flann/general.h \
+		/usr/local/include/opencv2/flann/matrix.h \
+		/usr/local/include/opencv2/flann/params.h \
+		/usr/local/include/opencv2/flann/any.h \
+		/usr/local/include/opencv2/flann/saving.h \
+		/usr/local/include/opencv2/flann/nn_index.h \
+		/usr/local/include/opencv2/flann/result_set.h \
+		/usr/local/include/opencv2/flann/all_indices.h \
+		/usr/local/include/opencv2/flann/kdtree_index.h \
+		/usr/local/include/opencv2/flann/dynamic_bitset.h \
+		/usr/local/include/opencv2/flann/dist.h \
+		/usr/local/include/opencv2/flann/heap.h \
+		/usr/local/include/opencv2/flann/allocator.h \
+		/usr/local/include/opencv2/flann/random.h \
+		/usr/local/include/opencv2/flann/kdtree_single_index.h \
+		/usr/local/include/opencv2/flann/kmeans_index.h \
+		/usr/local/include/opencv2/flann/logger.h \
+		/usr/local/include/opencv2/flann/composite_index.h \
+		/usr/local/include/opencv2/flann/linear_index.h \
+		/usr/local/include/opencv2/flann/hierarchical_clustering_index.h \
+		/usr/local/include/opencv2/flann/lsh_index.h \
+		/usr/local/include/opencv2/flann/lsh_table.h \
+		/usr/local/include/opencv2/flann/autotuned_index.h \
+		/usr/local/include/opencv2/flann/ground_truth.h \
+		/usr/local/include/opencv2/flann/index_testing.h \
+		/usr/local/include/opencv2/flann/timer.h \
+		/usr/local/include/opencv2/flann/sampling.h \
 		/usr/local/include/opencv2/highgui.hpp \
 		/usr/local/include/opencv2/imgcodecs.hpp \
 		/usr/local/include/opencv2/videoio.hpp \
 		/usr/local/include/opencv2/highgui/highgui_c.h \
+		/usr/local/include/opencv2/imgproc/imgproc_c.h \
+		/usr/local/include/opencv2/imgproc/types_c.h \
 		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
 		/usr/local/include/opencv2/videoio/videoio_c.h \
+		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/ml.hpp \
+		/usr/local/include/opencv2/ml/ml.inl.hpp \
+		/usr/local/include/opencv2/objdetect.hpp \
+		/usr/local/include/opencv2/objdetect/detection_based_tracker.hpp \
+		/usr/local/include/opencv2/objdetect/objdetect_c.h \
+		/usr/local/include/opencv2/photo.hpp \
+		/usr/local/include/opencv2/photo/photo_c.h \
+		/usr/local/include/opencv2/shape.hpp \
+		/usr/local/include/opencv2/shape/emdL1.hpp \
+		/usr/local/include/opencv2/shape/shape_transformer.hpp \
+		/usr/local/include/opencv2/shape/hist_cost.hpp \
+		/usr/local/include/opencv2/shape/shape_distance.hpp \
+		/usr/local/include/opencv2/stitching.hpp \
+		/usr/local/include/opencv2/stitching/warpers.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers.hpp \
+		/usr/local/include/opencv2/core/cuda.hpp \
+		/usr/local/include/opencv2/core/cuda_types.hpp \
+		/usr/local/include/opencv2/core/cuda.inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/matchers.hpp \
+		/usr/local/include/opencv2/xfeatures2d/cuda.hpp \
+		/usr/local/include/opencv2/stitching/detail/motion_estimators.hpp \
+		/usr/local/include/opencv2/stitching/detail/util.hpp \
+		/usr/local/include/opencv2/stitching/detail/util_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/camera.hpp \
+		/usr/local/include/opencv2/stitching/detail/exposure_compensate.hpp \
+		/usr/local/include/opencv2/stitching/detail/seam_finders.hpp \
+		/usr/local/include/opencv2/stitching/detail/blenders.hpp \
+		/usr/local/include/opencv2/superres.hpp \
+		/usr/local/include/opencv2/superres/optical_flow.hpp \
+		/usr/local/include/opencv2/video.hpp \
+		/usr/local/include/opencv2/video/tracking.hpp \
+		/usr/local/include/opencv2/video/background_segm.hpp \
+		/usr/local/include/opencv2/video/tracking_c.h \
+		/usr/local/include/opencv2/videostab.hpp \
+		/usr/local/include/opencv2/videostab/stabilizer.hpp \
+		/usr/local/include/opencv2/videostab/global_motion.hpp \
+		/usr/local/include/opencv2/videostab/optical_flow.hpp \
+		/usr/local/include/opencv2/cudaoptflow.hpp \
+		/usr/local/include/opencv2/videostab/motion_core.hpp \
+		/usr/local/include/opencv2/videostab/outlier_rejection.hpp \
+		/usr/local/include/opencv2/cudaimgproc.hpp \
+		/usr/local/include/opencv2/videostab/motion_stabilizing.hpp \
+		/usr/local/include/opencv2/videostab/frame_source.hpp \
+		/usr/local/include/opencv2/videostab/log.hpp \
+		/usr/local/include/opencv2/videostab/inpainting.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching_inl.hpp \
+		/usr/local/include/opencv2/videostab/deblurring.hpp \
+		/usr/local/include/opencv2/videostab/wobble_suppression.hpp \
+		/usr/local/include/opencv2/videostab/ring_buffer.hpp \
+		/usr/local/include/opencv2/cudaarithm.hpp \
+		/usr/local/include/opencv2/cudabgsegm.hpp \
+		/usr/local/include/opencv2/cudafeatures2d.hpp \
+		/usr/local/include/opencv2/cudafilters.hpp \
+		/usr/local/include/opencv2/cudaobjdetect.hpp \
+		/usr/local/include/opencv2/cudastereo.hpp \
+		/usr/local/include/opencv2/cudawarping.hpp \
+		/usr/local/include/opencv2/imgproc/imgproc.hpp \
 		/usr/local/include/opencv2/core/core.hpp \
 		../../Qt/5.12.4/gcc_64/include/QtCore/QThread \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qthread.h \
@@ -2942,7 +4382,8 @@ build/debug/obj/camerathread.o: src/camerathread.cpp include/camerathread.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qcontainerfwd.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qobject_impl.h \
 		include/configurations.h \
-		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/opencv.hpp \
+		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core.hpp \
 		/usr/local/include/opencv2/core/cvdef.h \
 		/usr/local/include/opencv2/core/hal/interface.h \
@@ -2951,7 +4392,6 @@ build/debug/obj/camerathread.o: src/camerathread.cpp include/camerathread.h \
 		/usr/local/include/opencv2/core/fast_math.hpp \
 		/usr/local/include/opencv2/core/version.hpp \
 		/usr/local/include/opencv2/core/base.hpp \
-		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core/cvstd.hpp \
 		/usr/local/include/opencv2/core/ptr.inl.hpp \
 		/usr/local/include/opencv2/core/neon_utils.hpp \
@@ -2972,14 +4412,117 @@ build/debug/obj/camerathread.o: src/camerathread.cpp include/camerathread.h \
 		/usr/local/include/opencv2/core/types_c.h \
 		/usr/local/include/opencv2/core/optim.hpp \
 		/usr/local/include/opencv2/core/ovx.hpp \
-		/usr/local/include/opencv2/imgproc/imgproc_c.h \
-		/usr/local/include/opencv2/imgproc/types_c.h \
+		/usr/local/include/opencv2/calib3d.hpp \
+		/usr/local/include/opencv2/features2d.hpp \
+		/usr/local/include/opencv2/flann/miniflann.hpp \
+		/usr/local/include/opencv2/flann/defines.h \
+		/usr/local/include/opencv2/flann/config.h \
+		/usr/local/include/opencv2/core/affine.hpp \
+		/usr/local/include/opencv2/calib3d/calib3d_c.h \
+		/usr/local/include/opencv2/dnn.hpp \
+		/usr/local/include/opencv2/dnn/dnn.hpp \
+		/usr/local/include/opencv2/core/async.hpp \
+		/usr/local/include/opencv2/dnn/dict.hpp \
+		/usr/local/include/opencv2/dnn/layer.hpp \
+		/usr/local/include/opencv2/dnn/dnn.inl.hpp \
+		/usr/local/include/opencv2/dnn/utils/inference_engine.hpp \
+		/usr/local/include/opencv2/flann.hpp \
+		/usr/local/include/opencv2/flann/flann_base.hpp \
+		/usr/local/include/opencv2/flann/general.h \
+		/usr/local/include/opencv2/flann/matrix.h \
+		/usr/local/include/opencv2/flann/params.h \
+		/usr/local/include/opencv2/flann/any.h \
+		/usr/local/include/opencv2/flann/saving.h \
+		/usr/local/include/opencv2/flann/nn_index.h \
+		/usr/local/include/opencv2/flann/result_set.h \
+		/usr/local/include/opencv2/flann/all_indices.h \
+		/usr/local/include/opencv2/flann/kdtree_index.h \
+		/usr/local/include/opencv2/flann/dynamic_bitset.h \
+		/usr/local/include/opencv2/flann/dist.h \
+		/usr/local/include/opencv2/flann/heap.h \
+		/usr/local/include/opencv2/flann/allocator.h \
+		/usr/local/include/opencv2/flann/random.h \
+		/usr/local/include/opencv2/flann/kdtree_single_index.h \
+		/usr/local/include/opencv2/flann/kmeans_index.h \
+		/usr/local/include/opencv2/flann/logger.h \
+		/usr/local/include/opencv2/flann/composite_index.h \
+		/usr/local/include/opencv2/flann/linear_index.h \
+		/usr/local/include/opencv2/flann/hierarchical_clustering_index.h \
+		/usr/local/include/opencv2/flann/lsh_index.h \
+		/usr/local/include/opencv2/flann/lsh_table.h \
+		/usr/local/include/opencv2/flann/autotuned_index.h \
+		/usr/local/include/opencv2/flann/ground_truth.h \
+		/usr/local/include/opencv2/flann/index_testing.h \
+		/usr/local/include/opencv2/flann/timer.h \
+		/usr/local/include/opencv2/flann/sampling.h \
 		/usr/local/include/opencv2/highgui.hpp \
 		/usr/local/include/opencv2/imgcodecs.hpp \
 		/usr/local/include/opencv2/videoio.hpp \
 		/usr/local/include/opencv2/highgui/highgui_c.h \
+		/usr/local/include/opencv2/imgproc/imgproc_c.h \
+		/usr/local/include/opencv2/imgproc/types_c.h \
 		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
 		/usr/local/include/opencv2/videoio/videoio_c.h \
+		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/ml.hpp \
+		/usr/local/include/opencv2/ml/ml.inl.hpp \
+		/usr/local/include/opencv2/objdetect.hpp \
+		/usr/local/include/opencv2/objdetect/detection_based_tracker.hpp \
+		/usr/local/include/opencv2/objdetect/objdetect_c.h \
+		/usr/local/include/opencv2/photo.hpp \
+		/usr/local/include/opencv2/photo/photo_c.h \
+		/usr/local/include/opencv2/shape.hpp \
+		/usr/local/include/opencv2/shape/emdL1.hpp \
+		/usr/local/include/opencv2/shape/shape_transformer.hpp \
+		/usr/local/include/opencv2/shape/hist_cost.hpp \
+		/usr/local/include/opencv2/shape/shape_distance.hpp \
+		/usr/local/include/opencv2/stitching.hpp \
+		/usr/local/include/opencv2/stitching/warpers.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers.hpp \
+		/usr/local/include/opencv2/core/cuda.hpp \
+		/usr/local/include/opencv2/core/cuda_types.hpp \
+		/usr/local/include/opencv2/core/cuda.inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/matchers.hpp \
+		/usr/local/include/opencv2/xfeatures2d/cuda.hpp \
+		/usr/local/include/opencv2/stitching/detail/motion_estimators.hpp \
+		/usr/local/include/opencv2/stitching/detail/util.hpp \
+		/usr/local/include/opencv2/stitching/detail/util_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/camera.hpp \
+		/usr/local/include/opencv2/stitching/detail/exposure_compensate.hpp \
+		/usr/local/include/opencv2/stitching/detail/seam_finders.hpp \
+		/usr/local/include/opencv2/stitching/detail/blenders.hpp \
+		/usr/local/include/opencv2/superres.hpp \
+		/usr/local/include/opencv2/superres/optical_flow.hpp \
+		/usr/local/include/opencv2/video.hpp \
+		/usr/local/include/opencv2/video/tracking.hpp \
+		/usr/local/include/opencv2/video/background_segm.hpp \
+		/usr/local/include/opencv2/video/tracking_c.h \
+		/usr/local/include/opencv2/videostab.hpp \
+		/usr/local/include/opencv2/videostab/stabilizer.hpp \
+		/usr/local/include/opencv2/videostab/global_motion.hpp \
+		/usr/local/include/opencv2/videostab/optical_flow.hpp \
+		/usr/local/include/opencv2/cudaoptflow.hpp \
+		/usr/local/include/opencv2/videostab/motion_core.hpp \
+		/usr/local/include/opencv2/videostab/outlier_rejection.hpp \
+		/usr/local/include/opencv2/cudaimgproc.hpp \
+		/usr/local/include/opencv2/videostab/motion_stabilizing.hpp \
+		/usr/local/include/opencv2/videostab/frame_source.hpp \
+		/usr/local/include/opencv2/videostab/log.hpp \
+		/usr/local/include/opencv2/videostab/inpainting.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching_inl.hpp \
+		/usr/local/include/opencv2/videostab/deblurring.hpp \
+		/usr/local/include/opencv2/videostab/wobble_suppression.hpp \
+		/usr/local/include/opencv2/videostab/ring_buffer.hpp \
+		/usr/local/include/opencv2/cudaarithm.hpp \
+		/usr/local/include/opencv2/cudabgsegm.hpp \
+		/usr/local/include/opencv2/cudafeatures2d.hpp \
+		/usr/local/include/opencv2/cudafilters.hpp \
+		/usr/local/include/opencv2/cudaobjdetect.hpp \
+		/usr/local/include/opencv2/cudastereo.hpp \
+		/usr/local/include/opencv2/cudawarping.hpp \
+		/usr/local/include/opencv2/imgproc/imgproc.hpp \
 		/usr/local/include/opencv2/core/core.hpp \
 		include/serverstreamthread.h \
 		include/cudadetectionthread.h \
@@ -3052,8 +4595,7 @@ build/debug/obj/camerathread.o: src/camerathread.cpp include/camerathread.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qshareddata.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qhash.h \
 		include/feedaudiopipethread.h \
-		include/feedvideopipethread.h \
-		/usr/local/include/opencv2/core/cuda/warp.hpp
+		include/feedvideopipethread.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/debug/obj/camerathread.o src/camerathread.cpp
 
 build/debug/obj/clientstreamthread.o: src/clientstreamthread.cpp include/clientstreamthread.h \
@@ -3109,7 +4651,8 @@ build/debug/obj/clientstreamthread.o: src/clientstreamthread.cpp include/clients
 		../../Qt/5.12.4/gcc_64/include/QtCore/qcontainerfwd.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qobject_impl.h \
 		include/configurations.h \
-		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/opencv.hpp \
+		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core.hpp \
 		/usr/local/include/opencv2/core/cvdef.h \
 		/usr/local/include/opencv2/core/hal/interface.h \
@@ -3118,7 +4661,6 @@ build/debug/obj/clientstreamthread.o: src/clientstreamthread.cpp include/clients
 		/usr/local/include/opencv2/core/fast_math.hpp \
 		/usr/local/include/opencv2/core/version.hpp \
 		/usr/local/include/opencv2/core/base.hpp \
-		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core/cvstd.hpp \
 		/usr/local/include/opencv2/core/ptr.inl.hpp \
 		/usr/local/include/opencv2/core/neon_utils.hpp \
@@ -3139,21 +4681,125 @@ build/debug/obj/clientstreamthread.o: src/clientstreamthread.cpp include/clients
 		/usr/local/include/opencv2/core/types_c.h \
 		/usr/local/include/opencv2/core/optim.hpp \
 		/usr/local/include/opencv2/core/ovx.hpp \
-		/usr/local/include/opencv2/imgproc/imgproc_c.h \
-		/usr/local/include/opencv2/imgproc/types_c.h \
+		/usr/local/include/opencv2/calib3d.hpp \
+		/usr/local/include/opencv2/features2d.hpp \
+		/usr/local/include/opencv2/flann/miniflann.hpp \
+		/usr/local/include/opencv2/flann/defines.h \
+		/usr/local/include/opencv2/flann/config.h \
+		/usr/local/include/opencv2/core/affine.hpp \
+		/usr/local/include/opencv2/calib3d/calib3d_c.h \
+		/usr/local/include/opencv2/dnn.hpp \
+		/usr/local/include/opencv2/dnn/dnn.hpp \
+		/usr/local/include/opencv2/core/async.hpp \
+		/usr/local/include/opencv2/dnn/dict.hpp \
+		/usr/local/include/opencv2/dnn/layer.hpp \
+		/usr/local/include/opencv2/dnn/dnn.inl.hpp \
+		/usr/local/include/opencv2/dnn/utils/inference_engine.hpp \
+		/usr/local/include/opencv2/flann.hpp \
+		/usr/local/include/opencv2/flann/flann_base.hpp \
+		/usr/local/include/opencv2/flann/general.h \
+		/usr/local/include/opencv2/flann/matrix.h \
+		/usr/local/include/opencv2/flann/params.h \
+		/usr/local/include/opencv2/flann/any.h \
+		/usr/local/include/opencv2/flann/saving.h \
+		/usr/local/include/opencv2/flann/nn_index.h \
+		/usr/local/include/opencv2/flann/result_set.h \
+		/usr/local/include/opencv2/flann/all_indices.h \
+		/usr/local/include/opencv2/flann/kdtree_index.h \
+		/usr/local/include/opencv2/flann/dynamic_bitset.h \
+		/usr/local/include/opencv2/flann/dist.h \
+		/usr/local/include/opencv2/flann/heap.h \
+		/usr/local/include/opencv2/flann/allocator.h \
+		/usr/local/include/opencv2/flann/random.h \
+		/usr/local/include/opencv2/flann/kdtree_single_index.h \
+		/usr/local/include/opencv2/flann/kmeans_index.h \
+		/usr/local/include/opencv2/flann/logger.h \
+		/usr/local/include/opencv2/flann/composite_index.h \
+		/usr/local/include/opencv2/flann/linear_index.h \
+		/usr/local/include/opencv2/flann/hierarchical_clustering_index.h \
+		/usr/local/include/opencv2/flann/lsh_index.h \
+		/usr/local/include/opencv2/flann/lsh_table.h \
+		/usr/local/include/opencv2/flann/autotuned_index.h \
+		/usr/local/include/opencv2/flann/ground_truth.h \
+		/usr/local/include/opencv2/flann/index_testing.h \
+		/usr/local/include/opencv2/flann/timer.h \
+		/usr/local/include/opencv2/flann/sampling.h \
 		/usr/local/include/opencv2/highgui.hpp \
 		/usr/local/include/opencv2/imgcodecs.hpp \
 		/usr/local/include/opencv2/videoio.hpp \
 		/usr/local/include/opencv2/highgui/highgui_c.h \
+		/usr/local/include/opencv2/imgproc/imgproc_c.h \
+		/usr/local/include/opencv2/imgproc/types_c.h \
 		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
 		/usr/local/include/opencv2/videoio/videoio_c.h \
+		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/ml.hpp \
+		/usr/local/include/opencv2/ml/ml.inl.hpp \
+		/usr/local/include/opencv2/objdetect.hpp \
+		/usr/local/include/opencv2/objdetect/detection_based_tracker.hpp \
+		/usr/local/include/opencv2/objdetect/objdetect_c.h \
+		/usr/local/include/opencv2/photo.hpp \
+		/usr/local/include/opencv2/photo/photo_c.h \
+		/usr/local/include/opencv2/shape.hpp \
+		/usr/local/include/opencv2/shape/emdL1.hpp \
+		/usr/local/include/opencv2/shape/shape_transformer.hpp \
+		/usr/local/include/opencv2/shape/hist_cost.hpp \
+		/usr/local/include/opencv2/shape/shape_distance.hpp \
+		/usr/local/include/opencv2/stitching.hpp \
+		/usr/local/include/opencv2/stitching/warpers.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers.hpp \
+		/usr/local/include/opencv2/core/cuda.hpp \
+		/usr/local/include/opencv2/core/cuda_types.hpp \
+		/usr/local/include/opencv2/core/cuda.inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/matchers.hpp \
+		/usr/local/include/opencv2/xfeatures2d/cuda.hpp \
+		/usr/local/include/opencv2/stitching/detail/motion_estimators.hpp \
+		/usr/local/include/opencv2/stitching/detail/util.hpp \
+		/usr/local/include/opencv2/stitching/detail/util_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/camera.hpp \
+		/usr/local/include/opencv2/stitching/detail/exposure_compensate.hpp \
+		/usr/local/include/opencv2/stitching/detail/seam_finders.hpp \
+		/usr/local/include/opencv2/stitching/detail/blenders.hpp \
+		/usr/local/include/opencv2/superres.hpp \
+		/usr/local/include/opencv2/superres/optical_flow.hpp \
+		/usr/local/include/opencv2/video.hpp \
+		/usr/local/include/opencv2/video/tracking.hpp \
+		/usr/local/include/opencv2/video/background_segm.hpp \
+		/usr/local/include/opencv2/video/tracking_c.h \
+		/usr/local/include/opencv2/videostab.hpp \
+		/usr/local/include/opencv2/videostab/stabilizer.hpp \
+		/usr/local/include/opencv2/videostab/global_motion.hpp \
+		/usr/local/include/opencv2/videostab/optical_flow.hpp \
+		/usr/local/include/opencv2/cudaoptflow.hpp \
+		/usr/local/include/opencv2/videostab/motion_core.hpp \
+		/usr/local/include/opencv2/videostab/outlier_rejection.hpp \
+		/usr/local/include/opencv2/cudaimgproc.hpp \
+		/usr/local/include/opencv2/videostab/motion_stabilizing.hpp \
+		/usr/local/include/opencv2/videostab/frame_source.hpp \
+		/usr/local/include/opencv2/videostab/log.hpp \
+		/usr/local/include/opencv2/videostab/inpainting.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching_inl.hpp \
+		/usr/local/include/opencv2/videostab/deblurring.hpp \
+		/usr/local/include/opencv2/videostab/wobble_suppression.hpp \
+		/usr/local/include/opencv2/videostab/ring_buffer.hpp \
+		/usr/local/include/opencv2/cudaarithm.hpp \
+		/usr/local/include/opencv2/cudabgsegm.hpp \
+		/usr/local/include/opencv2/cudafeatures2d.hpp \
+		/usr/local/include/opencv2/cudafilters.hpp \
+		/usr/local/include/opencv2/cudaobjdetect.hpp \
+		/usr/local/include/opencv2/cudastereo.hpp \
+		/usr/local/include/opencv2/cudawarping.hpp \
+		/usr/local/include/opencv2/imgproc/imgproc.hpp \
 		/usr/local/include/opencv2/core/core.hpp \
 		../../Qt/5.12.4/gcc_64/include/QtCore/QThread \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qthread.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/debug/obj/clientstreamthread.o src/clientstreamthread.cpp
 
 build/debug/obj/configurations.o: src/configurations.cpp include/configurations.h \
-		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/opencv.hpp \
+		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core.hpp \
 		/usr/local/include/opencv2/core/cvdef.h \
 		/usr/local/include/opencv2/core/hal/interface.h \
@@ -3162,7 +4808,6 @@ build/debug/obj/configurations.o: src/configurations.cpp include/configurations.
 		/usr/local/include/opencv2/core/fast_math.hpp \
 		/usr/local/include/opencv2/core/version.hpp \
 		/usr/local/include/opencv2/core/base.hpp \
-		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core/cvstd.hpp \
 		/usr/local/include/opencv2/core/ptr.inl.hpp \
 		/usr/local/include/opencv2/core/neon_utils.hpp \
@@ -3183,14 +4828,117 @@ build/debug/obj/configurations.o: src/configurations.cpp include/configurations.
 		/usr/local/include/opencv2/core/types_c.h \
 		/usr/local/include/opencv2/core/optim.hpp \
 		/usr/local/include/opencv2/core/ovx.hpp \
-		/usr/local/include/opencv2/imgproc/imgproc_c.h \
-		/usr/local/include/opencv2/imgproc/types_c.h \
+		/usr/local/include/opencv2/calib3d.hpp \
+		/usr/local/include/opencv2/features2d.hpp \
+		/usr/local/include/opencv2/flann/miniflann.hpp \
+		/usr/local/include/opencv2/flann/defines.h \
+		/usr/local/include/opencv2/flann/config.h \
+		/usr/local/include/opencv2/core/affine.hpp \
+		/usr/local/include/opencv2/calib3d/calib3d_c.h \
+		/usr/local/include/opencv2/dnn.hpp \
+		/usr/local/include/opencv2/dnn/dnn.hpp \
+		/usr/local/include/opencv2/core/async.hpp \
+		/usr/local/include/opencv2/dnn/dict.hpp \
+		/usr/local/include/opencv2/dnn/layer.hpp \
+		/usr/local/include/opencv2/dnn/dnn.inl.hpp \
+		/usr/local/include/opencv2/dnn/utils/inference_engine.hpp \
+		/usr/local/include/opencv2/flann.hpp \
+		/usr/local/include/opencv2/flann/flann_base.hpp \
+		/usr/local/include/opencv2/flann/general.h \
+		/usr/local/include/opencv2/flann/matrix.h \
+		/usr/local/include/opencv2/flann/params.h \
+		/usr/local/include/opencv2/flann/any.h \
+		/usr/local/include/opencv2/flann/saving.h \
+		/usr/local/include/opencv2/flann/nn_index.h \
+		/usr/local/include/opencv2/flann/result_set.h \
+		/usr/local/include/opencv2/flann/all_indices.h \
+		/usr/local/include/opencv2/flann/kdtree_index.h \
+		/usr/local/include/opencv2/flann/dynamic_bitset.h \
+		/usr/local/include/opencv2/flann/dist.h \
+		/usr/local/include/opencv2/flann/heap.h \
+		/usr/local/include/opencv2/flann/allocator.h \
+		/usr/local/include/opencv2/flann/random.h \
+		/usr/local/include/opencv2/flann/kdtree_single_index.h \
+		/usr/local/include/opencv2/flann/kmeans_index.h \
+		/usr/local/include/opencv2/flann/logger.h \
+		/usr/local/include/opencv2/flann/composite_index.h \
+		/usr/local/include/opencv2/flann/linear_index.h \
+		/usr/local/include/opencv2/flann/hierarchical_clustering_index.h \
+		/usr/local/include/opencv2/flann/lsh_index.h \
+		/usr/local/include/opencv2/flann/lsh_table.h \
+		/usr/local/include/opencv2/flann/autotuned_index.h \
+		/usr/local/include/opencv2/flann/ground_truth.h \
+		/usr/local/include/opencv2/flann/index_testing.h \
+		/usr/local/include/opencv2/flann/timer.h \
+		/usr/local/include/opencv2/flann/sampling.h \
 		/usr/local/include/opencv2/highgui.hpp \
 		/usr/local/include/opencv2/imgcodecs.hpp \
 		/usr/local/include/opencv2/videoio.hpp \
 		/usr/local/include/opencv2/highgui/highgui_c.h \
+		/usr/local/include/opencv2/imgproc/imgproc_c.h \
+		/usr/local/include/opencv2/imgproc/types_c.h \
 		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
 		/usr/local/include/opencv2/videoio/videoio_c.h \
+		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/ml.hpp \
+		/usr/local/include/opencv2/ml/ml.inl.hpp \
+		/usr/local/include/opencv2/objdetect.hpp \
+		/usr/local/include/opencv2/objdetect/detection_based_tracker.hpp \
+		/usr/local/include/opencv2/objdetect/objdetect_c.h \
+		/usr/local/include/opencv2/photo.hpp \
+		/usr/local/include/opencv2/photo/photo_c.h \
+		/usr/local/include/opencv2/shape.hpp \
+		/usr/local/include/opencv2/shape/emdL1.hpp \
+		/usr/local/include/opencv2/shape/shape_transformer.hpp \
+		/usr/local/include/opencv2/shape/hist_cost.hpp \
+		/usr/local/include/opencv2/shape/shape_distance.hpp \
+		/usr/local/include/opencv2/stitching.hpp \
+		/usr/local/include/opencv2/stitching/warpers.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers.hpp \
+		/usr/local/include/opencv2/core/cuda.hpp \
+		/usr/local/include/opencv2/core/cuda_types.hpp \
+		/usr/local/include/opencv2/core/cuda.inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/matchers.hpp \
+		/usr/local/include/opencv2/xfeatures2d/cuda.hpp \
+		/usr/local/include/opencv2/stitching/detail/motion_estimators.hpp \
+		/usr/local/include/opencv2/stitching/detail/util.hpp \
+		/usr/local/include/opencv2/stitching/detail/util_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/camera.hpp \
+		/usr/local/include/opencv2/stitching/detail/exposure_compensate.hpp \
+		/usr/local/include/opencv2/stitching/detail/seam_finders.hpp \
+		/usr/local/include/opencv2/stitching/detail/blenders.hpp \
+		/usr/local/include/opencv2/superres.hpp \
+		/usr/local/include/opencv2/superres/optical_flow.hpp \
+		/usr/local/include/opencv2/video.hpp \
+		/usr/local/include/opencv2/video/tracking.hpp \
+		/usr/local/include/opencv2/video/background_segm.hpp \
+		/usr/local/include/opencv2/video/tracking_c.h \
+		/usr/local/include/opencv2/videostab.hpp \
+		/usr/local/include/opencv2/videostab/stabilizer.hpp \
+		/usr/local/include/opencv2/videostab/global_motion.hpp \
+		/usr/local/include/opencv2/videostab/optical_flow.hpp \
+		/usr/local/include/opencv2/cudaoptflow.hpp \
+		/usr/local/include/opencv2/videostab/motion_core.hpp \
+		/usr/local/include/opencv2/videostab/outlier_rejection.hpp \
+		/usr/local/include/opencv2/cudaimgproc.hpp \
+		/usr/local/include/opencv2/videostab/motion_stabilizing.hpp \
+		/usr/local/include/opencv2/videostab/frame_source.hpp \
+		/usr/local/include/opencv2/videostab/log.hpp \
+		/usr/local/include/opencv2/videostab/inpainting.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching_inl.hpp \
+		/usr/local/include/opencv2/videostab/deblurring.hpp \
+		/usr/local/include/opencv2/videostab/wobble_suppression.hpp \
+		/usr/local/include/opencv2/videostab/ring_buffer.hpp \
+		/usr/local/include/opencv2/cudaarithm.hpp \
+		/usr/local/include/opencv2/cudabgsegm.hpp \
+		/usr/local/include/opencv2/cudafeatures2d.hpp \
+		/usr/local/include/opencv2/cudafilters.hpp \
+		/usr/local/include/opencv2/cudaobjdetect.hpp \
+		/usr/local/include/opencv2/cudastereo.hpp \
+		/usr/local/include/opencv2/cudawarping.hpp \
+		/usr/local/include/opencv2/imgproc/imgproc.hpp \
 		/usr/local/include/opencv2/core/core.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/debug/obj/configurations.o src/configurations.cpp
 
@@ -3246,7 +4994,8 @@ build/debug/obj/connectivity.o: src/connectivity.cpp include/connectivity.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qcontainerfwd.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qobject_impl.h \
 		include/configurations.h \
-		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/opencv.hpp \
+		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core.hpp \
 		/usr/local/include/opencv2/core/cvdef.h \
 		/usr/local/include/opencv2/core/hal/interface.h \
@@ -3255,7 +5004,6 @@ build/debug/obj/connectivity.o: src/connectivity.cpp include/connectivity.h \
 		/usr/local/include/opencv2/core/fast_math.hpp \
 		/usr/local/include/opencv2/core/version.hpp \
 		/usr/local/include/opencv2/core/base.hpp \
-		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core/cvstd.hpp \
 		/usr/local/include/opencv2/core/ptr.inl.hpp \
 		/usr/local/include/opencv2/core/neon_utils.hpp \
@@ -3276,14 +5024,117 @@ build/debug/obj/connectivity.o: src/connectivity.cpp include/connectivity.h \
 		/usr/local/include/opencv2/core/types_c.h \
 		/usr/local/include/opencv2/core/optim.hpp \
 		/usr/local/include/opencv2/core/ovx.hpp \
-		/usr/local/include/opencv2/imgproc/imgproc_c.h \
-		/usr/local/include/opencv2/imgproc/types_c.h \
+		/usr/local/include/opencv2/calib3d.hpp \
+		/usr/local/include/opencv2/features2d.hpp \
+		/usr/local/include/opencv2/flann/miniflann.hpp \
+		/usr/local/include/opencv2/flann/defines.h \
+		/usr/local/include/opencv2/flann/config.h \
+		/usr/local/include/opencv2/core/affine.hpp \
+		/usr/local/include/opencv2/calib3d/calib3d_c.h \
+		/usr/local/include/opencv2/dnn.hpp \
+		/usr/local/include/opencv2/dnn/dnn.hpp \
+		/usr/local/include/opencv2/core/async.hpp \
+		/usr/local/include/opencv2/dnn/dict.hpp \
+		/usr/local/include/opencv2/dnn/layer.hpp \
+		/usr/local/include/opencv2/dnn/dnn.inl.hpp \
+		/usr/local/include/opencv2/dnn/utils/inference_engine.hpp \
+		/usr/local/include/opencv2/flann.hpp \
+		/usr/local/include/opencv2/flann/flann_base.hpp \
+		/usr/local/include/opencv2/flann/general.h \
+		/usr/local/include/opencv2/flann/matrix.h \
+		/usr/local/include/opencv2/flann/params.h \
+		/usr/local/include/opencv2/flann/any.h \
+		/usr/local/include/opencv2/flann/saving.h \
+		/usr/local/include/opencv2/flann/nn_index.h \
+		/usr/local/include/opencv2/flann/result_set.h \
+		/usr/local/include/opencv2/flann/all_indices.h \
+		/usr/local/include/opencv2/flann/kdtree_index.h \
+		/usr/local/include/opencv2/flann/dynamic_bitset.h \
+		/usr/local/include/opencv2/flann/dist.h \
+		/usr/local/include/opencv2/flann/heap.h \
+		/usr/local/include/opencv2/flann/allocator.h \
+		/usr/local/include/opencv2/flann/random.h \
+		/usr/local/include/opencv2/flann/kdtree_single_index.h \
+		/usr/local/include/opencv2/flann/kmeans_index.h \
+		/usr/local/include/opencv2/flann/logger.h \
+		/usr/local/include/opencv2/flann/composite_index.h \
+		/usr/local/include/opencv2/flann/linear_index.h \
+		/usr/local/include/opencv2/flann/hierarchical_clustering_index.h \
+		/usr/local/include/opencv2/flann/lsh_index.h \
+		/usr/local/include/opencv2/flann/lsh_table.h \
+		/usr/local/include/opencv2/flann/autotuned_index.h \
+		/usr/local/include/opencv2/flann/ground_truth.h \
+		/usr/local/include/opencv2/flann/index_testing.h \
+		/usr/local/include/opencv2/flann/timer.h \
+		/usr/local/include/opencv2/flann/sampling.h \
 		/usr/local/include/opencv2/highgui.hpp \
 		/usr/local/include/opencv2/imgcodecs.hpp \
 		/usr/local/include/opencv2/videoio.hpp \
 		/usr/local/include/opencv2/highgui/highgui_c.h \
+		/usr/local/include/opencv2/imgproc/imgproc_c.h \
+		/usr/local/include/opencv2/imgproc/types_c.h \
 		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
 		/usr/local/include/opencv2/videoio/videoio_c.h \
+		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/ml.hpp \
+		/usr/local/include/opencv2/ml/ml.inl.hpp \
+		/usr/local/include/opencv2/objdetect.hpp \
+		/usr/local/include/opencv2/objdetect/detection_based_tracker.hpp \
+		/usr/local/include/opencv2/objdetect/objdetect_c.h \
+		/usr/local/include/opencv2/photo.hpp \
+		/usr/local/include/opencv2/photo/photo_c.h \
+		/usr/local/include/opencv2/shape.hpp \
+		/usr/local/include/opencv2/shape/emdL1.hpp \
+		/usr/local/include/opencv2/shape/shape_transformer.hpp \
+		/usr/local/include/opencv2/shape/hist_cost.hpp \
+		/usr/local/include/opencv2/shape/shape_distance.hpp \
+		/usr/local/include/opencv2/stitching.hpp \
+		/usr/local/include/opencv2/stitching/warpers.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers.hpp \
+		/usr/local/include/opencv2/core/cuda.hpp \
+		/usr/local/include/opencv2/core/cuda_types.hpp \
+		/usr/local/include/opencv2/core/cuda.inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/matchers.hpp \
+		/usr/local/include/opencv2/xfeatures2d/cuda.hpp \
+		/usr/local/include/opencv2/stitching/detail/motion_estimators.hpp \
+		/usr/local/include/opencv2/stitching/detail/util.hpp \
+		/usr/local/include/opencv2/stitching/detail/util_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/camera.hpp \
+		/usr/local/include/opencv2/stitching/detail/exposure_compensate.hpp \
+		/usr/local/include/opencv2/stitching/detail/seam_finders.hpp \
+		/usr/local/include/opencv2/stitching/detail/blenders.hpp \
+		/usr/local/include/opencv2/superres.hpp \
+		/usr/local/include/opencv2/superres/optical_flow.hpp \
+		/usr/local/include/opencv2/video.hpp \
+		/usr/local/include/opencv2/video/tracking.hpp \
+		/usr/local/include/opencv2/video/background_segm.hpp \
+		/usr/local/include/opencv2/video/tracking_c.h \
+		/usr/local/include/opencv2/videostab.hpp \
+		/usr/local/include/opencv2/videostab/stabilizer.hpp \
+		/usr/local/include/opencv2/videostab/global_motion.hpp \
+		/usr/local/include/opencv2/videostab/optical_flow.hpp \
+		/usr/local/include/opencv2/cudaoptflow.hpp \
+		/usr/local/include/opencv2/videostab/motion_core.hpp \
+		/usr/local/include/opencv2/videostab/outlier_rejection.hpp \
+		/usr/local/include/opencv2/cudaimgproc.hpp \
+		/usr/local/include/opencv2/videostab/motion_stabilizing.hpp \
+		/usr/local/include/opencv2/videostab/frame_source.hpp \
+		/usr/local/include/opencv2/videostab/log.hpp \
+		/usr/local/include/opencv2/videostab/inpainting.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching_inl.hpp \
+		/usr/local/include/opencv2/videostab/deblurring.hpp \
+		/usr/local/include/opencv2/videostab/wobble_suppression.hpp \
+		/usr/local/include/opencv2/videostab/ring_buffer.hpp \
+		/usr/local/include/opencv2/cudaarithm.hpp \
+		/usr/local/include/opencv2/cudabgsegm.hpp \
+		/usr/local/include/opencv2/cudafeatures2d.hpp \
+		/usr/local/include/opencv2/cudafilters.hpp \
+		/usr/local/include/opencv2/cudaobjdetect.hpp \
+		/usr/local/include/opencv2/cudastereo.hpp \
+		/usr/local/include/opencv2/cudawarping.hpp \
+		/usr/local/include/opencv2/imgproc/imgproc.hpp \
 		/usr/local/include/opencv2/core/core.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/debug/obj/connectivity.o src/connectivity.cpp
 
@@ -3400,7 +5251,8 @@ build/debug/obj/cudadetectionthread.o: src/cudadetectionthread.cpp include/cudad
 		/usr/local/include/jetson-utils/imageIO.h \
 		/usr/local/include/jetson-utils/cudaMappedMemory.h \
 		include/configurations.h \
-		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/opencv.hpp \
+		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core.hpp \
 		/usr/local/include/opencv2/core/cvdef.h \
 		/usr/local/include/opencv2/core/hal/interface.h \
@@ -3409,7 +5261,6 @@ build/debug/obj/cudadetectionthread.o: src/cudadetectionthread.cpp include/cudad
 		/usr/local/include/opencv2/core/fast_math.hpp \
 		/usr/local/include/opencv2/core/version.hpp \
 		/usr/local/include/opencv2/core/base.hpp \
-		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core/cvstd.hpp \
 		/usr/local/include/opencv2/core/ptr.inl.hpp \
 		/usr/local/include/opencv2/core/neon_utils.hpp \
@@ -3430,14 +5281,117 @@ build/debug/obj/cudadetectionthread.o: src/cudadetectionthread.cpp include/cudad
 		/usr/local/include/opencv2/core/types_c.h \
 		/usr/local/include/opencv2/core/optim.hpp \
 		/usr/local/include/opencv2/core/ovx.hpp \
-		/usr/local/include/opencv2/imgproc/imgproc_c.h \
-		/usr/local/include/opencv2/imgproc/types_c.h \
+		/usr/local/include/opencv2/calib3d.hpp \
+		/usr/local/include/opencv2/features2d.hpp \
+		/usr/local/include/opencv2/flann/miniflann.hpp \
+		/usr/local/include/opencv2/flann/defines.h \
+		/usr/local/include/opencv2/flann/config.h \
+		/usr/local/include/opencv2/core/affine.hpp \
+		/usr/local/include/opencv2/calib3d/calib3d_c.h \
+		/usr/local/include/opencv2/dnn.hpp \
+		/usr/local/include/opencv2/dnn/dnn.hpp \
+		/usr/local/include/opencv2/core/async.hpp \
+		/usr/local/include/opencv2/dnn/dict.hpp \
+		/usr/local/include/opencv2/dnn/layer.hpp \
+		/usr/local/include/opencv2/dnn/dnn.inl.hpp \
+		/usr/local/include/opencv2/dnn/utils/inference_engine.hpp \
+		/usr/local/include/opencv2/flann.hpp \
+		/usr/local/include/opencv2/flann/flann_base.hpp \
+		/usr/local/include/opencv2/flann/general.h \
+		/usr/local/include/opencv2/flann/matrix.h \
+		/usr/local/include/opencv2/flann/params.h \
+		/usr/local/include/opencv2/flann/any.h \
+		/usr/local/include/opencv2/flann/saving.h \
+		/usr/local/include/opencv2/flann/nn_index.h \
+		/usr/local/include/opencv2/flann/result_set.h \
+		/usr/local/include/opencv2/flann/all_indices.h \
+		/usr/local/include/opencv2/flann/kdtree_index.h \
+		/usr/local/include/opencv2/flann/dynamic_bitset.h \
+		/usr/local/include/opencv2/flann/dist.h \
+		/usr/local/include/opencv2/flann/heap.h \
+		/usr/local/include/opencv2/flann/allocator.h \
+		/usr/local/include/opencv2/flann/random.h \
+		/usr/local/include/opencv2/flann/kdtree_single_index.h \
+		/usr/local/include/opencv2/flann/kmeans_index.h \
+		/usr/local/include/opencv2/flann/logger.h \
+		/usr/local/include/opencv2/flann/composite_index.h \
+		/usr/local/include/opencv2/flann/linear_index.h \
+		/usr/local/include/opencv2/flann/hierarchical_clustering_index.h \
+		/usr/local/include/opencv2/flann/lsh_index.h \
+		/usr/local/include/opencv2/flann/lsh_table.h \
+		/usr/local/include/opencv2/flann/autotuned_index.h \
+		/usr/local/include/opencv2/flann/ground_truth.h \
+		/usr/local/include/opencv2/flann/index_testing.h \
+		/usr/local/include/opencv2/flann/timer.h \
+		/usr/local/include/opencv2/flann/sampling.h \
 		/usr/local/include/opencv2/highgui.hpp \
 		/usr/local/include/opencv2/imgcodecs.hpp \
 		/usr/local/include/opencv2/videoio.hpp \
 		/usr/local/include/opencv2/highgui/highgui_c.h \
+		/usr/local/include/opencv2/imgproc/imgproc_c.h \
+		/usr/local/include/opencv2/imgproc/types_c.h \
 		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
 		/usr/local/include/opencv2/videoio/videoio_c.h \
+		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/ml.hpp \
+		/usr/local/include/opencv2/ml/ml.inl.hpp \
+		/usr/local/include/opencv2/objdetect.hpp \
+		/usr/local/include/opencv2/objdetect/detection_based_tracker.hpp \
+		/usr/local/include/opencv2/objdetect/objdetect_c.h \
+		/usr/local/include/opencv2/photo.hpp \
+		/usr/local/include/opencv2/photo/photo_c.h \
+		/usr/local/include/opencv2/shape.hpp \
+		/usr/local/include/opencv2/shape/emdL1.hpp \
+		/usr/local/include/opencv2/shape/shape_transformer.hpp \
+		/usr/local/include/opencv2/shape/hist_cost.hpp \
+		/usr/local/include/opencv2/shape/shape_distance.hpp \
+		/usr/local/include/opencv2/stitching.hpp \
+		/usr/local/include/opencv2/stitching/warpers.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers.hpp \
+		/usr/local/include/opencv2/core/cuda.hpp \
+		/usr/local/include/opencv2/core/cuda_types.hpp \
+		/usr/local/include/opencv2/core/cuda.inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/matchers.hpp \
+		/usr/local/include/opencv2/xfeatures2d/cuda.hpp \
+		/usr/local/include/opencv2/stitching/detail/motion_estimators.hpp \
+		/usr/local/include/opencv2/stitching/detail/util.hpp \
+		/usr/local/include/opencv2/stitching/detail/util_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/camera.hpp \
+		/usr/local/include/opencv2/stitching/detail/exposure_compensate.hpp \
+		/usr/local/include/opencv2/stitching/detail/seam_finders.hpp \
+		/usr/local/include/opencv2/stitching/detail/blenders.hpp \
+		/usr/local/include/opencv2/superres.hpp \
+		/usr/local/include/opencv2/superres/optical_flow.hpp \
+		/usr/local/include/opencv2/video.hpp \
+		/usr/local/include/opencv2/video/tracking.hpp \
+		/usr/local/include/opencv2/video/background_segm.hpp \
+		/usr/local/include/opencv2/video/tracking_c.h \
+		/usr/local/include/opencv2/videostab.hpp \
+		/usr/local/include/opencv2/videostab/stabilizer.hpp \
+		/usr/local/include/opencv2/videostab/global_motion.hpp \
+		/usr/local/include/opencv2/videostab/optical_flow.hpp \
+		/usr/local/include/opencv2/cudaoptflow.hpp \
+		/usr/local/include/opencv2/videostab/motion_core.hpp \
+		/usr/local/include/opencv2/videostab/outlier_rejection.hpp \
+		/usr/local/include/opencv2/cudaimgproc.hpp \
+		/usr/local/include/opencv2/videostab/motion_stabilizing.hpp \
+		/usr/local/include/opencv2/videostab/frame_source.hpp \
+		/usr/local/include/opencv2/videostab/log.hpp \
+		/usr/local/include/opencv2/videostab/inpainting.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching_inl.hpp \
+		/usr/local/include/opencv2/videostab/deblurring.hpp \
+		/usr/local/include/opencv2/videostab/wobble_suppression.hpp \
+		/usr/local/include/opencv2/videostab/ring_buffer.hpp \
+		/usr/local/include/opencv2/cudaarithm.hpp \
+		/usr/local/include/opencv2/cudabgsegm.hpp \
+		/usr/local/include/opencv2/cudafeatures2d.hpp \
+		/usr/local/include/opencv2/cudafilters.hpp \
+		/usr/local/include/opencv2/cudaobjdetect.hpp \
+		/usr/local/include/opencv2/cudastereo.hpp \
+		/usr/local/include/opencv2/cudawarping.hpp \
+		/usr/local/include/opencv2/imgproc/imgproc.hpp \
 		/usr/local/include/opencv2/core/core.hpp \
 		../../Qt/5.12.4/gcc_64/include/QtCore/QDir \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qdir.h \
@@ -3583,7 +5537,8 @@ build/debug/obj/dictionary.o: src/dictionary.cpp include/dictionary.h \
 		../../Qt/5.12.4/gcc_64/include/QtGui/QStandardItemModel \
 		../../Qt/5.12.4/gcc_64/include/QtGui/qstandarditemmodel.h \
 		include/configurations.h \
-		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/opencv.hpp \
+		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core.hpp \
 		/usr/local/include/opencv2/core/cvdef.h \
 		/usr/local/include/opencv2/core/hal/interface.h \
@@ -3592,7 +5547,6 @@ build/debug/obj/dictionary.o: src/dictionary.cpp include/dictionary.h \
 		/usr/local/include/opencv2/core/fast_math.hpp \
 		/usr/local/include/opencv2/core/version.hpp \
 		/usr/local/include/opencv2/core/base.hpp \
-		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core/cvstd.hpp \
 		/usr/local/include/opencv2/core/ptr.inl.hpp \
 		/usr/local/include/opencv2/core/neon_utils.hpp \
@@ -3613,14 +5567,117 @@ build/debug/obj/dictionary.o: src/dictionary.cpp include/dictionary.h \
 		/usr/local/include/opencv2/core/types_c.h \
 		/usr/local/include/opencv2/core/optim.hpp \
 		/usr/local/include/opencv2/core/ovx.hpp \
-		/usr/local/include/opencv2/imgproc/imgproc_c.h \
-		/usr/local/include/opencv2/imgproc/types_c.h \
+		/usr/local/include/opencv2/calib3d.hpp \
+		/usr/local/include/opencv2/features2d.hpp \
+		/usr/local/include/opencv2/flann/miniflann.hpp \
+		/usr/local/include/opencv2/flann/defines.h \
+		/usr/local/include/opencv2/flann/config.h \
+		/usr/local/include/opencv2/core/affine.hpp \
+		/usr/local/include/opencv2/calib3d/calib3d_c.h \
+		/usr/local/include/opencv2/dnn.hpp \
+		/usr/local/include/opencv2/dnn/dnn.hpp \
+		/usr/local/include/opencv2/core/async.hpp \
+		/usr/local/include/opencv2/dnn/dict.hpp \
+		/usr/local/include/opencv2/dnn/layer.hpp \
+		/usr/local/include/opencv2/dnn/dnn.inl.hpp \
+		/usr/local/include/opencv2/dnn/utils/inference_engine.hpp \
+		/usr/local/include/opencv2/flann.hpp \
+		/usr/local/include/opencv2/flann/flann_base.hpp \
+		/usr/local/include/opencv2/flann/general.h \
+		/usr/local/include/opencv2/flann/matrix.h \
+		/usr/local/include/opencv2/flann/params.h \
+		/usr/local/include/opencv2/flann/any.h \
+		/usr/local/include/opencv2/flann/saving.h \
+		/usr/local/include/opencv2/flann/nn_index.h \
+		/usr/local/include/opencv2/flann/result_set.h \
+		/usr/local/include/opencv2/flann/all_indices.h \
+		/usr/local/include/opencv2/flann/kdtree_index.h \
+		/usr/local/include/opencv2/flann/dynamic_bitset.h \
+		/usr/local/include/opencv2/flann/dist.h \
+		/usr/local/include/opencv2/flann/heap.h \
+		/usr/local/include/opencv2/flann/allocator.h \
+		/usr/local/include/opencv2/flann/random.h \
+		/usr/local/include/opencv2/flann/kdtree_single_index.h \
+		/usr/local/include/opencv2/flann/kmeans_index.h \
+		/usr/local/include/opencv2/flann/logger.h \
+		/usr/local/include/opencv2/flann/composite_index.h \
+		/usr/local/include/opencv2/flann/linear_index.h \
+		/usr/local/include/opencv2/flann/hierarchical_clustering_index.h \
+		/usr/local/include/opencv2/flann/lsh_index.h \
+		/usr/local/include/opencv2/flann/lsh_table.h \
+		/usr/local/include/opencv2/flann/autotuned_index.h \
+		/usr/local/include/opencv2/flann/ground_truth.h \
+		/usr/local/include/opencv2/flann/index_testing.h \
+		/usr/local/include/opencv2/flann/timer.h \
+		/usr/local/include/opencv2/flann/sampling.h \
 		/usr/local/include/opencv2/highgui.hpp \
 		/usr/local/include/opencv2/imgcodecs.hpp \
 		/usr/local/include/opencv2/videoio.hpp \
 		/usr/local/include/opencv2/highgui/highgui_c.h \
+		/usr/local/include/opencv2/imgproc/imgproc_c.h \
+		/usr/local/include/opencv2/imgproc/types_c.h \
 		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
 		/usr/local/include/opencv2/videoio/videoio_c.h \
+		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/ml.hpp \
+		/usr/local/include/opencv2/ml/ml.inl.hpp \
+		/usr/local/include/opencv2/objdetect.hpp \
+		/usr/local/include/opencv2/objdetect/detection_based_tracker.hpp \
+		/usr/local/include/opencv2/objdetect/objdetect_c.h \
+		/usr/local/include/opencv2/photo.hpp \
+		/usr/local/include/opencv2/photo/photo_c.h \
+		/usr/local/include/opencv2/shape.hpp \
+		/usr/local/include/opencv2/shape/emdL1.hpp \
+		/usr/local/include/opencv2/shape/shape_transformer.hpp \
+		/usr/local/include/opencv2/shape/hist_cost.hpp \
+		/usr/local/include/opencv2/shape/shape_distance.hpp \
+		/usr/local/include/opencv2/stitching.hpp \
+		/usr/local/include/opencv2/stitching/warpers.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers.hpp \
+		/usr/local/include/opencv2/core/cuda.hpp \
+		/usr/local/include/opencv2/core/cuda_types.hpp \
+		/usr/local/include/opencv2/core/cuda.inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/matchers.hpp \
+		/usr/local/include/opencv2/xfeatures2d/cuda.hpp \
+		/usr/local/include/opencv2/stitching/detail/motion_estimators.hpp \
+		/usr/local/include/opencv2/stitching/detail/util.hpp \
+		/usr/local/include/opencv2/stitching/detail/util_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/camera.hpp \
+		/usr/local/include/opencv2/stitching/detail/exposure_compensate.hpp \
+		/usr/local/include/opencv2/stitching/detail/seam_finders.hpp \
+		/usr/local/include/opencv2/stitching/detail/blenders.hpp \
+		/usr/local/include/opencv2/superres.hpp \
+		/usr/local/include/opencv2/superres/optical_flow.hpp \
+		/usr/local/include/opencv2/video.hpp \
+		/usr/local/include/opencv2/video/tracking.hpp \
+		/usr/local/include/opencv2/video/background_segm.hpp \
+		/usr/local/include/opencv2/video/tracking_c.h \
+		/usr/local/include/opencv2/videostab.hpp \
+		/usr/local/include/opencv2/videostab/stabilizer.hpp \
+		/usr/local/include/opencv2/videostab/global_motion.hpp \
+		/usr/local/include/opencv2/videostab/optical_flow.hpp \
+		/usr/local/include/opencv2/cudaoptflow.hpp \
+		/usr/local/include/opencv2/videostab/motion_core.hpp \
+		/usr/local/include/opencv2/videostab/outlier_rejection.hpp \
+		/usr/local/include/opencv2/cudaimgproc.hpp \
+		/usr/local/include/opencv2/videostab/motion_stabilizing.hpp \
+		/usr/local/include/opencv2/videostab/frame_source.hpp \
+		/usr/local/include/opencv2/videostab/log.hpp \
+		/usr/local/include/opencv2/videostab/inpainting.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching_inl.hpp \
+		/usr/local/include/opencv2/videostab/deblurring.hpp \
+		/usr/local/include/opencv2/videostab/wobble_suppression.hpp \
+		/usr/local/include/opencv2/videostab/ring_buffer.hpp \
+		/usr/local/include/opencv2/cudaarithm.hpp \
+		/usr/local/include/opencv2/cudabgsegm.hpp \
+		/usr/local/include/opencv2/cudafeatures2d.hpp \
+		/usr/local/include/opencv2/cudafilters.hpp \
+		/usr/local/include/opencv2/cudaobjdetect.hpp \
+		/usr/local/include/opencv2/cudastereo.hpp \
+		/usr/local/include/opencv2/cudawarping.hpp \
+		/usr/local/include/opencv2/imgproc/imgproc.hpp \
 		/usr/local/include/opencv2/core/core.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/debug/obj/dictionary.o src/dictionary.cpp
 
@@ -3677,7 +5734,8 @@ build/debug/obj/feedaudiopipethread.o: src/feedaudiopipethread.cpp include/feeda
 		../../Qt/5.12.4/gcc_64/include/QtCore/qcontainerfwd.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qobject_impl.h \
 		include/configurations.h \
-		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/opencv.hpp \
+		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core.hpp \
 		/usr/local/include/opencv2/core/cvdef.h \
 		/usr/local/include/opencv2/core/hal/interface.h \
@@ -3686,7 +5744,6 @@ build/debug/obj/feedaudiopipethread.o: src/feedaudiopipethread.cpp include/feeda
 		/usr/local/include/opencv2/core/fast_math.hpp \
 		/usr/local/include/opencv2/core/version.hpp \
 		/usr/local/include/opencv2/core/base.hpp \
-		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core/cvstd.hpp \
 		/usr/local/include/opencv2/core/ptr.inl.hpp \
 		/usr/local/include/opencv2/core/neon_utils.hpp \
@@ -3707,14 +5764,117 @@ build/debug/obj/feedaudiopipethread.o: src/feedaudiopipethread.cpp include/feeda
 		/usr/local/include/opencv2/core/types_c.h \
 		/usr/local/include/opencv2/core/optim.hpp \
 		/usr/local/include/opencv2/core/ovx.hpp \
-		/usr/local/include/opencv2/imgproc/imgproc_c.h \
-		/usr/local/include/opencv2/imgproc/types_c.h \
+		/usr/local/include/opencv2/calib3d.hpp \
+		/usr/local/include/opencv2/features2d.hpp \
+		/usr/local/include/opencv2/flann/miniflann.hpp \
+		/usr/local/include/opencv2/flann/defines.h \
+		/usr/local/include/opencv2/flann/config.h \
+		/usr/local/include/opencv2/core/affine.hpp \
+		/usr/local/include/opencv2/calib3d/calib3d_c.h \
+		/usr/local/include/opencv2/dnn.hpp \
+		/usr/local/include/opencv2/dnn/dnn.hpp \
+		/usr/local/include/opencv2/core/async.hpp \
+		/usr/local/include/opencv2/dnn/dict.hpp \
+		/usr/local/include/opencv2/dnn/layer.hpp \
+		/usr/local/include/opencv2/dnn/dnn.inl.hpp \
+		/usr/local/include/opencv2/dnn/utils/inference_engine.hpp \
+		/usr/local/include/opencv2/flann.hpp \
+		/usr/local/include/opencv2/flann/flann_base.hpp \
+		/usr/local/include/opencv2/flann/general.h \
+		/usr/local/include/opencv2/flann/matrix.h \
+		/usr/local/include/opencv2/flann/params.h \
+		/usr/local/include/opencv2/flann/any.h \
+		/usr/local/include/opencv2/flann/saving.h \
+		/usr/local/include/opencv2/flann/nn_index.h \
+		/usr/local/include/opencv2/flann/result_set.h \
+		/usr/local/include/opencv2/flann/all_indices.h \
+		/usr/local/include/opencv2/flann/kdtree_index.h \
+		/usr/local/include/opencv2/flann/dynamic_bitset.h \
+		/usr/local/include/opencv2/flann/dist.h \
+		/usr/local/include/opencv2/flann/heap.h \
+		/usr/local/include/opencv2/flann/allocator.h \
+		/usr/local/include/opencv2/flann/random.h \
+		/usr/local/include/opencv2/flann/kdtree_single_index.h \
+		/usr/local/include/opencv2/flann/kmeans_index.h \
+		/usr/local/include/opencv2/flann/logger.h \
+		/usr/local/include/opencv2/flann/composite_index.h \
+		/usr/local/include/opencv2/flann/linear_index.h \
+		/usr/local/include/opencv2/flann/hierarchical_clustering_index.h \
+		/usr/local/include/opencv2/flann/lsh_index.h \
+		/usr/local/include/opencv2/flann/lsh_table.h \
+		/usr/local/include/opencv2/flann/autotuned_index.h \
+		/usr/local/include/opencv2/flann/ground_truth.h \
+		/usr/local/include/opencv2/flann/index_testing.h \
+		/usr/local/include/opencv2/flann/timer.h \
+		/usr/local/include/opencv2/flann/sampling.h \
 		/usr/local/include/opencv2/highgui.hpp \
 		/usr/local/include/opencv2/imgcodecs.hpp \
 		/usr/local/include/opencv2/videoio.hpp \
 		/usr/local/include/opencv2/highgui/highgui_c.h \
+		/usr/local/include/opencv2/imgproc/imgproc_c.h \
+		/usr/local/include/opencv2/imgproc/types_c.h \
 		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
 		/usr/local/include/opencv2/videoio/videoio_c.h \
+		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/ml.hpp \
+		/usr/local/include/opencv2/ml/ml.inl.hpp \
+		/usr/local/include/opencv2/objdetect.hpp \
+		/usr/local/include/opencv2/objdetect/detection_based_tracker.hpp \
+		/usr/local/include/opencv2/objdetect/objdetect_c.h \
+		/usr/local/include/opencv2/photo.hpp \
+		/usr/local/include/opencv2/photo/photo_c.h \
+		/usr/local/include/opencv2/shape.hpp \
+		/usr/local/include/opencv2/shape/emdL1.hpp \
+		/usr/local/include/opencv2/shape/shape_transformer.hpp \
+		/usr/local/include/opencv2/shape/hist_cost.hpp \
+		/usr/local/include/opencv2/shape/shape_distance.hpp \
+		/usr/local/include/opencv2/stitching.hpp \
+		/usr/local/include/opencv2/stitching/warpers.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers.hpp \
+		/usr/local/include/opencv2/core/cuda.hpp \
+		/usr/local/include/opencv2/core/cuda_types.hpp \
+		/usr/local/include/opencv2/core/cuda.inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/matchers.hpp \
+		/usr/local/include/opencv2/xfeatures2d/cuda.hpp \
+		/usr/local/include/opencv2/stitching/detail/motion_estimators.hpp \
+		/usr/local/include/opencv2/stitching/detail/util.hpp \
+		/usr/local/include/opencv2/stitching/detail/util_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/camera.hpp \
+		/usr/local/include/opencv2/stitching/detail/exposure_compensate.hpp \
+		/usr/local/include/opencv2/stitching/detail/seam_finders.hpp \
+		/usr/local/include/opencv2/stitching/detail/blenders.hpp \
+		/usr/local/include/opencv2/superres.hpp \
+		/usr/local/include/opencv2/superres/optical_flow.hpp \
+		/usr/local/include/opencv2/video.hpp \
+		/usr/local/include/opencv2/video/tracking.hpp \
+		/usr/local/include/opencv2/video/background_segm.hpp \
+		/usr/local/include/opencv2/video/tracking_c.h \
+		/usr/local/include/opencv2/videostab.hpp \
+		/usr/local/include/opencv2/videostab/stabilizer.hpp \
+		/usr/local/include/opencv2/videostab/global_motion.hpp \
+		/usr/local/include/opencv2/videostab/optical_flow.hpp \
+		/usr/local/include/opencv2/cudaoptflow.hpp \
+		/usr/local/include/opencv2/videostab/motion_core.hpp \
+		/usr/local/include/opencv2/videostab/outlier_rejection.hpp \
+		/usr/local/include/opencv2/cudaimgproc.hpp \
+		/usr/local/include/opencv2/videostab/motion_stabilizing.hpp \
+		/usr/local/include/opencv2/videostab/frame_source.hpp \
+		/usr/local/include/opencv2/videostab/log.hpp \
+		/usr/local/include/opencv2/videostab/inpainting.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching_inl.hpp \
+		/usr/local/include/opencv2/videostab/deblurring.hpp \
+		/usr/local/include/opencv2/videostab/wobble_suppression.hpp \
+		/usr/local/include/opencv2/videostab/ring_buffer.hpp \
+		/usr/local/include/opencv2/cudaarithm.hpp \
+		/usr/local/include/opencv2/cudabgsegm.hpp \
+		/usr/local/include/opencv2/cudafeatures2d.hpp \
+		/usr/local/include/opencv2/cudafilters.hpp \
+		/usr/local/include/opencv2/cudaobjdetect.hpp \
+		/usr/local/include/opencv2/cudastereo.hpp \
+		/usr/local/include/opencv2/cudawarping.hpp \
+		/usr/local/include/opencv2/imgproc/imgproc.hpp \
 		/usr/local/include/opencv2/core/core.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/debug/obj/feedaudiopipethread.o src/feedaudiopipethread.cpp
 
@@ -3771,7 +5931,8 @@ build/debug/obj/feedvideopipethread.o: src/feedvideopipethread.cpp include/feedv
 		../../Qt/5.12.4/gcc_64/include/QtCore/qcontainerfwd.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qobject_impl.h \
 		include/configurations.h \
-		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/opencv.hpp \
+		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core.hpp \
 		/usr/local/include/opencv2/core/cvdef.h \
 		/usr/local/include/opencv2/core/hal/interface.h \
@@ -3780,7 +5941,6 @@ build/debug/obj/feedvideopipethread.o: src/feedvideopipethread.cpp include/feedv
 		/usr/local/include/opencv2/core/fast_math.hpp \
 		/usr/local/include/opencv2/core/version.hpp \
 		/usr/local/include/opencv2/core/base.hpp \
-		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core/cvstd.hpp \
 		/usr/local/include/opencv2/core/ptr.inl.hpp \
 		/usr/local/include/opencv2/core/neon_utils.hpp \
@@ -3801,14 +5961,117 @@ build/debug/obj/feedvideopipethread.o: src/feedvideopipethread.cpp include/feedv
 		/usr/local/include/opencv2/core/types_c.h \
 		/usr/local/include/opencv2/core/optim.hpp \
 		/usr/local/include/opencv2/core/ovx.hpp \
-		/usr/local/include/opencv2/imgproc/imgproc_c.h \
-		/usr/local/include/opencv2/imgproc/types_c.h \
+		/usr/local/include/opencv2/calib3d.hpp \
+		/usr/local/include/opencv2/features2d.hpp \
+		/usr/local/include/opencv2/flann/miniflann.hpp \
+		/usr/local/include/opencv2/flann/defines.h \
+		/usr/local/include/opencv2/flann/config.h \
+		/usr/local/include/opencv2/core/affine.hpp \
+		/usr/local/include/opencv2/calib3d/calib3d_c.h \
+		/usr/local/include/opencv2/dnn.hpp \
+		/usr/local/include/opencv2/dnn/dnn.hpp \
+		/usr/local/include/opencv2/core/async.hpp \
+		/usr/local/include/opencv2/dnn/dict.hpp \
+		/usr/local/include/opencv2/dnn/layer.hpp \
+		/usr/local/include/opencv2/dnn/dnn.inl.hpp \
+		/usr/local/include/opencv2/dnn/utils/inference_engine.hpp \
+		/usr/local/include/opencv2/flann.hpp \
+		/usr/local/include/opencv2/flann/flann_base.hpp \
+		/usr/local/include/opencv2/flann/general.h \
+		/usr/local/include/opencv2/flann/matrix.h \
+		/usr/local/include/opencv2/flann/params.h \
+		/usr/local/include/opencv2/flann/any.h \
+		/usr/local/include/opencv2/flann/saving.h \
+		/usr/local/include/opencv2/flann/nn_index.h \
+		/usr/local/include/opencv2/flann/result_set.h \
+		/usr/local/include/opencv2/flann/all_indices.h \
+		/usr/local/include/opencv2/flann/kdtree_index.h \
+		/usr/local/include/opencv2/flann/dynamic_bitset.h \
+		/usr/local/include/opencv2/flann/dist.h \
+		/usr/local/include/opencv2/flann/heap.h \
+		/usr/local/include/opencv2/flann/allocator.h \
+		/usr/local/include/opencv2/flann/random.h \
+		/usr/local/include/opencv2/flann/kdtree_single_index.h \
+		/usr/local/include/opencv2/flann/kmeans_index.h \
+		/usr/local/include/opencv2/flann/logger.h \
+		/usr/local/include/opencv2/flann/composite_index.h \
+		/usr/local/include/opencv2/flann/linear_index.h \
+		/usr/local/include/opencv2/flann/hierarchical_clustering_index.h \
+		/usr/local/include/opencv2/flann/lsh_index.h \
+		/usr/local/include/opencv2/flann/lsh_table.h \
+		/usr/local/include/opencv2/flann/autotuned_index.h \
+		/usr/local/include/opencv2/flann/ground_truth.h \
+		/usr/local/include/opencv2/flann/index_testing.h \
+		/usr/local/include/opencv2/flann/timer.h \
+		/usr/local/include/opencv2/flann/sampling.h \
 		/usr/local/include/opencv2/highgui.hpp \
 		/usr/local/include/opencv2/imgcodecs.hpp \
 		/usr/local/include/opencv2/videoio.hpp \
 		/usr/local/include/opencv2/highgui/highgui_c.h \
+		/usr/local/include/opencv2/imgproc/imgproc_c.h \
+		/usr/local/include/opencv2/imgproc/types_c.h \
 		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
 		/usr/local/include/opencv2/videoio/videoio_c.h \
+		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/ml.hpp \
+		/usr/local/include/opencv2/ml/ml.inl.hpp \
+		/usr/local/include/opencv2/objdetect.hpp \
+		/usr/local/include/opencv2/objdetect/detection_based_tracker.hpp \
+		/usr/local/include/opencv2/objdetect/objdetect_c.h \
+		/usr/local/include/opencv2/photo.hpp \
+		/usr/local/include/opencv2/photo/photo_c.h \
+		/usr/local/include/opencv2/shape.hpp \
+		/usr/local/include/opencv2/shape/emdL1.hpp \
+		/usr/local/include/opencv2/shape/shape_transformer.hpp \
+		/usr/local/include/opencv2/shape/hist_cost.hpp \
+		/usr/local/include/opencv2/shape/shape_distance.hpp \
+		/usr/local/include/opencv2/stitching.hpp \
+		/usr/local/include/opencv2/stitching/warpers.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers.hpp \
+		/usr/local/include/opencv2/core/cuda.hpp \
+		/usr/local/include/opencv2/core/cuda_types.hpp \
+		/usr/local/include/opencv2/core/cuda.inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/matchers.hpp \
+		/usr/local/include/opencv2/xfeatures2d/cuda.hpp \
+		/usr/local/include/opencv2/stitching/detail/motion_estimators.hpp \
+		/usr/local/include/opencv2/stitching/detail/util.hpp \
+		/usr/local/include/opencv2/stitching/detail/util_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/camera.hpp \
+		/usr/local/include/opencv2/stitching/detail/exposure_compensate.hpp \
+		/usr/local/include/opencv2/stitching/detail/seam_finders.hpp \
+		/usr/local/include/opencv2/stitching/detail/blenders.hpp \
+		/usr/local/include/opencv2/superres.hpp \
+		/usr/local/include/opencv2/superres/optical_flow.hpp \
+		/usr/local/include/opencv2/video.hpp \
+		/usr/local/include/opencv2/video/tracking.hpp \
+		/usr/local/include/opencv2/video/background_segm.hpp \
+		/usr/local/include/opencv2/video/tracking_c.h \
+		/usr/local/include/opencv2/videostab.hpp \
+		/usr/local/include/opencv2/videostab/stabilizer.hpp \
+		/usr/local/include/opencv2/videostab/global_motion.hpp \
+		/usr/local/include/opencv2/videostab/optical_flow.hpp \
+		/usr/local/include/opencv2/cudaoptflow.hpp \
+		/usr/local/include/opencv2/videostab/motion_core.hpp \
+		/usr/local/include/opencv2/videostab/outlier_rejection.hpp \
+		/usr/local/include/opencv2/cudaimgproc.hpp \
+		/usr/local/include/opencv2/videostab/motion_stabilizing.hpp \
+		/usr/local/include/opencv2/videostab/frame_source.hpp \
+		/usr/local/include/opencv2/videostab/log.hpp \
+		/usr/local/include/opencv2/videostab/inpainting.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching_inl.hpp \
+		/usr/local/include/opencv2/videostab/deblurring.hpp \
+		/usr/local/include/opencv2/videostab/wobble_suppression.hpp \
+		/usr/local/include/opencv2/videostab/ring_buffer.hpp \
+		/usr/local/include/opencv2/cudaarithm.hpp \
+		/usr/local/include/opencv2/cudabgsegm.hpp \
+		/usr/local/include/opencv2/cudafeatures2d.hpp \
+		/usr/local/include/opencv2/cudafilters.hpp \
+		/usr/local/include/opencv2/cudaobjdetect.hpp \
+		/usr/local/include/opencv2/cudastereo.hpp \
+		/usr/local/include/opencv2/cudawarping.hpp \
+		/usr/local/include/opencv2/imgproc/imgproc.hpp \
 		/usr/local/include/opencv2/core/core.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/debug/obj/feedvideopipethread.o src/feedvideopipethread.cpp
 
@@ -3949,7 +6212,8 @@ build/debug/obj/frmclient.o: src/frmclient.cpp include/frmclient.h \
 		../../Qt/5.12.4/gcc_64/include/QtGui/QStandardItemModel \
 		../../Qt/5.12.4/gcc_64/include/QtGui/qstandarditemmodel.h \
 		include/configurations.h \
-		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/opencv.hpp \
+		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core.hpp \
 		/usr/local/include/opencv2/core/cvdef.h \
 		/usr/local/include/opencv2/core/hal/interface.h \
@@ -3958,7 +6222,6 @@ build/debug/obj/frmclient.o: src/frmclient.cpp include/frmclient.h \
 		/usr/local/include/opencv2/core/fast_math.hpp \
 		/usr/local/include/opencv2/core/version.hpp \
 		/usr/local/include/opencv2/core/base.hpp \
-		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core/cvstd.hpp \
 		/usr/local/include/opencv2/core/ptr.inl.hpp \
 		/usr/local/include/opencv2/core/neon_utils.hpp \
@@ -3979,14 +6242,117 @@ build/debug/obj/frmclient.o: src/frmclient.cpp include/frmclient.h \
 		/usr/local/include/opencv2/core/types_c.h \
 		/usr/local/include/opencv2/core/optim.hpp \
 		/usr/local/include/opencv2/core/ovx.hpp \
-		/usr/local/include/opencv2/imgproc/imgproc_c.h \
-		/usr/local/include/opencv2/imgproc/types_c.h \
+		/usr/local/include/opencv2/calib3d.hpp \
+		/usr/local/include/opencv2/features2d.hpp \
+		/usr/local/include/opencv2/flann/miniflann.hpp \
+		/usr/local/include/opencv2/flann/defines.h \
+		/usr/local/include/opencv2/flann/config.h \
+		/usr/local/include/opencv2/core/affine.hpp \
+		/usr/local/include/opencv2/calib3d/calib3d_c.h \
+		/usr/local/include/opencv2/dnn.hpp \
+		/usr/local/include/opencv2/dnn/dnn.hpp \
+		/usr/local/include/opencv2/core/async.hpp \
+		/usr/local/include/opencv2/dnn/dict.hpp \
+		/usr/local/include/opencv2/dnn/layer.hpp \
+		/usr/local/include/opencv2/dnn/dnn.inl.hpp \
+		/usr/local/include/opencv2/dnn/utils/inference_engine.hpp \
+		/usr/local/include/opencv2/flann.hpp \
+		/usr/local/include/opencv2/flann/flann_base.hpp \
+		/usr/local/include/opencv2/flann/general.h \
+		/usr/local/include/opencv2/flann/matrix.h \
+		/usr/local/include/opencv2/flann/params.h \
+		/usr/local/include/opencv2/flann/any.h \
+		/usr/local/include/opencv2/flann/saving.h \
+		/usr/local/include/opencv2/flann/nn_index.h \
+		/usr/local/include/opencv2/flann/result_set.h \
+		/usr/local/include/opencv2/flann/all_indices.h \
+		/usr/local/include/opencv2/flann/kdtree_index.h \
+		/usr/local/include/opencv2/flann/dynamic_bitset.h \
+		/usr/local/include/opencv2/flann/dist.h \
+		/usr/local/include/opencv2/flann/heap.h \
+		/usr/local/include/opencv2/flann/allocator.h \
+		/usr/local/include/opencv2/flann/random.h \
+		/usr/local/include/opencv2/flann/kdtree_single_index.h \
+		/usr/local/include/opencv2/flann/kmeans_index.h \
+		/usr/local/include/opencv2/flann/logger.h \
+		/usr/local/include/opencv2/flann/composite_index.h \
+		/usr/local/include/opencv2/flann/linear_index.h \
+		/usr/local/include/opencv2/flann/hierarchical_clustering_index.h \
+		/usr/local/include/opencv2/flann/lsh_index.h \
+		/usr/local/include/opencv2/flann/lsh_table.h \
+		/usr/local/include/opencv2/flann/autotuned_index.h \
+		/usr/local/include/opencv2/flann/ground_truth.h \
+		/usr/local/include/opencv2/flann/index_testing.h \
+		/usr/local/include/opencv2/flann/timer.h \
+		/usr/local/include/opencv2/flann/sampling.h \
 		/usr/local/include/opencv2/highgui.hpp \
 		/usr/local/include/opencv2/imgcodecs.hpp \
 		/usr/local/include/opencv2/videoio.hpp \
 		/usr/local/include/opencv2/highgui/highgui_c.h \
+		/usr/local/include/opencv2/imgproc/imgproc_c.h \
+		/usr/local/include/opencv2/imgproc/types_c.h \
 		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
 		/usr/local/include/opencv2/videoio/videoio_c.h \
+		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/ml.hpp \
+		/usr/local/include/opencv2/ml/ml.inl.hpp \
+		/usr/local/include/opencv2/objdetect.hpp \
+		/usr/local/include/opencv2/objdetect/detection_based_tracker.hpp \
+		/usr/local/include/opencv2/objdetect/objdetect_c.h \
+		/usr/local/include/opencv2/photo.hpp \
+		/usr/local/include/opencv2/photo/photo_c.h \
+		/usr/local/include/opencv2/shape.hpp \
+		/usr/local/include/opencv2/shape/emdL1.hpp \
+		/usr/local/include/opencv2/shape/shape_transformer.hpp \
+		/usr/local/include/opencv2/shape/hist_cost.hpp \
+		/usr/local/include/opencv2/shape/shape_distance.hpp \
+		/usr/local/include/opencv2/stitching.hpp \
+		/usr/local/include/opencv2/stitching/warpers.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers.hpp \
+		/usr/local/include/opencv2/core/cuda.hpp \
+		/usr/local/include/opencv2/core/cuda_types.hpp \
+		/usr/local/include/opencv2/core/cuda.inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/matchers.hpp \
+		/usr/local/include/opencv2/xfeatures2d/cuda.hpp \
+		/usr/local/include/opencv2/stitching/detail/motion_estimators.hpp \
+		/usr/local/include/opencv2/stitching/detail/util.hpp \
+		/usr/local/include/opencv2/stitching/detail/util_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/camera.hpp \
+		/usr/local/include/opencv2/stitching/detail/exposure_compensate.hpp \
+		/usr/local/include/opencv2/stitching/detail/seam_finders.hpp \
+		/usr/local/include/opencv2/stitching/detail/blenders.hpp \
+		/usr/local/include/opencv2/superres.hpp \
+		/usr/local/include/opencv2/superres/optical_flow.hpp \
+		/usr/local/include/opencv2/video.hpp \
+		/usr/local/include/opencv2/video/tracking.hpp \
+		/usr/local/include/opencv2/video/background_segm.hpp \
+		/usr/local/include/opencv2/video/tracking_c.h \
+		/usr/local/include/opencv2/videostab.hpp \
+		/usr/local/include/opencv2/videostab/stabilizer.hpp \
+		/usr/local/include/opencv2/videostab/global_motion.hpp \
+		/usr/local/include/opencv2/videostab/optical_flow.hpp \
+		/usr/local/include/opencv2/cudaoptflow.hpp \
+		/usr/local/include/opencv2/videostab/motion_core.hpp \
+		/usr/local/include/opencv2/videostab/outlier_rejection.hpp \
+		/usr/local/include/opencv2/cudaimgproc.hpp \
+		/usr/local/include/opencv2/videostab/motion_stabilizing.hpp \
+		/usr/local/include/opencv2/videostab/frame_source.hpp \
+		/usr/local/include/opencv2/videostab/log.hpp \
+		/usr/local/include/opencv2/videostab/inpainting.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching_inl.hpp \
+		/usr/local/include/opencv2/videostab/deblurring.hpp \
+		/usr/local/include/opencv2/videostab/wobble_suppression.hpp \
+		/usr/local/include/opencv2/videostab/ring_buffer.hpp \
+		/usr/local/include/opencv2/cudaarithm.hpp \
+		/usr/local/include/opencv2/cudabgsegm.hpp \
+		/usr/local/include/opencv2/cudafeatures2d.hpp \
+		/usr/local/include/opencv2/cudafilters.hpp \
+		/usr/local/include/opencv2/cudaobjdetect.hpp \
+		/usr/local/include/opencv2/cudastereo.hpp \
+		/usr/local/include/opencv2/cudawarping.hpp \
+		/usr/local/include/opencv2/imgproc/imgproc.hpp \
 		/usr/local/include/opencv2/core/core.hpp \
 		include/connectivity.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/QObject \
@@ -4131,7 +6497,8 @@ build/debug/obj/frmconnected.o: src/frmconnected.cpp include/frmconnected.h \
 		../../Qt/5.12.4/gcc_64/include/QtGui/QStandardItemModel \
 		../../Qt/5.12.4/gcc_64/include/QtGui/qstandarditemmodel.h \
 		include/configurations.h \
-		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/opencv.hpp \
+		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core.hpp \
 		/usr/local/include/opencv2/core/cvdef.h \
 		/usr/local/include/opencv2/core/hal/interface.h \
@@ -4140,7 +6507,6 @@ build/debug/obj/frmconnected.o: src/frmconnected.cpp include/frmconnected.h \
 		/usr/local/include/opencv2/core/fast_math.hpp \
 		/usr/local/include/opencv2/core/version.hpp \
 		/usr/local/include/opencv2/core/base.hpp \
-		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core/cvstd.hpp \
 		/usr/local/include/opencv2/core/ptr.inl.hpp \
 		/usr/local/include/opencv2/core/neon_utils.hpp \
@@ -4161,14 +6527,117 @@ build/debug/obj/frmconnected.o: src/frmconnected.cpp include/frmconnected.h \
 		/usr/local/include/opencv2/core/types_c.h \
 		/usr/local/include/opencv2/core/optim.hpp \
 		/usr/local/include/opencv2/core/ovx.hpp \
-		/usr/local/include/opencv2/imgproc/imgproc_c.h \
-		/usr/local/include/opencv2/imgproc/types_c.h \
+		/usr/local/include/opencv2/calib3d.hpp \
+		/usr/local/include/opencv2/features2d.hpp \
+		/usr/local/include/opencv2/flann/miniflann.hpp \
+		/usr/local/include/opencv2/flann/defines.h \
+		/usr/local/include/opencv2/flann/config.h \
+		/usr/local/include/opencv2/core/affine.hpp \
+		/usr/local/include/opencv2/calib3d/calib3d_c.h \
+		/usr/local/include/opencv2/dnn.hpp \
+		/usr/local/include/opencv2/dnn/dnn.hpp \
+		/usr/local/include/opencv2/core/async.hpp \
+		/usr/local/include/opencv2/dnn/dict.hpp \
+		/usr/local/include/opencv2/dnn/layer.hpp \
+		/usr/local/include/opencv2/dnn/dnn.inl.hpp \
+		/usr/local/include/opencv2/dnn/utils/inference_engine.hpp \
+		/usr/local/include/opencv2/flann.hpp \
+		/usr/local/include/opencv2/flann/flann_base.hpp \
+		/usr/local/include/opencv2/flann/general.h \
+		/usr/local/include/opencv2/flann/matrix.h \
+		/usr/local/include/opencv2/flann/params.h \
+		/usr/local/include/opencv2/flann/any.h \
+		/usr/local/include/opencv2/flann/saving.h \
+		/usr/local/include/opencv2/flann/nn_index.h \
+		/usr/local/include/opencv2/flann/result_set.h \
+		/usr/local/include/opencv2/flann/all_indices.h \
+		/usr/local/include/opencv2/flann/kdtree_index.h \
+		/usr/local/include/opencv2/flann/dynamic_bitset.h \
+		/usr/local/include/opencv2/flann/dist.h \
+		/usr/local/include/opencv2/flann/heap.h \
+		/usr/local/include/opencv2/flann/allocator.h \
+		/usr/local/include/opencv2/flann/random.h \
+		/usr/local/include/opencv2/flann/kdtree_single_index.h \
+		/usr/local/include/opencv2/flann/kmeans_index.h \
+		/usr/local/include/opencv2/flann/logger.h \
+		/usr/local/include/opencv2/flann/composite_index.h \
+		/usr/local/include/opencv2/flann/linear_index.h \
+		/usr/local/include/opencv2/flann/hierarchical_clustering_index.h \
+		/usr/local/include/opencv2/flann/lsh_index.h \
+		/usr/local/include/opencv2/flann/lsh_table.h \
+		/usr/local/include/opencv2/flann/autotuned_index.h \
+		/usr/local/include/opencv2/flann/ground_truth.h \
+		/usr/local/include/opencv2/flann/index_testing.h \
+		/usr/local/include/opencv2/flann/timer.h \
+		/usr/local/include/opencv2/flann/sampling.h \
 		/usr/local/include/opencv2/highgui.hpp \
 		/usr/local/include/opencv2/imgcodecs.hpp \
 		/usr/local/include/opencv2/videoio.hpp \
 		/usr/local/include/opencv2/highgui/highgui_c.h \
+		/usr/local/include/opencv2/imgproc/imgproc_c.h \
+		/usr/local/include/opencv2/imgproc/types_c.h \
 		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
 		/usr/local/include/opencv2/videoio/videoio_c.h \
+		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/ml.hpp \
+		/usr/local/include/opencv2/ml/ml.inl.hpp \
+		/usr/local/include/opencv2/objdetect.hpp \
+		/usr/local/include/opencv2/objdetect/detection_based_tracker.hpp \
+		/usr/local/include/opencv2/objdetect/objdetect_c.h \
+		/usr/local/include/opencv2/photo.hpp \
+		/usr/local/include/opencv2/photo/photo_c.h \
+		/usr/local/include/opencv2/shape.hpp \
+		/usr/local/include/opencv2/shape/emdL1.hpp \
+		/usr/local/include/opencv2/shape/shape_transformer.hpp \
+		/usr/local/include/opencv2/shape/hist_cost.hpp \
+		/usr/local/include/opencv2/shape/shape_distance.hpp \
+		/usr/local/include/opencv2/stitching.hpp \
+		/usr/local/include/opencv2/stitching/warpers.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers.hpp \
+		/usr/local/include/opencv2/core/cuda.hpp \
+		/usr/local/include/opencv2/core/cuda_types.hpp \
+		/usr/local/include/opencv2/core/cuda.inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/matchers.hpp \
+		/usr/local/include/opencv2/xfeatures2d/cuda.hpp \
+		/usr/local/include/opencv2/stitching/detail/motion_estimators.hpp \
+		/usr/local/include/opencv2/stitching/detail/util.hpp \
+		/usr/local/include/opencv2/stitching/detail/util_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/camera.hpp \
+		/usr/local/include/opencv2/stitching/detail/exposure_compensate.hpp \
+		/usr/local/include/opencv2/stitching/detail/seam_finders.hpp \
+		/usr/local/include/opencv2/stitching/detail/blenders.hpp \
+		/usr/local/include/opencv2/superres.hpp \
+		/usr/local/include/opencv2/superres/optical_flow.hpp \
+		/usr/local/include/opencv2/video.hpp \
+		/usr/local/include/opencv2/video/tracking.hpp \
+		/usr/local/include/opencv2/video/background_segm.hpp \
+		/usr/local/include/opencv2/video/tracking_c.h \
+		/usr/local/include/opencv2/videostab.hpp \
+		/usr/local/include/opencv2/videostab/stabilizer.hpp \
+		/usr/local/include/opencv2/videostab/global_motion.hpp \
+		/usr/local/include/opencv2/videostab/optical_flow.hpp \
+		/usr/local/include/opencv2/cudaoptflow.hpp \
+		/usr/local/include/opencv2/videostab/motion_core.hpp \
+		/usr/local/include/opencv2/videostab/outlier_rejection.hpp \
+		/usr/local/include/opencv2/cudaimgproc.hpp \
+		/usr/local/include/opencv2/videostab/motion_stabilizing.hpp \
+		/usr/local/include/opencv2/videostab/frame_source.hpp \
+		/usr/local/include/opencv2/videostab/log.hpp \
+		/usr/local/include/opencv2/videostab/inpainting.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching_inl.hpp \
+		/usr/local/include/opencv2/videostab/deblurring.hpp \
+		/usr/local/include/opencv2/videostab/wobble_suppression.hpp \
+		/usr/local/include/opencv2/videostab/ring_buffer.hpp \
+		/usr/local/include/opencv2/cudaarithm.hpp \
+		/usr/local/include/opencv2/cudabgsegm.hpp \
+		/usr/local/include/opencv2/cudafeatures2d.hpp \
+		/usr/local/include/opencv2/cudafilters.hpp \
+		/usr/local/include/opencv2/cudaobjdetect.hpp \
+		/usr/local/include/opencv2/cudastereo.hpp \
+		/usr/local/include/opencv2/cudawarping.hpp \
+		/usr/local/include/opencv2/imgproc/imgproc.hpp \
 		/usr/local/include/opencv2/core/core.hpp \
 		include/connectivity.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/QObject \
@@ -4319,7 +6788,8 @@ build/debug/obj/frmrunning.o: src/frmrunning.cpp include/frmrunning.h \
 		../../Qt/5.12.4/gcc_64/include/QtGui/QStandardItemModel \
 		../../Qt/5.12.4/gcc_64/include/QtGui/qstandarditemmodel.h \
 		include/configurations.h \
-		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/opencv.hpp \
+		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core.hpp \
 		/usr/local/include/opencv2/core/cvdef.h \
 		/usr/local/include/opencv2/core/hal/interface.h \
@@ -4328,7 +6798,6 @@ build/debug/obj/frmrunning.o: src/frmrunning.cpp include/frmrunning.h \
 		/usr/local/include/opencv2/core/fast_math.hpp \
 		/usr/local/include/opencv2/core/version.hpp \
 		/usr/local/include/opencv2/core/base.hpp \
-		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core/cvstd.hpp \
 		/usr/local/include/opencv2/core/ptr.inl.hpp \
 		/usr/local/include/opencv2/core/neon_utils.hpp \
@@ -4349,14 +6818,117 @@ build/debug/obj/frmrunning.o: src/frmrunning.cpp include/frmrunning.h \
 		/usr/local/include/opencv2/core/types_c.h \
 		/usr/local/include/opencv2/core/optim.hpp \
 		/usr/local/include/opencv2/core/ovx.hpp \
-		/usr/local/include/opencv2/imgproc/imgproc_c.h \
-		/usr/local/include/opencv2/imgproc/types_c.h \
+		/usr/local/include/opencv2/calib3d.hpp \
+		/usr/local/include/opencv2/features2d.hpp \
+		/usr/local/include/opencv2/flann/miniflann.hpp \
+		/usr/local/include/opencv2/flann/defines.h \
+		/usr/local/include/opencv2/flann/config.h \
+		/usr/local/include/opencv2/core/affine.hpp \
+		/usr/local/include/opencv2/calib3d/calib3d_c.h \
+		/usr/local/include/opencv2/dnn.hpp \
+		/usr/local/include/opencv2/dnn/dnn.hpp \
+		/usr/local/include/opencv2/core/async.hpp \
+		/usr/local/include/opencv2/dnn/dict.hpp \
+		/usr/local/include/opencv2/dnn/layer.hpp \
+		/usr/local/include/opencv2/dnn/dnn.inl.hpp \
+		/usr/local/include/opencv2/dnn/utils/inference_engine.hpp \
+		/usr/local/include/opencv2/flann.hpp \
+		/usr/local/include/opencv2/flann/flann_base.hpp \
+		/usr/local/include/opencv2/flann/general.h \
+		/usr/local/include/opencv2/flann/matrix.h \
+		/usr/local/include/opencv2/flann/params.h \
+		/usr/local/include/opencv2/flann/any.h \
+		/usr/local/include/opencv2/flann/saving.h \
+		/usr/local/include/opencv2/flann/nn_index.h \
+		/usr/local/include/opencv2/flann/result_set.h \
+		/usr/local/include/opencv2/flann/all_indices.h \
+		/usr/local/include/opencv2/flann/kdtree_index.h \
+		/usr/local/include/opencv2/flann/dynamic_bitset.h \
+		/usr/local/include/opencv2/flann/dist.h \
+		/usr/local/include/opencv2/flann/heap.h \
+		/usr/local/include/opencv2/flann/allocator.h \
+		/usr/local/include/opencv2/flann/random.h \
+		/usr/local/include/opencv2/flann/kdtree_single_index.h \
+		/usr/local/include/opencv2/flann/kmeans_index.h \
+		/usr/local/include/opencv2/flann/logger.h \
+		/usr/local/include/opencv2/flann/composite_index.h \
+		/usr/local/include/opencv2/flann/linear_index.h \
+		/usr/local/include/opencv2/flann/hierarchical_clustering_index.h \
+		/usr/local/include/opencv2/flann/lsh_index.h \
+		/usr/local/include/opencv2/flann/lsh_table.h \
+		/usr/local/include/opencv2/flann/autotuned_index.h \
+		/usr/local/include/opencv2/flann/ground_truth.h \
+		/usr/local/include/opencv2/flann/index_testing.h \
+		/usr/local/include/opencv2/flann/timer.h \
+		/usr/local/include/opencv2/flann/sampling.h \
 		/usr/local/include/opencv2/highgui.hpp \
 		/usr/local/include/opencv2/imgcodecs.hpp \
 		/usr/local/include/opencv2/videoio.hpp \
 		/usr/local/include/opencv2/highgui/highgui_c.h \
+		/usr/local/include/opencv2/imgproc/imgproc_c.h \
+		/usr/local/include/opencv2/imgproc/types_c.h \
 		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
 		/usr/local/include/opencv2/videoio/videoio_c.h \
+		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/ml.hpp \
+		/usr/local/include/opencv2/ml/ml.inl.hpp \
+		/usr/local/include/opencv2/objdetect.hpp \
+		/usr/local/include/opencv2/objdetect/detection_based_tracker.hpp \
+		/usr/local/include/opencv2/objdetect/objdetect_c.h \
+		/usr/local/include/opencv2/photo.hpp \
+		/usr/local/include/opencv2/photo/photo_c.h \
+		/usr/local/include/opencv2/shape.hpp \
+		/usr/local/include/opencv2/shape/emdL1.hpp \
+		/usr/local/include/opencv2/shape/shape_transformer.hpp \
+		/usr/local/include/opencv2/shape/hist_cost.hpp \
+		/usr/local/include/opencv2/shape/shape_distance.hpp \
+		/usr/local/include/opencv2/stitching.hpp \
+		/usr/local/include/opencv2/stitching/warpers.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers.hpp \
+		/usr/local/include/opencv2/core/cuda.hpp \
+		/usr/local/include/opencv2/core/cuda_types.hpp \
+		/usr/local/include/opencv2/core/cuda.inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/matchers.hpp \
+		/usr/local/include/opencv2/xfeatures2d/cuda.hpp \
+		/usr/local/include/opencv2/stitching/detail/motion_estimators.hpp \
+		/usr/local/include/opencv2/stitching/detail/util.hpp \
+		/usr/local/include/opencv2/stitching/detail/util_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/camera.hpp \
+		/usr/local/include/opencv2/stitching/detail/exposure_compensate.hpp \
+		/usr/local/include/opencv2/stitching/detail/seam_finders.hpp \
+		/usr/local/include/opencv2/stitching/detail/blenders.hpp \
+		/usr/local/include/opencv2/superres.hpp \
+		/usr/local/include/opencv2/superres/optical_flow.hpp \
+		/usr/local/include/opencv2/video.hpp \
+		/usr/local/include/opencv2/video/tracking.hpp \
+		/usr/local/include/opencv2/video/background_segm.hpp \
+		/usr/local/include/opencv2/video/tracking_c.h \
+		/usr/local/include/opencv2/videostab.hpp \
+		/usr/local/include/opencv2/videostab/stabilizer.hpp \
+		/usr/local/include/opencv2/videostab/global_motion.hpp \
+		/usr/local/include/opencv2/videostab/optical_flow.hpp \
+		/usr/local/include/opencv2/cudaoptflow.hpp \
+		/usr/local/include/opencv2/videostab/motion_core.hpp \
+		/usr/local/include/opencv2/videostab/outlier_rejection.hpp \
+		/usr/local/include/opencv2/cudaimgproc.hpp \
+		/usr/local/include/opencv2/videostab/motion_stabilizing.hpp \
+		/usr/local/include/opencv2/videostab/frame_source.hpp \
+		/usr/local/include/opencv2/videostab/log.hpp \
+		/usr/local/include/opencv2/videostab/inpainting.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching_inl.hpp \
+		/usr/local/include/opencv2/videostab/deblurring.hpp \
+		/usr/local/include/opencv2/videostab/wobble_suppression.hpp \
+		/usr/local/include/opencv2/videostab/ring_buffer.hpp \
+		/usr/local/include/opencv2/cudaarithm.hpp \
+		/usr/local/include/opencv2/cudabgsegm.hpp \
+		/usr/local/include/opencv2/cudafeatures2d.hpp \
+		/usr/local/include/opencv2/cudafilters.hpp \
+		/usr/local/include/opencv2/cudaobjdetect.hpp \
+		/usr/local/include/opencv2/cudastereo.hpp \
+		/usr/local/include/opencv2/cudawarping.hpp \
+		/usr/local/include/opencv2/imgproc/imgproc.hpp \
 		/usr/local/include/opencv2/core/core.hpp \
 		include/connectivity.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/QObject \
@@ -4433,7 +7005,6 @@ build/debug/obj/frmrunning.o: src/frmrunning.cpp include/frmrunning.h \
 		/usr/local/include/jetson-utils/cudaMappedMemory.h \
 		include/feedaudiopipethread.h \
 		include/feedvideopipethread.h \
-		/usr/local/include/opencv2/core/cuda/warp.hpp \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/QAction \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qaction.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qactiongroup.h \
@@ -4576,7 +7147,8 @@ build/debug/obj/frmserver.o: src/frmserver.cpp include/frmserver.h \
 		../../Qt/5.12.4/gcc_64/include/QtGui/QStandardItemModel \
 		../../Qt/5.12.4/gcc_64/include/QtGui/qstandarditemmodel.h \
 		include/configurations.h \
-		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/opencv.hpp \
+		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core.hpp \
 		/usr/local/include/opencv2/core/cvdef.h \
 		/usr/local/include/opencv2/core/hal/interface.h \
@@ -4585,7 +7157,6 @@ build/debug/obj/frmserver.o: src/frmserver.cpp include/frmserver.h \
 		/usr/local/include/opencv2/core/fast_math.hpp \
 		/usr/local/include/opencv2/core/version.hpp \
 		/usr/local/include/opencv2/core/base.hpp \
-		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core/cvstd.hpp \
 		/usr/local/include/opencv2/core/ptr.inl.hpp \
 		/usr/local/include/opencv2/core/neon_utils.hpp \
@@ -4606,14 +7177,117 @@ build/debug/obj/frmserver.o: src/frmserver.cpp include/frmserver.h \
 		/usr/local/include/opencv2/core/types_c.h \
 		/usr/local/include/opencv2/core/optim.hpp \
 		/usr/local/include/opencv2/core/ovx.hpp \
-		/usr/local/include/opencv2/imgproc/imgproc_c.h \
-		/usr/local/include/opencv2/imgproc/types_c.h \
+		/usr/local/include/opencv2/calib3d.hpp \
+		/usr/local/include/opencv2/features2d.hpp \
+		/usr/local/include/opencv2/flann/miniflann.hpp \
+		/usr/local/include/opencv2/flann/defines.h \
+		/usr/local/include/opencv2/flann/config.h \
+		/usr/local/include/opencv2/core/affine.hpp \
+		/usr/local/include/opencv2/calib3d/calib3d_c.h \
+		/usr/local/include/opencv2/dnn.hpp \
+		/usr/local/include/opencv2/dnn/dnn.hpp \
+		/usr/local/include/opencv2/core/async.hpp \
+		/usr/local/include/opencv2/dnn/dict.hpp \
+		/usr/local/include/opencv2/dnn/layer.hpp \
+		/usr/local/include/opencv2/dnn/dnn.inl.hpp \
+		/usr/local/include/opencv2/dnn/utils/inference_engine.hpp \
+		/usr/local/include/opencv2/flann.hpp \
+		/usr/local/include/opencv2/flann/flann_base.hpp \
+		/usr/local/include/opencv2/flann/general.h \
+		/usr/local/include/opencv2/flann/matrix.h \
+		/usr/local/include/opencv2/flann/params.h \
+		/usr/local/include/opencv2/flann/any.h \
+		/usr/local/include/opencv2/flann/saving.h \
+		/usr/local/include/opencv2/flann/nn_index.h \
+		/usr/local/include/opencv2/flann/result_set.h \
+		/usr/local/include/opencv2/flann/all_indices.h \
+		/usr/local/include/opencv2/flann/kdtree_index.h \
+		/usr/local/include/opencv2/flann/dynamic_bitset.h \
+		/usr/local/include/opencv2/flann/dist.h \
+		/usr/local/include/opencv2/flann/heap.h \
+		/usr/local/include/opencv2/flann/allocator.h \
+		/usr/local/include/opencv2/flann/random.h \
+		/usr/local/include/opencv2/flann/kdtree_single_index.h \
+		/usr/local/include/opencv2/flann/kmeans_index.h \
+		/usr/local/include/opencv2/flann/logger.h \
+		/usr/local/include/opencv2/flann/composite_index.h \
+		/usr/local/include/opencv2/flann/linear_index.h \
+		/usr/local/include/opencv2/flann/hierarchical_clustering_index.h \
+		/usr/local/include/opencv2/flann/lsh_index.h \
+		/usr/local/include/opencv2/flann/lsh_table.h \
+		/usr/local/include/opencv2/flann/autotuned_index.h \
+		/usr/local/include/opencv2/flann/ground_truth.h \
+		/usr/local/include/opencv2/flann/index_testing.h \
+		/usr/local/include/opencv2/flann/timer.h \
+		/usr/local/include/opencv2/flann/sampling.h \
 		/usr/local/include/opencv2/highgui.hpp \
 		/usr/local/include/opencv2/imgcodecs.hpp \
 		/usr/local/include/opencv2/videoio.hpp \
 		/usr/local/include/opencv2/highgui/highgui_c.h \
+		/usr/local/include/opencv2/imgproc/imgproc_c.h \
+		/usr/local/include/opencv2/imgproc/types_c.h \
 		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
 		/usr/local/include/opencv2/videoio/videoio_c.h \
+		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/ml.hpp \
+		/usr/local/include/opencv2/ml/ml.inl.hpp \
+		/usr/local/include/opencv2/objdetect.hpp \
+		/usr/local/include/opencv2/objdetect/detection_based_tracker.hpp \
+		/usr/local/include/opencv2/objdetect/objdetect_c.h \
+		/usr/local/include/opencv2/photo.hpp \
+		/usr/local/include/opencv2/photo/photo_c.h \
+		/usr/local/include/opencv2/shape.hpp \
+		/usr/local/include/opencv2/shape/emdL1.hpp \
+		/usr/local/include/opencv2/shape/shape_transformer.hpp \
+		/usr/local/include/opencv2/shape/hist_cost.hpp \
+		/usr/local/include/opencv2/shape/shape_distance.hpp \
+		/usr/local/include/opencv2/stitching.hpp \
+		/usr/local/include/opencv2/stitching/warpers.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers.hpp \
+		/usr/local/include/opencv2/core/cuda.hpp \
+		/usr/local/include/opencv2/core/cuda_types.hpp \
+		/usr/local/include/opencv2/core/cuda.inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/matchers.hpp \
+		/usr/local/include/opencv2/xfeatures2d/cuda.hpp \
+		/usr/local/include/opencv2/stitching/detail/motion_estimators.hpp \
+		/usr/local/include/opencv2/stitching/detail/util.hpp \
+		/usr/local/include/opencv2/stitching/detail/util_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/camera.hpp \
+		/usr/local/include/opencv2/stitching/detail/exposure_compensate.hpp \
+		/usr/local/include/opencv2/stitching/detail/seam_finders.hpp \
+		/usr/local/include/opencv2/stitching/detail/blenders.hpp \
+		/usr/local/include/opencv2/superres.hpp \
+		/usr/local/include/opencv2/superres/optical_flow.hpp \
+		/usr/local/include/opencv2/video.hpp \
+		/usr/local/include/opencv2/video/tracking.hpp \
+		/usr/local/include/opencv2/video/background_segm.hpp \
+		/usr/local/include/opencv2/video/tracking_c.h \
+		/usr/local/include/opencv2/videostab.hpp \
+		/usr/local/include/opencv2/videostab/stabilizer.hpp \
+		/usr/local/include/opencv2/videostab/global_motion.hpp \
+		/usr/local/include/opencv2/videostab/optical_flow.hpp \
+		/usr/local/include/opencv2/cudaoptflow.hpp \
+		/usr/local/include/opencv2/videostab/motion_core.hpp \
+		/usr/local/include/opencv2/videostab/outlier_rejection.hpp \
+		/usr/local/include/opencv2/cudaimgproc.hpp \
+		/usr/local/include/opencv2/videostab/motion_stabilizing.hpp \
+		/usr/local/include/opencv2/videostab/frame_source.hpp \
+		/usr/local/include/opencv2/videostab/log.hpp \
+		/usr/local/include/opencv2/videostab/inpainting.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching_inl.hpp \
+		/usr/local/include/opencv2/videostab/deblurring.hpp \
+		/usr/local/include/opencv2/videostab/wobble_suppression.hpp \
+		/usr/local/include/opencv2/videostab/ring_buffer.hpp \
+		/usr/local/include/opencv2/cudaarithm.hpp \
+		/usr/local/include/opencv2/cudabgsegm.hpp \
+		/usr/local/include/opencv2/cudafeatures2d.hpp \
+		/usr/local/include/opencv2/cudafilters.hpp \
+		/usr/local/include/opencv2/cudaobjdetect.hpp \
+		/usr/local/include/opencv2/cudastereo.hpp \
+		/usr/local/include/opencv2/cudawarping.hpp \
+		/usr/local/include/opencv2/imgproc/imgproc.hpp \
 		/usr/local/include/opencv2/core/core.hpp \
 		include/connectivity.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/QObject \
@@ -4768,7 +7442,8 @@ build/debug/obj/main.o: src/main.cpp include/frmmain.h \
 		../../Qt/5.12.4/gcc_64/include/QtGui/QStandardItemModel \
 		../../Qt/5.12.4/gcc_64/include/QtGui/qstandarditemmodel.h \
 		include/configurations.h \
-		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/opencv.hpp \
+		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core.hpp \
 		/usr/local/include/opencv2/core/cvdef.h \
 		/usr/local/include/opencv2/core/hal/interface.h \
@@ -4777,7 +7452,6 @@ build/debug/obj/main.o: src/main.cpp include/frmmain.h \
 		/usr/local/include/opencv2/core/fast_math.hpp \
 		/usr/local/include/opencv2/core/version.hpp \
 		/usr/local/include/opencv2/core/base.hpp \
-		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core/cvstd.hpp \
 		/usr/local/include/opencv2/core/ptr.inl.hpp \
 		/usr/local/include/opencv2/core/neon_utils.hpp \
@@ -4798,14 +7472,117 @@ build/debug/obj/main.o: src/main.cpp include/frmmain.h \
 		/usr/local/include/opencv2/core/types_c.h \
 		/usr/local/include/opencv2/core/optim.hpp \
 		/usr/local/include/opencv2/core/ovx.hpp \
-		/usr/local/include/opencv2/imgproc/imgproc_c.h \
-		/usr/local/include/opencv2/imgproc/types_c.h \
+		/usr/local/include/opencv2/calib3d.hpp \
+		/usr/local/include/opencv2/features2d.hpp \
+		/usr/local/include/opencv2/flann/miniflann.hpp \
+		/usr/local/include/opencv2/flann/defines.h \
+		/usr/local/include/opencv2/flann/config.h \
+		/usr/local/include/opencv2/core/affine.hpp \
+		/usr/local/include/opencv2/calib3d/calib3d_c.h \
+		/usr/local/include/opencv2/dnn.hpp \
+		/usr/local/include/opencv2/dnn/dnn.hpp \
+		/usr/local/include/opencv2/core/async.hpp \
+		/usr/local/include/opencv2/dnn/dict.hpp \
+		/usr/local/include/opencv2/dnn/layer.hpp \
+		/usr/local/include/opencv2/dnn/dnn.inl.hpp \
+		/usr/local/include/opencv2/dnn/utils/inference_engine.hpp \
+		/usr/local/include/opencv2/flann.hpp \
+		/usr/local/include/opencv2/flann/flann_base.hpp \
+		/usr/local/include/opencv2/flann/general.h \
+		/usr/local/include/opencv2/flann/matrix.h \
+		/usr/local/include/opencv2/flann/params.h \
+		/usr/local/include/opencv2/flann/any.h \
+		/usr/local/include/opencv2/flann/saving.h \
+		/usr/local/include/opencv2/flann/nn_index.h \
+		/usr/local/include/opencv2/flann/result_set.h \
+		/usr/local/include/opencv2/flann/all_indices.h \
+		/usr/local/include/opencv2/flann/kdtree_index.h \
+		/usr/local/include/opencv2/flann/dynamic_bitset.h \
+		/usr/local/include/opencv2/flann/dist.h \
+		/usr/local/include/opencv2/flann/heap.h \
+		/usr/local/include/opencv2/flann/allocator.h \
+		/usr/local/include/opencv2/flann/random.h \
+		/usr/local/include/opencv2/flann/kdtree_single_index.h \
+		/usr/local/include/opencv2/flann/kmeans_index.h \
+		/usr/local/include/opencv2/flann/logger.h \
+		/usr/local/include/opencv2/flann/composite_index.h \
+		/usr/local/include/opencv2/flann/linear_index.h \
+		/usr/local/include/opencv2/flann/hierarchical_clustering_index.h \
+		/usr/local/include/opencv2/flann/lsh_index.h \
+		/usr/local/include/opencv2/flann/lsh_table.h \
+		/usr/local/include/opencv2/flann/autotuned_index.h \
+		/usr/local/include/opencv2/flann/ground_truth.h \
+		/usr/local/include/opencv2/flann/index_testing.h \
+		/usr/local/include/opencv2/flann/timer.h \
+		/usr/local/include/opencv2/flann/sampling.h \
 		/usr/local/include/opencv2/highgui.hpp \
 		/usr/local/include/opencv2/imgcodecs.hpp \
 		/usr/local/include/opencv2/videoio.hpp \
 		/usr/local/include/opencv2/highgui/highgui_c.h \
+		/usr/local/include/opencv2/imgproc/imgproc_c.h \
+		/usr/local/include/opencv2/imgproc/types_c.h \
 		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
 		/usr/local/include/opencv2/videoio/videoio_c.h \
+		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/ml.hpp \
+		/usr/local/include/opencv2/ml/ml.inl.hpp \
+		/usr/local/include/opencv2/objdetect.hpp \
+		/usr/local/include/opencv2/objdetect/detection_based_tracker.hpp \
+		/usr/local/include/opencv2/objdetect/objdetect_c.h \
+		/usr/local/include/opencv2/photo.hpp \
+		/usr/local/include/opencv2/photo/photo_c.h \
+		/usr/local/include/opencv2/shape.hpp \
+		/usr/local/include/opencv2/shape/emdL1.hpp \
+		/usr/local/include/opencv2/shape/shape_transformer.hpp \
+		/usr/local/include/opencv2/shape/hist_cost.hpp \
+		/usr/local/include/opencv2/shape/shape_distance.hpp \
+		/usr/local/include/opencv2/stitching.hpp \
+		/usr/local/include/opencv2/stitching/warpers.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers.hpp \
+		/usr/local/include/opencv2/core/cuda.hpp \
+		/usr/local/include/opencv2/core/cuda_types.hpp \
+		/usr/local/include/opencv2/core/cuda.inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/matchers.hpp \
+		/usr/local/include/opencv2/xfeatures2d/cuda.hpp \
+		/usr/local/include/opencv2/stitching/detail/motion_estimators.hpp \
+		/usr/local/include/opencv2/stitching/detail/util.hpp \
+		/usr/local/include/opencv2/stitching/detail/util_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/camera.hpp \
+		/usr/local/include/opencv2/stitching/detail/exposure_compensate.hpp \
+		/usr/local/include/opencv2/stitching/detail/seam_finders.hpp \
+		/usr/local/include/opencv2/stitching/detail/blenders.hpp \
+		/usr/local/include/opencv2/superres.hpp \
+		/usr/local/include/opencv2/superres/optical_flow.hpp \
+		/usr/local/include/opencv2/video.hpp \
+		/usr/local/include/opencv2/video/tracking.hpp \
+		/usr/local/include/opencv2/video/background_segm.hpp \
+		/usr/local/include/opencv2/video/tracking_c.h \
+		/usr/local/include/opencv2/videostab.hpp \
+		/usr/local/include/opencv2/videostab/stabilizer.hpp \
+		/usr/local/include/opencv2/videostab/global_motion.hpp \
+		/usr/local/include/opencv2/videostab/optical_flow.hpp \
+		/usr/local/include/opencv2/cudaoptflow.hpp \
+		/usr/local/include/opencv2/videostab/motion_core.hpp \
+		/usr/local/include/opencv2/videostab/outlier_rejection.hpp \
+		/usr/local/include/opencv2/cudaimgproc.hpp \
+		/usr/local/include/opencv2/videostab/motion_stabilizing.hpp \
+		/usr/local/include/opencv2/videostab/frame_source.hpp \
+		/usr/local/include/opencv2/videostab/log.hpp \
+		/usr/local/include/opencv2/videostab/inpainting.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching_inl.hpp \
+		/usr/local/include/opencv2/videostab/deblurring.hpp \
+		/usr/local/include/opencv2/videostab/wobble_suppression.hpp \
+		/usr/local/include/opencv2/videostab/ring_buffer.hpp \
+		/usr/local/include/opencv2/cudaarithm.hpp \
+		/usr/local/include/opencv2/cudabgsegm.hpp \
+		/usr/local/include/opencv2/cudafeatures2d.hpp \
+		/usr/local/include/opencv2/cudafilters.hpp \
+		/usr/local/include/opencv2/cudaobjdetect.hpp \
+		/usr/local/include/opencv2/cudastereo.hpp \
+		/usr/local/include/opencv2/cudawarping.hpp \
+		/usr/local/include/opencv2/imgproc/imgproc.hpp \
 		/usr/local/include/opencv2/core/core.hpp \
 		include/frmserver.h \
 		include/connectivity.h \
@@ -4889,7 +7666,6 @@ build/debug/obj/main.o: src/main.cpp include/frmmain.h \
 		/usr/local/include/jetson-utils/cudaMappedMemory.h \
 		include/feedaudiopipethread.h \
 		include/feedvideopipethread.h \
-		/usr/local/include/opencv2/core/cuda/warp.hpp \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/QAction \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qaction.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qactiongroup.h \
@@ -5042,7 +7818,8 @@ build/debug/obj/frmmain.o: src/frmmain.cpp include/frmmain.h \
 		../../Qt/5.12.4/gcc_64/include/QtGui/QStandardItemModel \
 		../../Qt/5.12.4/gcc_64/include/QtGui/qstandarditemmodel.h \
 		include/configurations.h \
-		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/opencv.hpp \
+		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core.hpp \
 		/usr/local/include/opencv2/core/cvdef.h \
 		/usr/local/include/opencv2/core/hal/interface.h \
@@ -5051,7 +7828,6 @@ build/debug/obj/frmmain.o: src/frmmain.cpp include/frmmain.h \
 		/usr/local/include/opencv2/core/fast_math.hpp \
 		/usr/local/include/opencv2/core/version.hpp \
 		/usr/local/include/opencv2/core/base.hpp \
-		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core/cvstd.hpp \
 		/usr/local/include/opencv2/core/ptr.inl.hpp \
 		/usr/local/include/opencv2/core/neon_utils.hpp \
@@ -5072,21 +7848,125 @@ build/debug/obj/frmmain.o: src/frmmain.cpp include/frmmain.h \
 		/usr/local/include/opencv2/core/types_c.h \
 		/usr/local/include/opencv2/core/optim.hpp \
 		/usr/local/include/opencv2/core/ovx.hpp \
-		/usr/local/include/opencv2/imgproc/imgproc_c.h \
-		/usr/local/include/opencv2/imgproc/types_c.h \
+		/usr/local/include/opencv2/calib3d.hpp \
+		/usr/local/include/opencv2/features2d.hpp \
+		/usr/local/include/opencv2/flann/miniflann.hpp \
+		/usr/local/include/opencv2/flann/defines.h \
+		/usr/local/include/opencv2/flann/config.h \
+		/usr/local/include/opencv2/core/affine.hpp \
+		/usr/local/include/opencv2/calib3d/calib3d_c.h \
+		/usr/local/include/opencv2/dnn.hpp \
+		/usr/local/include/opencv2/dnn/dnn.hpp \
+		/usr/local/include/opencv2/core/async.hpp \
+		/usr/local/include/opencv2/dnn/dict.hpp \
+		/usr/local/include/opencv2/dnn/layer.hpp \
+		/usr/local/include/opencv2/dnn/dnn.inl.hpp \
+		/usr/local/include/opencv2/dnn/utils/inference_engine.hpp \
+		/usr/local/include/opencv2/flann.hpp \
+		/usr/local/include/opencv2/flann/flann_base.hpp \
+		/usr/local/include/opencv2/flann/general.h \
+		/usr/local/include/opencv2/flann/matrix.h \
+		/usr/local/include/opencv2/flann/params.h \
+		/usr/local/include/opencv2/flann/any.h \
+		/usr/local/include/opencv2/flann/saving.h \
+		/usr/local/include/opencv2/flann/nn_index.h \
+		/usr/local/include/opencv2/flann/result_set.h \
+		/usr/local/include/opencv2/flann/all_indices.h \
+		/usr/local/include/opencv2/flann/kdtree_index.h \
+		/usr/local/include/opencv2/flann/dynamic_bitset.h \
+		/usr/local/include/opencv2/flann/dist.h \
+		/usr/local/include/opencv2/flann/heap.h \
+		/usr/local/include/opencv2/flann/allocator.h \
+		/usr/local/include/opencv2/flann/random.h \
+		/usr/local/include/opencv2/flann/kdtree_single_index.h \
+		/usr/local/include/opencv2/flann/kmeans_index.h \
+		/usr/local/include/opencv2/flann/logger.h \
+		/usr/local/include/opencv2/flann/composite_index.h \
+		/usr/local/include/opencv2/flann/linear_index.h \
+		/usr/local/include/opencv2/flann/hierarchical_clustering_index.h \
+		/usr/local/include/opencv2/flann/lsh_index.h \
+		/usr/local/include/opencv2/flann/lsh_table.h \
+		/usr/local/include/opencv2/flann/autotuned_index.h \
+		/usr/local/include/opencv2/flann/ground_truth.h \
+		/usr/local/include/opencv2/flann/index_testing.h \
+		/usr/local/include/opencv2/flann/timer.h \
+		/usr/local/include/opencv2/flann/sampling.h \
 		/usr/local/include/opencv2/highgui.hpp \
 		/usr/local/include/opencv2/imgcodecs.hpp \
 		/usr/local/include/opencv2/videoio.hpp \
 		/usr/local/include/opencv2/highgui/highgui_c.h \
+		/usr/local/include/opencv2/imgproc/imgproc_c.h \
+		/usr/local/include/opencv2/imgproc/types_c.h \
 		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
 		/usr/local/include/opencv2/videoio/videoio_c.h \
+		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/ml.hpp \
+		/usr/local/include/opencv2/ml/ml.inl.hpp \
+		/usr/local/include/opencv2/objdetect.hpp \
+		/usr/local/include/opencv2/objdetect/detection_based_tracker.hpp \
+		/usr/local/include/opencv2/objdetect/objdetect_c.h \
+		/usr/local/include/opencv2/photo.hpp \
+		/usr/local/include/opencv2/photo/photo_c.h \
+		/usr/local/include/opencv2/shape.hpp \
+		/usr/local/include/opencv2/shape/emdL1.hpp \
+		/usr/local/include/opencv2/shape/shape_transformer.hpp \
+		/usr/local/include/opencv2/shape/hist_cost.hpp \
+		/usr/local/include/opencv2/shape/shape_distance.hpp \
+		/usr/local/include/opencv2/stitching.hpp \
+		/usr/local/include/opencv2/stitching/warpers.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers.hpp \
+		/usr/local/include/opencv2/core/cuda.hpp \
+		/usr/local/include/opencv2/core/cuda_types.hpp \
+		/usr/local/include/opencv2/core/cuda.inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/matchers.hpp \
+		/usr/local/include/opencv2/xfeatures2d/cuda.hpp \
+		/usr/local/include/opencv2/stitching/detail/motion_estimators.hpp \
+		/usr/local/include/opencv2/stitching/detail/util.hpp \
+		/usr/local/include/opencv2/stitching/detail/util_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/camera.hpp \
+		/usr/local/include/opencv2/stitching/detail/exposure_compensate.hpp \
+		/usr/local/include/opencv2/stitching/detail/seam_finders.hpp \
+		/usr/local/include/opencv2/stitching/detail/blenders.hpp \
+		/usr/local/include/opencv2/superres.hpp \
+		/usr/local/include/opencv2/superres/optical_flow.hpp \
+		/usr/local/include/opencv2/video.hpp \
+		/usr/local/include/opencv2/video/tracking.hpp \
+		/usr/local/include/opencv2/video/background_segm.hpp \
+		/usr/local/include/opencv2/video/tracking_c.h \
+		/usr/local/include/opencv2/videostab.hpp \
+		/usr/local/include/opencv2/videostab/stabilizer.hpp \
+		/usr/local/include/opencv2/videostab/global_motion.hpp \
+		/usr/local/include/opencv2/videostab/optical_flow.hpp \
+		/usr/local/include/opencv2/cudaoptflow.hpp \
+		/usr/local/include/opencv2/videostab/motion_core.hpp \
+		/usr/local/include/opencv2/videostab/outlier_rejection.hpp \
+		/usr/local/include/opencv2/cudaimgproc.hpp \
+		/usr/local/include/opencv2/videostab/motion_stabilizing.hpp \
+		/usr/local/include/opencv2/videostab/frame_source.hpp \
+		/usr/local/include/opencv2/videostab/log.hpp \
+		/usr/local/include/opencv2/videostab/inpainting.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching_inl.hpp \
+		/usr/local/include/opencv2/videostab/deblurring.hpp \
+		/usr/local/include/opencv2/videostab/wobble_suppression.hpp \
+		/usr/local/include/opencv2/videostab/ring_buffer.hpp \
+		/usr/local/include/opencv2/cudaarithm.hpp \
+		/usr/local/include/opencv2/cudabgsegm.hpp \
+		/usr/local/include/opencv2/cudafeatures2d.hpp \
+		/usr/local/include/opencv2/cudafilters.hpp \
+		/usr/local/include/opencv2/cudaobjdetect.hpp \
+		/usr/local/include/opencv2/cudastereo.hpp \
+		/usr/local/include/opencv2/cudawarping.hpp \
+		/usr/local/include/opencv2/imgproc/imgproc.hpp \
 		/usr/local/include/opencv2/core/core.hpp \
 		build/debug/ui/ui_frmmain.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/debug/obj/frmmain.o src/frmmain.cpp
 
 build/debug/obj/serverstreamthread.o: src/serverstreamthread.cpp include/serverstreamthread.h \
 		include/configurations.h \
-		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/opencv.hpp \
+		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core.hpp \
 		/usr/local/include/opencv2/core/cvdef.h \
 		/usr/local/include/opencv2/core/hal/interface.h \
@@ -5095,7 +7975,6 @@ build/debug/obj/serverstreamthread.o: src/serverstreamthread.cpp include/servers
 		/usr/local/include/opencv2/core/fast_math.hpp \
 		/usr/local/include/opencv2/core/version.hpp \
 		/usr/local/include/opencv2/core/base.hpp \
-		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core/cvstd.hpp \
 		/usr/local/include/opencv2/core/ptr.inl.hpp \
 		/usr/local/include/opencv2/core/neon_utils.hpp \
@@ -5116,14 +7995,117 @@ build/debug/obj/serverstreamthread.o: src/serverstreamthread.cpp include/servers
 		/usr/local/include/opencv2/core/types_c.h \
 		/usr/local/include/opencv2/core/optim.hpp \
 		/usr/local/include/opencv2/core/ovx.hpp \
-		/usr/local/include/opencv2/imgproc/imgproc_c.h \
-		/usr/local/include/opencv2/imgproc/types_c.h \
+		/usr/local/include/opencv2/calib3d.hpp \
+		/usr/local/include/opencv2/features2d.hpp \
+		/usr/local/include/opencv2/flann/miniflann.hpp \
+		/usr/local/include/opencv2/flann/defines.h \
+		/usr/local/include/opencv2/flann/config.h \
+		/usr/local/include/opencv2/core/affine.hpp \
+		/usr/local/include/opencv2/calib3d/calib3d_c.h \
+		/usr/local/include/opencv2/dnn.hpp \
+		/usr/local/include/opencv2/dnn/dnn.hpp \
+		/usr/local/include/opencv2/core/async.hpp \
+		/usr/local/include/opencv2/dnn/dict.hpp \
+		/usr/local/include/opencv2/dnn/layer.hpp \
+		/usr/local/include/opencv2/dnn/dnn.inl.hpp \
+		/usr/local/include/opencv2/dnn/utils/inference_engine.hpp \
+		/usr/local/include/opencv2/flann.hpp \
+		/usr/local/include/opencv2/flann/flann_base.hpp \
+		/usr/local/include/opencv2/flann/general.h \
+		/usr/local/include/opencv2/flann/matrix.h \
+		/usr/local/include/opencv2/flann/params.h \
+		/usr/local/include/opencv2/flann/any.h \
+		/usr/local/include/opencv2/flann/saving.h \
+		/usr/local/include/opencv2/flann/nn_index.h \
+		/usr/local/include/opencv2/flann/result_set.h \
+		/usr/local/include/opencv2/flann/all_indices.h \
+		/usr/local/include/opencv2/flann/kdtree_index.h \
+		/usr/local/include/opencv2/flann/dynamic_bitset.h \
+		/usr/local/include/opencv2/flann/dist.h \
+		/usr/local/include/opencv2/flann/heap.h \
+		/usr/local/include/opencv2/flann/allocator.h \
+		/usr/local/include/opencv2/flann/random.h \
+		/usr/local/include/opencv2/flann/kdtree_single_index.h \
+		/usr/local/include/opencv2/flann/kmeans_index.h \
+		/usr/local/include/opencv2/flann/logger.h \
+		/usr/local/include/opencv2/flann/composite_index.h \
+		/usr/local/include/opencv2/flann/linear_index.h \
+		/usr/local/include/opencv2/flann/hierarchical_clustering_index.h \
+		/usr/local/include/opencv2/flann/lsh_index.h \
+		/usr/local/include/opencv2/flann/lsh_table.h \
+		/usr/local/include/opencv2/flann/autotuned_index.h \
+		/usr/local/include/opencv2/flann/ground_truth.h \
+		/usr/local/include/opencv2/flann/index_testing.h \
+		/usr/local/include/opencv2/flann/timer.h \
+		/usr/local/include/opencv2/flann/sampling.h \
 		/usr/local/include/opencv2/highgui.hpp \
 		/usr/local/include/opencv2/imgcodecs.hpp \
 		/usr/local/include/opencv2/videoio.hpp \
 		/usr/local/include/opencv2/highgui/highgui_c.h \
+		/usr/local/include/opencv2/imgproc/imgproc_c.h \
+		/usr/local/include/opencv2/imgproc/types_c.h \
 		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
 		/usr/local/include/opencv2/videoio/videoio_c.h \
+		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/ml.hpp \
+		/usr/local/include/opencv2/ml/ml.inl.hpp \
+		/usr/local/include/opencv2/objdetect.hpp \
+		/usr/local/include/opencv2/objdetect/detection_based_tracker.hpp \
+		/usr/local/include/opencv2/objdetect/objdetect_c.h \
+		/usr/local/include/opencv2/photo.hpp \
+		/usr/local/include/opencv2/photo/photo_c.h \
+		/usr/local/include/opencv2/shape.hpp \
+		/usr/local/include/opencv2/shape/emdL1.hpp \
+		/usr/local/include/opencv2/shape/shape_transformer.hpp \
+		/usr/local/include/opencv2/shape/hist_cost.hpp \
+		/usr/local/include/opencv2/shape/shape_distance.hpp \
+		/usr/local/include/opencv2/stitching.hpp \
+		/usr/local/include/opencv2/stitching/warpers.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers.hpp \
+		/usr/local/include/opencv2/core/cuda.hpp \
+		/usr/local/include/opencv2/core/cuda_types.hpp \
+		/usr/local/include/opencv2/core/cuda.inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/matchers.hpp \
+		/usr/local/include/opencv2/xfeatures2d/cuda.hpp \
+		/usr/local/include/opencv2/stitching/detail/motion_estimators.hpp \
+		/usr/local/include/opencv2/stitching/detail/util.hpp \
+		/usr/local/include/opencv2/stitching/detail/util_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/camera.hpp \
+		/usr/local/include/opencv2/stitching/detail/exposure_compensate.hpp \
+		/usr/local/include/opencv2/stitching/detail/seam_finders.hpp \
+		/usr/local/include/opencv2/stitching/detail/blenders.hpp \
+		/usr/local/include/opencv2/superres.hpp \
+		/usr/local/include/opencv2/superres/optical_flow.hpp \
+		/usr/local/include/opencv2/video.hpp \
+		/usr/local/include/opencv2/video/tracking.hpp \
+		/usr/local/include/opencv2/video/background_segm.hpp \
+		/usr/local/include/opencv2/video/tracking_c.h \
+		/usr/local/include/opencv2/videostab.hpp \
+		/usr/local/include/opencv2/videostab/stabilizer.hpp \
+		/usr/local/include/opencv2/videostab/global_motion.hpp \
+		/usr/local/include/opencv2/videostab/optical_flow.hpp \
+		/usr/local/include/opencv2/cudaoptflow.hpp \
+		/usr/local/include/opencv2/videostab/motion_core.hpp \
+		/usr/local/include/opencv2/videostab/outlier_rejection.hpp \
+		/usr/local/include/opencv2/cudaimgproc.hpp \
+		/usr/local/include/opencv2/videostab/motion_stabilizing.hpp \
+		/usr/local/include/opencv2/videostab/frame_source.hpp \
+		/usr/local/include/opencv2/videostab/log.hpp \
+		/usr/local/include/opencv2/videostab/inpainting.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching_inl.hpp \
+		/usr/local/include/opencv2/videostab/deblurring.hpp \
+		/usr/local/include/opencv2/videostab/wobble_suppression.hpp \
+		/usr/local/include/opencv2/videostab/ring_buffer.hpp \
+		/usr/local/include/opencv2/cudaarithm.hpp \
+		/usr/local/include/opencv2/cudabgsegm.hpp \
+		/usr/local/include/opencv2/cudafeatures2d.hpp \
+		/usr/local/include/opencv2/cudafilters.hpp \
+		/usr/local/include/opencv2/cudaobjdetect.hpp \
+		/usr/local/include/opencv2/cudastereo.hpp \
+		/usr/local/include/opencv2/cudawarping.hpp \
+		/usr/local/include/opencv2/imgproc/imgproc.hpp \
 		/usr/local/include/opencv2/core/core.hpp \
 		../../Qt/5.12.4/gcc_64/include/QtCore/QThread \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qthread.h \
@@ -5231,7 +8213,8 @@ build/debug/obj/tcpclientthread.o: src/tcpclientthread.cpp include/tcpclientthre
 		../../Qt/5.12.4/gcc_64/include/QtCore/qcontainerfwd.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qobject_impl.h \
 		include/configurations.h \
-		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/opencv.hpp \
+		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core.hpp \
 		/usr/local/include/opencv2/core/cvdef.h \
 		/usr/local/include/opencv2/core/hal/interface.h \
@@ -5240,7 +8223,6 @@ build/debug/obj/tcpclientthread.o: src/tcpclientthread.cpp include/tcpclientthre
 		/usr/local/include/opencv2/core/fast_math.hpp \
 		/usr/local/include/opencv2/core/version.hpp \
 		/usr/local/include/opencv2/core/base.hpp \
-		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core/cvstd.hpp \
 		/usr/local/include/opencv2/core/ptr.inl.hpp \
 		/usr/local/include/opencv2/core/neon_utils.hpp \
@@ -5261,14 +8243,117 @@ build/debug/obj/tcpclientthread.o: src/tcpclientthread.cpp include/tcpclientthre
 		/usr/local/include/opencv2/core/types_c.h \
 		/usr/local/include/opencv2/core/optim.hpp \
 		/usr/local/include/opencv2/core/ovx.hpp \
-		/usr/local/include/opencv2/imgproc/imgproc_c.h \
-		/usr/local/include/opencv2/imgproc/types_c.h \
+		/usr/local/include/opencv2/calib3d.hpp \
+		/usr/local/include/opencv2/features2d.hpp \
+		/usr/local/include/opencv2/flann/miniflann.hpp \
+		/usr/local/include/opencv2/flann/defines.h \
+		/usr/local/include/opencv2/flann/config.h \
+		/usr/local/include/opencv2/core/affine.hpp \
+		/usr/local/include/opencv2/calib3d/calib3d_c.h \
+		/usr/local/include/opencv2/dnn.hpp \
+		/usr/local/include/opencv2/dnn/dnn.hpp \
+		/usr/local/include/opencv2/core/async.hpp \
+		/usr/local/include/opencv2/dnn/dict.hpp \
+		/usr/local/include/opencv2/dnn/layer.hpp \
+		/usr/local/include/opencv2/dnn/dnn.inl.hpp \
+		/usr/local/include/opencv2/dnn/utils/inference_engine.hpp \
+		/usr/local/include/opencv2/flann.hpp \
+		/usr/local/include/opencv2/flann/flann_base.hpp \
+		/usr/local/include/opencv2/flann/general.h \
+		/usr/local/include/opencv2/flann/matrix.h \
+		/usr/local/include/opencv2/flann/params.h \
+		/usr/local/include/opencv2/flann/any.h \
+		/usr/local/include/opencv2/flann/saving.h \
+		/usr/local/include/opencv2/flann/nn_index.h \
+		/usr/local/include/opencv2/flann/result_set.h \
+		/usr/local/include/opencv2/flann/all_indices.h \
+		/usr/local/include/opencv2/flann/kdtree_index.h \
+		/usr/local/include/opencv2/flann/dynamic_bitset.h \
+		/usr/local/include/opencv2/flann/dist.h \
+		/usr/local/include/opencv2/flann/heap.h \
+		/usr/local/include/opencv2/flann/allocator.h \
+		/usr/local/include/opencv2/flann/random.h \
+		/usr/local/include/opencv2/flann/kdtree_single_index.h \
+		/usr/local/include/opencv2/flann/kmeans_index.h \
+		/usr/local/include/opencv2/flann/logger.h \
+		/usr/local/include/opencv2/flann/composite_index.h \
+		/usr/local/include/opencv2/flann/linear_index.h \
+		/usr/local/include/opencv2/flann/hierarchical_clustering_index.h \
+		/usr/local/include/opencv2/flann/lsh_index.h \
+		/usr/local/include/opencv2/flann/lsh_table.h \
+		/usr/local/include/opencv2/flann/autotuned_index.h \
+		/usr/local/include/opencv2/flann/ground_truth.h \
+		/usr/local/include/opencv2/flann/index_testing.h \
+		/usr/local/include/opencv2/flann/timer.h \
+		/usr/local/include/opencv2/flann/sampling.h \
 		/usr/local/include/opencv2/highgui.hpp \
 		/usr/local/include/opencv2/imgcodecs.hpp \
 		/usr/local/include/opencv2/videoio.hpp \
 		/usr/local/include/opencv2/highgui/highgui_c.h \
+		/usr/local/include/opencv2/imgproc/imgproc_c.h \
+		/usr/local/include/opencv2/imgproc/types_c.h \
 		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
 		/usr/local/include/opencv2/videoio/videoio_c.h \
+		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/ml.hpp \
+		/usr/local/include/opencv2/ml/ml.inl.hpp \
+		/usr/local/include/opencv2/objdetect.hpp \
+		/usr/local/include/opencv2/objdetect/detection_based_tracker.hpp \
+		/usr/local/include/opencv2/objdetect/objdetect_c.h \
+		/usr/local/include/opencv2/photo.hpp \
+		/usr/local/include/opencv2/photo/photo_c.h \
+		/usr/local/include/opencv2/shape.hpp \
+		/usr/local/include/opencv2/shape/emdL1.hpp \
+		/usr/local/include/opencv2/shape/shape_transformer.hpp \
+		/usr/local/include/opencv2/shape/hist_cost.hpp \
+		/usr/local/include/opencv2/shape/shape_distance.hpp \
+		/usr/local/include/opencv2/stitching.hpp \
+		/usr/local/include/opencv2/stitching/warpers.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers.hpp \
+		/usr/local/include/opencv2/core/cuda.hpp \
+		/usr/local/include/opencv2/core/cuda_types.hpp \
+		/usr/local/include/opencv2/core/cuda.inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/matchers.hpp \
+		/usr/local/include/opencv2/xfeatures2d/cuda.hpp \
+		/usr/local/include/opencv2/stitching/detail/motion_estimators.hpp \
+		/usr/local/include/opencv2/stitching/detail/util.hpp \
+		/usr/local/include/opencv2/stitching/detail/util_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/camera.hpp \
+		/usr/local/include/opencv2/stitching/detail/exposure_compensate.hpp \
+		/usr/local/include/opencv2/stitching/detail/seam_finders.hpp \
+		/usr/local/include/opencv2/stitching/detail/blenders.hpp \
+		/usr/local/include/opencv2/superres.hpp \
+		/usr/local/include/opencv2/superres/optical_flow.hpp \
+		/usr/local/include/opencv2/video.hpp \
+		/usr/local/include/opencv2/video/tracking.hpp \
+		/usr/local/include/opencv2/video/background_segm.hpp \
+		/usr/local/include/opencv2/video/tracking_c.h \
+		/usr/local/include/opencv2/videostab.hpp \
+		/usr/local/include/opencv2/videostab/stabilizer.hpp \
+		/usr/local/include/opencv2/videostab/global_motion.hpp \
+		/usr/local/include/opencv2/videostab/optical_flow.hpp \
+		/usr/local/include/opencv2/cudaoptflow.hpp \
+		/usr/local/include/opencv2/videostab/motion_core.hpp \
+		/usr/local/include/opencv2/videostab/outlier_rejection.hpp \
+		/usr/local/include/opencv2/cudaimgproc.hpp \
+		/usr/local/include/opencv2/videostab/motion_stabilizing.hpp \
+		/usr/local/include/opencv2/videostab/frame_source.hpp \
+		/usr/local/include/opencv2/videostab/log.hpp \
+		/usr/local/include/opencv2/videostab/inpainting.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching_inl.hpp \
+		/usr/local/include/opencv2/videostab/deblurring.hpp \
+		/usr/local/include/opencv2/videostab/wobble_suppression.hpp \
+		/usr/local/include/opencv2/videostab/ring_buffer.hpp \
+		/usr/local/include/opencv2/cudaarithm.hpp \
+		/usr/local/include/opencv2/cudabgsegm.hpp \
+		/usr/local/include/opencv2/cudafeatures2d.hpp \
+		/usr/local/include/opencv2/cudafilters.hpp \
+		/usr/local/include/opencv2/cudaobjdetect.hpp \
+		/usr/local/include/opencv2/cudastereo.hpp \
+		/usr/local/include/opencv2/cudawarping.hpp \
+		/usr/local/include/opencv2/imgproc/imgproc.hpp \
 		/usr/local/include/opencv2/core/core.hpp \
 		../../Qt/5.12.4/gcc_64/include/QtCore/QThread \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qthread.h
@@ -5327,7 +8412,8 @@ build/debug/obj/tcpserverthread.o: src/tcpserverthread.cpp include/tcpserverthre
 		../../Qt/5.12.4/gcc_64/include/QtCore/qcontainerfwd.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qobject_impl.h \
 		include/configurations.h \
-		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/opencv.hpp \
+		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core.hpp \
 		/usr/local/include/opencv2/core/cvdef.h \
 		/usr/local/include/opencv2/core/hal/interface.h \
@@ -5336,7 +8422,6 @@ build/debug/obj/tcpserverthread.o: src/tcpserverthread.cpp include/tcpserverthre
 		/usr/local/include/opencv2/core/fast_math.hpp \
 		/usr/local/include/opencv2/core/version.hpp \
 		/usr/local/include/opencv2/core/base.hpp \
-		/usr/local/include/opencv2/opencv_modules.hpp \
 		/usr/local/include/opencv2/core/cvstd.hpp \
 		/usr/local/include/opencv2/core/ptr.inl.hpp \
 		/usr/local/include/opencv2/core/neon_utils.hpp \
@@ -5357,14 +8442,117 @@ build/debug/obj/tcpserverthread.o: src/tcpserverthread.cpp include/tcpserverthre
 		/usr/local/include/opencv2/core/types_c.h \
 		/usr/local/include/opencv2/core/optim.hpp \
 		/usr/local/include/opencv2/core/ovx.hpp \
-		/usr/local/include/opencv2/imgproc/imgproc_c.h \
-		/usr/local/include/opencv2/imgproc/types_c.h \
+		/usr/local/include/opencv2/calib3d.hpp \
+		/usr/local/include/opencv2/features2d.hpp \
+		/usr/local/include/opencv2/flann/miniflann.hpp \
+		/usr/local/include/opencv2/flann/defines.h \
+		/usr/local/include/opencv2/flann/config.h \
+		/usr/local/include/opencv2/core/affine.hpp \
+		/usr/local/include/opencv2/calib3d/calib3d_c.h \
+		/usr/local/include/opencv2/dnn.hpp \
+		/usr/local/include/opencv2/dnn/dnn.hpp \
+		/usr/local/include/opencv2/core/async.hpp \
+		/usr/local/include/opencv2/dnn/dict.hpp \
+		/usr/local/include/opencv2/dnn/layer.hpp \
+		/usr/local/include/opencv2/dnn/dnn.inl.hpp \
+		/usr/local/include/opencv2/dnn/utils/inference_engine.hpp \
+		/usr/local/include/opencv2/flann.hpp \
+		/usr/local/include/opencv2/flann/flann_base.hpp \
+		/usr/local/include/opencv2/flann/general.h \
+		/usr/local/include/opencv2/flann/matrix.h \
+		/usr/local/include/opencv2/flann/params.h \
+		/usr/local/include/opencv2/flann/any.h \
+		/usr/local/include/opencv2/flann/saving.h \
+		/usr/local/include/opencv2/flann/nn_index.h \
+		/usr/local/include/opencv2/flann/result_set.h \
+		/usr/local/include/opencv2/flann/all_indices.h \
+		/usr/local/include/opencv2/flann/kdtree_index.h \
+		/usr/local/include/opencv2/flann/dynamic_bitset.h \
+		/usr/local/include/opencv2/flann/dist.h \
+		/usr/local/include/opencv2/flann/heap.h \
+		/usr/local/include/opencv2/flann/allocator.h \
+		/usr/local/include/opencv2/flann/random.h \
+		/usr/local/include/opencv2/flann/kdtree_single_index.h \
+		/usr/local/include/opencv2/flann/kmeans_index.h \
+		/usr/local/include/opencv2/flann/logger.h \
+		/usr/local/include/opencv2/flann/composite_index.h \
+		/usr/local/include/opencv2/flann/linear_index.h \
+		/usr/local/include/opencv2/flann/hierarchical_clustering_index.h \
+		/usr/local/include/opencv2/flann/lsh_index.h \
+		/usr/local/include/opencv2/flann/lsh_table.h \
+		/usr/local/include/opencv2/flann/autotuned_index.h \
+		/usr/local/include/opencv2/flann/ground_truth.h \
+		/usr/local/include/opencv2/flann/index_testing.h \
+		/usr/local/include/opencv2/flann/timer.h \
+		/usr/local/include/opencv2/flann/sampling.h \
 		/usr/local/include/opencv2/highgui.hpp \
 		/usr/local/include/opencv2/imgcodecs.hpp \
 		/usr/local/include/opencv2/videoio.hpp \
 		/usr/local/include/opencv2/highgui/highgui_c.h \
+		/usr/local/include/opencv2/imgproc/imgproc_c.h \
+		/usr/local/include/opencv2/imgproc/types_c.h \
 		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
 		/usr/local/include/opencv2/videoio/videoio_c.h \
+		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/ml.hpp \
+		/usr/local/include/opencv2/ml/ml.inl.hpp \
+		/usr/local/include/opencv2/objdetect.hpp \
+		/usr/local/include/opencv2/objdetect/detection_based_tracker.hpp \
+		/usr/local/include/opencv2/objdetect/objdetect_c.h \
+		/usr/local/include/opencv2/photo.hpp \
+		/usr/local/include/opencv2/photo/photo_c.h \
+		/usr/local/include/opencv2/shape.hpp \
+		/usr/local/include/opencv2/shape/emdL1.hpp \
+		/usr/local/include/opencv2/shape/shape_transformer.hpp \
+		/usr/local/include/opencv2/shape/hist_cost.hpp \
+		/usr/local/include/opencv2/shape/shape_distance.hpp \
+		/usr/local/include/opencv2/stitching.hpp \
+		/usr/local/include/opencv2/stitching/warpers.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers.hpp \
+		/usr/local/include/opencv2/core/cuda.hpp \
+		/usr/local/include/opencv2/core/cuda_types.hpp \
+		/usr/local/include/opencv2/core/cuda.inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/warpers_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/matchers.hpp \
+		/usr/local/include/opencv2/xfeatures2d/cuda.hpp \
+		/usr/local/include/opencv2/stitching/detail/motion_estimators.hpp \
+		/usr/local/include/opencv2/stitching/detail/util.hpp \
+		/usr/local/include/opencv2/stitching/detail/util_inl.hpp \
+		/usr/local/include/opencv2/stitching/detail/camera.hpp \
+		/usr/local/include/opencv2/stitching/detail/exposure_compensate.hpp \
+		/usr/local/include/opencv2/stitching/detail/seam_finders.hpp \
+		/usr/local/include/opencv2/stitching/detail/blenders.hpp \
+		/usr/local/include/opencv2/superres.hpp \
+		/usr/local/include/opencv2/superres/optical_flow.hpp \
+		/usr/local/include/opencv2/video.hpp \
+		/usr/local/include/opencv2/video/tracking.hpp \
+		/usr/local/include/opencv2/video/background_segm.hpp \
+		/usr/local/include/opencv2/video/tracking_c.h \
+		/usr/local/include/opencv2/videostab.hpp \
+		/usr/local/include/opencv2/videostab/stabilizer.hpp \
+		/usr/local/include/opencv2/videostab/global_motion.hpp \
+		/usr/local/include/opencv2/videostab/optical_flow.hpp \
+		/usr/local/include/opencv2/cudaoptflow.hpp \
+		/usr/local/include/opencv2/videostab/motion_core.hpp \
+		/usr/local/include/opencv2/videostab/outlier_rejection.hpp \
+		/usr/local/include/opencv2/cudaimgproc.hpp \
+		/usr/local/include/opencv2/videostab/motion_stabilizing.hpp \
+		/usr/local/include/opencv2/videostab/frame_source.hpp \
+		/usr/local/include/opencv2/videostab/log.hpp \
+		/usr/local/include/opencv2/videostab/inpainting.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching.hpp \
+		/usr/local/include/opencv2/videostab/fast_marching_inl.hpp \
+		/usr/local/include/opencv2/videostab/deblurring.hpp \
+		/usr/local/include/opencv2/videostab/wobble_suppression.hpp \
+		/usr/local/include/opencv2/videostab/ring_buffer.hpp \
+		/usr/local/include/opencv2/cudaarithm.hpp \
+		/usr/local/include/opencv2/cudabgsegm.hpp \
+		/usr/local/include/opencv2/cudafeatures2d.hpp \
+		/usr/local/include/opencv2/cudafilters.hpp \
+		/usr/local/include/opencv2/cudaobjdetect.hpp \
+		/usr/local/include/opencv2/cudastereo.hpp \
+		/usr/local/include/opencv2/cudawarping.hpp \
+		/usr/local/include/opencv2/imgproc/imgproc.hpp \
 		/usr/local/include/opencv2/core/core.hpp \
 		../../Qt/5.12.4/gcc_64/include/QtCore/QThread \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qthread.h

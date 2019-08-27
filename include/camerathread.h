@@ -17,7 +17,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <stdio.h>
-#include <opencv2/core/cuda/warp.hpp>
+
 
 class CameraThread : public QThread
 {
@@ -62,18 +62,16 @@ private:
     int begin_h, begin_m, begin_s, end_h, end_m, end_s;
 
     void captureFromFile();
-    long strToPositiveDigit(std::string s);
     void ffmpegJob();
     void defineChunk();
     void createChunk();
     void captureFromScreen();
     void captureFromCamera();
-    void imageScale();
 
 public slots:
     void notifyAudioToMstCondVar();
     void notifyVideoToMstCondVar();
-    void takePictureDone();
+    void pictureReady();
     void detectionDone();
     void cameraFrameSaved();
 
@@ -85,6 +83,7 @@ signals:
     void takeACameraPicture();
     void runIntrusionDetection(bool single_frame);
     void saveCameraFrame(cv::Mat frame);
+    void imageScaleBlur(std::string frame_path);
 };
 
 #endif // CAMERATHREAD_H

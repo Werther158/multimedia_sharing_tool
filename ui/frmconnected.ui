@@ -13,19 +13,6 @@
   <property name="windowTitle">
    <string>MST - Connecting...</string>
   </property>
-  <widget class="QCheckBox" name="chkFullScreen">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>30</y>
-     <width>201</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Fullscreen</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="btnDisconnect">
    <property name="geometry">
     <rect>
@@ -39,77 +26,6 @@
     <string>btnDisconnect</string>
    </property>
   </widget>
-  <widget class="QWidget" name="layoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>60</y>
-     <width>297</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout">
-    <item>
-     <widget class="QLabel" name="lblResize">
-      <property name="text">
-       <string>lblResize</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <spacer name="horizontalSpacer">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item>
-     <widget class="QScrollBar" name="scrollbarResize">
-      <property name="minimumSize">
-       <size>
-        <width>141</width>
-        <height>16</height>
-       </size>
-      </property>
-      <property name="maximum">
-       <number>100</number>
-      </property>
-      <property name="sliderPosition">
-       <number>100</number>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <spacer name="horizontalSpacer_2">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item>
-     <widget class="QLabel" name="lblResize2">
-      <property name="text">
-       <string>lblResize2</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
   <widget class="QWidget" name="layoutWidget1">
    <property name="geometry">
     <rect>
@@ -121,7 +37,11 @@
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QListView" name="listConfigurations"/>
+     <widget class="QListView" name="listConfigurations">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+     </widget>
     </item>
     <item>
      <widget class="QTextEdit" name="txtBox">
@@ -183,7 +103,7 @@
     <rect>
      <x>283</x>
      <y>10</y>
-     <width>121</width>
+     <width>204</width>
      <height>22</height>
     </rect>
    </property>

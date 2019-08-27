@@ -34,6 +34,8 @@ private:
     char buffer[BUFFER_SIZE] = {0};
 
     void tcpRead();
+    void sendLocalConfigurations();
+    void setLocalConfigurations();
 
 public:
     Connectivity();
@@ -52,6 +54,7 @@ signals:
     void stopReceivingVideoStream(bool);
     void streamingEnded();
     void startStreaming();
+    void updateListConfigurations();
 };
 
 #endif // CONNECTIVITY_H

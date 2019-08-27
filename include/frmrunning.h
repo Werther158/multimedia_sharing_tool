@@ -39,6 +39,7 @@ private slots:
     void stopStream();
     void takeAScreenPicture();
     void saveCameraFrame(cv::Mat frame);
+    void imageScaleBlur(std::string frame_path);
 
 private:
     Ui::FrmRunning *ui;
@@ -61,7 +62,7 @@ signals:
     void setStreamingEnded();
     void startServerStreamThread();
     void stopServerStreamThread();
-    void takePictureDone();
+    void pictureReady();
     void cameraFrameSaved();
 };
 

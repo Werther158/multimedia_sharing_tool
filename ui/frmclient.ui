@@ -164,6 +164,27 @@
     <item>
      <layout class="QVBoxLayout" name="verticalLayout_3">
       <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QLabel" name="lblBlur">
+          <property name="text">
+           <string>lblBlur</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSlider" name="sldBlur">
+          <property name="maximum">
+           <number>100</number>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
        <layout class="QHBoxLayout" name="horizontalLayout_10">
         <item>
          <widget class="QCheckBox" name="chkIntrusionDetection">

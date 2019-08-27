@@ -12,7 +12,6 @@ FrmConnected::FrmConnected(QWidget *parent) :
     ui(new Ui::FrmConnected)
 {
     ui->setupUi(this);
-    ui->lblResize2->setText("100%");
     setFixedSize(size());
     this->setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowTitleHint);
 
@@ -38,6 +37,8 @@ FrmConnected::FrmConnected(QWidget *parent) :
                      this, SLOT(stopReceivingVideoStream(bool)));
     QObject::connect(tcp_client_thread, SIGNAL(startStreaming()),
                      this, SLOT(startStreaming()));
+    QObject::connect(tcp_client_thread, SIGNAL(updateListConfigurations()),
+                     this, SLOT(updateListConfigurations()));
     tcp_client_thread->start();
 
     ui->btnStartStopStreaming->setEnabled(false);
@@ -54,10 +55,7 @@ FrmConnected::FrmConnected(QWidget *parent) :
     ui->btnDisconnect->setIcon(DisconnectIcon);
     ui->btnDisconnect->setIconSize(disconnect_img.rect().size());
 
-    // Fill listConfigurations
-    QStandardItemModel *model = new QStandardItemModel(6, 1, this);
-    (*dict).fillModel(model);
-    ui->listConfigurations->setModel(model);
+    updateListConfigurations();
 }
 
 FrmConnected::~FrmConnected()
@@ -73,9 +71,6 @@ FrmConnected::~FrmConnected()
 void FrmConnected::setDict(Dictionary* dict)
 {
     this->dict = dict;
-    (*dict).getTextOflblResize(ui->lblResize);
-    ui->chkFullScreen->setText(QString::fromStdString
-                               ((*dict).getTextOfchkFullscreen()));
     ui->btnDisconnect->setText(QString::fromStdString
                                ((*dict).getTextOfbtnDisconnect(0)));
     (*dict).getTextOfbtnStartStreaming(ui->btnStartStopStreaming, 0);
@@ -325,10 +320,6 @@ void FrmConnected::uiStreamingActive()
 {
     QPixmap stream_active_pix(":/resources/media/stream_active.png");
     ui->lblState3->setPixmap(stream_active_pix);
-    ui->chkFullScreen->setEnabled(true);
-    ui->lblResize->setEnabled(true);
-    ui->scrollbarResize->setEnabled(true);
-    ui->lblResize2->setEnabled(true);
 }
 
 /**
@@ -340,10 +331,6 @@ void FrmConnected::uiStreamingInactive()
 {
     QPixmap stream_inactive_pix(":/resources/media/stream_inactive.png");
     ui->lblState3->setPixmap(stream_inactive_pix);
-    ui->chkFullScreen->setEnabled(false);
-    ui->lblResize->setEnabled(false);
-    ui->scrollbarResize->setEnabled(false);
-    ui->lblResize2->setEnabled(false);
 }
 
 /**
@@ -354,4 +341,17 @@ void FrmConnected::uiStreamingInactive()
 void FrmConnected::streamingEnded()
 {
     c.tcpWriteCommand(-4);
+}
+
+/**
+ * Set and update listConfigurations accordingly to Configurations data.
+ * @param   : void.
+ * @return  : void.
+*/
+void FrmConnected::updateListConfigurations()
+{
+    // Fill listConfigurations
+    QStandardItemModel *model = new QStandardItemModel(7, 1, this);
+    (*dict).fillModel(model);
+    ui->listConfigurations->setModel(model);
 }
