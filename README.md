@@ -67,7 +67,7 @@ $ cmake -D CMAKE_BUILD_TYPE=RELEASE \
  -D BUILD_opencv_cudacodec=OFF \
  -D BUILD_EXAMPLES=ON ..
 $ nproc
-# use the number that nproc returns which is nothing but the number of cores of your processor. Let's say it returns 4.
+# use the number that nproc returns which is the number of cores of your processor. Let's say it returns 4.
 $ make -j4 
 $ sudo make install
 ```
