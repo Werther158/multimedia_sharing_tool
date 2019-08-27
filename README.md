@@ -61,6 +61,7 @@ $ cmake -D CMAKE_BUILD_TYPE=RELEASE \
  -D PYTHON_EXECUTABLE=~/.virtualenvs/cv/bin/python \
  -D WITH_GTK=ON \
  -D ENABLE_PRECOMPILED_HEADERS=OFF \
+ -D BUILD_opencv_cudacodec=OFF \
  -D BUILD_EXAMPLES=ON ..
 $ nproc
 # use the number that nproc returns which is nothing but the number of cores of your processor. Let's say it returns 4.
