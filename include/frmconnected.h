@@ -9,6 +9,8 @@
 #include <QWidget>
 #include <QDir>
 #include <qdesktopwidget.h>
+#include <QListView>
+#include <QStandardItemModel>
 
 namespace Ui {
 class FrmConnected;

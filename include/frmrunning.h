@@ -9,8 +9,9 @@
 #include <QDir>
 #include <qdesktopwidget.h>
 #include <camerathread.h>
-
 #include <QAction>
+#include <QListView>
+#include <QStandardItemModel>
 
 namespace Ui {
 class FrmRunning;

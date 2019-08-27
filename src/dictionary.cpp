@@ -365,6 +365,67 @@ void Dictionary::setTooltipOflblState3(QLabel *lbl)
                              "\nGreen: active.")));
 }
 
+void Dictionary::fillModel(QStandardItemModel *model)
+{
+    QString resolution, color_scale, source, seconds,
+            enable, disable, network;
+
+    if(current_language == english)
+    {
+        resolution = "Resolution: ";
+        source = "source";
+        color_scale = "Color scale: ";
+        seconds = " seconds";
+        enable = "enable";
+        disable = "disable";
+        network = "Network: ";
+    }
+    else
+    {
+        resolution = "Risoluzione: ";
+        source = "sorgente";
+        color_scale = "Scala colori: ";
+        seconds = "secondi";
+        enable = "abilitato";
+        disable = "disabilitato";
+        network = "Rete: ";
+    }
+
+    if(Configurations::resolution != 0)
+        model->setItem(0, 0, new QStandardItem(resolution +
+                      QString::fromStdString(Configurations::resolution_choices
+                                               [Configurations::resolution])));
+    else
+        model->setItem(0, 0, new QStandardItem(resolution + source));
+
+    if(Configurations::fps != 0)
+        model->setItem(1, 0, new QStandardItem(QString("FPS: ") +
+                        QString::number(Configurations::fps_choices
+                                               [Configurations::fps])));
+    else
+        model->setItem(1, 0, new QStandardItem(QString("FPS: ") + source));
+
+    if(Configurations::color_scale != 0)
+        model->setItem(2, 0, new QStandardItem(color_scale +
+                        QString::number(Configurations::color_scale_choices
+                                             [Configurations::color_scale])));
+    else
+        model->setItem(2, 0, new QStandardItem(color_scale + source));
+
+    model->setItem(3, 0, new QStandardItem(QString("Video chunk: ") +
+                   QString::number(Configurations::video_chunk_seconds)
+                                           + seconds));
+    if(Configurations::intrusion_detection_enabled)
+        model->setItem(4, 0, new QStandardItem(QString
+                       ("CUDA Intrusion Detection: ") + enable));
+    else
+        model->setItem(4, 0, new QStandardItem(QString
+                       ("CUDA Intrusion Detection: ") + disable));
+
+    model->setItem(5, 0, new QStandardItem(network +
+                   QString::fromStdString(Configurations::network)));
+}
+
 // FrmConnected
 void Dictionary::getTextOflblResize(QLabel *lbl)
 {

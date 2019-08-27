@@ -37,6 +37,11 @@ FrmRunning::FrmRunning(QWidget *parent) :
     ui->btnStop->setIcon(SServerIcon);
     ui->btnStop->setIconSize(sserver_img.rect().size());
 
+    // Fill listConfigurations
+    QStandardItemModel *model = new QStandardItemModel(6, 1, this);
+    (*dict).fillModel(model);
+    ui->listConfigurations->setModel(model);
+
     qRegisterMetaType<cv::Mat>("cv::Mat");
 }
 

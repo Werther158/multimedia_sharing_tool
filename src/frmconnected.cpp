@@ -53,6 +53,11 @@ FrmConnected::FrmConnected(QWidget *parent) :
     QIcon DisconnectIcon(disconnect_img);
     ui->btnDisconnect->setIcon(DisconnectIcon);
     ui->btnDisconnect->setIconSize(disconnect_img.rect().size());
+
+    // Fill listConfigurations
+    QStandardItemModel *model = new QStandardItemModel(6, 1, this);
+    (*dict).fillModel(model);
+    ui->listConfigurations->setModel(model);
 }
 
 FrmConnected::~FrmConnected()

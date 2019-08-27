@@ -7,6 +7,9 @@
 #include <QLabel>
 #include <QPushButton>
 #include <QCheckBox>
+#include <QListView>
+#include <QStandardItemModel>
+#include "configurations.h"
 
 enum lang {
     italian,
@@ -70,6 +73,7 @@ public:
     void setTIbtnStartStopStream(QPushButton *btn, int select);
     void setTooltipOflblState2(QLabel *lbl);
     void setTooltipOflblState3(QLabel *lbl);
+    void fillModel(QStandardItemModel *model);
 
     // FrmConnected
     void getTextOflblResize(QLabel *lbl);
