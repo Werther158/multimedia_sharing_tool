@@ -172,15 +172,19 @@ void CameraThread::captureFromFile()
             sem_wait(&sem_detection_done);
         }
 
-        // Apply resize and eventually blur filtering on chunk
-        QDir directory(QString::fromStdString
-                       (Configurations::current_frame_path));
-        QStringList images = directory.entryList
-                (QStringList() << "*.bmp", QDir::Files);
-        foreach(QString filename, images) {
-            emit imageScaleBlur(Configurations::current_frame_path
-                          + "/" + filename.toStdString());
-            sem_wait(&sem_picture);
+        // Apply eventually resize and blur filtering on chunk
+        if(Configurations::frame_size_changed ||
+                Configurations::blur_effect != 0)
+        {
+            QDir directory(QString::fromStdString
+                           (Configurations::current_frame_path));
+            QStringList images = directory.entryList
+                    (QStringList() << "*.bmp", QDir::Files);
+            foreach(QString filename, images) {
+                emit imageScaleBlur(Configurations::current_frame_path
+                              + "/" + filename.toStdString());
+                sem_wait(&sem_picture);
+            }
         }
 
         // Wait for signal to start feeding mst video
@@ -230,7 +234,8 @@ void CameraThread::captureFromCamera()
                      this, SLOT(notifyVideoToMstCondVar()));
     video_pipe_thread->start();
 
-    // Open mst pipes in write only mode // Not really used to write inside the pipe
+    // Open mst pipes in write only mode.
+    // Not really used to write inside the pipe
     if((mst_video_pipe = open(mstvideo_pipe_path.c_str(), O_WRONLY)) < 0)
     {
         std::cout << "Error opening MST video pipe\n";
@@ -265,9 +270,14 @@ void CameraThread::captureFromCamera()
             sem_wait(&sem_detection_done);
         }
 
-        // Apply resize and eventually blur filtering
-        emit imageScaleBlur(Configurations::current_frame_path + "/output.bmp");
-        sem_wait(&sem_picture);
+        // Apply eventually resize and blur filtering
+        if(Configurations::frame_size_changed ||
+                Configurations::blur_effect != 0)
+        {
+            emit imageScaleBlur(Configurations::current_frame_path +
+                                "/output.bmp");
+            sem_wait(&sem_picture);
+        }
 
         // Wait for signal to start feeding mst video
         sem_wait(&sem_video);
@@ -325,9 +335,13 @@ void CameraThread::captureFromScreen()
             sem_wait(&sem_detection_done);
         }
 
-        // Apply resize and eventually blur filtering
-        emit imageScaleBlur(Configurations::current_frame_path + "/output.bmp");
-        sem_wait(&sem_picture);
+        // Apply eventually resize and blur filtering
+        if(Configurations::frame_size_changed ||
+                Configurations::blur_effect != 0)
+        {
+            emit imageScaleBlur(Configurations::current_frame_path + "/output.bmp");
+            sem_wait(&sem_picture);
+        }
 
         // Wait for signal to start feeding mst video
         sem_wait(&sem_video);

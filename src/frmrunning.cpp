@@ -401,21 +401,27 @@ void FrmRunning::imageScaleBlur(std::string frame_path)
         size.width = Configurations::frame_width;
         size.height = Configurations::frame_height;
         cv::cuda::resize(input_device, output_device, size);
-        if(Configurations::blur_effect != 0)
-        {
-            cv::Ptr<cv::cuda::Filter> gauss = cv::cuda::createGaussianFilter
-                    (output_device.type(), output_both.type(),
-                     cv::Size(21, 21), Configurations::blur_effect * 2,
-                     Configurations::blur_effect * 2);
-            gauss->apply(output_device, output_both);
-        }
-        else
-            output_device.copyTo(output_both);
+    }
 
-        output_both.download(output_host);
+    if(Configurations::frame_size_changed && Configurations::blur_effect != 0)
+    {
+        cv::Ptr<cv::cuda::Filter> gauss = cv::cuda::createGaussianFilter
+                (output_device.type(), output_both.type(),
+                 cv::Size(21, 21), Configurations::blur_effect * 2,
+                 Configurations::blur_effect * 2);
+        gauss->apply(output_device, output_both);
     }
     else
-        input_host.copyTo(output_host);
+    if(Configurations::blur_effect != 0)
+    {
+        cv::Ptr<cv::cuda::Filter> gauss = cv::cuda::createGaussianFilter
+                (input_device.type(), output_both.type(),
+                 cv::Size(21, 21), Configurations::blur_effect * 2,
+                 Configurations::blur_effect * 2);
+        gauss->apply(input_device, output_both);
+    }
+
+    output_both.download(output_host);
 
     input_host.release();
     output_device.release();

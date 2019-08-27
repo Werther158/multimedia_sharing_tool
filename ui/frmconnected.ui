@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>431</width>
-    <height>327</height>
+    <width>414</width>
+    <height>284</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,8 +16,8 @@
   <widget class="QPushButton" name="btnDisconnect">
    <property name="geometry">
     <rect>
-     <x>290</x>
-     <y>290</y>
+     <x>270</x>
+     <y>240</y>
      <width>111</width>
      <height>25</height>
     </rect>
@@ -30,8 +30,8 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>90</y>
-     <width>371</width>
+     <y>40</y>
+     <width>351</width>
      <height>191</height>
     </rect>
    </property>
@@ -76,7 +76,7 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>290</y>
+     <y>240</y>
      <width>31</width>
      <height>25</height>
     </rect>
@@ -88,8 +88,8 @@
   <widget class="QPushButton" name="btnStartStopStreaming">
    <property name="geometry">
     <rect>
-     <x>120</x>
-     <y>290</y>
+     <x>100</x>
+     <y>240</y>
      <width>141</width>
      <height>25</height>
     </rect>
@@ -101,9 +101,9 @@
   <widget class="QWidget" name="layoutWidget2">
    <property name="geometry">
     <rect>
-     <x>283</x>
+     <x>260</x>
      <y>10</y>
-     <width>204</width>
+     <width>121</width>
      <height>22</height>
     </rect>
    </property>
