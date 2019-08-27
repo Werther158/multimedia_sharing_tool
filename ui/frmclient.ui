@@ -65,45 +65,6 @@
     <enum>Qt::Horizontal</enum>
    </property>
   </widget>
-  <widget class="QLabel" name="lblBandwidth">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>360</y>
-     <width>211</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>lblBandwidth</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblBandwidthvalue">
-   <property name="geometry">
-    <rect>
-     <x>260</x>
-     <y>360</y>
-     <width>67</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>lblBandwidthvalue</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_3">
-   <property name="geometry">
-    <rect>
-     <x>350</x>
-     <y>360</y>
-     <width>67</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>mbit/s</string>
-   </property>
-  </widget>
   <widget class="Line" name="line_4">
    <property name="geometry">
     <rect>
@@ -121,7 +82,7 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>210</y>
+     <y>230</y>
      <width>491</width>
      <height>130</height>
     </rect>
@@ -282,48 +243,7 @@
      </spacer>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_15">
-      <item>
-       <widget class="QPushButton" name="btnLoadConfig">
-        <property name="text">
-         <string>btnLoadConfig</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <spacer name="horizontalSpacer_7">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QPushButton" name="btnSaveConfig">
-        <property name="text">
-         <string>btnSaveConfig</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <spacer name="horizontalSpacer_9">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
+     <layout class="QHBoxLayout" name="horizontalLayout_15"/>
     </item>
     <item>
      <widget class="QPushButton" name="btnConnect">

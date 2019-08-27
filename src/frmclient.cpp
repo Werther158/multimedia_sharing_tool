@@ -34,13 +34,9 @@ FrmClient::FrmClient(QWidget *parent) :
 
     QPixmap load_img(":/resources/media/load.png");
     QIcon LoadIcon(load_img);
-    ui->btnLoadConfig->setIcon(LoadIcon);
-    ui->btnLoadConfig->setIconSize(load_img.rect().size());
 
     QPixmap save_img(":/resources/media/save.png");
     QIcon SaveIcon(save_img);
-    ui->btnSaveConfig->setIcon(SaveIcon);
-    ui->btnSaveConfig->setIconSize(save_img.rect().size());
 
     QPixmap connect_img(":/resources/media/connect.png");
     QIcon ConnectIcon(connect_img);
@@ -76,15 +72,7 @@ void FrmClient::setDict(Dictionary* dict)
     (*dict).setTextOflblColorScale(ui->lblColorScale);
     (*dict).setTextOflblVideoChunk(ui->lblVideoChunk);
     (*dict).setTextOflblNetwork(ui->lblNetwork);
-    ui->lblBandwidth->setText(QString::fromStdString
-                              ((*dict).getTextOflblBandwidth()));
-    ui->lblBandwidthvalue->setText(QString::fromStdString
-                                   ((*dict).getTextOflblBandwidthvalue()));
     ui->btnBack->setText(QString::fromStdString((*dict).getTextOfbtnBack()));
-    ui->btnLoadConfig->setText(QString::fromStdString
-                               ((*dict).getTextOfbtnLoadConfig()));
-    ui->btnSaveConfig->setText(QString::fromStdString
-                               ((*dict).getTextOfbtnSaveConfig()));
     ui->btnConnect->setText(QString::fromStdString
                             ((*dict).getTextOfbtnConnect()));
     (*dict).fillcmbResolution(ui->cmbResolution);

@@ -185,29 +185,9 @@ void Dictionary::setTextOflblColorScale(QLabel *lbl)
                  (choices("Scala colori:", "Color scale:")));
 }
 
-std::string Dictionary::getTextOflblBandwidth()
-{
-    return choices("Banda utilizzata stimata:", "Estimated bandwidth use:");
-}
-
-std::string Dictionary::getTextOflblBandwidthvalue()
-{
-    return "N";
-}
-
 std::string Dictionary::getTextOfbtnBack()
 {
     return choices(" Indietro", " Back");
-}
-
-std::string Dictionary::getTextOfbtnLoadConfig()
-{
-    return choices(" Carica configurazione", " Load configuration");
-}
-
-std::string Dictionary::getTextOfbtnSaveConfig()
-{
-    return choices(" Salva configurazione", " Save configuration");
 }
 
 std::string Dictionary::getTextOfbtnStartServer()

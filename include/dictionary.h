@@ -44,11 +44,7 @@ public:
     void setTextOflblFps(QLabel *lbl);
     void setTextOflblColorScale(QLabel *lbl);
     void setTextOflblNetwork(QLabel *lbl);
-    std::string getTextOflblBandwidth();
-    std::string getTextOflblBandwidthvalue();
     std::string getTextOfbtnBack();
-    std::string getTextOfbtnLoadConfig();
-    std::string getTextOfbtnSaveConfig();
     std::string getTextOfbtnStartServer();
     std::string getTextOfbtnExit();
     void fillcmbSource(QComboBox *cmb);
