@@ -13,6 +13,9 @@ Share video, screen, camera and audio with a RTSP stream through Lan or Wan supp
 ### CUDA  
 [CUDA Installation Guide](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)
 
+### cURL
+`$ sudo apt-get install curl`  
+
 ### Jetson-inference library
 [Jetson-inference GitHub page](https://github.com/dusty-nv/jetson-inference)
 
