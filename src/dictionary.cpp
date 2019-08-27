@@ -369,6 +369,9 @@ void Dictionary::fillModel(QStandardItemModel *model)
 {
     QString resolution, color_scale, source, seconds,
             enable, disable, network;
+    int row;
+
+    row = 0;
 
     if(current_language == english)
     {
@@ -385,44 +388,53 @@ void Dictionary::fillModel(QStandardItemModel *model)
         resolution = "Risoluzione: ";
         source = "sorgente";
         color_scale = "Scala colori: ";
-        seconds = "secondi";
+        seconds = " secondi";
         enable = "abilitato";
         disable = "disabilitato";
         network = "Rete: ";
     }
 
     if(Configurations::resolution != 0)
-        model->setItem(0, 0, new QStandardItem(resolution +
+        model->setItem(row, 0, new QStandardItem(resolution +
                       QString::fromStdString(Configurations::resolution_choices
                                                [Configurations::resolution])));
     else
-        model->setItem(0, 0, new QStandardItem(resolution + source));
+        model->setItem(row, 0, new QStandardItem(resolution + source));
+    row++;
 
     if(Configurations::fps != 0)
-        model->setItem(1, 0, new QStandardItem(QString("FPS: ") +
+        model->setItem(row, 0, new QStandardItem(QString("FPS: ") +
                         QString::number(Configurations::fps_choices
                                                [Configurations::fps])));
     else
-        model->setItem(1, 0, new QStandardItem(QString("FPS: ") + source));
+        model->setItem(row, 0, new QStandardItem(QString("FPS: ") + source));
+    row++;
 
     if(Configurations::color_scale != 0)
-        model->setItem(2, 0, new QStandardItem(color_scale +
+        model->setItem(row, 0, new QStandardItem(color_scale +
                         QString::number(Configurations::color_scale_choices
                                              [Configurations::color_scale])));
     else
-        model->setItem(2, 0, new QStandardItem(color_scale + source));
+        model->setItem(row, 0, new QStandardItem(color_scale + source));
+    row++;
 
-    model->setItem(3, 0, new QStandardItem(QString("Video chunk: ") +
-                   QString::number(Configurations::video_chunk_seconds)
-                                           + seconds));
+    if(Configurations::source == 0)
+    {
+        model->setItem(row, 0, new QStandardItem(QString("Video chunk: ") +
+                       QString::number(Configurations::video_chunk_seconds)
+                                               + seconds));
+        row++;
+    }
+
     if(Configurations::intrusion_detection_enabled)
-        model->setItem(4, 0, new QStandardItem(QString
+        model->setItem(row, 0, new QStandardItem(QString
                        ("CUDA Intrusion Detection: ") + enable));
     else
-        model->setItem(4, 0, new QStandardItem(QString
+        model->setItem(row, 0, new QStandardItem(QString
                        ("CUDA Intrusion Detection: ") + disable));
+    row++;
 
-    model->setItem(5, 0, new QStandardItem(network +
+    model->setItem(row, 0, new QStandardItem(network +
                    QString::fromStdString(Configurations::network)));
 }
 

@@ -1686,8 +1686,13 @@ build/debug/moc/moc_frmclient.cpp: include/frmclient.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractbutton.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/QCheckBox \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qcheckbox.h \
-		include/connectivity.h \
-		../../Qt/5.12.4/gcc_64/include/QtCore/QObject \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QListView \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlistview.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../Qt/5.12.4/gcc_64/include/QtGui/QStandardItemModel \
+		../../Qt/5.12.4/gcc_64/include/QtGui/qstandarditemmodel.h \
 		include/configurations.h \
 		/usr/local/include/opencv2/imgproc.hpp \
 		/usr/local/include/opencv2/core.hpp \
@@ -1728,6 +1733,8 @@ build/debug/moc/moc_frmclient.cpp: include/frmclient.h \
 		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
 		/usr/local/include/opencv2/videoio/videoio_c.h \
 		/usr/local/include/opencv2/core/core.hpp \
+		include/connectivity.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/QObject \
 		include/tcpclientthread.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/QThread \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qthread.h \
@@ -1862,6 +1869,13 @@ build/debug/moc/moc_frmconnected.cpp: include/frmconnected.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractbutton.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/QCheckBox \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qcheckbox.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QListView \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlistview.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../Qt/5.12.4/gcc_64/include/QtGui/QStandardItemModel \
+		../../Qt/5.12.4/gcc_64/include/QtGui/qstandarditemmodel.h \
 		include/configurations.h \
 		/usr/local/include/opencv2/imgproc.hpp \
 		/usr/local/include/opencv2/core.hpp \
@@ -2048,6 +2062,53 @@ build/debug/moc/moc_frmmain.cpp: include/frmmain.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractbutton.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/QCheckBox \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qcheckbox.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QListView \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlistview.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../Qt/5.12.4/gcc_64/include/QtGui/QStandardItemModel \
+		../../Qt/5.12.4/gcc_64/include/QtGui/qstandarditemmodel.h \
+		include/configurations.h \
+		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/core.hpp \
+		/usr/local/include/opencv2/core/cvdef.h \
+		/usr/local/include/opencv2/core/hal/interface.h \
+		/usr/local/include/opencv2/core/cv_cpu_dispatch.h \
+		/usr/local/include/opencv2/core/cv_cpu_helper.h \
+		/usr/local/include/opencv2/core/fast_math.hpp \
+		/usr/local/include/opencv2/core/version.hpp \
+		/usr/local/include/opencv2/core/base.hpp \
+		/usr/local/include/opencv2/opencv_modules.hpp \
+		/usr/local/include/opencv2/core/cvstd.hpp \
+		/usr/local/include/opencv2/core/ptr.inl.hpp \
+		/usr/local/include/opencv2/core/neon_utils.hpp \
+		/usr/local/include/opencv2/core/vsx_utils.hpp \
+		/usr/local/include/opencv2/core/check.hpp \
+		/usr/local/include/opencv2/core/traits.hpp \
+		/usr/local/include/opencv2/core/matx.hpp \
+		/usr/local/include/opencv2/core/saturate.hpp \
+		/usr/local/include/opencv2/core/types.hpp \
+		/usr/local/include/opencv2/core/mat.hpp \
+		/usr/local/include/opencv2/core/bufferpool.hpp \
+		/usr/local/include/opencv2/core/mat.inl.hpp \
+		/usr/local/include/opencv2/core/persistence.hpp \
+		/usr/local/include/opencv2/core/operations.hpp \
+		/usr/local/include/opencv2/core/cvstd.inl.hpp \
+		/usr/local/include/opencv2/core/utility.hpp \
+		/usr/local/include/opencv2/core/core_c.h \
+		/usr/local/include/opencv2/core/types_c.h \
+		/usr/local/include/opencv2/core/optim.hpp \
+		/usr/local/include/opencv2/core/ovx.hpp \
+		/usr/local/include/opencv2/imgproc/imgproc_c.h \
+		/usr/local/include/opencv2/imgproc/types_c.h \
+		/usr/local/include/opencv2/highgui.hpp \
+		/usr/local/include/opencv2/imgcodecs.hpp \
+		/usr/local/include/opencv2/videoio.hpp \
+		/usr/local/include/opencv2/highgui/highgui_c.h \
+		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
+		/usr/local/include/opencv2/videoio/videoio_c.h \
+		/usr/local/include/opencv2/core/core.hpp \
 		build/debug/moc/moc_predefs.h \
 		../../Qt/5.12.4/gcc_64/bin/moc
 	/home/werther/Qt/5.12.4/gcc_64/bin/moc $(DEFINES) --include /home/werther/Desktop/multimedia_sharing_tool/build/debug/moc/moc_predefs.h -I/home/werther/Qt/5.12.4/gcc_64/mkspecs/linux-g++ -I/home/werther/Desktop/multimedia_sharing_tool -I/usr/include/curl -I/home/werther/Desktop/multimedia_sharing_tool/include -I/usr/local/include -I/usr/local/cuda/include -I/home/werther/Qt/5.12.4/gcc_64/include -I/home/werther/Qt/5.12.4/gcc_64/include/QtWidgets -I/home/werther/Qt/5.12.4/gcc_64/include/QtGui -I/home/werther/Qt/5.12.4/gcc_64/include/QtCore -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++ -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/i686-w64-mingw32.static -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include/c++/backward -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include -I/home/werther/Downloads/mxe/usr/lib/gcc/i686-w64-mingw32.static/5.5.0/include-fixed -I/home/werther/Downloads/mxe/usr/i686-w64-mingw32.static/include include/frmmain.h -o build/debug/moc/moc_frmmain.cpp
@@ -2179,8 +2240,13 @@ build/debug/moc/moc_frmrunning.cpp: include/frmrunning.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractbutton.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/QCheckBox \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qcheckbox.h \
-		include/connectivity.h \
-		../../Qt/5.12.4/gcc_64/include/QtCore/QObject \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QListView \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlistview.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../Qt/5.12.4/gcc_64/include/QtGui/QStandardItemModel \
+		../../Qt/5.12.4/gcc_64/include/QtGui/qstandarditemmodel.h \
 		include/configurations.h \
 		/usr/local/include/opencv2/imgproc.hpp \
 		/usr/local/include/opencv2/core.hpp \
@@ -2221,6 +2287,8 @@ build/debug/moc/moc_frmrunning.cpp: include/frmrunning.h \
 		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
 		/usr/local/include/opencv2/videoio/videoio_c.h \
 		/usr/local/include/opencv2/core/core.hpp \
+		include/connectivity.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/QObject \
 		include/tcpserverthread.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/QThread \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qthread.h \
@@ -2430,8 +2498,13 @@ build/debug/moc/moc_frmserver.cpp: include/frmserver.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractbutton.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/QCheckBox \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qcheckbox.h \
-		include/connectivity.h \
-		../../Qt/5.12.4/gcc_64/include/QtCore/QObject \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QListView \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlistview.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../Qt/5.12.4/gcc_64/include/QtGui/QStandardItemModel \
+		../../Qt/5.12.4/gcc_64/include/QtGui/qstandarditemmodel.h \
 		include/configurations.h \
 		/usr/local/include/opencv2/imgproc.hpp \
 		/usr/local/include/opencv2/core.hpp \
@@ -2472,6 +2545,8 @@ build/debug/moc/moc_frmserver.cpp: include/frmserver.h \
 		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
 		/usr/local/include/opencv2/videoio/videoio_c.h \
 		/usr/local/include/opencv2/core/core.hpp \
+		include/connectivity.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/QObject \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/QFileDialog \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qfiledialog.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qdir.h \
@@ -3499,7 +3574,54 @@ build/debug/obj/dictionary.o: src/dictionary.cpp include/dictionary.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qpushbutton.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractbutton.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/QCheckBox \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/qcheckbox.h
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qcheckbox.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QListView \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlistview.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../Qt/5.12.4/gcc_64/include/QtGui/QStandardItemModel \
+		../../Qt/5.12.4/gcc_64/include/QtGui/qstandarditemmodel.h \
+		include/configurations.h \
+		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/core.hpp \
+		/usr/local/include/opencv2/core/cvdef.h \
+		/usr/local/include/opencv2/core/hal/interface.h \
+		/usr/local/include/opencv2/core/cv_cpu_dispatch.h \
+		/usr/local/include/opencv2/core/cv_cpu_helper.h \
+		/usr/local/include/opencv2/core/fast_math.hpp \
+		/usr/local/include/opencv2/core/version.hpp \
+		/usr/local/include/opencv2/core/base.hpp \
+		/usr/local/include/opencv2/opencv_modules.hpp \
+		/usr/local/include/opencv2/core/cvstd.hpp \
+		/usr/local/include/opencv2/core/ptr.inl.hpp \
+		/usr/local/include/opencv2/core/neon_utils.hpp \
+		/usr/local/include/opencv2/core/vsx_utils.hpp \
+		/usr/local/include/opencv2/core/check.hpp \
+		/usr/local/include/opencv2/core/traits.hpp \
+		/usr/local/include/opencv2/core/matx.hpp \
+		/usr/local/include/opencv2/core/saturate.hpp \
+		/usr/local/include/opencv2/core/types.hpp \
+		/usr/local/include/opencv2/core/mat.hpp \
+		/usr/local/include/opencv2/core/bufferpool.hpp \
+		/usr/local/include/opencv2/core/mat.inl.hpp \
+		/usr/local/include/opencv2/core/persistence.hpp \
+		/usr/local/include/opencv2/core/operations.hpp \
+		/usr/local/include/opencv2/core/cvstd.inl.hpp \
+		/usr/local/include/opencv2/core/utility.hpp \
+		/usr/local/include/opencv2/core/core_c.h \
+		/usr/local/include/opencv2/core/types_c.h \
+		/usr/local/include/opencv2/core/optim.hpp \
+		/usr/local/include/opencv2/core/ovx.hpp \
+		/usr/local/include/opencv2/imgproc/imgproc_c.h \
+		/usr/local/include/opencv2/imgproc/types_c.h \
+		/usr/local/include/opencv2/highgui.hpp \
+		/usr/local/include/opencv2/imgcodecs.hpp \
+		/usr/local/include/opencv2/videoio.hpp \
+		/usr/local/include/opencv2/highgui/highgui_c.h \
+		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
+		/usr/local/include/opencv2/videoio/videoio_c.h \
+		/usr/local/include/opencv2/core/core.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/debug/obj/dictionary.o src/dictionary.cpp
 
 build/debug/obj/feedaudiopipethread.o: src/feedaudiopipethread.cpp include/feedaudiopipethread.h \
@@ -3819,8 +3941,13 @@ build/debug/obj/frmclient.o: src/frmclient.cpp include/frmclient.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractbutton.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/QCheckBox \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qcheckbox.h \
-		include/connectivity.h \
-		../../Qt/5.12.4/gcc_64/include/QtCore/QObject \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QListView \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlistview.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../Qt/5.12.4/gcc_64/include/QtGui/QStandardItemModel \
+		../../Qt/5.12.4/gcc_64/include/QtGui/qstandarditemmodel.h \
 		include/configurations.h \
 		/usr/local/include/opencv2/imgproc.hpp \
 		/usr/local/include/opencv2/core.hpp \
@@ -3861,31 +3988,12 @@ build/debug/obj/frmclient.o: src/frmclient.cpp include/frmclient.h \
 		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
 		/usr/local/include/opencv2/videoio/videoio_c.h \
 		/usr/local/include/opencv2/core/core.hpp \
+		include/connectivity.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/QObject \
 		include/tcpclientthread.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/QThread \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qthread.h \
-		build/debug/ui/ui_frmclient.h \
-		../../Qt/5.12.4/gcc_64/include/QtCore/QVariant \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/QApplication \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/qapplication.h \
-		../../Qt/5.12.4/gcc_64/include/QtCore/qcoreapplication.h \
-		../../Qt/5.12.4/gcc_64/include/QtCore/qeventloop.h \
-		../../Qt/5.12.4/gcc_64/include/QtGui/qguiapplication.h \
-		../../Qt/5.12.4/gcc_64/include/QtGui/qinputmethod.h \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/QFrame \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/QHBoxLayout \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/qboxlayout.h \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlayout.h \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlayoutitem.h \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/qgridlayout.h \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/QLineEdit \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlineedit.h \
-		../../Qt/5.12.4/gcc_64/include/QtGui/qtextcursor.h \
-		../../Qt/5.12.4/gcc_64/include/QtGui/qtextformat.h \
-		../../Qt/5.12.4/gcc_64/include/QtGui/qpen.h \
-		../../Qt/5.12.4/gcc_64/include/QtGui/qtextoption.h \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/QSpacerItem \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/QVBoxLayout
+		build/debug/ui/ui_frmclient.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/debug/obj/frmclient.o src/frmclient.cpp
 
 build/debug/obj/frmconnected.o: src/frmconnected.cpp include/frmconnected.h \
@@ -4015,6 +4123,13 @@ build/debug/obj/frmconnected.o: src/frmconnected.cpp include/frmconnected.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractbutton.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/QCheckBox \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qcheckbox.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QListView \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlistview.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../Qt/5.12.4/gcc_64/include/QtGui/QStandardItemModel \
+		../../Qt/5.12.4/gcc_64/include/QtGui/qstandarditemmodel.h \
 		include/configurations.h \
 		/usr/local/include/opencv2/imgproc.hpp \
 		/usr/local/include/opencv2/core.hpp \
@@ -4066,37 +4181,7 @@ build/debug/obj/frmconnected.o: src/frmconnected.cpp include/frmconnected.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qdir.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qfileinfo.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		build/debug/ui/ui_frmconnected.h \
-		../../Qt/5.12.4/gcc_64/include/QtCore/QVariant \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/QApplication \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/qapplication.h \
-		../../Qt/5.12.4/gcc_64/include/QtCore/qcoreapplication.h \
-		../../Qt/5.12.4/gcc_64/include/QtCore/qeventloop.h \
-		../../Qt/5.12.4/gcc_64/include/QtGui/qguiapplication.h \
-		../../Qt/5.12.4/gcc_64/include/QtGui/qinputmethod.h \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/QHBoxLayout \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/qboxlayout.h \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlayout.h \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlayoutitem.h \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/qgridlayout.h \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/QLineEdit \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlineedit.h \
-		../../Qt/5.12.4/gcc_64/include/QtGui/qtextcursor.h \
-		../../Qt/5.12.4/gcc_64/include/QtGui/qtextformat.h \
-		../../Qt/5.12.4/gcc_64/include/QtGui/qpen.h \
-		../../Qt/5.12.4/gcc_64/include/QtGui/qtextoption.h \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/QListView \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlistview.h \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractitemview.h \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		../../Qt/5.12.4/gcc_64/include/QtCore/qitemselectionmodel.h \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/QScrollBar \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/qscrollbar.h \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/QSpacerItem \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/QTextEdit \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/qtextedit.h \
-		../../Qt/5.12.4/gcc_64/include/QtGui/qtextdocument.h \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/QVBoxLayout
+		build/debug/ui/ui_frmconnected.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/debug/obj/frmconnected.o src/frmconnected.cpp
 
 build/debug/obj/frmrunning.o: src/frmrunning.cpp include/frmrunning.h \
@@ -4226,8 +4311,13 @@ build/debug/obj/frmrunning.o: src/frmrunning.cpp include/frmrunning.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractbutton.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/QCheckBox \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qcheckbox.h \
-		include/connectivity.h \
-		../../Qt/5.12.4/gcc_64/include/QtCore/QObject \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QListView \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlistview.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../Qt/5.12.4/gcc_64/include/QtGui/QStandardItemModel \
+		../../Qt/5.12.4/gcc_64/include/QtGui/qstandarditemmodel.h \
 		include/configurations.h \
 		/usr/local/include/opencv2/imgproc.hpp \
 		/usr/local/include/opencv2/core.hpp \
@@ -4268,6 +4358,8 @@ build/debug/obj/frmrunning.o: src/frmrunning.cpp include/frmrunning.h \
 		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
 		/usr/local/include/opencv2/videoio/videoio_c.h \
 		/usr/local/include/opencv2/core/core.hpp \
+		include/connectivity.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/QObject \
 		include/tcpserverthread.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/QThread \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qthread.h \
@@ -4345,35 +4437,7 @@ build/debug/obj/frmrunning.o: src/frmrunning.cpp include/frmrunning.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/QAction \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qaction.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qactiongroup.h \
-		build/debug/ui/ui_frmrunning.h \
-		../../Qt/5.12.4/gcc_64/include/QtCore/QVariant \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/QApplication \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/qapplication.h \
-		../../Qt/5.12.4/gcc_64/include/QtCore/qcoreapplication.h \
-		../../Qt/5.12.4/gcc_64/include/QtCore/qeventloop.h \
-		../../Qt/5.12.4/gcc_64/include/QtGui/qguiapplication.h \
-		../../Qt/5.12.4/gcc_64/include/QtGui/qinputmethod.h \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/QHBoxLayout \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/qboxlayout.h \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlayout.h \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlayoutitem.h \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/qgridlayout.h \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/QLineEdit \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlineedit.h \
-		../../Qt/5.12.4/gcc_64/include/QtGui/qtextcursor.h \
-		../../Qt/5.12.4/gcc_64/include/QtGui/qtextformat.h \
-		../../Qt/5.12.4/gcc_64/include/QtGui/qpen.h \
-		../../Qt/5.12.4/gcc_64/include/QtGui/qtextoption.h \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/QListView \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlistview.h \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractitemview.h \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		../../Qt/5.12.4/gcc_64/include/QtCore/qitemselectionmodel.h \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/QSpacerItem \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/QTextEdit \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/qtextedit.h \
-		../../Qt/5.12.4/gcc_64/include/QtGui/qtextdocument.h \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/QVBoxLayout
+		build/debug/ui/ui_frmrunning.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/debug/obj/frmrunning.o src/frmrunning.cpp
 
 build/debug/obj/frmserver.o: src/frmserver.cpp include/frmserver.h \
@@ -4504,8 +4568,13 @@ build/debug/obj/frmserver.o: src/frmserver.cpp include/frmserver.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractbutton.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/QCheckBox \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qcheckbox.h \
-		include/connectivity.h \
-		../../Qt/5.12.4/gcc_64/include/QtCore/QObject \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QListView \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlistview.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../Qt/5.12.4/gcc_64/include/QtGui/QStandardItemModel \
+		../../Qt/5.12.4/gcc_64/include/QtGui/qstandarditemmodel.h \
 		include/configurations.h \
 		/usr/local/include/opencv2/imgproc.hpp \
 		/usr/local/include/opencv2/core.hpp \
@@ -4546,6 +4615,8 @@ build/debug/obj/frmserver.o: src/frmserver.cpp include/frmserver.h \
 		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
 		/usr/local/include/opencv2/videoio/videoio_c.h \
 		/usr/local/include/opencv2/core/core.hpp \
+		include/connectivity.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/QObject \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/QFileDialog \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qfiledialog.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qdir.h \
@@ -4555,28 +4626,7 @@ build/debug/obj/frmserver.o: src/frmserver.cpp include/frmserver.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qmessagebox.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/QDir \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		build/debug/ui/ui_frmserver.h \
-		../../Qt/5.12.4/gcc_64/include/QtCore/QVariant \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/QApplication \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/qapplication.h \
-		../../Qt/5.12.4/gcc_64/include/QtCore/qcoreapplication.h \
-		../../Qt/5.12.4/gcc_64/include/QtCore/qeventloop.h \
-		../../Qt/5.12.4/gcc_64/include/QtGui/qguiapplication.h \
-		../../Qt/5.12.4/gcc_64/include/QtGui/qinputmethod.h \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/QFrame \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/QHBoxLayout \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/qboxlayout.h \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlayout.h \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlayoutitem.h \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/qgridlayout.h \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/QLineEdit \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlineedit.h \
-		../../Qt/5.12.4/gcc_64/include/QtGui/qtextcursor.h \
-		../../Qt/5.12.4/gcc_64/include/QtGui/qtextformat.h \
-		../../Qt/5.12.4/gcc_64/include/QtGui/qpen.h \
-		../../Qt/5.12.4/gcc_64/include/QtGui/qtextoption.h \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/QSpacerItem \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/QVBoxLayout
+		build/debug/ui/ui_frmserver.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/debug/obj/frmserver.o src/frmserver.cpp
 
 build/debug/obj/main.o: src/main.cpp include/frmmain.h \
@@ -4710,9 +4760,13 @@ build/debug/obj/main.o: src/main.cpp include/frmmain.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractbutton.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/QCheckBox \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qcheckbox.h \
-		include/frmserver.h \
-		include/connectivity.h \
-		../../Qt/5.12.4/gcc_64/include/QtCore/QObject \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QListView \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlistview.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../Qt/5.12.4/gcc_64/include/QtGui/QStandardItemModel \
+		../../Qt/5.12.4/gcc_64/include/QtGui/qstandarditemmodel.h \
 		include/configurations.h \
 		/usr/local/include/opencv2/imgproc.hpp \
 		/usr/local/include/opencv2/core.hpp \
@@ -4753,6 +4807,9 @@ build/debug/obj/main.o: src/main.cpp include/frmmain.h \
 		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
 		/usr/local/include/opencv2/videoio/videoio_c.h \
 		/usr/local/include/opencv2/core/core.hpp \
+		include/frmserver.h \
+		include/connectivity.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/QObject \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/QFileDialog \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qfiledialog.h \
 		../../Qt/5.12.4/gcc_64/include/QtCore/qdir.h \
@@ -4977,20 +5034,54 @@ build/debug/obj/frmmain.o: src/frmmain.cpp include/frmmain.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractbutton.h \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/QCheckBox \
 		../../Qt/5.12.4/gcc_64/include/QtWidgets/qcheckbox.h \
-		build/debug/ui/ui_frmmain.h \
-		../../Qt/5.12.4/gcc_64/include/QtCore/QVariant \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/QApplication \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/qapplication.h \
-		../../Qt/5.12.4/gcc_64/include/QtCore/qcoreapplication.h \
-		../../Qt/5.12.4/gcc_64/include/QtCore/qeventloop.h \
-		../../Qt/5.12.4/gcc_64/include/QtGui/qguiapplication.h \
-		../../Qt/5.12.4/gcc_64/include/QtGui/qinputmethod.h \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/QHBoxLayout \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/qboxlayout.h \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlayout.h \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlayoutitem.h \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/qgridlayout.h \
-		../../Qt/5.12.4/gcc_64/include/QtWidgets/QSpacerItem
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/QListView \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qlistview.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../Qt/5.12.4/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../Qt/5.12.4/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../Qt/5.12.4/gcc_64/include/QtGui/QStandardItemModel \
+		../../Qt/5.12.4/gcc_64/include/QtGui/qstandarditemmodel.h \
+		include/configurations.h \
+		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/core.hpp \
+		/usr/local/include/opencv2/core/cvdef.h \
+		/usr/local/include/opencv2/core/hal/interface.h \
+		/usr/local/include/opencv2/core/cv_cpu_dispatch.h \
+		/usr/local/include/opencv2/core/cv_cpu_helper.h \
+		/usr/local/include/opencv2/core/fast_math.hpp \
+		/usr/local/include/opencv2/core/version.hpp \
+		/usr/local/include/opencv2/core/base.hpp \
+		/usr/local/include/opencv2/opencv_modules.hpp \
+		/usr/local/include/opencv2/core/cvstd.hpp \
+		/usr/local/include/opencv2/core/ptr.inl.hpp \
+		/usr/local/include/opencv2/core/neon_utils.hpp \
+		/usr/local/include/opencv2/core/vsx_utils.hpp \
+		/usr/local/include/opencv2/core/check.hpp \
+		/usr/local/include/opencv2/core/traits.hpp \
+		/usr/local/include/opencv2/core/matx.hpp \
+		/usr/local/include/opencv2/core/saturate.hpp \
+		/usr/local/include/opencv2/core/types.hpp \
+		/usr/local/include/opencv2/core/mat.hpp \
+		/usr/local/include/opencv2/core/bufferpool.hpp \
+		/usr/local/include/opencv2/core/mat.inl.hpp \
+		/usr/local/include/opencv2/core/persistence.hpp \
+		/usr/local/include/opencv2/core/operations.hpp \
+		/usr/local/include/opencv2/core/cvstd.inl.hpp \
+		/usr/local/include/opencv2/core/utility.hpp \
+		/usr/local/include/opencv2/core/core_c.h \
+		/usr/local/include/opencv2/core/types_c.h \
+		/usr/local/include/opencv2/core/optim.hpp \
+		/usr/local/include/opencv2/core/ovx.hpp \
+		/usr/local/include/opencv2/imgproc/imgproc_c.h \
+		/usr/local/include/opencv2/imgproc/types_c.h \
+		/usr/local/include/opencv2/highgui.hpp \
+		/usr/local/include/opencv2/imgcodecs.hpp \
+		/usr/local/include/opencv2/videoio.hpp \
+		/usr/local/include/opencv2/highgui/highgui_c.h \
+		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
+		/usr/local/include/opencv2/videoio/videoio_c.h \
+		/usr/local/include/opencv2/core/core.hpp \
+		build/debug/ui/ui_frmmain.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/debug/obj/frmmain.o src/frmmain.cpp
 
 build/debug/obj/serverstreamthread.o: src/serverstreamthread.cpp include/serverstreamthread.h \

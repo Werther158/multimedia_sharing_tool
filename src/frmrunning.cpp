@@ -37,10 +37,7 @@ FrmRunning::FrmRunning(QWidget *parent) :
     ui->btnStop->setIcon(SServerIcon);
     ui->btnStop->setIconSize(sserver_img.rect().size());
 
-    // Fill listConfigurations
-    QStandardItemModel *model = new QStandardItemModel(6, 1, this);
-    (*dict).fillModel(model);
-    ui->listConfigurations->setModel(model);
+    fillListConfiguration();
 
     qRegisterMetaType<cv::Mat>("cv::Mat");
 }
@@ -48,6 +45,18 @@ FrmRunning::FrmRunning(QWidget *parent) :
 FrmRunning::~FrmRunning()
 {
     delete ui;
+}
+
+/**
+ * Fill listConfiguration accordingly to Configurations class parameters.
+ * @param   : void.
+ * @return  : void.
+*/
+void FrmRunning::fillListConfiguration()
+{
+    QStandardItemModel *model = new QStandardItemModel(6, 1, this);
+    (*dict).fillModel(model);
+    ui->listConfigurations->setModel(model);
 }
 
 /**
@@ -150,6 +159,7 @@ void FrmRunning::on_btnSend_clicked()
 */
 void FrmRunning::clientConnected()
 {
+    fillListConfiguration();
     client_connected = true;
     QPixmap green_state(":/resources/media/green_state.png");
     ui->lblState2->setPixmap(green_state);

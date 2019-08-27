@@ -55,6 +55,8 @@ private:
     void stopThreads();
     void enableListConfiguration();
     void disableListConfiguration();
+    void fillListConfiguration();
+
 signals:
     void setStreamingEnded();
     void startServerStreamThread();

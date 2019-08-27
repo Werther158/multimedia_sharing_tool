@@ -179,6 +179,7 @@ int Connectivity::tcpClient(std::string server_ip, uint16_t PORT)
         Configurations::my_own_used_ip = buffer;
 
         // Fill buffer with client configurations
+        buffer[0] = -6;
         buffer[1] = static_cast<char>(Configurations::resolution);
         buffer[2] = static_cast<char>(Configurations::fps);
         buffer[3] = static_cast<char>(Configurations::color_scale);
@@ -189,7 +190,7 @@ int Connectivity::tcpClient(std::string server_ip, uint16_t PORT)
             buffer[5] = 0;
 
         // Transfer client's configurations to the server
-        tcpWriteCommand(-6);
+        send(sock, buffer, 6, 0);
 
         emit writeText("Client connected");
         emit clientConnected();
