@@ -1,6 +1,6 @@
 # HPC Project
 
-Share video, screen, camera and audio with a RTSP stream through Lan or Wan supporting CUDA computations in a High Performance embedded environment, applying real-time AI techiques of Intrusion Detection with bounding boxes localization and frames manipulations.
+Share video, screen, camera and audio with a RTSP stream through Lan or Wan supporting CUDA computations in a High Performance embedded environment (Nvidia Jetson Nano), applying real-time AI techiques of Intrusion Detection with bounding boxes localization and frames manipulations.
 
 ## External Dependencies:
 
@@ -12,6 +12,9 @@ Share video, screen, camera and audio with a RTSP stream through Lan or Wan supp
 
 ### CUDA  
 [CUDA Installation Guide](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)
+
+### Jetson-inference library
+[Jetson-inference GitHub page](https://github.com/dusty-nv/jetson-inference)
 
 ### FFmpeg  
 `$ sudo apt-get install ffmpeg`
