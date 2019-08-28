@@ -4,6 +4,7 @@ Share video, screen, camera and audio with a RTSP stream through Lan or Wan supp
 
 ## External Dependencies:
 
+Before installing dependencies:  
 `$ sudo apt-get update`  
 `$ sudo apt-get upgrade`
 
