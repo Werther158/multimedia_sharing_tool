@@ -1,7 +1,7 @@
 #ifndef CLIENTSTREAMTHREAD_H
 #define CLIENTSTREAMTHREAD_H
 
-#include <connectivity.h>
+#include "connectivity.h"
 #include <QThread>
 
 class ClientStreamThread : public QThread

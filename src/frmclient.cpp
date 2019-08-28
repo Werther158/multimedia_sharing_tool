@@ -126,7 +126,7 @@ void FrmClient::setConfigurations()
             (ui->cmbColorScale->currentIndex());
     Configurations::file_name = "";
     Configurations::video_chunk_seconds = (ui->cmbVideoChunk->currentIndex()
-                                           * 5) + 5;
+                                           * 5) + 10;
     if(ui->chkIntrusionDetection->checkState() == Qt::Unchecked)
         Configurations::intrusion_detection_enabled = false;
     else

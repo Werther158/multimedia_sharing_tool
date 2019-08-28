@@ -1,10 +1,10 @@
 #ifndef FRMSERVER_H
 #define FRMSERVER_H
 
+#include "dictionary.h"
+#include "connectivity.h"
+#include "configurations.h"
 #include <QWidget>
-#include <dictionary.h>
-#include <connectivity.h>
-#include <configurations.h>
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QDir>

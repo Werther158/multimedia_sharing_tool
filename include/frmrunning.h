@@ -1,14 +1,14 @@
 #ifndef FRMRUNNING_H
 #define FRMRUNNING_H
 
-#include <dictionary.h>
-#include <connectivity.h>
-#include <configurations.h>
-#include <tcpserverthread.h>
+#include "dictionary.h"
+#include "connectivity.h"
+#include "configurations.h"
+#include "tcpserverthread.h"
+#include "camerathread.h"
 #include <QWidget>
 #include <QDir>
 #include <qdesktopwidget.h>
-#include <camerathread.h>
 #include <QAction>
 #include <QListView>
 #include <QStandardItemModel>
@@ -56,7 +56,7 @@ private:
     void stopThreads();
     void enableListConfiguration();
     void disableListConfiguration();
-    void fillListConfiguration();
+    void updateListConfiguration();
 
 signals:
     void setStreamingEnded();

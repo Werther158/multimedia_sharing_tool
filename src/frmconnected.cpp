@@ -54,8 +54,7 @@ FrmConnected::FrmConnected(QWidget *parent) :
     QIcon DisconnectIcon(disconnect_img);
     ui->btnDisconnect->setIcon(DisconnectIcon);
     ui->btnDisconnect->setIconSize(disconnect_img.rect().size());
-
-    updateListConfigurations();
+    ui->listConfigurations->setEditTriggers(QAbstractItemView::NoEditTriggers);
 }
 
 FrmConnected::~FrmConnected()

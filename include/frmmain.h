@@ -1,11 +1,11 @@
 #ifndef FRMMAIN_H
 #define FRMMAIN_H
 
+#include "dictionary.h"
 #include <QWidget>
 #include <QString>
 #include <QCloseEvent>
 #include <qdesktopwidget.h>
-#include "dictionary.h"
 
 namespace Ui {
 class FrmMain;

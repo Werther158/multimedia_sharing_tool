@@ -1,12 +1,12 @@
 #ifndef FRMCLIENT_H
 #define FRMCLIENT_H
 
+#include "dictionary.h"
+#include "connectivity.h"
+#include "configurations.h"
+#include "tcpclientthread.h"
 #include <QWidget>
 #include <qdesktopwidget.h>
-#include "dictionary.h"
-#include <connectivity.h>
-#include <configurations.h>
-#include <tcpclientthread.h>
 
 namespace Ui {
 class FrmClient;

@@ -1,8 +1,8 @@
 #ifndef TCPSERVERTHREAD_H
 #define TCPSERVERTHREAD_H
 
-#include <connectivity.h>
-#include <configurations.h>
+#include "connectivity.h"
+#include "configurations.h"
 #include <QThread>
 
 class TcpServerThread : public QThread

@@ -1,14 +1,13 @@
-#include <frmmain.h>
-#include <frmserver.h>
-#include <frmclient.h>
-#include <frmrunning.h>
-#include <frmconnected.h>
-#include <tcpclientthread.h>
-#include <tcpserverthread.h>
-#include <QApplication>
+#include "frmmain.h"
+#include "frmserver.h"
+#include "frmclient.h"
+#include "frmrunning.h"
+#include "frmconnected.h"
+#include "tcpclientthread.h"
+#include "tcpserverthread.h"
 #include "dictionary.h"
-
-#include "iostream"
+#include <QApplication>
+#include <iostream>
 
 int main(int argc, char *argv[])
 {

@@ -3,10 +3,10 @@
 
 #include <stdlib.h>
 #include <string>
-#include "opencv2/opencv.hpp"
+#include <opencv2/opencv.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
-#include "opencv2/highgui.hpp"
-#include "opencv2/imgcodecs.hpp"
+#include <opencv2/highgui.hpp>
+#include <opencv2/imgcodecs.hpp>
 #include <opencv2/core/core.hpp>
 #include <opencv2/core/cuda.hpp>
 #include <X11/Xlib.h>
@@ -99,8 +99,8 @@ struct ScreenShot
         else
             XDestroyImage(img);
 
-        img = XGetImage(display, root, x, y, width, height,
-                        AllPlanes, ZPixmap);
+        img = XGetImage(display, root, x, y, static_cast<unsigned int>(width),
+                        static_cast<unsigned int>(height), AllPlanes, ZPixmap);
 
         cvImg = cv::Mat(height, width, CV_8UC4, img->data);
     }

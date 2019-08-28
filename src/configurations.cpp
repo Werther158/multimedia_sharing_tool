@@ -18,7 +18,7 @@ std::string Configurations::resolution_choices[] = {"Source", "3840 x 2160",
                                                     "426 x 240", "256 x 144"};
 int Configurations::fps_choices[] = {-1, 60, 59, 55, 50, 45,
                                      40, 35, 30, 25, 20, 15};
-int Configurations::color_scale_choices[] = {-1, 24, 16, 15, 8, 4, 2, 1};
+int Configurations::color_scale_choices[] = {-1, 24, 16, 12, 80, 81, 1};
 
 uint8_t Configurations::system;
 uint8_t Configurations::source;

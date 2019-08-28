@@ -14,9 +14,13 @@ ClientStreamThread::ClientStreamThread()
 
 ClientStreamThread::~ClientStreamThread()
 {
-    std::string command = "bash -c \"fuser -k " +
+    int ret;
+    std::string command;
+    command = "bash -c \"fuser -k " +
             std::to_string(Configurations::port + 1) + "/tcp\"";
-    std::system(command.c_str());
+    ret = std::system(command.c_str());
+    if(ret == -1)
+        std::cout << "std::system returned -1\n";
     quit();
     wait();
 }
@@ -28,15 +32,21 @@ ClientStreamThread::~ClientStreamThread()
 */
 void ClientStreamThread::run()
 {
+    int ret;
     emit sendStartStreamingCommand();
     std::string command;
-    std::system("bash -c \"killall ibus-daemon\"");
+    ret = std::system("bash -c \"killall ibus-daemon\"");
+    if(ret == -1)
+        std::cout << "std::system returned -1\n";
 
     command = "bash -c \"ffplay -window_title 'MST Streaming' "
               "-rtsp_flags listen rtsp://" + Configurations::server_ip + "@"
             + Configurations::my_own_used_ip + ":" +
             std::to_string(Configurations::port + 1) + "\"";
 
-    std::system(command.c_str());
+    ret = std::system(command.c_str());
+    if(ret == -1)
+        std::cout << "std::system returned -1\n";
+
     emit streamingEnded();
 }

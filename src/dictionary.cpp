@@ -232,11 +232,12 @@ void Dictionary::fillcmbColorScale(QComboBox *cmb)
     cmb->addItem(QString::fromStdString(choices("Sorgente", "Source")));
     cmb->addItem("24 bpp");
     cmb->addItem("16 bpp");
-    cmb->addItem("15 bpp");
+    cmb->addItem("12 bpp");
     cmb->addItem("8 bpp");
-    cmb->addItem("4 bpp");
-    cmb->addItem("2 bpp");
-    cmb->addItem("1 bpp");
+    cmb->addItem(QString::fromStdString(choices("8 bpp (grigio)",
+                                                "8 bpp (gray)")));
+    cmb->addItem(QString::fromStdString(choices("1 bpp (b/n)",
+                                                "1 bpp (b/w)")));
 }
 
 void Dictionary::fillcmbFps(QComboBox *cmb)
@@ -257,13 +258,11 @@ void Dictionary::fillcmbFps(QComboBox *cmb)
 
 void Dictionary::fillcmbVideoChunk(QComboBox *cmb)
 {
-    cmb->addItem(QString::fromStdString(choices("5 secondi", "5 seconds")));
     cmb->addItem(QString::fromStdString(choices("10 secondi", "10 seconds")));
     cmb->addItem(QString::fromStdString(choices("15 secondi", "15 seconds")));
     cmb->addItem(QString::fromStdString(choices("20 secondi", "20 seconds")));
     cmb->addItem(QString::fromStdString(choices("25 secondi", "25 seconds")));
     cmb->addItem(QString::fromStdString(choices("30 secondi", "30 seconds")));
-    cmb->setCurrentIndex(1);
 }
 
 void Dictionary::fillcmbNetwork(QComboBox *cmb)
@@ -378,7 +377,7 @@ void Dictionary::setTooltipOflblState3(QLabel *lbl)
 void Dictionary::fillModel(QStandardItemModel *model)
 {
     QString resolution, color_scale, source, seconds,
-            enable, disable, network, blur_effect;
+            enable, disable, network, blur_effect, cs_choice;
     int row;
 
     row = 0;
@@ -423,9 +422,36 @@ void Dictionary::fillModel(QStandardItemModel *model)
     row++;
 
     if(Configurations::color_scale != 0)
-        model->setItem(row, 0, new QStandardItem(color_scale +
-                        QString::number(Configurations::color_scale_choices
-                                             [Configurations::color_scale])));
+    {
+        switch(Configurations::color_scale_choices
+               [Configurations::color_scale])
+        {
+        case 24:
+            cs_choice = "24 bpp";
+            break;
+        case 16:
+            cs_choice = "16 bpp";
+            break;
+        case 12:
+            cs_choice = "12 bpp";
+            break;
+        case 80:
+            cs_choice = "8 bpp";
+            break;
+        case 81:
+            cs_choice = QString::fromStdString
+                    (choices("8 bpp (grigio)", "8 bpp (grey)"));
+            break;
+        case 1:
+            cs_choice = QString::fromStdString
+                    (choices("1 bpp (b/n)", "1 bpp (b/w)"));
+            break;
+        default:
+            cs_choice = source;
+            break;
+        }
+        model->setItem(row, 0, new QStandardItem(color_scale + cs_choice));
+    }
     else
         model->setItem(row, 0, new QStandardItem(color_scale + source));
     row++;
@@ -449,7 +475,6 @@ void Dictionary::fillModel(QStandardItemModel *model)
     model->setItem(row, 0, new QStandardItem(network +
                    QString::fromStdString(Configurations::network)));
     row++;
-    int a = Configurations::blur_effect;
     model->setItem(row, 0, new QStandardItem(blur_effect + QString::number
                                              (Configurations::blur_effect)));
 }

@@ -1,12 +1,12 @@
 #ifndef CAMERATHREAD_H
 #define CAMERATHREAD_H
 
+#include "configurations.h"
+#include "serverstreamthread.h"
+#include "cudadetectionthread.h"
+#include "feedaudiopipethread.h"
+#include "feedvideopipethread.h"
 #include <QThread>
-#include <configurations.h>
-#include <serverstreamthread.h>
-#include <cudadetectionthread.h>
-#include <feedaudiopipethread.h>
-#include <feedvideopipethread.h>
 #include <string>
 #include <cstdlib>
 #include <iostream>
@@ -56,7 +56,8 @@ private:
     std::string strvideo_length; // Length of the input file (in seconds)
     std::string command;
     std::string rtsp_url;
-    std::string timing; // used to extract a chunk from file
+    std::string timing; // Used to extract a chunk from file
+    std::string color_scale; // Color scale to use
     // Timing utils variables
     long video_length, begin_chunk, end_chunk;
     int begin_h, begin_m, begin_s, end_h, end_m, end_s;
@@ -67,6 +68,8 @@ private:
     void createChunk();
     void captureFromScreen();
     void captureFromCamera();
+    void setColorScale();
+    void changeFrameColorScale();
 
 public slots:
     void notifyAudioToMstCondVar();

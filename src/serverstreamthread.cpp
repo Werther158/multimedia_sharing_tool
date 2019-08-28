@@ -24,7 +24,8 @@ ServerStreamThread::~ServerStreamThread()
 */
 void ServerStreamThread::run()
 {
-    std::string command, frame_size, color_scale;
+    std::string command, frame_size;
+    int ret;
 
     // Sleep 3 seconds to allow Client to start listening correctly
     sleep(3);
@@ -47,37 +48,12 @@ void ServerStreamThread::run()
         frame_size += " ";
     }
 
-    switch(Configurations::color_scale_choices[Configurations::color_scale])
-    {
-    case 24:
-        color_scale = "-pix_fmt rgb24";
-        break;
-    case 16:
-        color_scale = "-pix_fmt yuv422p";
-        break;
-    case 15:
-        color_scale = "-pix_fmt rgb555be";
-        break;
-    case 8:
-        color_scale = "-pix_fmt rgb8";
-        break;
-    case 4:
-        color_scale = "-pix_fmt rgb4";
-        break;
-    case 1:
-        color_scale = "-pix_fmt monow";
-        break;
-    default:
-        color_scale = "";
-        break;
-    }
-
     if(Configurations::source_choices[Configurations::source] == "Video file")
     {
         ffaudio_pipe_path = path + "/mst-temp/ffmpeg_audio_pipe";
 
         command = "ffmpeg -probesize 2147483647 " + frame_size
-                 + color_scale + " -i " + ffvideo_pipe_path + " -i " +
+                 + " -i " + ffvideo_pipe_path + " -i " +
                 ffaudio_pipe_path + " -vsync 1";
 
         if(Configurations::fps_choices[Configurations::fps] != -1)
@@ -91,7 +67,7 @@ void ServerStreamThread::run()
     }
     else
     {
-        command = "ffmpeg -re " + frame_size + color_scale + " -i " +
+        command = "ffmpeg -re " + frame_size + " -i " +
                 ffvideo_pipe_path;
         if(Configurations::fps_choices[Configurations::fps] != -1)
         {
@@ -103,7 +79,9 @@ void ServerStreamThread::run()
     }
 
     // Activate ffmpeg streaming command
-    std::system(command.c_str());
+    ret = std::system(command.c_str());
+    if(ret == -1)
+        std::cout << "std::system returned -1\n";
 }
 
 /**

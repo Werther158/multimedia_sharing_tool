@@ -1,13 +1,13 @@
 #ifndef FEEDVIDEOPIPETHREAD_H
 #define FEEDVIDEOPIPETHREAD_H
 
+#include "configurations.h"
 #include <QThread>
 #include <iostream>
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <unistd.h>
-#include <configurations.h>
 
 class FeedVideoPipeThread : public QThread
 {

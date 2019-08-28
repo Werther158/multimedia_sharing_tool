@@ -1,12 +1,12 @@
 #ifndef CUDADETECTIONTHREAD_H
 #define CUDADETECTIONTHREAD_H
 
+#include "configurations.h"
 #include <QThread>
 #include <jetson-inference/detectNet.h>
 #include <jetson-utils/loadImage.h>
 #include <jetson-utils/cudaMappedMemory.h>
 #include <semaphore.h>
-#include <configurations.h>
 #include <QDir>
 
 class CudaDetectionThread : public QThread

@@ -1,7 +1,7 @@
 #ifndef SERVERSTREAMTHREAD_H
 #define SERVERSTREAMTHREAD_H
 
-#include <configurations.h>
+#include "configurations.h"
 #include <QThread>
 #include <unistd.h>
 #include <fcntl.h>

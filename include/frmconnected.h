@@ -1,11 +1,11 @@
 #ifndef FRMCONNECTED_H
 #define FRMCONNECTED_H
 
-#include <dictionary.h>
-#include <configurations.h>
-#include <connectivity.h>
-#include <tcpclientthread.h>
-#include <clientstreamthread.h>
+#include "dictionary.h"
+#include "configurations.h"
+#include "connectivity.h"
+#include "tcpclientthread.h"
+#include "clientstreamthread.h"
 #include <QWidget>
 #include <QDir>
 #include <qdesktopwidget.h>

@@ -34,8 +34,8 @@ CudaDetectionThread::~CudaDetectionThread()
 */
 void CudaDetectionThread::detectOnImage(std::string file_path)
 {
-    if( !loadImageRGBA(file_path.c_str(), (float4**)&imgCPU,
-                       (float4**)&imgCUDA, &imgWidth, &imgHeight) )
+    if( !loadImageRGBA(file_path.c_str(), reinterpret_cast<float4**>(&imgCPU),
+                       reinterpret_cast<float4**>(&imgCUDA), &imgWidth, &imgHeight) )
     {
         printf("failed to load image '%s'\n", file_path.c_str());
         return;
@@ -53,7 +53,7 @@ void CudaDetectionThread::detectOnImage(std::string file_path)
     // wait for the GPU to finish
     CUDA(cudaDeviceSynchronize());
 
-    if(!saveImageRGBA(file_path.c_str(), (float4*)imgCPU,
+    if(!saveImageRGBA(file_path.c_str(), reinterpret_cast<float4*>(imgCPU),
                       imgWidth, imgHeight, 255.0f))
         printf("detectnet-console:  failed saving %ix%i image to '%s'\n",
                imgWidth, imgHeight, file_path.c_str());
@@ -76,8 +76,10 @@ void CudaDetectionThread::run()
     network += Configurations::network;
 
     file_path = Configurations::current_frame_path + "/output.bmp";
-    char *argv[] = {"./", (char*)network.c_str(),
-                    (char*)file_path.c_str(), (char*)file_path.c_str()};
+    char *argv[] = {const_cast<char*>("./"),
+                    const_cast<char*>(network.c_str()),
+                    const_cast<char*>(file_path.c_str()),
+                    const_cast<char*>(file_path.c_str())};
 
     /*
      * create detection network

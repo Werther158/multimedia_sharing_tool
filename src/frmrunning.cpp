@@ -37,7 +37,7 @@ FrmRunning::FrmRunning(QWidget *parent) :
     ui->btnStop->setIcon(SServerIcon);
     ui->btnStop->setIconSize(sserver_img.rect().size());
 
-    fillListConfiguration();
+    ui->listConfigurations->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
     qRegisterMetaType<cv::Mat>("cv::Mat");
     qRegisterMetaType<std::string>("std::string");
@@ -49,11 +49,11 @@ FrmRunning::~FrmRunning()
 }
 
 /**
- * Fill listConfiguration accordingly to Configurations class parameters.
+ * Update listConfiguration accordingly to Configurations class parameters.
  * @param   : void.
  * @return  : void.
 */
-void FrmRunning::fillListConfiguration()
+void FrmRunning::updateListConfiguration()
 {
     QStandardItemModel *model = new QStandardItemModel(7, 1, this);
     (*dict).fillModel(model);
@@ -101,6 +101,7 @@ void FrmRunning::setDict(Dictionary* dict)
     (*dict).setTIbtnStartStopStream(ui->btnStartStopStream, 0);
     ui->btnStop->setText(QString::fromStdString
                          ((*dict).getTextOfbtnStopRunning()));
+    updateListConfiguration();
 }
 
 /**
@@ -162,7 +163,7 @@ void FrmRunning::clientConnected()
 {
     char* resolution;
 
-    fillListConfiguration();
+    updateListConfiguration();
     resolution = std::strtok((char*)Configurations::resolution_choices
                              [Configurations::resolution].c_str(), " x");
     if(Configurations::strToPositiveDigit(resolution) != -1)
@@ -410,6 +411,7 @@ void FrmRunning::imageScaleBlur(std::string frame_path)
                  cv::Size(21, 21), Configurations::blur_effect * 2,
                  Configurations::blur_effect * 2);
         gauss->apply(output_device, output_both);
+        output_both.download(output_host);
     }
     else
     if(Configurations::blur_effect != 0)
@@ -419,9 +421,10 @@ void FrmRunning::imageScaleBlur(std::string frame_path)
                  cv::Size(21, 21), Configurations::blur_effect * 2,
                  Configurations::blur_effect * 2);
         gauss->apply(input_device, output_both);
+        output_both.download(output_host);
     }
-
-    output_both.download(output_host);
+    else
+        output_device.download(output_host);
 
     input_host.release();
     output_device.release();

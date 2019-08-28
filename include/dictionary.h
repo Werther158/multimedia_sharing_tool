@@ -1,15 +1,15 @@
 #ifndef DICTIONARY_H
 #define DICTIONARY_H
 
-#include "stdlib.h"
-#include "string"
+#include "configurations.h"
+#include <stdlib.h>
+#include <string>
 #include <QComboBox>
 #include <QLabel>
 #include <QPushButton>
 #include <QCheckBox>
 #include <QListView>
 #include <QStandardItemModel>
-#include "configurations.h"
 
 enum lang {
     italian,

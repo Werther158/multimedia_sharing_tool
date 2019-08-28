@@ -1,8 +1,8 @@
 #ifndef TCPCLIENTTHREAD_H
 #define TCPCLIENTTHREAD_H
 
-#include <connectivity.h>
-#include <configurations.h>
+#include "connectivity.h"
+#include "configurations.h"
 #include <QThread>
 
 class TcpClientThread : public QThread

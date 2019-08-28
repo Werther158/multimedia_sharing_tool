@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
+    <width>396</width>
     <height>300</height>
    </rect>
   </property>
@@ -16,7 +16,7 @@
   <widget class="QPushButton" name="btnStop">
    <property name="geometry">
     <rect>
-     <x>248</x>
+     <x>238</x>
      <y>260</y>
      <width>121</width>
      <height>25</height>
@@ -29,7 +29,7 @@
   <widget class="QPushButton" name="btnToggleConfig">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>30</x>
      <y>260</y>
      <width>31</width>
      <height>25</height>
@@ -42,9 +42,9 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>230</x>
+     <x>250</x>
      <y>10</y>
-     <width>121</width>
+     <width>111</width>
      <height>22</height>
     </rect>
    </property>
@@ -55,47 +55,21 @@
     <item>
      <widget class="QLabel" name="lblState">
       <property name="text">
-       <string>lblState</string>
+       <string>lblSt</string>
       </property>
      </widget>
-    </item>
-    <item>
-     <spacer name="horizontalSpacer">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
     </item>
     <item>
      <widget class="QLabel" name="lblState2">
       <property name="text">
-       <string>lblState2</string>
+       <string>lblSt</string>
       </property>
      </widget>
     </item>
     <item>
-     <spacer name="horizontalSpacer_2">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item>
      <widget class="QLabel" name="lblState3">
       <property name="text">
-       <string>lblState3</string>
+       <string>lblSt</string>
       </property>
      </widget>
     </item>
@@ -104,9 +78,9 @@
   <widget class="QWidget" name="layoutWidget1">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>30</x>
      <y>40</y>
-     <width>311</width>
+     <width>331</width>
      <height>211</height>
     </rect>
    </property>
@@ -114,7 +88,7 @@
     <item>
      <widget class="QListView" name="listConfigurations">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
      </widget>
     </item>
@@ -150,7 +124,7 @@
   <widget class="QPushButton" name="btnStartStopStream">
    <property name="geometry">
     <rect>
-     <x>90</x>
+     <x>80</x>
      <y>260</y>
      <width>141</width>
      <height>25</height>

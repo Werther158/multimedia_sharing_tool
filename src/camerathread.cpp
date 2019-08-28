@@ -14,6 +14,7 @@ CameraThread::CameraThread()
 
 CameraThread::~CameraThread()
 {
+    int ret;
     thread_active = false;
     terminate();
     wait();
@@ -24,12 +25,34 @@ CameraThread::~CameraThread()
     close(mst_video_pipe);
     if(Configurations::source_choices[Configurations::source] == "Video file")
         close(mst_audio_pipe);
-    std::system("bash -c \"killall ffmpeg\"");
+    ret = std::system("bash -c \"killall ffmpeg\"");
+    if(ret == -1)
+        std::cout << "std::system returned -1\n";
+
     if(Configurations::source_choices[Configurations::source] == "Video file")
         audio_pipe_thread->~FeedAudioPipeThread();
     video_pipe_thread->~FeedVideoPipeThread();
     server_stream_thread->~ServerStreamThread();
-    std::system("bash -c \"rm -R mst-temp\"");
+    ret = std::system("bash -c \"rm -R mst-temp\"");
+    if(ret == -1)
+        std::cout << "std::system returned -1\n";
+}
+
+/**
+ * Change color scale of output.bmp frame using ffmpeg.
+ * @param   : void.
+ * @return  : void.
+*/
+void CameraThread::changeFrameColorScale()
+{
+    int ret;
+    command = "bash -c \"ffmpeg -i " +
+            Configurations::current_frame_path + "/output.bmp" + " " +
+            color_scale + " " + Configurations::current_frame_path +
+            "/output.bmp" + " -y\"";
+    ret = std::system(command.c_str());
+    if(ret == -1)
+        std::cout << "std::system returned -1\n";
 }
 
 /**
@@ -73,6 +96,7 @@ void CameraThread::defineChunk()
 */
 void CameraThread::createChunk()
 {
+    int ret;
     // Extract bmp frames and audio from video chunk
     // Extract frames
     timing = " -ss " + std::to_string(begin_h) + ":" +
@@ -80,19 +104,25 @@ void CameraThread::createChunk()
             " -to " + std::to_string(end_h) + ":" + std::to_string(end_m) + ":"
             + std::to_string(end_s);
     command = "bash -c \"ffmpeg -i " + file_name + timing +
-            " -compression_algo raw -pix_fmt rgb24 " +
+            " -compression_algo raw " + color_scale + " " +
             Configurations::current_frame_path + "/output%03d.bmp\"";
-    std::system(command.c_str());
+    ret = std::system(command.c_str());
+    if(ret == -1)
+        std::cout << "std::system returned -1\n";
     // Extract audio
     command = "bash -c \"ffmpeg -i " + file_name + timing +
             " " + Configurations::current_audio_path + "/temp.aac -y\"";
-    std::system(command.c_str());
+    ret = std::system(command.c_str());
+    if(ret == -1)
+        std::cout << "std::system returned -1\n";
 
     command = "bash -c \"ffmpeg -i " + Configurations::current_audio_path +
             "/temp.aac -ss 0 -to " +
             std::to_string(Configurations::video_chunk_seconds) +
             " " + Configurations::current_audio_path + "/audiochunk.aac -y\"";
-    std::system(command.c_str());
+    ret = std::system(command.c_str());
+    if(ret == -1)
+        std::cout << "std::system returned -1\n";
 }
 
 /**
@@ -102,11 +132,14 @@ void CameraThread::createChunk()
 */
 void CameraThread::captureFromFile()
 {
+    int ret;
     // Repair errors (if any) in input video file
     file_name = path + "/mst-temp/input_file.mkv";
     command = "ffmpeg -i " + Configurations::file_name +
             " -c copy -force_key_frames source " + file_name;
-    std::system(command.c_str());
+    ret = std::system(command.c_str());
+    if(ret == -1)
+        std::cout << "std::system returned -1\n";
 
     // Activate feed ffmpeg audio and video pipe
     audio_pipe_thread = new FeedAudioPipeThread();
@@ -144,7 +177,9 @@ void CameraThread::captureFromFile()
     // Extract the complete audio track
     command = "bash -c \"ffmpeg -i " + file_name +
             " -vn mst-temp/audio/complete.aac -y\"";
-    std::system(command.c_str());
+    ret = std::system(command.c_str());
+    if(ret == -1)
+        std::cout << "std::system returned -1\n";
 
     begin_chunk = -1 * Configurations::video_chunk_seconds;
     end_chunk = 0;
@@ -191,7 +226,9 @@ void CameraThread::captureFromFile()
         sem_wait(&sem_video);
         command = "bash -c \"cat " + Configurations::current_frame_path +
                 "/output*.bmp > " + mstvideo_pipe_path + " &\"";
-        std::system(command.c_str());
+        ret = std::system(command.c_str());
+        if(ret == -1)
+            std::cout << "std::system returned -1\n";
 
         // Wait for signal to start feeding mst audio
         sem_wait(&sem_audio);
@@ -200,13 +237,17 @@ void CameraThread::captureFromFile()
         {
             command = "bash -c \"cat " + Configurations::current_audio_path +
                     "/audiochunk.aac > " + mstaudio_pipe_path + " &\"";
-            std::system(command.c_str());
+            ret = std::system(command.c_str());
+            if(ret == -1)
+                std::cout << "std::system returned -1\n";
         }
         else
         {
             command = "bash -c \"cat " + Configurations::current_audio_path +
                     "/audiochunk.aac > " + mstaudio_pipe_path + " &\"";
-            std::system(command.c_str());
+            ret = std::system(command.c_str());
+            if(ret == -1)
+                std::cout << "std::system returned -1\n";
         }
     }
 }
@@ -220,14 +261,19 @@ void CameraThread::captureFromCamera()
 {
     cv::VideoCapture cap;
     cv::Mat frame;
+    int ret;
 
     if(!cap.open(0))
         return;
 
     cap >> frame;
 
-    Configurations::frame_width = frame.cols;
-    Configurations::frame_height = frame.rows;
+    if(!Configurations::frame_size_changed)
+    {
+        Configurations::frame_width = frame.cols;
+        Configurations::frame_height = frame.rows;
+    }
+
 
     video_pipe_thread = new FeedVideoPipeThread();
     QObject::connect(video_pipe_thread, SIGNAL(notifyVideoToMstCondVar()),
@@ -270,6 +316,12 @@ void CameraThread::captureFromCamera()
             sem_wait(&sem_detection_done);
         }
 
+        // Apply eventually a color scale change
+        if(color_scale != "")
+        {
+            changeFrameColorScale();
+        }
+
         // Apply eventually resize and blur filtering
         if(Configurations::frame_size_changed ||
                 Configurations::blur_effect != 0)
@@ -283,8 +335,9 @@ void CameraThread::captureFromCamera()
         sem_wait(&sem_video);
         command = "bash -c \"cat " + Configurations::current_frame_path +
                 "/output.bmp > " + mstvideo_pipe_path + "\"";
-        std::system(command.c_str());
-
+        ret = std::system(command.c_str());
+        if(ret == -1)
+            std::cout << "std::system returned -1\n";
     }
 }
 
@@ -295,6 +348,7 @@ void CameraThread::captureFromCamera()
 */
 void CameraThread::captureFromScreen()
 {
+    int ret;
     video_pipe_thread = new FeedVideoPipeThread();
     QObject::connect(video_pipe_thread, SIGNAL(notifyVideoToMstCondVar()),
                      this, SLOT(notifyVideoToMstCondVar()));
@@ -335,6 +389,12 @@ void CameraThread::captureFromScreen()
             sem_wait(&sem_detection_done);
         }
 
+        // Apply eventually a color scale change
+        if(color_scale != "")
+        {
+            changeFrameColorScale();
+        }
+
         // Apply eventually resize and blur filtering
         if(Configurations::frame_size_changed ||
                 Configurations::blur_effect != 0)
@@ -347,7 +407,42 @@ void CameraThread::captureFromScreen()
         sem_wait(&sem_video);
         command = "bash -c \"cat " + Configurations::current_frame_path +
                 "/output.bmp > " + mstvideo_pipe_path + "\"";
-        std::system(command.c_str());
+        ret = std::system(command.c_str());
+        if(ret == -1)
+            std::cout << "std::system returned -1\n";
+    }
+}
+
+/**
+ * Set color scale accordingly to the value choosed in configuration phase.
+ * @param   : void.
+ * @return  : void.
+*/
+void CameraThread::setColorScale()
+{
+    switch(Configurations::color_scale_choices[Configurations::color_scale])
+    {
+    case 24:
+        color_scale = "-pix_fmt bgr24";
+        break;
+    case 16:
+        color_scale = "-pix_fmt rgb565le";
+        break;
+    case 12:
+        color_scale = "-pix_fmt rgb444le";
+        break;
+    case 80:
+        color_scale = "-pix_fmt bgr8";
+        break;
+    case 81:
+        color_scale = "-pix_fmt gray";
+        break;
+    case 1:
+        color_scale = "-pix_fmt monob";
+        break;
+    default:
+        color_scale = "";
+        break;
     }
 }
 
@@ -359,20 +454,38 @@ void CameraThread::captureFromScreen()
 */
 void CameraThread::run()
 {
+    int ret;
+
     sem_init(&sem_audio, 0, 0);
     sem_init(&sem_video, 0, 0);
     sem_init(&sem_picture, 0, 0);
     sem_init(&sem_detection_done, 0, 0);
     sem_init(&sem_camera_frame, 0, 0);
 
-    std::system("bash -c \"rm -R mst-temp\"");
-    std::system("bash -c \"mkdir mst-temp\"");
-    std::system("bash -c \"mkdir mst-temp/frames\"");
-    std::system("bash -c \"mkdir mst-temp/frames/tik\"");
-    std::system("bash -c \"mkdir mst-temp/frames/tok\"");
-    std::system("bash -c \"mkdir mst-temp/audio\"");
-    std::system("bash -c \"mkdir mst-temp/audio/tik\"");
-    std::system("bash -c \"mkdir mst-temp/audio/tok\"");
+    ret = std::system("bash -c \"rm -R mst-temp\"");
+    if(ret == -1)
+        std::cout << "std::system returned -1\n";
+    ret = std::system("bash -c \"mkdir mst-temp\"");
+    if(ret == -1)
+        std::cout << "std::system returned -1\n";
+    ret = std::system("bash -c \"mkdir mst-temp/frames\"");
+    if(ret == -1)
+        std::cout << "std::system returned -1\n";
+    ret = std::system("bash -c \"mkdir mst-temp/frames/tik\"");
+    if(ret == -1)
+        std::cout << "std::system returned -1\n";
+    ret = std::system("bash -c \"mkdir mst-temp/frames/tok\"");
+    if(ret == -1)
+        std::cout << "std::system returned -1\n";
+    ret = std::system("bash -c \"mkdir mst-temp/audio\"");
+    if(ret == -1)
+        std::cout << "std::system returned -1\n";
+    ret = std::system("bash -c \"mkdir mst-temp/audio/tik\"");
+    if(ret == -1)
+        std::cout << "std::system returned -1\n";
+    ret = std::system("bash -c \"mkdir mst-temp/audio/tok\"");
+    if(ret == -1)
+        std::cout << "std::system returned -1\n";
 
     path = Configurations::execCmd("pwd");
     mstaudio_pipe_path = path + "/mst-temp/mst_audio_pipe";
@@ -380,8 +493,10 @@ void CameraThread::run()
     ffaudio_pipe_path = path + "/mst-temp/ffmpeg_audio_pipe";
     ffvideo_pipe_path = path + "/mst-temp/ffmpeg_video_pipe";
 
-    // Create mst-ffmpeg video and audio pipes
+    // Set color scale
+    setColorScale();
 
+    // Create mst-ffmpeg video and audio pipes
     mkfifo(mstvideo_pipe_path.c_str(), 0666);
     mkfifo(ffvideo_pipe_path.c_str(), 0666);
     if(Configurations::source_choices[Configurations::source] == "Video file")

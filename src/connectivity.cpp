@@ -246,38 +246,38 @@ void Connectivity::tcpRead()
         valread = read(sock, buffer, BUFFER_SIZE);
 
         // The other guy clicked disconnect
-        if(buffer[0] == (char)-1)
+        if(buffer[0] == static_cast<char>(-1))
         {
             emit otherGuyDisconnected();
             break;
         }
         // (Server side) Start sending video stream to client
-        if(buffer[0] == (char)-2)
+        if(buffer[0] == static_cast<char>(-2))
         {
             emit startServerStream();
         }
         else
         // (Client side) Stop receiving video stream
-        if(buffer[0] == (char)-3)
+        if(buffer[0] == static_cast<char>(-3))
         {
             emit stopReceivingVideoStream(false);
         }
         else
         // (Server side) Streaming ended
-        if(buffer[0] == (char)-4)
+        if(buffer[0] == static_cast<char>(-4))
         {
             emit streamingEnded();
         }
         else
         // (Client side) Start streaming
-        if(buffer[0] == (char)-5)
+        if(buffer[0] == static_cast<char>(-5))
         {
             emit startStreaming();
         }
         else
         // (Server/Client side) Receive TCP configurations and set local
         //    configurations accordingly
-        if(buffer[0] == (char)-6)
+        if(buffer[0] == static_cast<char>(-6))
         {
             if(Configurations::system == SERVER)
             {

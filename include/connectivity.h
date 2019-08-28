@@ -3,6 +3,7 @@
 
 #define BUFFER_SIZE 1024
 
+#include "configurations.h"
 #include <stdlib.h>
 #include <string>
 #include <curl/curl.h>
@@ -17,8 +18,6 @@
 #include <sstream>
 #include <iostream>
 #include <time.h>
-
-#include <configurations.h>
 
 class Connectivity : public QObject
 {

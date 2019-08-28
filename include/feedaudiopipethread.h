@@ -1,13 +1,13 @@
 #ifndef FEEDAUDIOPIPETHREAD_H
 #define FEEDAUDIOPIPETHREAD_H
 
+#include "configurations.h"
 #include <QThread>
 #include <iostream>
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <unistd.h>
-#include <configurations.h>
 
 class FeedAudioPipeThread : public QThread
 {

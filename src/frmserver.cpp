@@ -24,7 +24,6 @@ FrmServer::FrmServer(QWidget *parent) :
          center.y()- static_cast<int>(height()*0.5));
 
     // Set icons
-
     setWindowIcon(QIcon(":/resources/media/mst_logo.png"));
 
     QPixmap back_img(":/resources/media/back.png");
@@ -186,7 +185,7 @@ void FrmServer::on_btnStartServer_clicked()
             ui->btnStartServer->setEnabled(true);
         }
         Configurations::video_chunk_seconds =
-                (ui->cmbVideoChunk->currentIndex() * 5) + 5;
+                (ui->cmbVideoChunk->currentIndex() * 5) + 10;
     }
     else
     {
