@@ -274,6 +274,7 @@ void FrmConnected::on_btnStartStopStreaming_clicked()
 */
 void FrmConnected::stopThreads()
 {
+    int ret;
     disconnect(tcp_client_thread, nullptr, nullptr, nullptr);
     tcp_client_thread->terminate();
     tcp_client_thread->wait();
@@ -281,7 +282,9 @@ void FrmConnected::stopThreads()
 
     if(is_stream_active)
     {
-        std::system("bash -c \"killall ffplay\"");
+        ret = std::system("bash -c \"killall ffplay\"");
+        if(ret == -1)
+            std::cout << "std::system returned -1\n";
         disconnect(client_stream_thread, nullptr, nullptr, nullptr);
         client_stream_thread->~ClientStreamThread();
         is_stream_active = false;
@@ -296,10 +299,15 @@ void FrmConnected::stopThreads()
 */
 void FrmConnected::stopReceivingVideoStream(bool is_video_ended)
 {
+    int ret;
     if(is_stream_active)
     {
         if(!is_video_ended)
-            std::system("bash -c \"killall ffplay\"");
+        {
+            ret = std::system("bash -c \"killall ffplay\"");
+            if(ret == -1)
+                std::cout << "std::system returned -1\n";
+        }
 
         ui->txtBox->append("Streaming ended");
         disconnect(client_stream_thread, nullptr, nullptr, nullptr);
