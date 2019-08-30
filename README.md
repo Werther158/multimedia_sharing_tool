@@ -15,7 +15,7 @@ Before installing dependencies:
 [QT Home Page](https://www.qt.io/)
 
 ### CUDA  
-1. Update your Nvidia GPU driver with the latest Nvidia proprietary one  
+1. Update your Nvidia GPU driver with the latest Nvidia proprietary one 
 2. Install CUDA Toolkit following the [CUDA Installation Guide](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)
 
 ### cURL development library
@@ -29,7 +29,9 @@ Before installing dependencies:
 ```sh
 $ sudo cp /usr/lib/x86_64-linux-gnu/glib-2.0/include/glibconfig.h /usr/include/glib-2.0/glibconfig.h
 ```
-2. Follow the Build instructions from the [Jetson-inference GitHub page](https://github.com/dusty-nv/jetson-inference)  
+2. Follow the Build instructions from the [Jetson-inference GitHub page](https://github.com/dusty-nv/jetson-inference).  
+N.B. Once downloaded the Jetson-inference library and before building the project, check that inside CMakeLists.txt your GPU architecture is specified (e.g. `-gencode arch=compute_62,code=sm_62`). Otherwise add it.  
+A list of Nvidia GPU architectures could be found [here](https://github.com/Werther158/multimedia_sharing_tool/wiki/Nvidia-GPU-architectures-compatibility)
 
 ### FFmpeg  
 `$ sudo apt-get install ffmpeg`
