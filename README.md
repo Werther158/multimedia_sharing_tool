@@ -20,7 +20,7 @@ Before installing dependencies:
 ### cURL
 `$ sudo apt-get install curl`  
 
-### NVIDIA TensorRT (for systems different than Jetson Nano)
+### NVIDIA TensorRT (if not already installed or preinstalled)
 [TensorRT Installation Guide](https://docs.nvidia.com/deeplearning/sdk/tensorrt-install-guide/index.html)
 
 ### Jetson-inference library
