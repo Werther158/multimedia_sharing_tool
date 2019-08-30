@@ -17,8 +17,8 @@ Before installing dependencies:
 ### CUDA  
 [CUDA Installation Guide](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)
 
-### cURL
-`$ sudo apt-get install curl`  
+### cURL library
+`$ sudo apt-get install libcurl4-openssl-dev`  
 
 ### NVIDIA TensorRT (if not already installed or preinstalled)
 [TensorRT Installation Guide](https://docs.nvidia.com/deeplearning/sdk/tensorrt-install-guide/index.html)
