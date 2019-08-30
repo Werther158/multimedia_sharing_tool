@@ -15,7 +15,8 @@ Before installing dependencies:
 [QT Home Page](https://www.qt.io/)
 
 ### CUDA  
-[CUDA Installation Guide](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)
+1. Update your Nvidia GPU driver with the latest Nvidia proprietary one  
+2. Install CUDA Toolkit following the [CUDA Installation Guide](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)
 
 ### cURL library
 `$ sudo apt-get install libcurl4-openssl-dev`  
