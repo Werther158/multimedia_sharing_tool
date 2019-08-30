@@ -1,4 +1,4 @@
-# HPC Project
+# High Performance Computing Project
 
 Share video, screen, camera and audio with an RTSP stream through Lan or Wan supporting CUDA computations in a High Performance embedded environment (Nvidia Jetson Nano), applying real-time AI techiques of Intrusion Detection with bounding boxes localization and frames manipulations.
 
