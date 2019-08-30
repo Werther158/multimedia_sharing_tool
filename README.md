@@ -7,6 +7,9 @@ Share video, screen, camera and audio with a RTSP stream through Lan or Wan supp
 Before installing dependencies:  
 `$ sudo apt-get update`  
 `$ sudo apt-get upgrade`
+`$ sudo apt-get install gcc`
+`$ sudo apt-get install cmake`
+`$ sudo apt-get install git`
 
 ### QT Creator
 [QT Home Page](https://www.qt.io/)
