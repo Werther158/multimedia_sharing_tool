@@ -24,7 +24,11 @@ Before installing dependencies:
 [TensorRT Installation Guide](https://docs.nvidia.com/deeplearning/sdk/tensorrt-install-guide/index.html)
 
 ### Jetson-inference library
-[Jetson-inference GitHub page](https://github.com/dusty-nv/jetson-inference)
+1. Copy `glibconfig.h` header to `/usr/include/glib-2.0/` before building Jetson-inference library  
+```sh
+$ sudo cp /usr/lib/x86_64-linux-gnu/glib-2.0/include/glibconfig.h /usr/include/glib-2.0/glibconfig.h
+```
+2. Follow the Build instructions from the [Jetson-inference GitHub page](https://github.com/dusty-nv/jetson-inference)  
 
 ### FFmpeg  
 `$ sudo apt-get install ffmpeg`
