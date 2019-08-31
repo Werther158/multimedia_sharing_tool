@@ -34,7 +34,8 @@ Other architectures: [QT Home Page](https://www.qt.io/)
 $ sudo cp /usr/lib/x86_64-linux-gnu/glib-2.0/include/glibconfig.h /usr/include/glib-2.0/glibconfig.h
 ```
 2. Follow the Build instructions from the [Jetson-inference GitHub page](https://github.com/dusty-nv/jetson-inference).  
-N.B. Once downloaded the Jetson-inference library and before building the project, check that inside CMakeLists.txt your GPU architecture is specified (e.g. `-gencode arch=compute_62,code=sm_62`). Otherwise add it.  
+N.B. (Only for systems different from Nvidia Jetson)  
+Once downloaded the Jetson-inference library and before building the project, check that inside CMakeLists.txt your GPU architecture is specified (e.g. `-gencode arch=compute_62,code=sm_62`). Otherwise add it.  
 A list of Nvidia GPU architectures could be found [here](https://github.com/Werther158/multimedia_sharing_tool/wiki/Nvidia-GPU-architectures-compatibility)
 
 ### FFmpeg  
