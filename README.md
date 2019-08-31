@@ -47,7 +47,10 @@ A list of Nvidia GPU architectures could be found [here](https://github.com/Wert
 $ sudo apt-get remove x264 libx264-dev
 ```  
 
-2. Install OpenCV dependencies  
+2. (Jetson Nano only) Set a swap file to allow the system to use more than 4 GB of RAM  
+A swap file installer could be found [here](https://github.com/JetsonHacksNano/installSwapfile)
+
+3. Install OpenCV dependencies  
 ```sh
 $ sudo apt-get install build-essential checkinstall cmake pkg-config yasm
 $ sudo apt-get install git gfortran
@@ -64,13 +67,13 @@ $ sudo apt-get install libopencore-amrnb-dev libopencore-amrwb-dev
 $ sudo apt-get install x264 v4l-utils
 ```
 
-3. Clone `opencv` and `opencv_contrib` version 3.4.7 repository
+4. Clone `opencv` and `opencv_contrib` version 3.4.7 repository
 ```sh
 $ git clone -b 3.4.7 https://github.com/opencv/opencv
 $ git clone -b 3.4.7 https://github.com/opencv/opencv_contrib
 ```
 
-4. Make a directory i.e. `build` inside `opencv` directory  
+5. Make a directory i.e. `build` inside `opencv` directory  
 ```sh
 $ mkdir build
 $ cd build
