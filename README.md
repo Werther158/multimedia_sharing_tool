@@ -12,7 +12,8 @@ Before installing dependencies:
 `$ sudo apt-get install git`  
 
 ### QT Creator
-[QT Home Page](https://www.qt.io/)
+On ARM architectures: `sudo apt-get install qt5-default qtcreator -v`  
+Other architectures: [QT Home Page](https://www.qt.io/)
 
 ### CUDA  
 1. Update your Nvidia GPU driver with the latest Nvidia proprietary one 
