@@ -88,3 +88,10 @@ $ nproc
 $ make -j4 
 $ sudo make install
 ```
+
+## Building the project:  
+1. Clone the project
+```
+$ git clone https://github.com/Werther158/multimedia_sharing_tool
+```
+2. Open the `.pro` file with QT Creator and build the project
