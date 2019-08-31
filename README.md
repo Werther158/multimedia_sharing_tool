@@ -6,11 +6,11 @@ Share video, screen, camera and audio with an RTSP stream through Lan or Wan sup
 
 Before installing dependencies:  
 ```sh
-$ sudo apt-get update  
-$ sudo apt-get upgrade  
-$ sudo apt-get install gcc  
-$ sudo apt-get install cmake  
-$ sudo apt-get install git  
+$ sudo apt-get update
+$ sudo apt-get upgrade
+$ sudo apt-get install gcc
+$ sudo apt-get install cmake
+$ sudo apt-get install git
 $ sudo apt-get install libgtk2.0-dev
 ```
 
@@ -48,18 +48,18 @@ $ sudo apt-get remove x264 libx264-dev
 
 2. Install OpenCV dependencies  
 ```sh
-$ sudo apt-get install build-essential checkinstall cmake pkg-config yasm  
-$ sudo apt-get install git gfortran  
-$ sudo apt-get install libjpeg8-dev libjasper-dev libpng12-dev  
-$ sudo apt-get install libtiff5-dev  
-$ sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev libdc1394-22-dev  
-$ sudo apt-get install libxine2-dev libv4l-dev  
-$ sudo apt-get install libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev  
-$ sudo apt-get install libqt4-dev libtbb-dev  
-$ sudo apt-get install libatlas-base-dev  
-$ sudo apt-get install libfaac-dev libmp3lame-dev libtheora-dev  
-$ sudo apt-get install libvorbis-dev libxvidcore-dev  
-$ sudo apt-get install libopencore-amrnb-dev libopencore-amrwb-dev  
+$ sudo apt-get install build-essential checkinstall cmake pkg-config yasm
+$ sudo apt-get install git gfortran
+$ sudo apt-get install libjpeg8-dev libjasper-dev libpng12-dev
+$ sudo apt-get install libtiff5-dev
+$ sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev libdc1394-22-dev
+$ sudo apt-get install libxine2-dev libv4l-dev
+$ sudo apt-get install libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev
+$ sudo apt-get install libqt4-dev libtbb-dev
+$ sudo apt-get install libatlas-base-dev
+$ sudo apt-get install libfaac-dev libmp3lame-dev libtheora-dev
+$ sudo apt-get install libvorbis-dev libxvidcore-dev
+$ sudo apt-get install libopencore-amrnb-dev libopencore-amrwb-dev
 $ sudo apt-get install x264 v4l-utils
 ```
 
@@ -89,7 +89,7 @@ $ cmake -D CMAKE_BUILD_TYPE=RELEASE \
  -D BUILD_EXAMPLES=ON ..
 $ nproc
 # use the number that nproc returns which is the number of cores of your processor. Let's say it returns 4.
-$ make -j4 
+$ make -j4
 $ sudo make install
 ```
 
