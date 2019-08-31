@@ -199,14 +199,6 @@ void CameraThread::captureFromFile()
         defineChunk();
         createChunk();
 
-        // Apply intrusion detection on chunk
-        if(Configurations::intrusion_detection_enabled)
-        {
-            // Apply neural net on chunk frames
-            emit runIntrusionDetection(false);
-            sem_wait(&sem_detection_done);
-        }
-
         // Apply eventually resize and blur filtering on chunk
         if(Configurations::frame_size_changed ||
                 Configurations::blur_effect != 0)
@@ -220,6 +212,14 @@ void CameraThread::captureFromFile()
                               + "/" + filename.toStdString());
                 sem_wait(&sem_picture);
             }
+        }
+
+        // Apply intrusion detection on chunk
+        if(Configurations::intrusion_detection_enabled)
+        {
+            // Apply neural net on chunk frames
+            emit runIntrusionDetection(false);
+            sem_wait(&sem_detection_done);
         }
 
         // Wait for signal to start feeding mst video
@@ -308,6 +308,15 @@ void CameraThread::captureFromCamera()
         emit saveCameraFrame(frame);
         sem_wait(&sem_camera_frame);
 
+        // Apply eventually resize and blur filtering
+        if(Configurations::frame_size_changed ||
+                Configurations::blur_effect != 0)
+        {
+            emit imageScaleBlur(Configurations::current_frame_path +
+                                "/output.bmp");
+            sem_wait(&sem_picture);
+        }
+
         // Apply intrusion detection
         if(Configurations::intrusion_detection_enabled)
         {
@@ -320,15 +329,6 @@ void CameraThread::captureFromCamera()
         if(color_scale != "")
         {
             changeFrameColorScale();
-        }
-
-        // Apply eventually resize and blur filtering
-        if(Configurations::frame_size_changed ||
-                Configurations::blur_effect != 0)
-        {
-            emit imageScaleBlur(Configurations::current_frame_path +
-                                "/output.bmp");
-            sem_wait(&sem_picture);
         }
 
         // Wait for signal to start feeding mst video
@@ -381,6 +381,14 @@ void CameraThread::captureFromScreen()
         // Wait image to be ready
         sem_wait(&sem_picture);
 
+        // Apply eventually resize and blur filtering
+        if(Configurations::frame_size_changed ||
+                Configurations::blur_effect != 0)
+        {
+            emit imageScaleBlur(Configurations::current_frame_path + "/output.bmp");
+            sem_wait(&sem_picture);
+        }
+
         // Apply intrusion detection
         if(Configurations::intrusion_detection_enabled)
         {
@@ -393,14 +401,6 @@ void CameraThread::captureFromScreen()
         if(color_scale != "")
         {
             changeFrameColorScale();
-        }
-
-        // Apply eventually resize and blur filtering
-        if(Configurations::frame_size_changed ||
-                Configurations::blur_effect != 0)
-        {
-            emit imageScaleBlur(Configurations::current_frame_path + "/output.bmp");
-            sem_wait(&sem_picture);
         }
 
         // Wait for signal to start feeding mst video
