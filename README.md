@@ -5,11 +5,14 @@ Share video, screen, camera and audio with an RTSP stream through Lan or Wan sup
 ## External Dependencies:
 
 Before installing dependencies:  
-`$ sudo apt-get update`  
-`$ sudo apt-get upgrade`  
-`$ sudo apt-get install gcc`  
-`$ sudo apt-get install cmake`  
-`$ sudo apt-get install git`  
+```sh
+$ sudo apt-get update  
+$ sudo apt-get upgrade  
+$ sudo apt-get install gcc  
+$ sudo apt-get install cmake  
+$ sudo apt-get install git  
+$ sudo apt-get install libgtk2.0-dev
+```
 
 ### QT Creator
 On ARM architectures: `sudo apt-get install qt5-default qtcreator -y`  
@@ -52,7 +55,7 @@ $ sudo apt-get install libtiff5-dev
 $ sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev libdc1394-22-dev  
 $ sudo apt-get install libxine2-dev libv4l-dev  
 $ sudo apt-get install libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev  
-$ sudo apt-get install libqt4-dev libgtk2.0-dev libtbb-dev  
+$ sudo apt-get install libqt4-dev libtbb-dev  
 $ sudo apt-get install libatlas-base-dev  
 $ sudo apt-get install libfaac-dev libmp3lame-dev libtheora-dev  
 $ sudo apt-get install libvorbis-dev libxvidcore-dev  
