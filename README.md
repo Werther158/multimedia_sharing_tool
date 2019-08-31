@@ -12,7 +12,7 @@ Before installing dependencies:
 `$ sudo apt-get install git`  
 
 ### QT Creator
-On ARM architectures: `sudo apt-get install qt5-default qtcreator -v`  
+On ARM architectures: `sudo apt-get install qt5-default qtcreator -y`  
 Other architectures: [QT Home Page](https://www.qt.io/)
 
 ### CUDA  
