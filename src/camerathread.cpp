@@ -39,6 +39,33 @@ CameraThread::~CameraThread()
 }
 
 /**
+ * Write clock time on log file with a log_text message.
+ * @param   : log_text; text to write inside the file.
+ * @param   : time; start time.
+ * @param   : end; if true, write a break line between log lines.
+ * @return  : void.
+*/
+void CameraThread::writeClockTime(std::string log_text, clock_t start_time, bool end)
+{
+    std::ofstream log;
+    clock_t time;
+    float seconds;
+
+    time = clock() - start_time;
+    seconds = (float)time/CLOCKS_PER_SEC;
+
+    log.open("log.txt", std::ios::app);
+    log << log_text;
+    log << seconds;
+    log << " seconds\n";
+
+    if(end)
+        log << "-------------------------------\n";
+
+    log.close();
+}
+
+/**
  * Change color scale of output.bmp frame using ffmpeg.
  * @param   : void.
  * @return  : void.
@@ -126,6 +153,58 @@ void CameraThread::createChunk()
 }
 
 /**
+ * Resize a frame (or a chunk of frames) and apply blur filter according
+ * to Configurations.
+ * @param   : single_frame; true if it has to be applied to a single frame,
+ *                          false if it has to be applied to a chunk.
+ * @return  : void.
+*/
+void CameraThread::resizeAndBlur(bool single_frame)
+{
+    if(single_frame)
+    {
+        if(Configurations::frame_size_changed ||
+                Configurations::blur_effect != 0)
+        {
+            emit imageScaleBlur(Configurations::current_frame_path +
+                                "/output.bmp");
+            sem_wait(&sem_picture);
+        }
+    }
+    else
+    {
+        if(Configurations::frame_size_changed ||
+                Configurations::blur_effect != 0)
+        {
+            QDir directory(QString::fromStdString
+                           (Configurations::current_frame_path));
+            QStringList images = directory.entryList
+                    (QStringList() << "*.bmp", QDir::Files);
+            foreach(QString filename, images) {
+                emit imageScaleBlur(Configurations::current_frame_path
+                              + "/" + filename.toStdString());
+                sem_wait(&sem_picture);
+            }
+        }
+    }
+}
+
+/**
+ * Apply intrusion detection on single frame or multiple frames.
+ * @param   : single_frame; true if ID has to be applied to a single frame,
+ *                          false if it has to be applied to a chunk.
+ * @return  : void.
+*/
+void CameraThread::intrusionDetection(bool single_frame)
+{
+    if(Configurations::intrusion_detection_enabled)
+    {
+        emit runIntrusionDetection(single_frame);
+        sem_wait(&sem_detection_done);
+    }
+}
+
+/**
  * Manage a file manipulation and frames stream.
  * @param   : void.
  * @return  : void.
@@ -186,6 +265,9 @@ void CameraThread::captureFromFile()
 
     while(thread_active)
     {
+        if(WRITE_LOG)
+            start_time1 = clock();
+
         // Define the actual video chunk (in seconds) to use,
         // if EOF is reached, exit.
         begin_chunk += (end_chunk - begin_chunk);
@@ -196,31 +278,43 @@ void CameraThread::captureFromFile()
         else
             end_chunk += (video_length - end_chunk);
 
-        defineChunk();
-        createChunk();
-
-        // Apply eventually resize and blur filtering on chunk
-        if(Configurations::frame_size_changed ||
-                Configurations::blur_effect != 0)
+        if(WRITE_LOG)
         {
-            QDir directory(QString::fromStdString
-                           (Configurations::current_frame_path));
-            QStringList images = directory.entryList
-                    (QStringList() << "*.bmp", QDir::Files);
-            foreach(QString filename, images) {
-                emit imageScaleBlur(Configurations::current_frame_path
-                              + "/" + filename.toStdString());
-                sem_wait(&sem_picture);
-            }
+            start_time2 = clock();
+            defineChunk();
+            writeClockTime("Define chunk time: ", start_time2, false);
         }
+        else
+            defineChunk();
+
+        if(WRITE_LOG)
+        {
+            start_time2 = clock();
+            createChunk();
+            writeClockTime("Create chunk time: ", start_time2, false);
+        }
+        else
+            createChunk();
+
+        // Apply chunk resize and blur filtering
+        if(WRITE_LOG)
+        {
+            start_time2 = clock();
+            resizeAndBlur(false);
+            writeClockTime("Resize and blur time: ", start_time2, false);
+        }
+        else
+            resizeAndBlur(false);
 
         // Apply intrusion detection on chunk
-        if(Configurations::intrusion_detection_enabled)
+        if(WRITE_LOG)
         {
-            // Apply neural net on chunk frames
-            emit runIntrusionDetection(false);
-            sem_wait(&sem_detection_done);
+            start_time2 = clock();
+            intrusionDetection(false);
+            writeClockTime("Intrusion detection time: ", start_time2, false);
         }
+        else
+            intrusionDetection(false);
 
         // Wait for signal to start feeding mst video
         sem_wait(&sem_video);
@@ -249,6 +343,9 @@ void CameraThread::captureFromFile()
             if(ret == -1)
                 std::cout << "std::system returned -1\n";
         }
+
+        if(WRITE_LOG)
+            writeClockTime("Total chunk execution time: ", start_time1, true);
     }
 }
 
@@ -289,6 +386,9 @@ void CameraThread::captureFromCamera()
 
     while(thread_active)
     {
+        if(WRITE_LOG)
+            start_time1 = clock();
+
         // Define videochunk_out_path
         if(tik_tok)
         {
@@ -305,25 +405,38 @@ void CameraThread::captureFromCamera()
         cap >> frame;
 
         // Save image to /mst-temp/frames tik-tok folder
-        emit saveCameraFrame(frame);
-        sem_wait(&sem_camera_frame);
-
-        // Apply eventually resize and blur filtering
-        if(Configurations::frame_size_changed ||
-                Configurations::blur_effect != 0)
+        if(WRITE_LOG)
         {
-            emit imageScaleBlur(Configurations::current_frame_path +
-                                "/output.bmp");
-            sem_wait(&sem_picture);
+            start_time2 = clock();
+            emit saveCameraFrame(frame);
+            sem_wait(&sem_camera_frame);
+            writeClockTime("Take a camera frame time: ", start_time2, false);
         }
+        else
+        {
+            emit saveCameraFrame(frame);
+            sem_wait(&sem_camera_frame);
+        }
+
+        // Apply resize and blur on frame
+        if(WRITE_LOG)
+        {
+            start_time2 = clock();
+            resizeAndBlur(true);
+            writeClockTime("Resize and blur time: ", start_time2, false);
+        }
+        else
+            resizeAndBlur(true);
 
         // Apply intrusion detection
-        if(Configurations::intrusion_detection_enabled)
+        if(WRITE_LOG)
         {
-            // Apply neural net on frame
-            emit runIntrusionDetection(true);
-            sem_wait(&sem_detection_done);
+            start_time2 = clock();
+            intrusionDetection(true);
+            writeClockTime("Intrusion detection time: ", start_time2, false);
         }
+        else
+            intrusionDetection(true);
 
         // Apply eventually a color scale change
         if(color_scale != "")
@@ -338,6 +451,9 @@ void CameraThread::captureFromCamera()
         ret = std::system(command.c_str());
         if(ret == -1)
             std::cout << "std::system returned -1\n";
+
+        if(WRITE_LOG)
+            writeClockTime("Total chunk execution time: ", start_time1, true);
     }
 }
 
@@ -363,6 +479,9 @@ void CameraThread::captureFromScreen()
 
     while(thread_active)
     {
+        if(WRITE_LOG)
+            start_time1 = clock();
+
         // Define videochunk_out_path
         if(tik_tok)
         {
@@ -375,27 +494,39 @@ void CameraThread::captureFromScreen()
             tik_tok = true;
         }
 
-        // Take screen frame
-        emit takeAScreenPicture();
-
-        // Wait image to be ready
-        sem_wait(&sem_picture);
-
-        // Apply eventually resize and blur filtering
-        if(Configurations::frame_size_changed ||
-                Configurations::blur_effect != 0)
+        // Take screen frame and wait image to be ready
+        if(WRITE_LOG)
         {
-            emit imageScaleBlur(Configurations::current_frame_path + "/output.bmp");
+            start_time2 = clock();
+            emit takeAScreenPicture();
+            sem_wait(&sem_picture);
+            writeClockTime("Take a screen frame time: ", start_time2, false);
+        }
+        else
+        {
+            emit takeAScreenPicture();
             sem_wait(&sem_picture);
         }
 
-        // Apply intrusion detection
-        if(Configurations::intrusion_detection_enabled)
+        // Apply resize and blur on frame
+        if(WRITE_LOG)
         {
-            // Apply neural net on frame
-            emit runIntrusionDetection(true);
-            sem_wait(&sem_detection_done);
+            start_time2 = clock();
+            resizeAndBlur(true);
+            writeClockTime("Resize and blur time: ", start_time2, false);
         }
+        else
+            resizeAndBlur(true);
+
+        // Apply intrusion detection
+        if(WRITE_LOG)
+        {
+            start_time2 = clock();
+            intrusionDetection(true);
+            writeClockTime("Intrusion detection time: ", start_time2, false);
+        }
+        else
+            intrusionDetection(true);
 
         // Apply eventually a color scale change
         if(color_scale != "")
@@ -410,6 +541,9 @@ void CameraThread::captureFromScreen()
         ret = std::system(command.c_str());
         if(ret == -1)
             std::cout << "std::system returned -1\n";
+
+        if(WRITE_LOG)
+            writeClockTime("Total chunk execution time: ", start_time1, true);
     }
 }
 
@@ -492,6 +626,14 @@ void CameraThread::run()
     mstvideo_pipe_path = path + "/mst-temp/mst_video_pipe";
     ffaudio_pipe_path = path + "/mst-temp/ffmpeg_audio_pipe";
     ffvideo_pipe_path = path + "/mst-temp/ffmpeg_video_pipe";
+
+    if(WRITE_LOG)
+    {
+        // Clean previous registered logs
+        std::ofstream log;
+        log.open("log.txt", std::ofstream::out | std::ofstream::trunc);
+        log.close();
+    }
 
     // Set color scale
     setColorScale();

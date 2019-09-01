@@ -1,6 +1,9 @@
 #ifndef CAMERATHREAD_H
 #define CAMERATHREAD_H
 
+// define WRITE_LOG 1 if you want to have timing logs, 0 otherwise.
+#define WRITE_LOG 1
+
 #include "configurations.h"
 #include "serverstreamthread.h"
 #include "cudadetectionthread.h"
@@ -17,7 +20,9 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <stdio.h>
-
+#include <ctime>
+#include <cmath>
+#include <fstream>
 
 class CameraThread : public QThread
 {
@@ -61,6 +66,8 @@ private:
     // Timing utils variables
     long video_length, begin_chunk, end_chunk;
     int begin_h, begin_m, begin_s, end_h, end_m, end_s;
+    // Log time variables
+    clock_t start_time1, start_time2;
 
     void captureFromFile();
     void ffmpegJob();
@@ -70,6 +77,9 @@ private:
     void captureFromCamera();
     void setColorScale();
     void changeFrameColorScale();
+    void writeClockTime(std::string log_text, clock_t start_time, bool end);
+    void intrusionDetection(bool single_frame);
+    void resizeAndBlur(bool single_frame);
 
 public slots:
     void notifyAudioToMstCondVar();
