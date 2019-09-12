@@ -2,7 +2,7 @@
 #define CAMERATHREAD_H
 
 // define WRITE_LOG 1 if you want to have timing logs, 0 otherwise.
-#define WRITE_LOG 1
+#define WRITE_LOG 0
 
 #include "configurations.h"
 #include "serverstreamthread.h"
