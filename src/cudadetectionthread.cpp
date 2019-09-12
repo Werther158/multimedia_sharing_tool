@@ -24,7 +24,6 @@ CudaDetectionThread::~CudaDetectionThread()
      * destroy resources
      */
     SAFE_DELETE(net);
-    CUDA(cudaFreeHost(imgCPU));
 }
 
 /**
@@ -57,6 +56,8 @@ void CudaDetectionThread::detectOnImage(std::string file_path)
                       imgWidth, imgHeight, 255.0f))
         printf("detectnet-console:  failed saving %ix%i image to '%s'\n",
                imgWidth, imgHeight, file_path.c_str());
+
+    CUDA(cudaFreeHost(imgCPU));
 }
 
 /**
