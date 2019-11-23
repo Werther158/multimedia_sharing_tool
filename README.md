@@ -20,7 +20,14 @@ $ sudo apt-get install libgtk2.0-dev
 On ARM architectures: `sudo apt-get install qt5-default qtcreator -y`  
 Other architectures: [QT Home Page](https://www.qt.io/)
 
-### CUDA  
+### CUDA  (Jetson users)
+Add the CUDA directory to $PATH
+```sh
+$ export PATH=${PATH}:/usr/local/cuda/bin
+$ export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/cuda/lib64
+```
+
+### CUDA  (Non Jetson users)
 1. Update your Nvidia GPU driver with the latest Nvidia proprietary one 
 2. Install CUDA Toolkit following the [CUDA Installation Guide](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)
 
