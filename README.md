@@ -82,7 +82,7 @@ $ git clone -b 3.4.7 https://github.com/opencv/opencv
 $ git clone -b 3.4.7 https://github.com/opencv/opencv_contrib
 ```
 
-5. Make a directory i.e. `build` inside `opencv` directory, compile and install the library  
+5. Make a directory i.e. `build` inside `opencv` directory, build and install the library  
 ```sh
 $ mkdir build
 $ cd build
