@@ -38,12 +38,12 @@ $ export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/cuda/lib64
 [TensorRT Installation Guide](https://docs.nvidia.com/deeplearning/sdk/tensorrt-install-guide/index.html)
 
 ### Jetson-inference library
-1. Copy `glibconfig.h` header to `/usr/include/glib-2.0/`  
+1. (Non Jetson users only) Copy `glibconfig.h` header to `/usr/include/glib-2.0/`  
 ```sh
 $ sudo cp /usr/lib/x86_64-linux-gnu/glib-2.0/include/glibconfig.h /usr/include/glib-2.0/glibconfig.h
 ```
 2. Follow the Build instructions from the [Jetson-inference GitHub page](https://github.com/dusty-nv/jetson-inference).  
-N.B. (Only for systems different from Nvidia Jetson)  
+N.B. (Non Jetson users only)  
 Once downloaded the Jetson-inference library and before building the project, check that inside CMakeLists.txt your GPU architecture is specified (e.g. `-gencode arch=compute_62,code=sm_62`). Otherwise add it.  
 A list of Nvidia GPU architectures could be found [here](https://github.com/Werther158/multimedia_sharing_tool/wiki/Nvidia-GPU-architectures-compatibility)
 
@@ -82,7 +82,7 @@ $ git clone -b 3.4.7 https://github.com/opencv/opencv
 $ git clone -b 3.4.7 https://github.com/opencv/opencv_contrib
 ```
 
-5. Make a directory i.e. `build` inside `opencv` directory  
+5. Make a directory i.e. `build` inside `opencv` directory and install the library  
 ```sh
 $ mkdir build
 $ cd build
@@ -111,4 +111,6 @@ $ sudo make install
 ```
 $ git clone https://github.com/Werther158/multimedia_sharing_tool
 ```
-2. Open the `.pro` file with QT Creator and build the project
+2. Open the `.pro` file with QT Creator
+3. Set `multimedia_sharing_tool/build/debug` and `multimedia_sharing_tool/build/release` as debug and release directories
+4. Build the project
