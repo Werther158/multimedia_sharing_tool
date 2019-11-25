@@ -2,7 +2,8 @@
 
 Share video, screen, camera and audio with an RTSP stream through Lan or Wan supporting CUDA computations in a High Performance embedded environment (Nvidia Jetson Nano), applying real-time AI techiques of Intrusion Detection with bounding boxes localization and frames manipulations.
 
-A demonstration video can be found here: https://www.youtube.com/watch?v=4hzk5qf74mc
+A demonstration video can be found here: https://www.youtube.com/watch?v=gbF5GQyb1T8  
+NV Developer Jetson Projects forum post: https://devtalk.nvidia.com/default/topic/1065923/jetson-projects/multimedia-sharing-tool-a-jetson-nano-project/ 
 
 ## External Dependencies:
 
